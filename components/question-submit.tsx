@@ -16,7 +16,7 @@ interface QuestionSubmitProps {
 
 export const QuestionSubmit = ({ question }: QuestionSubmitProps) => {
   const { questionAnswer, setQuestionAnswer } = useAnswerStore();
-  const { isModal, openModal, closeModal } = useModal();
+  const { isModal, closeModal } = useModal();
 
   const handleSubmit = () => {
     axios
