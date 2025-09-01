@@ -2,22 +2,25 @@
 
 import axios from "axios";
 
+import { useModal } from "@/hooks/useModal";
 import { useAnswerStore } from "@/store/answer-store";
-import { LightQuestion } from "@/types/light-question.type";
+import { OnlineQuestion } from "@/types/online-question.type";
 
 import { PrimaryButton } from "./button/primary-button";
 import { Input } from "./input";
+import { AnswerModal } from "./modal/answer-modal";
 
 interface QuestionSubmitProps {
-  question: LightQuestion;
+  question: OnlineQuestion;
 }
 
 export const QuestionSubmit = ({ question }: QuestionSubmitProps) => {
   const { questionAnswer, setQuestionAnswer } = useAnswerStore();
+  const { isModal, openModal, closeModal } = useModal();
 
   const handleSubmit = () => {
     axios
-      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/light-answer`, {
+      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/online-answer`, {
         question_id: question.id,
         nickname: "익명의 고양이",
         content: questionAnswer,
@@ -50,6 +53,7 @@ export const QuestionSubmit = ({ question }: QuestionSubmitProps) => {
             onClick={handleSubmit}
           />
         </div>
+        {isModal && <AnswerModal closeModal={closeModal} />}
       </div>
     </main>
   );

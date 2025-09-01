@@ -1,8 +1,8 @@
-import { LightQuestion } from "@/types/light-question.type";
+import { OnlineQuestion } from "@/types/online-question.type";
 
-export async function fetchQuestion(): Promise<LightQuestion> {
+export async function fetchQuestion(): Promise<OnlineQuestion> {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/light-question/active`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/online-question/active`,
     { cache: "no-store" }
   );
 

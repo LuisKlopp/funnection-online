@@ -1,4 +1,4 @@
-export interface LightQuestion {
+export interface OnlineQuestion {
   id: number;
   content: string;
   is_active: boolean;
