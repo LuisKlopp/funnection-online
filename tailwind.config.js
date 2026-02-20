@@ -27,6 +27,12 @@ const config = {
         5: "5",
       },
 
+      lineHeight: {
+        tightPlus: "1.35",
+        middlePlus: "1.55",
+        relaxedPlus: "1.75",
+      },
+
       boxShadow: {
         "soft-card":
           "0 4px 20px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04), 0 -1px 4px rgba(0, 0, 0, 0.02)",
@@ -61,10 +67,6 @@ const config = {
         15: "60px",
       },
 
-      maxWidth: {
-        "2xl": "1441px",
-      },
-
       padding: {
         15: "60px",
       },
@@ -81,8 +83,9 @@ const config = {
           8: "#1F2937",
           9: "#111827",
         },
-        lightPurple: "#c9bdcb",
-
+        primaryNavy: "#4A5FD9",
+        lightNavy: "#ECEFFE",
+        deepNavy: "#3A4BC8",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

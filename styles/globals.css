@@ -49,6 +49,22 @@ body,
   border-radius: 4px;
 }
 
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 2s ease-out 0.4s forwards;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
