@@ -2,6 +2,7 @@ import "../styles/globals.css";
 
 import type { Metadata } from "next";
 
+import { Footer } from "@/components/footer/Footer";
 import { Header } from "@/components/header/Header";
 import ReactQueryProvider from "@/providers/react-query-provider";
 import { dmDisplay, pretendard } from "@/public/fonts/fonts";
@@ -22,6 +23,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <Header />
           {children}
+          <Footer />
         </ReactQueryProvider>
       </body>
     </html>

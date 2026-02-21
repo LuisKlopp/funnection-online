@@ -3,7 +3,7 @@
 import { HelpCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn, smoothScrollTo } from "@/lib/utils";
 
 import { HeroSectionFormQuestion } from "./HeroSectionFormQuestion";
 
@@ -12,6 +12,19 @@ export const HeroSectionForm = () => {
   const [startTyping, setStartTyping] = useState(false);
 
   const maxLength = 500;
+
+  const handleScroll = () => {
+    const section = document.getElementById("responses");
+    if (!section) return;
+
+    const headerOffset = 80; // 고정 헤더 높이
+    const elementPosition =
+      section.getBoundingClientRect().top + window.scrollY;
+
+    const targetY = elementPosition - headerOffset;
+
+    smoothScrollTo(targetY, 900);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -39,13 +52,15 @@ export const HeroSectionForm = () => {
             onChange={(e) => setValue(e.target.value)}
             placeholder="당신의 생각을 자유롭게 적어주세요. 상세히 적을수록 좋아요!"
             className={cn(
-              "box-shadow-2 h-56 w-full resize-none rounded-3xl bg-gray-50 p-6 text-base text-gray-800 transition-all duration-200 outline-none placeholder:text-gray-400",
+              "box-shadow-2 scroll-none no-scrollbar h-36 w-full resize-none rounded-3xl bg-gray-50 p-6 text-base text-gray-800 transition-all duration-200 outline-none placeholder:text-gray-400",
               "focus:ring-primaryNavy/70 focus:ring-2"
             )}
           />
-          <span className="absolute right-6 bottom-4 text-sm text-gray-400">
-            {value.length}/{maxLength}
-          </span>
+          <div className="absolute right-6 bottom-4">
+            <span className="text-sm text-gray-400">
+              {value.length}/{maxLength}
+            </span>
+          </div>
         </div>
       </div>
       <div className="mt-10 w-full max-w-3xl">
@@ -61,7 +76,7 @@ export const HeroSectionForm = () => {
           답변하기
         </button>
         <div className="text-gray-5 hover:text-primaryNavy cursor-pointer text-end">
-          <p className="">다른 사람 답변 구경하기</p>
+          <p onClick={handleScroll}>다른 사람 답변 구경하기</p>
         </div>
       </div>
     </section>

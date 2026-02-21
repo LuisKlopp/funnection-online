@@ -9,8 +9,7 @@ interface HeroSectionFormQuestionProps {
 export const HeroSectionFormQuestion = ({
   startTyping,
 }: HeroSectionFormQuestionProps) => {
-  const fullText =
-    "당신이 가장 최근에 느낀 행복은 어떤 순간이었나요? 행복은 어떤 순간이었나요?";
+  const fullText = "당신이 가장 최근에 느낀 행복은 어떤 순간이었나요?";
 
   const [displayText, setDisplayText] = useState("");
 
@@ -32,7 +31,7 @@ export const HeroSectionFormQuestion = ({
   }, [startTyping]);
 
   return (
-    <h1 className="leading-middlePlus mb-8 max-w-3xl text-3xl font-semibold tracking-tight break-keep text-gray-900 md:text-4xl">
+    <h1 className="leading-middlePlus text-gray-7 mb-8 max-w-3xl text-3xl font-semibold tracking-tight break-keep md:text-4xl">
       {displayText}
       <span className="ml-1 animate-pulse font-light">|</span>
     </h1>
