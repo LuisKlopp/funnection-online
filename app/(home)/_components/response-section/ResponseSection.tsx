@@ -1,6 +1,6 @@
 "use client";
 
-import { User } from "lucide-react";
+import { HeartIcon, User } from "lucide-react";
 
 const responses = [
   {
@@ -32,9 +32,9 @@ const responses = [
 
 export const ResponseSection = () => {
   return (
-    <section className="my-24 px-4" id="responses">
+    <section className="my-24 max-w-175 px-4" id="responses">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-12 text-2xl font-semibold text-gray-900">
+        <h2 className="text-gray-7 mb-12 text-2xl font-semibold">
           <span className="text-primaryNavy mr-2">"</span>
           다른 사람들은 오늘의 질문에 이렇게 답했어요{" "}
           <span className="text-primaryNavy mr-2">"</span>
@@ -46,7 +46,9 @@ export const ResponseSection = () => {
               className="relative rounded-2xl bg-[#F4F6FB] p-6 shadow-sm"
             >
               <div className="bg-primaryNavy/60 absolute top-6 left-0 h-12 w-1 rounded-r-full" />
-
+              <div className="absolute top-8 right-8">
+                <HeartIcon className="text-gray-7" />
+              </div>
               <div className="mb-4 flex items-center gap-3">
                 <div className="bg-primaryNavy flex h-10 w-10 items-center justify-center rounded-full">
                   <User className="h-5 w-5 text-white" />

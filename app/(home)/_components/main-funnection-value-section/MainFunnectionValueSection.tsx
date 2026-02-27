@@ -5,8 +5,8 @@ import { HeartHandshake, Lightbulb, Link2 } from "lucide-react";
 export const MainFunnectionValueSection = () => {
   return (
     <section className="w-full bg-[#F5F6FB] px-6 py-28">
-      <div className="mx-auto max-w-6xl text-center">
-        <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
+      <div className="mx-auto max-w-175 text-center">
+        <h2 className="mb-4 text-4xl font-semibold text-gray-900 md:text-5xl">
           질문은 사람을 연결합니다
         </h2>
 
@@ -20,7 +20,9 @@ export const MainFunnectionValueSection = () => {
               <HeartHandshake className="h-8 w-8 text-[#4A5FD9]" />
             </div>
 
-            <h3 className="mb-4 text-2xl font-bold text-gray-900">깊은 대화</h3>
+            <h3 className="mb-4 text-2xl font-semibold text-gray-900">
+              깊은 대화
+            </h3>
 
             <p className="leading-relaxed text-gray-500">
               표면적인 대화를 넘어, 서로의 생각과 감정을 나누는 진정한 대화를
@@ -33,7 +35,7 @@ export const MainFunnectionValueSection = () => {
               <Link2 className="h-8 w-8 text-[#4A5FD9]" />
             </div>
 
-            <h3 className="mb-4 text-2xl font-bold text-gray-900">
+            <h3 className="mb-4 text-2xl font-semibold text-gray-900">
               새로운 관계
             </h3>
 
@@ -48,7 +50,9 @@ export const MainFunnectionValueSection = () => {
               <Lightbulb className="h-8 w-8 text-[#4A5FD9]" />
             </div>
 
-            <h3 className="mb-4 text-2xl font-bold text-gray-900">자기 성찰</h3>
+            <h3 className="mb-4 text-2xl font-semibold text-gray-900">
+              자기 성찰
+            </h3>
 
             <p className="leading-relaxed text-gray-500">
               질문에 답하며 자신을 돌아보고, 내면의 생각을 정리하는 시간을

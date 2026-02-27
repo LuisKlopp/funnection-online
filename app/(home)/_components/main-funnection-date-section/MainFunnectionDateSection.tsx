@@ -5,7 +5,7 @@ import { ArrowRight, MapPin, Users } from "lucide-react";
 export const MainFunnectionDateSection = () => {
   return (
     <section className="bg-lightNavy w-full px-6 py-24">
-      <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-175 items-center gap-16 lg:grid-cols-2">
         <div>
           <p className="text-primaryNavy mb-4 text-sm font-semibold tracking-wide">
             FUNNECTION <span className="text-gray-7">OFFLINE GATHERING</span>
@@ -31,7 +31,7 @@ export const MainFunnectionDateSection = () => {
         <div className="rounded-3xl bg-white p-10 shadow-xl">
           <p className="mb-3 text-sm text-gray-400">다음 모임</p>
 
-          <h3 className="text-primaryNavy mb-2 text-4xl font-bold">
+          <h3 className="text-primaryNavy mb-2 text-4xl font-semibold">
             2026년 2월 22일
           </h3>
 

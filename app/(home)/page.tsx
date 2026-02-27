@@ -6,7 +6,7 @@ import { ResponseSection } from "./_components/response-section/ResponseSection"
 
 export default function Home() {
   return (
-    <div className="flex w-full flex-col items-center justify-center">
+    <div className="mx-auto flex w-full flex-col items-center justify-center">
       <HeroSection />
       <ResponseSection />
       <MainFunnectionDateSection />

@@ -4,13 +4,14 @@
 html,
 body,
 :root {
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   line-height: normal;
   -ms-overflow-style: none;
+  scrollbar-width: none;
   scroll-behavior: auto;
   margin: 0;
   padding: 0;
-  height: 100%;
+  /* height: 100%; */
   /* overflow-y: hidden; */
 }
 
@@ -63,6 +64,20 @@ body,
 .fade-up {
   opacity: 0;
   animation: fadeUp 2s ease-out 0.4s forwards;
+}
+
+@keyframes loadingBar {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.loading-bar {
+  transform: translateX(-100%);
+  animation: loadingBar 2.4s cubic-bezier(0.22, 1, 0.36, 1) 1.8s forwards;
 }
 
 @layer base {
