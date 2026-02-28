@@ -23,7 +23,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   return (
     <div
       className={cn(
-        "absolute inset-0 z-50 flex items-center justify-center transition-opacity duration-700",
+        "absolute inset-0 z-100 flex items-center justify-center transition-opacity duration-700",
         exiting ? "opacity-0" : "opacity-100"
       )}
     >

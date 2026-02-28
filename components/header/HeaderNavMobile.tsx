@@ -23,24 +23,26 @@ export const HeaderNavMobile = ({
       <button
         type="button"
         aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
-        onClick={() => setIsOpen(!isOpen)}
-        className="box-shadow-1 btn-press-in flex h-10 w-10 items-center justify-center rounded-full bg-white"
+        onClick={() => {
+          setIsOpen(!isOpen);
+        }}
+        className="box-shadow-2 bg-primaryNavy/80 flex h-10 w-10 items-center justify-center rounded-full"
       >
         {isOpen ? (
-          <X className="text-primaryNavy h-5 w-5" />
+          <X className="h-5 w-5 text-white" />
         ) : (
-          <Menu className="text-primaryNavy h-5 w-5" />
+          <Menu className="h-5 w-5 text-white" />
         )}
       </button>
       <div
         className={cn(
-          "absolute top-18 left-0 w-full px-4 transition-all duration-300",
+          "absolute top-18 left-0 w-full transition-all duration-300",
           isOpen
-            ? "pointer-events-auto translate-y-0 opacity-100"
-            : "pointer-events-none -translate-y-2 opacity-0"
+            ? "border-primaryNavy/80 pointer-events-auto translate-y-0 border-t-2 bg-white opacity-100"
+            : "pointer-events-none border-t-2 opacity-0"
         )}
       >
-        <div className="bg-primaryNavy/6 box-shadow-1 rounded-2xl p-2">
+        <div className="box-shadow-3 bg-white p-2">
           <Link
             href="/funnection"
             className={cn(

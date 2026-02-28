@@ -31,17 +31,20 @@ export const Header = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 z-50 w-full transition-all duration-300",
-        scrolled ? "box-shadow-1 bg-white" : "bg-transparent"
+        "fixed top-0 left-0 z-100 w-full transition-colors duration-200 duration-300",
+        scrolled ? "box-shadow-2 bg-white" : "bg-transparent"
       )}
     >
-      <div className="smd:max-w-[80%] smd:px-48 mx-auto flex h-18 w-full items-center justify-between px-4">
+      <div
+        className={cn(
+          "smd:max-w-full smd:px-48 mx-auto flex h-18 w-full items-center justify-between px-4 transition-all duration-200",
+          mobileOpen ? "bg-white" : "bg-transparent"
+        )}
+      >
         <Link href="/" className="text-primaryNavy text-2xl font-semibold">
           Funnection <span className="text-gray-7 text-[14px]">Online</span>
         </Link>
-
         <HeaderNavDesktop isFunnection={isFunnection} isElio={isElio} />
-
         <HeaderNavMobile
           isOpen={mobileOpen}
           setIsOpen={setMobileOpen}

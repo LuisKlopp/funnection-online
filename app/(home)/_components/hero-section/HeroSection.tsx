@@ -6,9 +6,9 @@ import { HeroSectionForm } from "./HeroSectionForm";
 import { SplashScreen } from "./SplashScreen";
 
 export const HeroSection = () => {
-  const [isFirstVisit, setIsFirstVisit] = useState(false);
   const [showSplash, setShowSplash] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [isFirstVisit, setIsFirstVisit] = useState(false);
 
   useEffect(() => {
     const visited = sessionStorage.getItem("home-visited");
@@ -22,19 +22,12 @@ export const HeroSection = () => {
     setChecked(true);
   }, []);
 
-  if (!checked) return null;
-
   return (
-    <div className="from-primaryNavy/30 via-lightNavy to-lightNavy/40 relative h-dvh w-full overflow-hidden bg-linear-to-b">
-      {showSplash && (
-        <SplashScreen
-          onComplete={() => {
-            setShowSplash(false);
-          }}
-        />
+    <div className="from-primaryNavy/30 via-primaryNavy/20 to-primaryNavy/10 relative z-0 h-dvh w-full bg-linear-to-b">
+      {!showSplash && checked && (
+        <HeroSectionForm skipTyping={!isFirstVisit} visible={!showSplash} />
       )}
-
-      {!showSplash && <HeroSectionForm visible skipTyping={!isFirstVisit} />}
+      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
     </div>
   );
 };

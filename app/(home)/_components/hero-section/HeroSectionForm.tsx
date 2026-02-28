@@ -52,8 +52,8 @@ export const HeroSectionForm = ({
   }, [visible, skipTyping]);
 
   return (
-    <section className="fade-up mx-auto flex min-h-screen max-w-150 flex-col justify-center px-6 py-24 text-center">
-      <div className="mb-8 flex w-full justify-center">
+    <section className="fade-up smd:justify-center mx-auto mt-4 flex min-h-screen max-w-150 flex-col px-6 py-24 text-center">
+      <div className="mb-4 flex w-full justify-center">
         <button className="group border-primaryNavy text-primaryNavy flex items-center gap-2 rounded-full border bg-white px-5 py-2 text-sm font-medium transition-all duration-200">
           <HelpCircle className="h-4 w-4 transition-colors duration-200" />
           퍼넥션 오늘의 질문
@@ -94,16 +94,16 @@ export const HeroSectionForm = ({
           <button
             disabled={value.length === 0}
             className={cn(
-              "rounded-xl px-10 py-3 text-sm font-medium transition-all duration-200",
+              "w-full rounded-xl px-10 py-3 text-sm font-medium transition-all duration-200",
               value.length === 0
                 ? "bg-primaryNavy/40 cursor-not-allowed text-white"
-                : "bg-primaryNavy hover:bg-deepNavy btn-press-in text-white"
+                : "bg-primaryNavy/90 hover:bg-deepNavy btn-press-in text-white"
             )}
           >
             답변하기
           </button>
-          <div className="text-gray-5 hover:text-primaryNavy cursor-pointer text-end">
-            <p onClick={handleScroll}>다른 사람 답변 구경하기</p>
+          <div className="text-gray-5 hover:text-primaryNavy mt-4 cursor-pointer text-end">
+            <p onClick={handleScroll}>답변 구경하기</p>
           </div>
         </div>
         <HeroSectionOfflineBanner />

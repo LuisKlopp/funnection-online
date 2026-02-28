@@ -31,7 +31,7 @@ export const HeroSectionFormQuestion = ({
   }, [startTyping]);
 
   return (
-    <h1 className="leading-middlePlus text-gray-7 smd:text-3xl mb-8 max-w-3xl text-2xl font-semibold tracking-tight break-keep md:text-4xl">
+    <h1 className="leading-middlePlus text-gray-7 smd:text-3xl mb-4 max-w-3xl text-2xl font-semibold tracking-tight break-keep md:text-4xl">
       {displayText}
     </h1>
   );

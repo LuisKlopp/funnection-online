@@ -3,7 +3,8 @@ import "../styles/globals.css";
 import type { Metadata } from "next";
 import React from "react";
 
-import { LayoutShell } from "@/components/LayoutShell";
+import { Footer } from "@/components/footer/Footer";
+import { Header } from "@/components/header/Header";
 import ReactQueryProvider from "@/providers/react-query-provider";
 import { dmDisplay, pretendard } from "@/public/fonts/fonts";
 
@@ -21,7 +22,9 @@ export default function RootLayout({
     <html lang="ko">
       <body className={`${pretendard.className} ${dmDisplay.variable}`}>
         <ReactQueryProvider>
-          <LayoutShell>{children}</LayoutShell>
+          <Header />
+          {children}
+          <Footer />
         </ReactQueryProvider>
       </body>
     </html>

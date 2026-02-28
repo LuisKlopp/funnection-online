@@ -32,8 +32,7 @@ export const Footer = () => {
       </div>
 
       <div className="mx-auto mt-16 flex max-w-6xl flex-col border-t border-gray-200 pt-6 text-sm text-gray-400 md:flex-row md:justify-between">
-        <p>© 2024 Funnection Online. All rights reserved.</p>
-        <p>Powered by Readdy</p>
+        <p>© 2026 Funnection. All rights reserved.</p>
       </div>
     </footer>
   );
