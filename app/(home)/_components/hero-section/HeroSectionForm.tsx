@@ -102,8 +102,8 @@ export const HeroSectionForm = ({
           >
             답변하기
           </button>
-          <div className="text-gray-5 hover:text-primaryNavy mt-4 cursor-pointer text-end">
-            <p onClick={handleScroll}>답변 구경하기</p>
+          <div className="text-gray-5 hover:text-primaryNavy my-4 cursor-pointer text-end">
+            <p onClick={handleScroll}>다른 답변 구경하기</p>
           </div>
         </div>
         <HeroSectionOfflineBanner />
