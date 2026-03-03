@@ -80,6 +80,22 @@ body,
   animation: loadingBar 2.4s cubic-bezier(0.22, 1, 0.36, 1) 1.8s forwards;
 }
 
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.floating-box {
+  animation: float 3s ease-in-out infinite;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

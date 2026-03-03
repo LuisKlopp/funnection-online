@@ -41,3 +41,15 @@ export const dmDisplay = localFont({
     },
   ],
 });
+
+export const maruBuri = localFont({
+  variable: "--font-MaruBuri-Semibold",
+  src: [
+    {
+      path: "./MaruBuri-Bold.otf",
+      weight: "600",
+      style: "light",
+    },
+  ],
+  display: "swap",
+});

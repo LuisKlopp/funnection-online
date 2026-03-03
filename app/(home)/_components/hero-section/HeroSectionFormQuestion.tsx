@@ -9,7 +9,7 @@ export const HeroSectionFormQuestion = ({
   startTyping,
   onComplete,
 }: HeroSectionFormQuestionProps) => {
-  const fullText = "당신이 가장 최근에 느낀 행복은 어떤 순간이었나요?";
+  const fullText = "올해의 나에게 기대되는 일이 있다면 무엇인가요?";
   const [displayText, setDisplayText] = useState("");
 
   useEffect(() => {
@@ -31,8 +31,8 @@ export const HeroSectionFormQuestion = ({
   }, [startTyping]);
 
   return (
-    <h1 className="leading-middlePlus text-gray-7 smd:text-3xl mb-4 max-w-3xl text-2xl font-semibold tracking-tight break-keep md:text-4xl">
-      {displayText}
+    <h1 className="text-gray-7 smd:text-2xl smd:w-full smd:max-w-3xl font-nanum mx-auto mb-8 w-70 text-[24px] leading-9 tracking-tight break-keep">
+      "{displayText}"
     </h1>
   );
 };

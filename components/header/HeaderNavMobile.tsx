@@ -26,17 +26,17 @@ export const HeaderNavMobile = ({
         onClick={() => {
           setIsOpen(!isOpen);
         }}
-        className="box-shadow-2 bg-primaryNavy/80 flex h-10 w-10 items-center justify-center rounded-full"
+        className="box-shadow-2 bg-primaryNavy/80 flex h-8 w-8 items-center justify-center rounded-full"
       >
         {isOpen ? (
-          <X className="h-5 w-5 text-white" />
+          <X className="h-4 w-4 text-white" />
         ) : (
-          <Menu className="h-5 w-5 text-white" />
+          <Menu className="h-4 w-4 text-white" />
         )}
       </button>
       <div
         className={cn(
-          "absolute top-18 left-0 w-full transition-all duration-300",
+          "absolute top-14 left-0 w-full transition-all duration-300",
           isOpen
             ? "border-primaryNavy/80 pointer-events-auto translate-y-0 border-t-2 bg-white opacity-100"
             : "pointer-events-none border-t-2 opacity-0"
@@ -52,18 +52,19 @@ export const HeaderNavMobile = ({
                 : "text-gray-8 hover:bg-primaryNavy/10"
             )}
           >
-            퍼넥션 오프라인 모임
+            퍼넥션 모임을 소개합니다.
           </Link>
+          <div className="border-gray-2 mx-4 w-[40%] border" />
           <Link
             href="/elio"
             className={cn(
-              "mt-2 block rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200",
+              "block rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200",
               isElio
                 ? "bg-primaryNavy text-white"
                 : "text-gray-8 hover:bg-primaryNavy/10"
             )}
           >
-            엘리오는 누구인가요?
+            엘리오를 소개합니다.
           </Link>
         </div>
       </div>

@@ -46,6 +46,7 @@ const config = {
       fontFamily: {
         pretendard: ["Pretendard", "sans-serif"],
         dmdisplay: ["var(--font-dmDisplay)", "serif"],
+        nanum: ["var(--font-MaruBuri-Semibold)"],
       },
 
       screens: {
@@ -83,9 +84,9 @@ const config = {
           8: "#1F2937",
           9: "#111827",
         },
-        primaryNavy: "#4A5FD9",
-        lightNavy: "#ECEFFE",
-        deepNavy: "#3A4BC8",
+        primaryNavy: "#3559D6",
+        lightNavy: "#EEF2FF",
+        deepNavy: "#2B47B8",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

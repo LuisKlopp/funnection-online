@@ -1,24 +1,26 @@
 "use client";
 
-import { HelpCircle } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 import { cn, smoothScrollTo } from "@/lib/utils";
 
 import { HeroSectionFormQuestion } from "./HeroSectionFormQuestion";
-import { HeroSectionOfflineBanner } from "./HeroSectionOfflineBanner";
 
 interface HeroSectionFormProps {
   visible: boolean;
   skipTyping: boolean;
+  questionDone: boolean;
+  setQuestionDone: Dispatch<SetStateAction<boolean>>;
 }
 export const HeroSectionForm = ({
   visible,
   skipTyping,
+  questionDone,
+  setQuestionDone,
 }: HeroSectionFormProps) => {
   const [value, setValue] = useState("");
   const [startTyping, setStartTyping] = useState(false);
-  const [questionDone, setQuestionDone] = useState(false);
 
   const maxLength = 500;
 
@@ -52,12 +54,13 @@ export const HeroSectionForm = ({
   }, [visible, skipTyping]);
 
   return (
-    <section className="fade-up smd:justify-center mx-auto mt-4 flex min-h-screen max-w-150 flex-col px-6 py-24 text-center">
-      <div className="mb-4 flex w-full justify-center">
-        <button className="group border-primaryNavy text-primaryNavy flex items-center gap-2 rounded-full border bg-white px-5 py-2 text-sm font-medium transition-all duration-200">
-          <HelpCircle className="h-4 w-4 transition-colors duration-200" />
+    <section className="fade-up mx-auto flex w-full max-w-100 flex-col justify-center px-6 py-24 text-center">
+      <div className="text-primaryNavy box-shadow-1 mx-auto mb-2 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2">
+        <span className="bg-primaryNavy h-1.5 w-1.5 animate-pulse rounded-full" />
+
+        <span className="smd:text-sm text-xs font-normal">
           퍼넥션 오늘의 질문
-        </button>
+        </span>
       </div>
       <HeroSectionFormQuestion
         startTyping={startTyping}
@@ -72,29 +75,29 @@ export const HeroSectionForm = ({
         }`}
       >
         <div className="w-full max-w-3xl">
-          <div className="relative">
+          <div>
             <textarea
               maxLength={maxLength}
               value={value}
               onChange={(e) => setValue(e.target.value)}
               placeholder="당신의 생각을 자유롭게 적어주세요. 상세히 적을수록 좋아요!"
               className={cn(
-                "box-shadow-2 scroll-none no-scrollbar h-36 w-full resize-none rounded-3xl bg-gray-50 p-6 text-base text-gray-800 transition-all duration-200 outline-none placeholder:text-gray-400",
-                "focus:ring-primaryNavy/70 focus:ring-2"
+                "box-shadow-2 scroll-none no-scrollbar smd:text-base text-gray-7 h-24 w-full resize-none rounded-3xl bg-gray-50 p-4 text-base transition-all duration-200 outline-none placeholder:text-sm placeholder:text-gray-400",
+                "focus:ring-primaryNavy/50 focus:ring-2"
               )}
             />
-            <div className="absolute right-6 bottom-4">
-              <span className="text-sm text-gray-400">
-                {value.length}/{maxLength}
-              </span>
-            </div>
+          </div>
+          <div className="mt-2 flex w-full justify-end">
+            <span className="text-gray-5 text-xs">
+              {value.length}/{maxLength}
+            </span>
           </div>
         </div>
-        <div className="mt-10 w-full max-w-3xl">
+        <div className="mt-8 w-full max-w-3xl">
           <button
             disabled={value.length === 0}
             className={cn(
-              "w-full rounded-xl px-10 py-3 text-sm font-medium transition-all duration-200",
+              "box-shadow-2 w-full rounded-xl px-4 py-3 text-sm font-normal transition-all duration-200",
               value.length === 0
                 ? "bg-primaryNavy/40 cursor-not-allowed text-white"
                 : "bg-primaryNavy/90 hover:bg-deepNavy btn-press-in text-white"
@@ -102,11 +105,13 @@ export const HeroSectionForm = ({
           >
             답변하기
           </button>
-          <div className="text-gray-5 hover:text-primaryNavy my-4 cursor-pointer text-end">
-            <p onClick={handleScroll}>다른 답변 구경하기</p>
+          <div className="text-gray-5 hover:text-primaryNavy mt-3 flex cursor-pointer items-center justify-end">
+            <p className="text-xs" onClick={handleScroll}>
+              다른 답변 구경하기
+            </p>
+            <ArrowRight className="h-4 w-4" />
           </div>
         </div>
-        <HeroSectionOfflineBanner />
       </div>
     </section>
   );

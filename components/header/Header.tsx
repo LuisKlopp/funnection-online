@@ -37,12 +37,18 @@ export const Header = () => {
     >
       <div
         className={cn(
-          "smd:max-w-full smd:px-48 mx-auto flex h-18 w-full items-center justify-between px-4 transition-all duration-200",
+          "smd:max-w-full smd:px-48 mx-auto flex h-14 w-full items-center justify-between px-4 transition-all duration-200",
           mobileOpen ? "bg-white" : "bg-transparent"
         )}
       >
-        <Link href="/" className="text-primaryNavy text-2xl font-semibold">
-          Funnection <span className="text-gray-7 text-[14px]">Online</span>
+        <Link
+          href="/"
+          className="text-primaryNavy smd:text-2xl text-xl font-semibold"
+        >
+          Funnection{" "}
+          <span className="text-gray-7 smd:text-[14px] text-[12px] font-normal">
+            Online
+          </span>
         </Link>
         <HeaderNavDesktop isFunnection={isFunnection} isElio={isElio} />
         <HeaderNavMobile
