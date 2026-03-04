@@ -1,28 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+import { useFirstVisitSplash } from "@/hooks/ui/useFirstVisitSplash";
 
 import { BottomGatherBar } from "../BottomGatherBar";
 import { HeroSectionForm } from "./HeroSectionForm";
 import { SplashScreen } from "./SplashScreen";
 
 export const HeroSection = () => {
-  const [showSplash, setShowSplash] = useState(false);
-  const [checked, setChecked] = useState(false);
-  const [isFirstVisit, setIsFirstVisit] = useState(false);
+  const { showSplash, setShowSplash, checked, isFirstVisit } =
+    useFirstVisitSplash();
   const [questionDone, setQuestionDone] = useState(false);
-
-  useEffect(() => {
-    const visited = sessionStorage.getItem("home-visited");
-
-    if (!visited) {
-      setIsFirstVisit(true);
-      setShowSplash(true);
-      sessionStorage.setItem("home-visited", "true");
-    }
-
-    setChecked(true);
-  }, []);
 
   return (
     <section className="from-primaryNavy/10 via-primaryNavy/15 to-primaryNavy/20 relative h-svh w-full bg-linear-to-b">
