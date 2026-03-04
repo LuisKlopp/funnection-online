@@ -5,6 +5,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 import { cn, smoothScrollTo } from "@/lib/utils";
 
+import { TitleBadge } from "../TitleBadge";
 import { HeroSectionFormQuestion } from "./HeroSectionFormQuestion";
 
 interface HeroSectionFormProps {
@@ -55,13 +56,7 @@ export const HeroSectionForm = ({
 
   return (
     <section className="fade-up mx-auto flex w-full max-w-100 flex-col justify-center px-6 py-24 text-center">
-      <div className="text-primaryNavy box-shadow-1 mx-auto mb-2 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2">
-        <span className="bg-primaryNavy h-1.5 w-1.5 animate-pulse rounded-full" />
-
-        <span className="smd:text-sm text-xs font-normal">
-          퍼넥션 오늘의 질문
-        </span>
-      </div>
+      <TitleBadge title="퍼넥션 오늘의 질문" />
       <HeroSectionFormQuestion
         startTyping={startTyping}
         onComplete={() => setQuestionDone(true)}

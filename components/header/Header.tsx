@@ -5,13 +5,14 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
+import { useScrollStore } from "@/store/scroll.store";
 
 import { HeaderNavDesktop } from "./HeaderNavDesktop";
 import { HeaderNavMobile } from "./HeaderNavMobile";
 
 export const Header = () => {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
+  const { scrolled, setScrolled } = useScrollStore();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
