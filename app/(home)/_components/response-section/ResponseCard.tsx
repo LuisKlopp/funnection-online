@@ -32,7 +32,7 @@ export const ResponseCard = ({
   return (
     <div
       onPointerUp={detectDoubleTap}
-      className="relative rounded-3xl bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
+      className="box-shadow-2 relative rounded-3xl bg-white p-6"
     >
       <div className="absolute top-6 left-0 h-12 w-0.75 rounded-r-full bg-indigo-400" />
 

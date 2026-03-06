@@ -18,6 +18,8 @@ export const LikeButton = forwardRef<LikeButtonRef, LikeButtonProps>(
     const [burst, setBurst] = useState(false);
 
     const triggerLike = () => {
+      if (burst) return;
+
       setLiked((prev) => {
         const next = !prev;
 
@@ -44,10 +46,10 @@ export const LikeButton = forwardRef<LikeButtonRef, LikeButtonProps>(
         <button
           type="button"
           onClick={handleClick}
-          className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1 transition ${
+          className={`relative z-10 flex cursor-pointer items-center gap-1 rounded-full px-3 py-1 transition ${
             liked
               ? "bg-red-100 text-red-500"
-              : "text-gray-400 hover:text-red-400"
+              : "text-gray-400 hover:text-red-300"
           }`}
         >
           <Heart
@@ -61,15 +63,20 @@ export const LikeButton = forwardRef<LikeButtonRef, LikeButtonProps>(
         <AnimatePresence>
           {burst && (
             <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{
-                scale: [0, 1.3, 1],
-                opacity: [0, 1, 1, 0],
-                y: [0, -10, -20],
+              animate={
+                burst
+                  ? {
+                      scale: [0, 1, 0.6],
+                      opacity: [0, 1, 0],
+                      y: [0, -10, -25],
+                    }
+                  : { opacity: 0 }
+              }
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
               }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              className="pointer-events-none absolute top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2"
             >
               <Heart className="h-16 w-16 fill-red-500 text-red-500 drop-shadow-xl" />
             </motion.div>

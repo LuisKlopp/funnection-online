@@ -70,7 +70,7 @@ export const BottomGatherBar = () => {
                 : "border-primaryNavy/90 text-primaryNavy"
             )}
           >
-            자세히 보기
+            구경하기
             <ArrowRight className="h-4 w-4" />
           </button>
         </div>
