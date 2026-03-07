@@ -10,13 +10,13 @@ export const FunnectionCalendar = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   return (
-    <div className="overflow-hidden rounded-3xl bg-white shadow-xl">
-      <div className="bg-[#DCD8FF] px-8 py-4">
+    <div className="mt-4">
+      <div className="my-4 flex items-end justify-between">
         <CalendarHeader />
         <CalendarLegend />
       </div>
 
-      <div className="bg-white px-8 py-6">
+      <div className="box-shadow-2 rounded-3xl bg-white bg-linear-to-br px-8 py-6">
         <CalendarGrid
           selectedDate={selectedDate}
           onSelectDate={setSelectedDate}

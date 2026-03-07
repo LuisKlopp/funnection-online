@@ -1,9 +1,8 @@
 export const InstagramIcon = () => (
   <svg
     viewBox="0 0 24 24"
-    className="h-5 w-5"
+    className="h-5 w-5 stroke-[url(#instagram-gradient)] group-hover:stroke-white"
     fill="none"
-    stroke="url(#instagram-gradient)"
     strokeWidth="2.2"
     strokeLinecap="round"
     strokeLinejoin="round"

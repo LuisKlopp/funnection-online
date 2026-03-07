@@ -10,8 +10,8 @@ export default function Home() {
       <HeroSection />
       <ResponseSection />
       <MainFunnectionDateSection />
-      <MainFunnectionValueSection />
       <MainElioSection />
+      <MainFunnectionValueSection />
     </div>
   );
 }

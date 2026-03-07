@@ -54,7 +54,7 @@ export const HeaderNavMobile = ({
           >
             퍼넥션 모임을 소개합니다.
           </Link>
-          <div className="border-gray-2 mx-4 w-[10%] border" />
+          <div className="border-gray-2 mx-4 w-[10%] border-b" />
           <Link
             href="/elio"
             className={cn(

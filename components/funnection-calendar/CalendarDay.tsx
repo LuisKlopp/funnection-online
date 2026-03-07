@@ -13,9 +13,9 @@ export const CalendarDay = ({ date, selectedDate, onSelectDate }: Props) => {
   return (
     <button
       onClick={() => onSelectDate(date)}
-      className={`flex h-12 w-12 items-center justify-center rounded-full text-sm ${
+      className={`flex h-8 w-8 items-center justify-center rounded-full text-sm ${
         isSelected
-          ? "bg-indigo-500 text-white"
+          ? "bg-indigo-400 text-white"
           : "text-gray-400 hover:bg-indigo-50"
       }`}
     >

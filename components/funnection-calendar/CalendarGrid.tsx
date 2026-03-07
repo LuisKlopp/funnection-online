@@ -39,7 +39,8 @@ export const CalendarGrid = ({ selectedDate, onSelectDate }: Props) => {
         onPrev={() => setMonth(addMonths(month, -1))}
         onNext={() => setMonth(addMonths(month, 1))}
       />
-      <div className="mt-6 grid grid-cols-7 text-center text-sm text-indigo-400">
+      <div className="border-gray-2 mx-auto my-4 w-[90%] border-b" />
+      <div className="grid grid-cols-7 text-center text-sm font-semibold text-indigo-400">
         <span>일</span>
         <span>월</span>
         <span>화</span>
@@ -48,7 +49,7 @@ export const CalendarGrid = ({ selectedDate, onSelectDate }: Props) => {
         <span>금</span>
         <span>토</span>
       </div>
-      <div className="mt-4 grid grid-cols-7 place-items-center gap-y-3">
+      <div className="mt-4 grid grid-cols-7 place-items-center gap-x-3">
         {blanks.map((_, i) => (
           <div key={`blank-${i}`} />
         ))}

@@ -13,7 +13,7 @@ export const CalendarMonthNavigation = ({ month, onPrev, onNext }: Props) => {
     <div className="flex items-center justify-between">
       <button
         onClick={onPrev}
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-50 hover:bg-indigo-100"
+        className="flex h-8 w-8 items-center justify-center rounded-full"
       >
         <ChevronLeft />
       </button>
@@ -24,7 +24,7 @@ export const CalendarMonthNavigation = ({ month, onPrev, onNext }: Props) => {
 
       <button
         onClick={onNext}
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-50 hover:bg-indigo-100"
+        className="flex h-8 w-8 items-center justify-center rounded-full"
       >
         <ChevronRight />
       </button>

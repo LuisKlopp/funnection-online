@@ -4,13 +4,13 @@ import MainFunnectionImage from "@/public/images/main-funnection-image.webp";
 
 export const MainFunnectionPhotoCard = () => {
   return (
-    <div className="relative overflow-hidden rounded-3xl shadow-xl">
+    <div className="relative">
       <Image
         src={MainFunnectionImage}
         alt="funnection meeting"
         width={350}
         height={500}
-        className="h-full w-full object-cover"
+        className="box-shadow-2 h-full w-full rounded-3xl object-cover"
       />
 
       {/* <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white">
