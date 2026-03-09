@@ -21,6 +21,9 @@ export const MainFunnectionDateSection = () => {
         />
         <div className="flex flex-col gap-4">
           <MainFunnectionPhotoCard />
+          <p className="text-gray-5 mx-auto text-xs">
+            ↑ 이미지를 클릭해서 확인해보세요 😆{" "}
+          </p>
           <FunnectionCalendar />
           {/* <MainFunnectionUpcomingCard /> */}
           {/* <MainFunnectionNextCard /> */}

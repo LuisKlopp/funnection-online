@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 import { useModal } from "@/hooks/ui/useModal";
@@ -100,13 +100,13 @@ export const HeroSectionForm = ({
           >
             답변하기
           </button>
-          <div className="text-gray-5 hover:text-primaryNavy mt-3 flex cursor-pointer items-center justify-end">
-            <p className="text-xs" onClick={handleScroll}>
-              다른 답변 구경하기
-            </p>
-            <ArrowRight className="h-4 w-4" />
-          </div>
         </div>
+      </div>
+      <div className="text-gray-7 hover:text-primaryNavy box-shadow-1 btn-press-in border-gray-3 mt-3 ml-auto flex w-fit cursor-pointer items-center rounded-xl border bg-white px-2 py-1">
+        <p className="text-xs" onClick={handleScroll}>
+          다른 답변 구경하기
+        </p>
+        <ArrowDown className="h-4 w-4" />
       </div>
     </section>
   );
