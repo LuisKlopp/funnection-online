@@ -21,8 +21,8 @@ export const MainElioSection = () => {
           <p className="smd:text-3xl text-2xl">(Elio)</p>
         </div>
       </div>
-      <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2">
-        <div className="relative w-full overflow-hidden rounded-3xl shadow-lg">
+      <div className="smd:items-end mx-auto grid max-w-3xl items-center gap-8 lg:grid-cols-2">
+        <div className="relative max-w-100 overflow-hidden rounded-3xl shadow-lg">
           <Image
             src={MainElio}
             alt="엘리오"
@@ -33,7 +33,7 @@ export const MainElioSection = () => {
           />
         </div>
 
-        <ul className="space-y-3 text-gray-700">
+        <ul className="smd:text-xl space-y-3 text-gray-700">
           <li className="flex items-start gap-3">
             <span className="mt-2 h-2 w-2 rounded-full bg-[#4A5FD9]" />
             퍼넥션 모임 진행자

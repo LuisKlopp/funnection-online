@@ -3,8 +3,9 @@ import "../styles/globals.css";
 import type { Metadata } from "next";
 import React from "react";
 
-import { Footer } from "@/components/footer/Footer";
-import { Header } from "@/components/header/Header";
+import { Footer } from "@/components/layout/footer/Footer";
+import { Header } from "@/components/layout/header/Header";
+import { RootModalLayer } from "@/components/layout/RootModalLayer";
 import { MobileViewportHandler } from "@/components/MobileViewportHandler";
 import ReactQueryProvider from "@/providers/react-query-provider";
 import { dmDisplay, maruBuri, pretendard } from "@/public/fonts/fonts";
@@ -27,6 +28,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <MobileViewportHandler />
           <Header />
+          <RootModalLayer />
           {children}
           <Footer />
         </ReactQueryProvider>

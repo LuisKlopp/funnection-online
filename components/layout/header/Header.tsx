@@ -44,10 +44,10 @@ export const Header = () => {
       >
         <Link
           href="/"
-          className="text-primaryNavy smd:text-2xl text-xl font-semibold"
+          className="smd:text-2xl text-xl font-semibold text-[#1834a5]"
         >
           Funnection{" "}
-          <span className="text-gray-7 smd:text-[14px] text-[12px] font-normal">
+          <span className="text-gray-9 smd:text-[14px] bg-primaryNavy/10 rounded-3xl px-2 py-1 text-[11px] font-normal">
             Online
           </span>
         </Link>

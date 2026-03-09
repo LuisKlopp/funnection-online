@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { InstagramIcon } from "@/components/icons/InstagramIcon";
+import { InstagramIcon } from "@/components/ui/icons/InstagramIcon";
 
 export const MainFunnectionInstagram = () => {
   return (
@@ -12,7 +12,7 @@ export const MainFunnectionInstagram = () => {
 
       <Link
         href="https://www.instagram.com/el_25_ryu"
-        className="group border-gray-6 hover:bg-gray-6 text-gray-6 inline-flex cursor-pointer items-center gap-3 rounded-full border px-6 py-2 transition-all hover:text-white"
+        className="border-gray-4 text-gray-6 hover:bg-gray-1 inline-flex cursor-pointer items-center gap-3 rounded-full border bg-white px-6 py-2 transition-all"
       >
         <InstagramIcon />
         <p className="font-medium">@el_25_ryu</p>

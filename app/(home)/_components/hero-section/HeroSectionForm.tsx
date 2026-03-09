@@ -3,6 +3,7 @@
 import { ArrowRight } from "lucide-react";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
+import { useModal } from "@/hooks/ui/useModal";
 import { cn, smoothScrollTo } from "@/lib/utils";
 
 import { TitleBadge } from "../TitleBadge";
@@ -22,7 +23,7 @@ export const HeroSectionForm = ({
 }: HeroSectionFormProps) => {
   const [value, setValue] = useState("");
   const [startTyping, setStartTyping] = useState(false);
-
+  const { openModal } = useModal("init-bottom-submit");
   const maxLength = 500;
 
   const handleScroll = () => {
@@ -70,26 +71,25 @@ export const HeroSectionForm = ({
         }`}
       >
         <div className="w-full max-w-3xl">
-          <div>
-            <textarea
-              maxLength={maxLength}
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-              placeholder="당신의 생각을 자유롭게 적어주세요. 상세히 적을수록 좋아요!"
-              className={cn(
-                "box-shadow-2 scroll-none no-scrollbar smd:text-base text-gray-7 h-24 w-full resize-none rounded-3xl bg-gray-50 p-4 text-base transition-all duration-200 outline-none placeholder:text-sm placeholder:text-gray-400",
-                "focus:ring-primaryNavy/50 focus:ring-2"
-              )}
-            />
-          </div>
+          <textarea
+            maxLength={maxLength}
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            placeholder="당신의 생각을 자유롭게 적어주세요. 상세히 적을수록 좋아요!"
+            className={cn(
+              "box-shadow-1 scroll-none no-scrollbar smd:text-base text-gray-7 h-24 w-full resize-none rounded-2xl bg-gray-50 p-4 text-base transition-all duration-200 outline-none placeholder:text-sm placeholder:text-gray-400",
+              "focus:ring-primaryNavy/50 focus:ring-2"
+            )}
+          />
           <div className="mt-2 flex w-full justify-end">
             <span className="text-gray-5 text-xs">
               {value.length}/{maxLength}
             </span>
           </div>
         </div>
-        <div className="mt-8 w-full max-w-3xl">
+        <div className="mt-4 w-full max-w-3xl">
           <button
+            onClick={openModal}
             disabled={value.length === 0}
             className={cn(
               "box-shadow-2 w-full rounded-xl px-4 py-3 text-sm font-normal transition-all duration-200",

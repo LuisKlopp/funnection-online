@@ -1,6 +1,6 @@
 "use client";
 
-import { FunnectionCalendar } from "@/components/funnection-calendar/FunnectionCalendar";
+import { FunnectionCalendar } from "@/components/features/funnection-calendar/FunnectionCalendar";
 
 import { SectionHeader } from "../SectionHeader";
 // import { MainFunnectionCTAButton } from "./MainFunnectionCTAButton";

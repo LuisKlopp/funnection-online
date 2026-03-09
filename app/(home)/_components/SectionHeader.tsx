@@ -19,7 +19,7 @@ export const SectionHeader = ({
     <div className="mb-12 text-center" id={id}>
       <TitleBadge title={titleBadge} />
 
-      <h2 className="text-gray-9 text-2xl font-semibold tracking-tight">
+      <h2 className="text-gray-8 smd:text-3xl text-2xl font-semibold tracking-tight">
         {title}
       </h2>
 
