@@ -62,7 +62,6 @@ export const MainFunnectionPhotoCard = () => {
                 onClick={openModal}
                 src={photo}
                 alt="funnection meeting"
-                fill
                 sizes="100vw"
                 priority={i === 0}
                 className="object-cover"

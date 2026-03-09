@@ -5,7 +5,7 @@ import { ResponseCard } from "./ResponseCard";
 export const ResponseList = () => {
   return (
     <div className="space-y-6">
-      {RESPONSES.map((item) => (
+      {RESPONSES.slice(0, -2).map((item) => (
         <ResponseCard
           key={item.id}
           icon={item.icon}
@@ -13,6 +13,7 @@ export const ResponseList = () => {
           content={item.content}
           likes={item.likes}
           profile={item.profile}
+          variant="preview"
         />
       ))}
     </div>

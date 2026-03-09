@@ -33,14 +33,12 @@ export const BottomAnswerListModal = () => {
             stiffness: 260,
             damping: 30,
           }}
-          className="relative flex h-[80vh] w-full max-w-md flex-col rounded-t-3xl bg-white shadow-2xl"
+          className="bg-lightNavy relative flex h-[85vh] w-full max-w-md flex-col rounded-t-3xl shadow-2xl"
         >
-          <div className="mx-auto mt-3 h-1.5 w-10 rounded-full bg-gray-300" />
+          <div className="bg-gray-4 mx-auto mt-3 h-1.5 w-10 rounded-full" />
           <div className="flex items-center justify-between px-6 py-4">
             <div>
-              <h2 className="text-gray-8 text-lg font-semibold">
-                전체 답변 구경하기
-              </h2>
+              <h2 className="text-gray-8 text-lg font-semibold">전체 답변</h2>
               <p className="text-gray-4 text-xs">
                 좋아요 많은 순 · 총 {RESPONSES.length}개
               </p>
@@ -48,12 +46,12 @@ export const BottomAnswerListModal = () => {
 
             <button
               onClick={closeModal}
-              className="rounded-full bg-gray-100 p-2"
+              className="bg-primaryNavy/30 rounded-full p-2"
             >
-              <X size={18} />
+              <X size={18} className="text-white" />
             </button>
           </div>
-          <div className="h-px bg-gray-100" />
+          <div className="bg-primaryNavy/30 mx-auto my-2 h-px w-[40%]" />
           <div className="flex-1 space-y-4 overflow-y-auto px-6 py-4">
             {RESPONSES.map((item, i) => (
               <ResponseCard
@@ -63,6 +61,7 @@ export const BottomAnswerListModal = () => {
                 profile={item.profile}
                 content={item.content}
                 likes={item.likes}
+                variant="bottom-sheet"
               />
             ))}
           </div>
