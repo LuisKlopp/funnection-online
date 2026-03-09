@@ -49,7 +49,7 @@ export const MainFunnectionPhotoCard = () => {
 
   return (
     <div className="box-shadow-2 relative overflow-hidden rounded-3xl">
-      <div className="aspect-4/3 w-full overflow-hidden">
+      <div className="smd:h-90 aspect-4/3 w-full overflow-hidden">
         <div
           className="flex h-full transition-transform duration-500 ease-out"
           style={{
