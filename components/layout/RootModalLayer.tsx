@@ -3,6 +3,7 @@
 import { useModalStore } from "@/store/useModalStore";
 
 import { AnswerSubmitModal } from "../ui/modal/AnswerSubmitModal";
+import { BottomAnswerListModal } from "../ui/modal/BottomAnswerListModal";
 import { InitBottomSubmitModal } from "../ui/modal/InitBottomSubmitModal";
 import { MainFunnectionImageModal } from "../ui/modal/MainFunnectionImageModal";
 
@@ -14,12 +15,16 @@ export const RootModalLayer = () => {
   const isFunnectionImageOpen = useModalStore((s) =>
     s.isOpen("funnection-image")
   );
+  const isBottomAnswerListOpen = useModalStore((s) =>
+    s.isOpen("bottom-answer-list")
+  );
 
   return (
     <>
       {isAnswerSubmitOpen && <AnswerSubmitModal />}
       {isInitBottomSubmitOpen && <InitBottomSubmitModal />}
       {isFunnectionImageOpen && <MainFunnectionImageModal />}
+      {isBottomAnswerListOpen && <BottomAnswerListModal />}
     </>
   );
 };

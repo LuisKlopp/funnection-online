@@ -12,7 +12,7 @@ export const MainFunnectionInstagram = () => {
 
       <Link
         href="https://www.instagram.com/el_25_ryu"
-        className="border-gray-4 text-gray-6 hover:bg-gray-1 inline-flex cursor-pointer items-center gap-3 rounded-full border bg-white px-6 py-2 transition-all"
+        className="box-shadow-2 text-gray-6 hover:bg-gray-1 inline-flex cursor-pointer items-center gap-3 rounded-full border bg-white px-6 py-2 transition-all"
       >
         <InstagramIcon />
         <p className="font-medium">@el_25_ryu</p>

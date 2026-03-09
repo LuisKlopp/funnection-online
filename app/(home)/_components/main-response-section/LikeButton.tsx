@@ -42,11 +42,11 @@ export const LikeButton = forwardRef<LikeButtonRef, LikeButtonProps>(
     };
 
     return (
-      <div className="relative inline-flex items-center">
+      <div className="relative">
         <button
           type="button"
           onClick={handleClick}
-          className={`relative z-10 flex cursor-pointer items-center gap-1 rounded-full px-3 py-1 transition ${
+          className={`relative z-10 flex cursor-pointer items-center gap-1 rounded-full px-2 py-1 transition ${
             liked
               ? "bg-red-100 text-red-500"
               : "text-gray-400 hover:text-red-300"
@@ -57,7 +57,7 @@ export const LikeButton = forwardRef<LikeButtonRef, LikeButtonProps>(
               liked ? "scale-110 fill-red-500 text-red-500" : ""
             }`}
           />
-          <span>{liked ? likes + 1 : likes}</span>
+          <span className="text-sm">{liked ? likes + 1 : likes}</span>
         </button>
 
         <AnimatePresence>

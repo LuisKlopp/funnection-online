@@ -16,4 +16,5 @@ export interface ResponseItem {
   iconBg: string;
   content: string;
   likes: number;
+  profile: string;
 }

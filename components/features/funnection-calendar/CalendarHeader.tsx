@@ -2,9 +2,11 @@ export const CalendarHeader = () => {
   return (
     <div className="flex items-start justify-between">
       <div>
-        <p className="text-xs tracking-widest text-indigo-400">SCHEDULE</p>
+        <p className="text-primaryNavy text-xs tracking-wider">SCHEDULE</p>
 
-        <h2 className="text-2xl font-bold text-indigo-900">퍼넥션 일정</h2>
+        <h2 className="text-gray-8 smd:text-2xl text-xl font-bold">
+          퍼넥션 일정
+        </h2>
       </div>
     </div>
   );

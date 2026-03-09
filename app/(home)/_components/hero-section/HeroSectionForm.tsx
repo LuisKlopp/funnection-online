@@ -101,12 +101,12 @@ export const HeroSectionForm = ({
             답변하기
           </button>
         </div>
-      </div>
-      <div className="text-gray-7 hover:text-primaryNavy box-shadow-1 btn-press-in border-gray-3 mt-3 ml-auto flex w-fit cursor-pointer items-center rounded-xl border bg-white px-2 py-1">
-        <p className="text-xs" onClick={handleScroll}>
-          다른 답변 구경하기
-        </p>
-        <ArrowDown className="h-4 w-4" />
+        <div className="text-gray-6 hover:text-primaryNavy box-shadow-1 btn-press-in mt-3 ml-auto flex w-fit cursor-pointer items-center rounded-xl bg-white px-3 py-2">
+          <p className="text-xs" onClick={handleScroll}>
+            다른 답변 구경하기
+          </p>
+          <ArrowDown className="h-4 w-4" />
+        </div>
       </div>
     </section>
   );

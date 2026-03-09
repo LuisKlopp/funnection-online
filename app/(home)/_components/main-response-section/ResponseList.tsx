@@ -12,6 +12,7 @@ export const ResponseList = () => {
           iconBg={item.iconBg}
           content={item.content}
           likes={item.likes}
+          profile={item.profile}
         />
       ))}
     </div>

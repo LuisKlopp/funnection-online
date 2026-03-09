@@ -15,10 +15,12 @@ export const MainElioSection = () => {
           이 공간을 만든 사람
         </p>
         <div className="mb-8 flex items-end gap-2">
-          <h2 className="smd:text-5xl text-4xl font-semibold text-gray-900">
+          <h2 className="smd:text-5xl text-4xl font-bold text-gray-900">
             엘리오
           </h2>
-          <p className="smd:text-3xl text-2xl">(Elio)</p>
+          <p className="smd:text-3xl text-gray-6 text-2xl font-normal">
+            (Elio)
+          </p>
         </div>
       </div>
       <div className="smd:items-end mx-auto grid max-w-3xl items-center gap-8 lg:grid-cols-2">

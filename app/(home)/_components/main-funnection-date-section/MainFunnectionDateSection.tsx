@@ -25,9 +25,6 @@ export const MainFunnectionDateSection = () => {
             ↑ 이미지를 클릭해서 확인해보세요 😆{" "}
           </p>
           <FunnectionCalendar />
-          {/* <MainFunnectionUpcomingCard /> */}
-          {/* <MainFunnectionNextCard /> */}
-          {/* <MainFunnectionCTAButton /> */}
           <MainFunnectionInstagram />
         </div>
       </div>
