@@ -22,7 +22,7 @@ export const BottomAnswerListModal = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+          className="absolute inset-0 bg-black/80 backdrop-blur-sm"
         />
         <motion.div
           initial={{ y: "100%" }}
@@ -33,7 +33,7 @@ export const BottomAnswerListModal = () => {
             stiffness: 260,
             damping: 30,
           }}
-          className="bg-lightNavy relative flex h-[85vh] w-full max-w-md flex-col rounded-t-3xl shadow-2xl"
+          className="bg-lightNavy relative flex h-[80vh] w-full max-w-md flex-col rounded-t-3xl shadow-2xl"
         >
           <div className="bg-gray-4 mx-auto mt-3 h-1.5 w-10 rounded-full" />
           <div className="flex items-center justify-between px-6 py-4">
