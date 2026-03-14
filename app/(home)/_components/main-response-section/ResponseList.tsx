@@ -1,20 +1,16 @@
-import { RESPONSES } from "@/constants/responses.constants";
+import { HomeAnswer } from "@/types/home.type";
 
 import { ResponseCard } from "./ResponseCard";
 
-export const ResponseList = () => {
+interface ResponseListProps {
+  answersData: HomeAnswer[];
+}
+
+export const ResponseList = ({ answersData }: ResponseListProps) => {
   return (
     <div className="space-y-6">
-      {RESPONSES.slice(0, -2).map((item) => (
-        <ResponseCard
-          key={item.id}
-          icon={item.icon}
-          iconBg={item.iconBg}
-          content={item.content}
-          likes={item.likes}
-          profile={item.profile}
-          variant="preview"
-        />
+      {answersData.map((answer) => (
+        <ResponseCard key={answer.id} answerInfo={answer} variant="preview" />
       ))}
     </div>
   );

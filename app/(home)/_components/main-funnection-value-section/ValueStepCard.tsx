@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-import { ValueStep } from "@/types/value-step.teyps";
+import { ValueStep } from "@/types/value-step.type";
 
 interface Props {
   step: ValueStep;

@@ -1,10 +1,17 @@
 "use client";
 
 import { ArrowDown } from "lucide-react";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 
 import { useModal } from "@/hooks/ui/useModal";
 import { cn, smoothScrollTo } from "@/lib/utils";
+import { HomeQuestion } from "@/types/home.type";
 
 import { TitleBadge } from "../TitleBadge";
 import { HeroSectionFormQuestion } from "./HeroSectionFormQuestion";
@@ -12,12 +19,14 @@ import { HeroSectionFormQuestion } from "./HeroSectionFormQuestion";
 interface HeroSectionFormProps {
   visible: boolean;
   skipTyping: boolean;
+  questionData: HomeQuestion;
   questionDone: boolean;
   setQuestionDone: Dispatch<SetStateAction<boolean>>;
 }
 export const HeroSectionForm = ({
   visible,
   skipTyping,
+  questionData,
   questionDone,
   setQuestionDone,
 }: HeroSectionFormProps) => {
@@ -25,6 +34,10 @@ export const HeroSectionForm = ({
   const [startTyping, setStartTyping] = useState(false);
   const { openModal } = useModal("init-bottom-submit");
   const maxLength = 500;
+
+  const handleTypingComplete = useCallback(() => {
+    setQuestionDone(true);
+  }, []);
 
   const handleScroll = () => {
     const section = document.getElementById("responses");
@@ -60,7 +73,8 @@ export const HeroSectionForm = ({
       <TitleBadge title="퍼넥션 오늘의 질문" />
       <HeroSectionFormQuestion
         startTyping={startTyping}
-        onComplete={() => setQuestionDone(true)}
+        question={questionData.question}
+        onComplete={handleTypingComplete}
       />
 
       <div

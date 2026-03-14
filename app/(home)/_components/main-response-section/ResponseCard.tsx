@@ -4,29 +4,17 @@ import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { useDoubleTap } from "@/hooks/ui/useDoubleTap";
-import { cn } from "@/lib/utils";
-import { iconMap } from "@/types/response.types";
+import { cn, formatAgeGroup, getGenderEmoji } from "@/lib/utils";
+import { HomeAnswer } from "@/types/home.type";
 
 import { LikeButton, LikeButtonRef } from "./LikeButton";
 
 interface ResponseCardProps {
-  icon: keyof typeof iconMap;
-  iconBg: string;
-  content: string;
-  likes: number;
-  profile: string;
   variant: "preview" | "bottom-sheet";
+  answerInfo: HomeAnswer;
 }
 
-export const ResponseCard = ({
-  icon,
-  iconBg,
-  content,
-  likes,
-  profile,
-  variant,
-}: ResponseCardProps) => {
-  const Icon = iconMap[icon];
+export const ResponseCard = ({ variant, answerInfo }: ResponseCardProps) => {
   const likeRef = useRef<LikeButtonRef>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
 
@@ -53,32 +41,37 @@ export const ResponseCard = ({
   return (
     <div
       onPointerUp={detectDoubleTap}
-      className="box-shadow-2 relative rounded-3xl bg-white px-6 py-4"
+      className="box-shadow-2 relative rounded-3xl bg-white px-4 py-4"
     >
       <div
         className={cn(
-          "absolute top-7 left-0 h-14 w-0.75 rounded-r-full",
-          "bg-primaryNavy/70"
+          "absolute right-10 bottom-0 h-1 w-22 rounded-full",
+          answerInfo.gender === "male" ? "bg-primaryNavy/70" : "bg-pink-700"
         )}
       />
 
       <div className="flex justify-between">
-        <div className="mb-2 flex items-center gap-3">
-          <div
+        <div className="mb-2 flex items-center gap-1">
+          {/* <div
             className={cn(
               "flex h-7 w-7 items-center justify-center rounded-full",
               iconBg
             )}
           >
             <Icon className="h-3 w-3 text-white" />
-          </div>
+          </div> */}
 
           <div className="bg-lightNavy rounded-2xl px-2 py-1">
-            <p className="text-gray-5 text-xs font-medium">{profile}</p>
+            <p className="text-gray-5 text-xs font-medium">
+              {formatAgeGroup(answerInfo.ageGroup)}
+            </p>
           </div>
+          <p className="text-gray-5 text-sm font-medium">
+            {getGenderEmoji(answerInfo.gender)}
+          </p>
         </div>
 
-        <LikeButton ref={likeRef} likes={likes} />
+        <LikeButton ref={likeRef} likes={answerInfo.likeCount} />
       </div>
 
       <div className="relative">
@@ -91,7 +84,7 @@ export const ResponseCard = ({
             !isSheet && expanded && "leading-5.5"
           )}
         >
-          {content}
+          {answerInfo.content}
         </p>
 
         {!isSheet && isOverflow && (

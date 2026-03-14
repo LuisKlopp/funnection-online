@@ -1,4 +1,4 @@
-import { ValueStep } from "@/types/value-step.teyps";
+import { ValueStep } from "@/types/value-step.type";
 
 import { ValueStepCard } from "./ValueStepCard";
 

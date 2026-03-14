@@ -1,17 +1,9 @@
-import { HeroSection } from "./_components/hero-section/HeroSection";
-import { MainElioSection } from "./_components/main-elio-section/MainElioSection";
-import { MainFunnectionDateSection } from "./_components/main-funnection-date-section/MainFunnectionDateSection";
-import { MainFunnectionValueSection } from "./_components/main-funnection-value-section/MainFunnectionValueSection";
-import { ResponseSection } from "./_components/main-response-section/ResponseSection";
+import { HomePageClient } from "./HomePageClient";
 
 export default function Home() {
   return (
     <div className="w-full">
-      <HeroSection />
-      <ResponseSection />
-      <MainFunnectionDateSection />
-      <MainElioSection />
-      <MainFunnectionValueSection />
+      <HomePageClient />
     </div>
   );
 }

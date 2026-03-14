@@ -4,15 +4,27 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 
 import { ResponseCard } from "@/app/(home)/_components/main-response-section/ResponseCard";
-import { RESPONSES } from "@/constants/responses.constants";
+import { useResponsesQuery } from "@/hooks/react-query/useResponsesQuery";
 import { useLockBodyScroll } from "@/hooks/ui/useLockBodyScroll";
 import { useModal } from "@/hooks/ui/useModal";
+import { useModalStore } from "@/store/useModalStore";
+
+type BottomAnswerListModalData = {
+  questionId: number;
+};
 
 export const BottomAnswerListModal = () => {
   const { isModal, closeModal } = useModal("bottom-answer-list");
+  const modalData = useModalStore((s) =>
+    s.getModalData()
+  ) as BottomAnswerListModalData;
+
   useLockBodyScroll();
 
   if (!isModal) return null;
+
+  const questionId = modalData?.questionId;
+  const { data } = useResponsesQuery(questionId);
 
   return (
     <AnimatePresence>
@@ -40,7 +52,7 @@ export const BottomAnswerListModal = () => {
             <div>
               <h2 className="text-gray-8 text-lg font-semibold">전체 답변</h2>
               <p className="text-gray-4 text-xs">
-                좋아요 많은 순 · 총 {RESPONSES.length}개
+                좋아요 많은 순 · 총 {data?.length}개
               </p>
             </div>
 
@@ -53,14 +65,10 @@ export const BottomAnswerListModal = () => {
           </div>
           <div className="bg-primaryNavy/30 mx-auto my-2 h-px w-[40%]" />
           <div className="flex-1 space-y-4 overflow-y-auto px-6 py-4">
-            {RESPONSES.map((item, i) => (
+            {data?.map((answer) => (
               <ResponseCard
-                key={i}
-                icon={item.icon}
-                iconBg={item.iconBg}
-                profile={item.profile}
-                content={item.content}
-                likes={item.likes}
+                key={answer.id}
+                answerInfo={answer}
                 variant="bottom-sheet"
               />
             ))}

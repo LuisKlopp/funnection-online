@@ -46,7 +46,7 @@ export const LikeButton = forwardRef<LikeButtonRef, LikeButtonProps>(
         <button
           type="button"
           onClick={handleClick}
-          className={`relative z-10 flex cursor-pointer items-center gap-1 rounded-full px-2 py-1 transition ${
+          className={`relative z-10 flex cursor-pointer items-center gap-1 rounded-2xl px-2 py-1 transition ${
             liked
               ? "bg-red-100 text-red-500"
               : "text-gray-400 hover:text-red-300"
