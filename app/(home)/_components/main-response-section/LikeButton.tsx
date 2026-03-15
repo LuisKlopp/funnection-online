@@ -47,17 +47,15 @@ export const LikeButton = forwardRef<LikeButtonRef, LikeButtonProps>(
           type="button"
           onClick={handleClick}
           className={`relative z-10 flex cursor-pointer items-center gap-1 rounded-2xl px-2 py-1 transition ${
-            liked
-              ? "bg-red-100 text-red-500"
-              : "text-gray-400 hover:text-red-300"
+            liked ? "text-red-500" : "text-gray-400 hover:text-red-300"
           }`}
         >
           <Heart
-            className={`h-4 w-4 transition ${
+            className={`h-3 w-3 transition ${
               liked ? "scale-110 fill-red-500 text-red-500" : ""
             }`}
           />
-          <span className="text-sm">{liked ? likes + 1 : likes}</span>
+          <span className="text-[13px]">{liked ? likes + 1 : likes}</span>
         </button>
 
         <AnimatePresence>
@@ -66,9 +64,9 @@ export const LikeButton = forwardRef<LikeButtonRef, LikeButtonProps>(
               animate={
                 burst
                   ? {
-                      scale: [0, 1, 0.6],
+                      scale: [0, 1, 1],
                       opacity: [0, 1, 0],
-                      y: [0, -10, -25],
+                      y: [0, -10, -15],
                     }
                   : { opacity: 0 }
               }
@@ -78,7 +76,7 @@ export const LikeButton = forwardRef<LikeButtonRef, LikeButtonProps>(
               }}
               className="pointer-events-none absolute top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2"
             >
-              <Heart className="h-16 w-16 fill-red-500 text-red-500 drop-shadow-xl" />
+              <Heart className="h-16 w-16 fill-red-300 text-red-300 drop-shadow-xl" />
             </motion.div>
           )}
         </AnimatePresence>

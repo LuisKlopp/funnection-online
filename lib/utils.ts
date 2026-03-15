@@ -36,7 +36,7 @@ export const formatAgeGroup = (ageGroup: AgeGroupType): string => {
     "20s": "20대",
     "30s": "30대",
     "40s": "40대",
-    "50s": "50대",
+    "50s+": "50대",
   };
 
   return map[ageGroup];

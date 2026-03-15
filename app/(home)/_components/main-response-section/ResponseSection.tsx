@@ -14,24 +14,20 @@ interface ResponseSectionProps {
 
 export const ResponseSection = ({ answers }: ResponseSectionProps) => {
   const { openModal } = useModal("bottom-answer-list");
-  const questionId = answers[0]?.questionId;
   return (
-    <section className="bg-gray-1/80 px-4 py-12">
+    <section className="bg-white px-4 py-12">
       <div className="mx-auto max-w-2xl">
         <SectionHeader
           id="responses"
           titleBadge="Other Answers"
           title="다른 사람들은 이렇게 답했어요"
           description="6개의 솔직한 이야기"
+          isBackground
         />
         <ResponseList answersData={answers} />
 
         <div
-          onClick={() =>
-            openModal({
-              questionId: questionId,
-            })
-          }
+          onClick={openModal}
           className="group hover:text-primaryNavy text-gray-5 mt-4 ml-auto flex w-fit cursor-pointer items-center gap-1"
         >
           <p className="text-sm">전체 답변 구경하기 (6)</p>

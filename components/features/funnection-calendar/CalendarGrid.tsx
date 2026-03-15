@@ -40,7 +40,7 @@ export const CalendarGrid = ({ selectedDate, onSelectDate }: Props) => {
         onNext={() => setMonth(addMonths(month, 1))}
       />
       <div className="border-gray-2 mx-auto my-4 w-[90%] border-b" />
-      <div className="grid grid-cols-7 text-center text-sm font-semibold text-indigo-400">
+      <div className="grid grid-cols-7 text-center text-sm font-semibold text-indigo-600/80">
         <span>일</span>
         <span>월</span>
         <span>화</span>

@@ -18,7 +18,7 @@ export const CalendarMonthNavigation = ({ month, onPrev, onNext }: Props) => {
         <ChevronLeft />
       </button>
 
-      <p className="text-xl font-semibold text-indigo-900">
+      <p className="text-primaryNavy/80 text-xl font-semibold">
         {format(month, "yyyy년 M월", { locale: ko })}
       </p>
 

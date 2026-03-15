@@ -9,7 +9,6 @@ export const fetchResponsesData = async (
     params: {
       questionId,
       sort: "latest",
-      limit: 3,
     },
   });
 

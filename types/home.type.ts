@@ -1,4 +1,4 @@
-export type AgeGroupType = "10s" | "20s" | "30s" | "40s" | "50s";
+export type AgeGroupType = "10s" | "20s" | "30s" | "40s" | "50s+";
 export type GenderType = "male" | "female";
 
 export interface HomeQuestion {

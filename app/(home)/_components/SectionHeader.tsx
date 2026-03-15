@@ -6,6 +6,7 @@ interface SectionHeaderProps {
   description: string;
   secondDescription?: string;
   id?: string;
+  isBackground?: boolean;
 }
 
 export const SectionHeader = ({
@@ -14,12 +15,13 @@ export const SectionHeader = ({
   description,
   secondDescription,
   id,
+  isBackground,
 }: SectionHeaderProps) => {
   return (
     <div className="mb-12 text-center" id={id}>
-      <TitleBadge title={titleBadge} />
+      <TitleBadge title={titleBadge} isBackground={isBackground} />
 
-      <h2 className="text-gray-8 smd:text-3xl text-2xl font-semibold tracking-tight">
+      <h2 className="text-gray-8 smd:text-3xl text-[22px] font-semibold tracking-tight">
         {title}
       </h2>
 

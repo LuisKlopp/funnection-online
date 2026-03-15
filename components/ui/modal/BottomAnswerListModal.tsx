@@ -7,24 +7,16 @@ import { ResponseCard } from "@/app/(home)/_components/main-response-section/Res
 import { useResponsesQuery } from "@/hooks/react-query/useResponsesQuery";
 import { useLockBodyScroll } from "@/hooks/ui/useLockBodyScroll";
 import { useModal } from "@/hooks/ui/useModal";
-import { useModalStore } from "@/store/useModalStore";
-
-type BottomAnswerListModalData = {
-  questionId: number;
-};
+import { useQuestionStore } from "@/store/question.store";
 
 export const BottomAnswerListModal = () => {
   const { isModal, closeModal } = useModal("bottom-answer-list");
-  const modalData = useModalStore((s) =>
-    s.getModalData()
-  ) as BottomAnswerListModalData;
 
   useLockBodyScroll();
 
   if (!isModal) return null;
-
-  const questionId = modalData?.questionId;
-  const { data } = useResponsesQuery(questionId);
+  const question = useQuestionStore((s) => s.question);
+  const { data } = useResponsesQuery(question?.id);
 
   return (
     <AnimatePresence>
@@ -45,7 +37,7 @@ export const BottomAnswerListModal = () => {
             stiffness: 260,
             damping: 30,
           }}
-          className="bg-lightNavy relative flex h-[80vh] w-full max-w-md flex-col rounded-t-3xl shadow-2xl"
+          className="relative flex h-[80vh] w-full max-w-md flex-col rounded-t-3xl bg-[#f8f9ff] shadow-2xl"
         >
           <div className="bg-gray-4 mx-auto mt-3 h-1.5 w-10 rounded-full" />
           <div className="flex items-center justify-between px-6 py-4">
@@ -58,7 +50,7 @@ export const BottomAnswerListModal = () => {
 
             <button
               onClick={closeModal}
-              className="bg-primaryNavy/30 rounded-full p-2"
+              className="bg-primaryNavy/85 rounded-full p-2"
             >
               <X size={18} className="text-white" />
             </button>

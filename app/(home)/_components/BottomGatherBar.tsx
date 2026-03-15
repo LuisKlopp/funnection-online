@@ -38,6 +38,12 @@ export const BottomGatherBar = () => {
                 퍼넥션 모임
               </p>
             </div>
+            <div
+              className={cn(
+                "border-primaryNavy/60 w-[20%] border-t",
+                scrolled && "border-white/40"
+              )}
+            />
             <div className="flex items-center gap-2">
               <p
                 className={cn(
@@ -66,8 +72,8 @@ export const BottomGatherBar = () => {
             className={cn(
               "btn-press-in box-shadow-2 flex items-center gap-2 rounded-2xl border-[1.5px] px-3 py-2 text-xs font-semibold transition-all duration-300",
               scrolled
-                ? "text-primaryNavy bg-white shadow-lg"
-                : "border-primaryNavy/90 text-primaryNavy"
+                ? "text-primaryNavy/80 bg-white shadow-lg"
+                : "border-primaryNavy/90 text-primaryNavy/90"
             )}
           >
             구경하기

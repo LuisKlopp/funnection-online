@@ -39,70 +39,89 @@ export const ResponseCard = ({ variant, answerInfo }: ResponseCardProps) => {
   }, [isSheet]);
 
   return (
-    <div
-      onPointerUp={detectDoubleTap}
-      className="box-shadow-2 relative rounded-3xl bg-white px-4 py-4"
-    >
-      <div
-        className={cn(
-          "absolute right-10 bottom-0 h-1 w-22 rounded-full",
-          answerInfo.gender === "male" ? "bg-primaryNavy/70" : "bg-pink-700"
-        )}
-      />
-
-      <div className="flex justify-between">
-        <div className="mb-2 flex items-center gap-1">
-          {/* <div
-            className={cn(
-              "flex h-7 w-7 items-center justify-center rounded-full",
-              iconBg
-            )}
-          >
-            <Icon className="h-3 w-3 text-white" />
-          </div> */}
-
-          <div className="bg-lightNavy rounded-2xl px-2 py-1">
-            <p className="text-gray-5 text-xs font-medium">
-              {formatAgeGroup(answerInfo.ageGroup)}
-            </p>
-          </div>
+    <div className="mx-auto flex w-full max-w-100 items-start gap-2">
+      <div className="flex flex-col gap-1">
+        <div
+          className={cn(
+            "bg-lightNavy rounded-full px-2 py-2",
+            answerInfo.gender === "male"
+              ? "bg-primaryNavy/40"
+              : "bg-pink-700/40"
+          )}
+        >
           <p className="text-gray-5 text-sm font-medium">
             {getGenderEmoji(answerInfo.gender)}
           </p>
         </div>
-
-        <LikeButton ref={likeRef} likes={answerInfo.likeCount} />
+        <div className="flex justify-center">
+          <p className="text-gray-5 text-xs font-medium">
+            {formatAgeGroup(answerInfo.ageGroup)}
+          </p>
+        </div>
       </div>
-
-      <div className="relative">
-        <p
-          ref={textRef}
+      <div
+        onPointerUp={detectDoubleTap}
+        className={cn(
+          "box-shadow-2 border-primaryNavy/60 relative w-full rounded-2xl border-2 bg-white px-4 py-3",
+          answerInfo.gender === "male"
+            ? "border-primaryNavy/60"
+            : "border-pink-700/40"
+        )}
+      >
+        <div
           className={cn(
-            "text-gray-5 leading-relaxed break-keep",
-            isSheet ? "text-[13px] leading-5" : "text-[15px]",
-            !isSheet && !expanded && "line-clamp-2 pr-12 leading-5.5",
-            !isSheet && expanded && "leading-5.5"
+            "absolute right-10 bottom-0 h-1 w-12 rounded-full",
+            answerInfo.gender === "male"
+              ? "bg-primaryNavy/70"
+              : "bg-pink-700/70"
           )}
-        >
-          {answerInfo.content}
-        </p>
+        />
 
-        {!isSheet && isOverflow && (
-          <button
-            onClick={() => setExpanded((prev) => !prev)}
+        <div className="relative">
+          <p
+            ref={textRef}
             className={cn(
-              "absolute right-0 bottom-0 flex items-center gap-1 bg-white pl-2 text-xs text-gray-400"
+              "text-gray-5 leading-relaxed wrap-break-word",
+              isSheet ? "text-[13px] leading-5" : "text-[14px]",
+              !isSheet && !expanded && "line-clamp-2 leading-5.5",
+              !isSheet && expanded && "leading-5.5"
             )}
           >
-            {expanded ? "접기" : "더보기"}
-            <ChevronDown
+            {answerInfo.content}
+          </p>
+
+          {!isSheet && isOverflow && (
+            <button
+              onClick={() => setExpanded((prev) => !prev)}
               className={cn(
-                "h-3 w-3 transition-transform",
-                expanded && "rotate-180"
+                "absolute right-0 bottom-0 flex items-center gap-1 bg-white pl-2 text-xs text-gray-400"
+              )}
+            >
+              {expanded ? "접기" : "더보기"}
+              <ChevronDown
+                className={cn(
+                  "h-3 w-3 transition-transform",
+                  expanded && "rotate-180"
+                )}
+              />
+            </button>
+          )}
+        </div>
+        <div className="border-gray-2 mx-auto my-2 w-[90%] border-t" />
+        <div className="flex w-full justify-between">
+          <div className="flex items-center gap-1">
+            <div
+              className={cn(
+                "bg-primaryNavy/80 h-2 w-2 rounded-full",
+                answerInfo.gender === "male"
+                  ? "bg-primaryNavy/60"
+                  : "bg-pink-700/40"
               )}
             />
-          </button>
-        )}
+            <p className="text-gray-4 text-xs">닉네임</p>
+          </div>
+          <LikeButton ref={likeRef} likes={answerInfo.likeCount} />
+        </div>
       </div>
     </div>
   );

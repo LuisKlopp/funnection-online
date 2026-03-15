@@ -84,7 +84,7 @@ const config = {
           8: "#1F2937",
           9: "#111827",
         },
-        primaryNavy: "#3559D6",
+        primaryNavy: "#3570E9",
         lightNavy: "#EEF2FF",
         deepNavy: "#2B47B8",
         border: "hsl(var(--border))",

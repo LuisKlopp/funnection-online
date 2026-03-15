@@ -103,10 +103,14 @@ export const HeroSectionForm = ({
         </div>
         <div className="mt-4 w-full max-w-3xl">
           <button
-            onClick={openModal}
+            onClick={() =>
+              openModal({
+                content: value,
+              })
+            }
             disabled={value.length === 0}
             className={cn(
-              "box-shadow-2 w-full rounded-xl px-4 py-3 text-sm font-normal transition-all duration-200",
+              "box-shadow-2 btn-press-in w-full rounded-xl px-4 py-3 text-sm font-normal transition-all duration-200",
               value.length === 0
                 ? "bg-primaryNavy/40 cursor-not-allowed text-white"
                 : "bg-primaryNavy/90 hover:bg-deepNavy btn-press-in text-white"
