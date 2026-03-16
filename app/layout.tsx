@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer/Footer";
 import { Header } from "@/components/layout/header/Header";
 import { MobileViewportHandler } from "@/components/layout/MobileViewportHandler";
 import { RootModalLayer } from "@/components/layout/RootModalLayer";
+import { ViewportHeight } from "@/components/layout/ViewportHeight";
 import ReactQueryProvider from "@/providers/react-query-provider";
 import { dmDisplay, maruBuri, pretendard } from "@/public/fonts/fonts";
 
@@ -27,6 +28,7 @@ export default function RootLayout({
       >
         <ReactQueryProvider>
           <MobileViewportHandler />
+          <ViewportHeight />
           <Header />
           <RootModalLayer />
           {children}
