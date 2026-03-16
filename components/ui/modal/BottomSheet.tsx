@@ -113,7 +113,7 @@ export const BottomSheet = ({
             dragControls={dragControls}
             dragConstraints={{ top: positions.full, bottom: positions.closed }}
             dragElastic={0.18}
-            style={{ y, height: "100dvh" }}
+            style={{ y, height: "calc(var(--vh) * 100)" }}
             onDragEnd={handleDragEnd}
             exit={{ y: positions.closed }}
             transition={SPRING}
@@ -130,7 +130,7 @@ export const BottomSheet = ({
             </div>
 
             <div
-              className="flex-1 touch-pan-y overflow-y-auto overscroll-contain"
+              className="flex-1 overflow-y-auto overscroll-contain"
               style={{
                 paddingBottom: sheetState === "half" ? positions.half : 0,
               }}
