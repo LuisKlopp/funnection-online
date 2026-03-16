@@ -49,7 +49,8 @@ export const BottomSheet = ({
 
   const positions = useMemo(() => {
     const closed = viewportHeight;
-    const half = Math.max(viewportHeight * 0.45, 320);
+    // half 위치를 더 높게(더 많이 보이도록) 설정: 낮은 배율과 낮은 최소값
+    const half = Math.max(viewportHeight * 0.3, 240);
     const full = 0;
 
     return { closed, half, full };
@@ -141,9 +142,11 @@ export const BottomSheet = ({
             </div>
 
             <div
-              className={`flex-1 overflow-y-auto ${
-                sheetState === "half" ? "pb-[calc(100vh-55vh)]" : "pb-0"
-              }`}
+              className="flex-1 overflow-y-auto"
+              style={{
+                paddingBottom:
+                  sheetState === "half" ? `${viewportHeight * 0.35}px` : "0px",
+              }}
             >
               {children}
             </div>
