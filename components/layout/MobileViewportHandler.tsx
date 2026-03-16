@@ -7,10 +7,21 @@ export const MobileViewportHandler = () => {
     const viewport = window.visualViewport;
     const getHeight = () =>
       viewport ? viewport.height : window.innerHeight || 0;
+    const getGapBottom = () => {
+      if (!viewport) return 0;
+      return (
+        window.innerHeight - (viewport.height + viewport.offsetTop || 0) || 0
+      );
+    };
 
     const setHeight = () => {
       const height = getHeight();
+      const gapBottom = getGapBottom();
       document.documentElement.style.setProperty("--vvh", `${height}px`);
+      document.documentElement.style.setProperty(
+        "--vvh-gap-bottom",
+        `${Math.max(gapBottom, 0)}px`
+      );
     };
 
     setHeight();
