@@ -4,33 +4,49 @@ import {
   addMonths,
   eachDayOfInterval,
   endOfMonth,
+  format,
   getDay,
   startOfMonth,
 } from "date-fns";
 import { useState } from "react";
 
+import { useEventsQuery } from "@/hooks/react-query/useEventsQuery";
+import { useModal } from "@/hooks/ui/useModal";
+import { EventData } from "@/types/event.type";
+
 import { CalendarDay } from "./CalendarDay";
 import { CalendarMonthNavigation } from "./CalendarMonthNavigation";
 
-interface Props {
+interface CalendarGridProps {
   selectedDate: Date | null;
   onSelectDate: (date: Date) => void;
 }
 
-export const CalendarGrid = ({ selectedDate, onSelectDate }: Props) => {
-  const [month, setMonth] = useState(new Date());
+export const CalendarGrid = ({
+  selectedDate,
+  onSelectDate,
+}: CalendarGridProps) => {
+  const { data: events = [] } = useEventsQuery();
+  const { openModal } = useModal("bottom-event-list");
 
+  const [month, setMonth] = useState(new Date());
   const monthStart = startOfMonth(month);
   const monthEnd = endOfMonth(month);
-
   const days = eachDayOfInterval({
     start: monthStart,
     end: monthEnd,
   });
-
   const startDay = getDay(monthStart);
-
   const blanks = Array.from({ length: startDay });
+
+  const eventMap = events.reduce<Map<string, EventData[]>>((map, event) => {
+    const date = event.eventDate;
+    if (!map.has(date)) {
+      map.set(date, []);
+    }
+    map.get(date)!.push(event);
+    return map;
+  }, new Map());
 
   return (
     <div>
@@ -40,7 +56,7 @@ export const CalendarGrid = ({ selectedDate, onSelectDate }: Props) => {
         onNext={() => setMonth(addMonths(month, 1))}
       />
       <div className="border-gray-2 mx-auto my-4 w-[90%] border-b" />
-      <div className="grid grid-cols-7 text-center text-sm font-semibold text-indigo-600/80">
+      <div className="text-gray-6 grid grid-cols-7 text-center text-sm font-semibold">
         <span>일</span>
         <span>월</span>
         <span>화</span>
@@ -53,15 +69,29 @@ export const CalendarGrid = ({ selectedDate, onSelectDate }: Props) => {
         {blanks.map((_, i) => (
           <div key={`blank-${i}`} />
         ))}
+        {days.map((date) => {
+          const key = format(date, "yyyy-MM-dd");
+          const dayEvents = eventMap.get(key) ?? [];
 
-        {days.map((date) => (
-          <CalendarDay
-            key={date.toISOString()}
-            date={date}
-            selectedDate={selectedDate}
-            onSelectDate={onSelectDate}
-          />
-        ))}
+          return (
+            <CalendarDay
+              key={key}
+              date={date}
+              events={dayEvents}
+              selectedDate={selectedDate}
+              onSelectDate={(date) => {
+                onSelectDate(date);
+
+                if (dayEvents.length > 0) {
+                  openModal({
+                    events: dayEvents,
+                    date: key,
+                  });
+                }
+              }}
+            />
+          );
+        })}
       </div>
     </div>
   );

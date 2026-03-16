@@ -4,39 +4,21 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import { FUNNECTION_PHOTOS } from "@/constants/funnection-photos.constants";
 import { useModal } from "@/hooks/ui/useModal";
-import photo1 from "@/public/images/main-funnection-image/photo-1.webp";
-import photo2 from "@/public/images/main-funnection-image/photo-2.webp";
-import photo3 from "@/public/images/main-funnection-image/photo-3.webp";
-import photo4 from "@/public/images/main-funnection-image/photo-4.webp";
-import photo5 from "@/public/images/main-funnection-image/photo-5.webp";
-import photo6 from "@/public/images/main-funnection-image/photo-6.webp";
-import photo7 from "@/public/images/main-funnection-image/photo-7.webp";
-import photo8 from "@/public/images/main-funnection-image/photo-8.webp";
-import photo9 from "@/public/images/main-funnection-image/photo-9.webp";
-
-const photos = [
-  photo1,
-  photo2,
-  photo3,
-  photo4,
-  photo5,
-  photo6,
-  photo7,
-  photo8,
-  photo9,
-];
 
 export const MainFunnectionPhotoCard = () => {
   const [index, setIndex] = useState(0);
   const { openModal } = useModal("funnection-image");
 
   const prev = () => {
-    setIndex((prev) => (prev - 1 + photos.length) % photos.length);
+    setIndex(
+      (prev) => (prev - 1 + FUNNECTION_PHOTOS.length) % FUNNECTION_PHOTOS.length
+    );
   };
 
   const next = () => {
-    setIndex((prev) => (prev + 1) % photos.length);
+    setIndex((prev) => (prev + 1) % FUNNECTION_PHOTOS.length);
   };
 
   useEffect(() => {
@@ -56,7 +38,7 @@ export const MainFunnectionPhotoCard = () => {
             transform: `translateX(-${index * 100}%)`,
           }}
         >
-          {photos.map((photo, i) => (
+          {FUNNECTION_PHOTOS.map((photo, i) => (
             <div key={i} className="relative min-w-full">
               <Image
                 onClick={openModal}
@@ -84,7 +66,7 @@ export const MainFunnectionPhotoCard = () => {
         <ChevronRight size={20} />
       </button>
       <div className="absolute right-1 bottom-2 flex items-center gap-2 rounded-xl bg-black/50 p-2">
-        {photos.map((_, i) => (
+        {FUNNECTION_PHOTOS.map((_, i) => (
           <span
             key={i}
             className={`h-1.5 rounded-full transition-all duration-300 ${

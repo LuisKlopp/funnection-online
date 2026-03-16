@@ -1,20 +1,12 @@
 "use client";
 
 import { FunnectionCalendar } from "@/components/features/funnection-calendar/FunnectionCalendar";
-import { HomeEvent } from "@/types/home.type";
 
 import { SectionHeader } from "../SectionHeader";
 import { MainFunnectionInstagram } from "./MainFunnectionInstagram";
 import { MainFunnectionPhotoCard } from "./MainFunnectionPhotoCard";
 
-interface MainFunnectionDateSectionProps {
-  events: HomeEvent[];
-}
-
-export const MainFunnectionDateSection = ({
-  events,
-}: MainFunnectionDateSectionProps) => {
-  console.log(events);
+export const MainFunnectionDateSection = () => {
   return (
     <section className="bg-lightNavy flex w-full flex-col items-center px-6 py-12">
       <div className="max-w-150">

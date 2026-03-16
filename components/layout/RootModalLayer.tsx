@@ -4,6 +4,7 @@ import { useModalStore } from "@/store/useModalStore";
 
 import { AnswerSubmitModal } from "../ui/modal/AnswerSubmitModal";
 import { BottomAnswerListModal } from "../ui/modal/BottomAnswerListModal";
+import { BottomEventListModal } from "../ui/modal/BottomEventListModal";
 import { InitBottomSubmitModal } from "../ui/modal/InitBottomSubmitModal";
 import { MainFunnectionImageModal } from "../ui/modal/MainFunnectionImageModal";
 
@@ -18,6 +19,9 @@ export const RootModalLayer = () => {
   const isBottomAnswerListOpen = useModalStore((s) =>
     s.isOpen("bottom-answer-list")
   );
+  const isBottomEventListOpen = useModalStore((s) =>
+    s.isOpen("bottom-event-list")
+  );
 
   return (
     <>
@@ -25,6 +29,7 @@ export const RootModalLayer = () => {
       {isInitBottomSubmitOpen && <InitBottomSubmitModal />}
       {isFunnectionImageOpen && <MainFunnectionImageModal />}
       {isBottomAnswerListOpen && <BottomAnswerListModal />}
+      {isBottomEventListOpen && <BottomEventListModal />}
     </>
   );
 };

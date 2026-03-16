@@ -21,14 +21,7 @@ export interface HomeAnswer {
   updatedAt: string;
 }
 
-export interface HomeEvent {
-  id: number;
-  title: string;
-  event_date: string;
-}
-
 export interface HomeResponse {
   question: HomeQuestion;
   answers: HomeAnswer[];
-  events: HomeEvent[];
 }

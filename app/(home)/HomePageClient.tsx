@@ -12,13 +12,13 @@ import { ResponseSection } from "./_components/main-response-section/ResponseSec
 export const HomePageClient = () => {
   const { data, isLoading } = useHomeQuery();
   if (isLoading || !data) return <EmptyScreen />;
-  const { question, answers, events } = data;
+  const { question, answers } = data;
 
   return (
     <>
       <HeroSection questionData={question} />
       <ResponseSection answers={answers} />
-      <MainFunnectionDateSection events={events} />
+      <MainFunnectionDateSection />
       <MainElioSection />
       <MainFunnectionValueSection />
     </>

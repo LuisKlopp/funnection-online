@@ -1,4 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
+import { format } from "date-fns";
+import { ko } from "date-fns/locale";
 import { twMerge } from "tailwind-merge";
 
 import { AgeGroupType, GenderType } from "@/types/home.type";
@@ -44,4 +46,10 @@ export const formatAgeGroup = (ageGroup: AgeGroupType): string => {
 
 export const getGenderEmoji = (gender: GenderType): string => {
   return gender === "male" ? "🙋🏻‍♂️" : "🙋🏻‍♀️";
+};
+
+export const formatKoreanTime = (time: string) => {
+  return format(new Date(`1970-01-01T${time}`), "a h시", {
+    locale: ko,
+  });
 };
