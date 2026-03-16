@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import React from "react";
 
 import { Footer } from "@/components/layout/footer/Footer";
@@ -13,6 +13,12 @@ import { dmDisplay, maruBuri, pretendard } from "@/public/fonts/fonts";
 export const metadata: Metadata = {
   title: "Funnection Online",
   description: "질문은 사람을 연결합니다.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
