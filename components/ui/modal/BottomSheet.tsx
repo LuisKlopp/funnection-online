@@ -130,7 +130,7 @@ export const BottomSheet = ({
             </div>
 
             <div
-              className="flex-1 overflow-y-auto"
+              className="flex-1 touch-pan-y overflow-y-auto overscroll-contain"
               style={{
                 paddingBottom: sheetState === "half" ? positions.half : 0,
               }}
