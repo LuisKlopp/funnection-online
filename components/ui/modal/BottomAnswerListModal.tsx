@@ -37,7 +37,7 @@ export const BottomAnswerListModal = () => {
         </button>
       </div>
       <div className="bg-primaryNavy/30 mx-auto my-2 h-px w-[40%]" />
-      <div className="space-y-4 overflow-y-auto px-6 pb-6">
+      <div className="space-y-4 px-6 pb-6">
         {data?.map((answer) => (
           <ResponseCard
             key={answer.id}

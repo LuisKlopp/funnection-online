@@ -141,7 +141,7 @@ export const BottomSheet = ({
             </div>
 
             <div
-              className="flex-1 overflow-y-auto"
+              className="min-h-0 flex-1 overflow-y-auto"
               style={{
                 paddingBottom:
                   sheetState === "half" ? `${viewportHeight * 0.35}px` : "0px",
