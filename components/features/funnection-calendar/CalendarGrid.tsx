@@ -40,11 +40,12 @@ export const CalendarGrid = ({
   const blanks = Array.from({ length: startDay });
 
   const eventMap = events.reduce<Map<string, EventData[]>>((map, event) => {
-    const date = event.eventDate;
-    if (!map.has(date)) {
-      map.set(date, []);
+    // 서버/배포 환경의 TZ 영향을 제거하고 로컬 날짜 기준으로 그룹핑
+    const dateKey = format(new Date(event.eventDate), "yyyy-MM-dd");
+    if (!map.has(dateKey)) {
+      map.set(dateKey, []);
     }
-    map.get(date)!.push(event);
+    map.get(dateKey)!.push(event);
     return map;
   }, new Map());
 
