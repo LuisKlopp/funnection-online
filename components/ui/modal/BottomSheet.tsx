@@ -49,7 +49,6 @@ export const BottomSheet = ({
 
   const positions = useMemo(() => {
     const closed = viewportHeight;
-    // half 위치를 더 높게(더 많이 보이도록) 설정: 낮은 배율과 낮은 최소값
     const half = Math.max(viewportHeight * 0.3, 240);
     const full = 0;
 

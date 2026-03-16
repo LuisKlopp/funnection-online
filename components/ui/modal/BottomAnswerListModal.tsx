@@ -21,7 +21,7 @@ export const BottomAnswerListModal = () => {
 
   return (
     <BottomSheet isOpen={isModal} onClose={closeModal}>
-      <div className="flex items-center justify-between px-6 py-4">
+      <div className="scroll-box flex items-center justify-between px-6 py-4">
         <div>
           <h2 className="text-gray-8 text-lg font-semibold">전체 답변</h2>
           <p className="text-gray-4 text-xs">
