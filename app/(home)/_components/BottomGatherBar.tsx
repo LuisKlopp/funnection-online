@@ -10,7 +10,7 @@ export const BottomGatherBar = () => {
 
   return (
     <div
-      className="floating-box fixed left-0 z-50 w-full"
+      className="fixed left-0 z-50 w-full"
       style={{
         bottom: "env(safe-area-inset-bottom, 0px)",
         paddingBottom: "env(safe-area-inset-bottom, 0px)",
