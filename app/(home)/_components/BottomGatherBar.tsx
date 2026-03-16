@@ -9,7 +9,7 @@ export const BottomGatherBar = () => {
   const { scrolled } = useScrollStore();
 
   return (
-    <div className="floating-box fixed left-0 z-50 w-full">
+    <div className="floating-box fixed bottom-0 left-0 z-50 w-full">
       <div className="mx-auto w-full max-w-150 px-4 pb-3">
         <div
           className={cn(
