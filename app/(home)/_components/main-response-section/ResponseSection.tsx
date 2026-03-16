@@ -21,7 +21,7 @@ export const ResponseSection = ({ answers }: ResponseSectionProps) => {
           id="responses"
           titleBadge="Other Answers"
           title="다른 사람들은 이렇게 답했어요"
-          description="6개의 솔직한 이야기"
+          description={`${answers.length}개의 솔직한 이야기`}
           isBackground
         />
         <ResponseList answersData={answers} />
