@@ -5,20 +5,23 @@ import { useEffect } from "react";
 export const MobileViewportHandler = () => {
   useEffect(() => {
     const viewport = window.visualViewport;
-    if (!viewport) return;
+    const getHeight = () =>
+      viewport ? viewport.height : window.innerHeight || 0;
 
     const setHeight = () => {
-      document.documentElement.style.setProperty(
-        "--vvh",
-        `${viewport.height}px`
-      );
+      const height = getHeight();
+      document.documentElement.style.setProperty("--vvh", `${height}px`);
     };
 
     setHeight();
-    viewport.addEventListener("resize", setHeight);
+    window.addEventListener("resize", setHeight);
+    viewport?.addEventListener("resize", setHeight);
+    viewport?.addEventListener("scroll", setHeight);
 
     return () => {
-      viewport.removeEventListener("resize", setHeight);
+      window.removeEventListener("resize", setHeight);
+      viewport?.removeEventListener("resize", setHeight);
+      viewport?.removeEventListener("scroll", setHeight);
     };
   }, []);
 

@@ -29,11 +29,22 @@ export const BottomSheet = ({
   const [viewportHeight, setViewportHeight] = useState(0);
 
   useLayoutEffect(() => {
-    const updateHeight = () => setViewportHeight(window.innerHeight);
+    const updateHeight = () => {
+      const vv = window.visualViewport;
+      const height = vv?.height ?? window.innerHeight;
+      setViewportHeight(height);
+      document.documentElement.style.setProperty("--vvh", `${height}px`);
+    };
     updateHeight();
 
     window.addEventListener("resize", updateHeight);
-    return () => window.removeEventListener("resize", updateHeight);
+    window.visualViewport?.addEventListener("resize", updateHeight);
+    window.visualViewport?.addEventListener("scroll", updateHeight);
+    return () => {
+      window.removeEventListener("resize", updateHeight);
+      window.visualViewport?.removeEventListener("resize", updateHeight);
+      window.visualViewport?.removeEventListener("scroll", updateHeight);
+    };
   }, []);
 
   const positions = useMemo(() => {
@@ -113,7 +124,7 @@ export const BottomSheet = ({
             dragControls={dragControls}
             dragConstraints={{ top: positions.full, bottom: positions.closed }}
             dragElastic={0.18}
-            style={{ y, height: "100dvh" }}
+            style={{ y, height: "var(--vvh, 100dvh)" }}
             onDragEnd={handleDragEnd}
             exit={{ y: positions.closed }}
             transition={SPRING}

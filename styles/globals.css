@@ -4,6 +4,7 @@
 html,
 body,
 :root {
+  --vvh: 100dvh;
   overflow-x: hidden;
   line-height: normal;
   -ms-overflow-style: none;
@@ -13,6 +14,7 @@ body,
   padding: 0;
   /* height: 100%; */
   /* overflow-y: hidden; */
+  min-height: var(--vvh);
 }
 
 .text-shadow-04 {
