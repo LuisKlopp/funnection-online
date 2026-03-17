@@ -87,6 +87,8 @@ const config = {
         primaryNavy: "#3570E9",
         lightNavy: "#EEF2FF",
         deepNavy: "#2B47B8",
+        primaryAmber: "#ffb900",
+        applyBackgroundColor: "#0F172A",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

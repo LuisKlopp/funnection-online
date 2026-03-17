@@ -3,8 +3,7 @@ import "../styles/globals.css";
 import type { Metadata, Viewport } from "next";
 import React from "react";
 
-import { Footer } from "@/components/layout/footer/Footer";
-import { Header } from "@/components/layout/header/Header";
+import { LayoutShell } from "@/components/layout/LayoutShell";
 import { MobileViewportHandler } from "@/components/layout/MobileViewportHandler";
 import { RootModalLayer } from "@/components/layout/RootModalLayer";
 import ReactQueryProvider from "@/providers/react-query-provider";
@@ -33,10 +32,10 @@ export default function RootLayout({
       >
         <ReactQueryProvider>
           <MobileViewportHandler />
-          <Header />
-          <RootModalLayer />
-          {children}
-          <Footer />
+          <LayoutShell>
+            <RootModalLayer />
+            {children}
+          </LayoutShell>
         </ReactQueryProvider>
       </body>
     </html>

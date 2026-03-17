@@ -5,7 +5,7 @@ export const Footer = () => {
     <footer className="bg-gray-2/80 w-full px-6 pt-20 pb-10">
       <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
         <div>
-          <h3 className="mb-4 text-xl font-bold text-[#4A5FD9]">퍼넥션</h3>
+          <h3 className="text-primaryNavy mb-4 text-xl font-bold">퍼넥션</h3>
 
           <p className="mb-4 text-gray-600">질문으로 연결되는 사람들</p>
 
