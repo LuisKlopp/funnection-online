@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { EventData } from "@/types/event.type";
 
 interface CalendarDayProps {
@@ -35,7 +36,13 @@ export const CalendarDay = ({
       {day}
 
       {events && events.length > 0 && (
-        <span className="absolute bottom-0 h-1 w-1 rounded-full bg-indigo-500" />
+        <span
+          className={cn(
+            "bg-primaryNavy absolute bottom-0 h-1 w-1 rounded-full",
+
+            isSelected && "mb-0.5 bg-white"
+          )}
+        />
       )}
     </button>
   );
