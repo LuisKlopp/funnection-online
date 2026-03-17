@@ -15,15 +15,17 @@ export const BottomSheet = ({
 }: BottomSheetProps) => {
   return (
     <Sheet
+      className="smd:w-[30%] mx-auto"
       isOpen={isOpen}
       onClose={onClose}
-      snapPoints={[0, 1]}
+      snapPoints={[0, 0.9, 1]}
       initialSnap={1}
+      dragVelocityThreshold={800}
       disableScrollLocking
     >
       <Sheet.Container className="rounded-t-3xl bg-[#f8f9ff] shadow-2xl">
         <Sheet.Header />
-        <Sheet.Content>{children}</Sheet.Content>
+        <Sheet.Content className="smd:pb-20 pb-16">{children}</Sheet.Content>
       </Sheet.Container>
       <Sheet.Backdrop onTap={onClose} className="bg-black/80!" />
     </Sheet>

@@ -7,14 +7,12 @@ body,
   --vvh: 100dvh;
   overflow-x: hidden;
   line-height: normal;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   scroll-behavior: auto;
   margin: 0;
   padding: 0;
   /* height: 100%; */
   /* overflow-y: hidden; */
-  min-height: var(--vvh);
+  /* min-height: var(--vvh); */
 }
 
 .text-shadow-04 {
