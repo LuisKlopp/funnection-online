@@ -17,7 +17,7 @@ body,
   min-height: var(--vvh); */
   margin: 0;
   padding: 0;
-  height: 100%;
+  /* height: 100%; */
   overflow-x: hidden;
   line-height: normal;
   -ms-overflow-style: none;
