@@ -15,7 +15,7 @@ export const ApplyCompleteHeader = () => {
           <span>홈으로</span>
         </Link>
 
-        <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 text-base font-semibold">
+        <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 text-base font-semibold text-white">
           퍼넥션 신청 완료
         </span>
       </div>

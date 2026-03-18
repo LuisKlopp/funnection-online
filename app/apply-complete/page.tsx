@@ -1,9 +1,9 @@
-import { SuccessCheckAnimation } from "@/components/ui/icons/SuccessCheckAnimation";
+import { ApplyCompletePageClient } from "./ApplyCompletePageClient";
 
 export default function ApplyComplete() {
   return (
     <div className="bg-applyBackgroundColor min-h-svh">
-      <SuccessCheckAnimation />
+      <ApplyCompletePageClient />
     </div>
   );
 }
