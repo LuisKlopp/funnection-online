@@ -63,7 +63,7 @@ export const EventCard = ({
 
       <div
         className={cn(
-          "bg-primaryAmber absolute left-[50%] mt-3 h-1 w-[50%] -translate-x-[50%] rounded-full transition-all duration-300",
+          "bg-primaryAmber absolute left-[75%] mt-3 h-1 w-[40%] -translate-x-[50%] rounded-full transition-all duration-300",
           selected ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0"
         )}
       />

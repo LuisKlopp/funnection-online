@@ -15,7 +15,7 @@ export const TextAreaInput = ({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         maxLength={maxLength}
-        className="h-40 w-full resize-none rounded-2xl bg-white/5 px-4 py-4 text-white transition outline-none focus:bg-white/10"
+        className="smd:text-base h-40 w-full resize-none rounded-2xl bg-white/5 px-4 py-4 text-[15px] text-white transition outline-none focus:bg-white/10"
         placeholder="자유롭게 작성해주세요"
       />
 

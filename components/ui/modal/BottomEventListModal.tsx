@@ -3,6 +3,7 @@
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { Calendar, Clock, MapPin, Users, X } from "lucide-react";
+import Link from "next/link";
 
 import { useLockBodyScroll } from "@/hooks/ui/useLockBodyScroll";
 import { useModal } from "@/hooks/ui/useModal";
@@ -22,7 +23,12 @@ export const BottomEventListModal = () => {
   const date = modalData?.date;
 
   return (
-    <BottomSheet isOpen={isModal} onClose={closeModal}>
+    <BottomSheet
+      isOpen={isModal}
+      onClose={closeModal}
+      headerClassName="bg-gray-2"
+      contentClassName="bg-gray-2"
+    >
       <div className="flex items-center justify-between px-6 py-4">
         <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">
           <Calendar size={16} />
@@ -40,10 +46,10 @@ export const BottomEventListModal = () => {
         </button>
       </div>
 
-      <div className="flex flex-1 flex-col gap-3 overflow-y-auto px-6 pb-6">
+      <div className="flex w-full flex-col gap-3 overflow-y-auto px-6 pb-6">
         {events.map((event) => (
-          <div key={event.id} className="rounded-xl bg-white p-4 shadow-sm">
-            <div className="font-semibold text-gray-800">{event.title}</div>
+          <div key={event.id} className="box-shadow-2 rounded-xl bg-white p-4">
+            <div className="text-primaryNavy font-semibold">{event.title}</div>
 
             <div className="mt-2 flex flex-col gap-1 text-xs text-gray-500">
               <div className="flex items-center gap-2">
@@ -62,9 +68,13 @@ export const BottomEventListModal = () => {
               </div>
             </div>
 
-            <button className="bg-primaryNavy mt-3 w-full rounded-lg py-2 text-sm font-semibold text-white">
+            <Link
+              href="/apply"
+              onClick={closeModal}
+              className="bg-primaryNavy mt-3 block w-full rounded-lg py-2 text-center text-sm font-semibold text-white"
+            >
               신청하기
-            </button>
+            </Link>
           </div>
         ))}
       </div>

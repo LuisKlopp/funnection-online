@@ -23,9 +23,9 @@ export const GenderSelect = ({ value, onChange }: GenderSelectProps) => {
             key={item.value}
             onClick={() => onChange(item.value as Gender)}
             className={cn(
-              "flex-1 rounded-2xl py-4 text-base font-semibold transition-all duration-200",
+              "flex-1 cursor-pointer rounded-2xl py-3 text-base font-semibold transition-all duration-200",
               selected
-                ? "bg-primaryAmber text-black shadow-[0_0_20px_rgba(255,193,7,0.4)]"
+                ? "bg-primaryAmber/85 text-white shadow-[0_0_20px_rgba(255,193,7,0.4)]"
                 : "bg-white/5 text-white/60 hover:bg-white/10"
             )}
           >

@@ -1,6 +1,6 @@
 "use client";
 
-import { FormState } from "../../ApplyPageClient";
+import { FormState } from "../../hooks/useApplyStep";
 import { FormField } from "./form/FormField";
 import { GenderSelect } from "./form/GenderSelect";
 import { PhoneNumberInput } from "./form/PhoneNumberInput";

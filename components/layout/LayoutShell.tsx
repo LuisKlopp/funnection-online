@@ -8,7 +8,7 @@ import { Header } from "@/components/layout/header/Header";
 export const LayoutShell = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
-  const hideLayout = ["/apply"].includes(pathname);
+  const hideLayout = ["/apply", "/apply-complete"].includes(pathname);
 
   return (
     <>
