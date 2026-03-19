@@ -22,8 +22,6 @@ export const ApplyPageClient = () => {
     selectedEventId,
   });
 
-  console.log(events);
-
   const step1Ref = useRef<HTMLDivElement>(null);
   const step2Ref = useRef<HTMLDivElement>(null);
 
