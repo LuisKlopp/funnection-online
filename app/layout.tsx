@@ -4,7 +4,6 @@ import type { Metadata, Viewport } from "next";
 import React from "react";
 
 import { LayoutShell } from "@/components/layout/LayoutShell";
-import { RootModalLayer } from "@/components/layout/RootModalLayer";
 import ReactQueryProvider from "@/providers/react-query-provider";
 import { dmDisplay, maruBuri, pretendard } from "@/public/fonts/fonts";
 
@@ -30,10 +29,7 @@ export default function RootLayout({
         className={`${pretendard.className} ${maruBuri.variable} ${dmDisplay.variable}`}
       >
         <ReactQueryProvider>
-          <LayoutShell>
-            <RootModalLayer />
-            {children}
-          </LayoutShell>
+          <LayoutShell>{children}</LayoutShell>
         </ReactQueryProvider>
       </body>
     </html>

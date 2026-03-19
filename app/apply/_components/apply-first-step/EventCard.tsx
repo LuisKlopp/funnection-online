@@ -1,14 +1,14 @@
 import { Calendar } from "lucide-react";
 
-import { Event } from "@/constants/dummy-data/events.constants";
-import { cn } from "@/lib/utils";
+import { cn, formatKoreanDate, formatKoreanTime } from "@/lib/utils";
+import { EventData } from "@/types/event.type";
 
 export const EventCard = ({
   event,
   selected,
   onClick,
 }: {
-  event: Event;
+  event: EventData;
   selected: boolean;
   onClick: () => void;
 }) => {
@@ -37,7 +37,7 @@ export const EventCard = ({
                 : "bg-white/10 text-white/60"
             )}
           >
-            {event.title}
+            {event.round}회차
           </span>
         </div>
 
@@ -49,16 +49,18 @@ export const EventCard = ({
       <div className="mt-3 space-y-1 text-sm text-white/80">
         <div className="flex items-center gap-2">
           <Calendar size={14} className="text-gray-4 mb-0.5" />
-          <p className={cn("text-sm", selected && "text-amber-400/90")}>
-            {event.date}
+          <p className={cn("text-sm", selected && "font-bold text-white")}>
+            {formatKoreanDate(event.eventDate)}
           </p>
-          <p className="text-gray-4 text-xs">{event.startTime}~</p>
+          <p className="text-gray-4 text-xs">
+            {formatKoreanTime(event.startTime)}~
+          </p>
         </div>
         <div className="text-gray-4 text-xs">{event.location}</div>
       </div>
 
       <div className="mt-3 inline-block rounded-md bg-white/10 px-3 py-1 text-xs text-white/70">
-        {event.keyword}
+        나를 움직이게 하는 것들
       </div>
 
       <div

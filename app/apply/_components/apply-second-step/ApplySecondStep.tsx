@@ -1,5 +1,8 @@
 "use client";
 
+import { formatKoreanDate, formatKoreanTime } from "@/lib/utils";
+import { EventData } from "@/types/event.type";
+
 import { FormState } from "../../hooks/useApplyStep";
 import { FormField } from "./form/FormField";
 import { GenderSelect } from "./form/GenderSelect";
@@ -11,9 +14,14 @@ import { QuoteCard } from "./QuoteCard";
 interface ApplySecondStepProps {
   form: FormState;
   setForm: React.Dispatch<React.SetStateAction<FormState>>;
+  event: EventData | null;
 }
 
-export const ApplySecondStep = ({ form, setForm }: ApplySecondStepProps) => {
+export const ApplySecondStep = ({
+  form,
+  setForm,
+  event,
+}: ApplySecondStepProps) => {
   const updateField = <K extends keyof FormState>(
     key: K,
     value: FormState[K]
@@ -26,6 +34,27 @@ export const ApplySecondStep = ({ form, setForm }: ApplySecondStepProps) => {
 
   return (
     <div className="flex flex-col gap-4 p-8 pb-24">
+      <div className="flex flex-col gap-2">
+        <h1 className="text-2xl font-semibold">신청서 작성</h1>
+        <span className="text-gray-4 text-base">간단한 정보만 남겨주세요.</span>
+      </div>
+      {event && (
+        <div className="border-primaryAmber/30 bg-primaryAmber/10 rounded-2xl border p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-primaryAmber text-sm">신청 중인 모임</p>
+              <p className="mt-1 text-sm font-semibold">
+                {event.round}회차 · {formatKoreanDate(event.eventDate)}{" "}
+                {formatKoreanTime(event.startTime)}
+              </p>
+            </div>
+
+            <div className="rounded-full bg-green-500/20 px-3 py-1 text-sm text-green-400">
+              잔여 {event.seatsLeft}
+            </div>
+          </div>
+        </div>
+      )}
       <FormField label="성별" description="해당하는 성별을 선택해주세요">
         <GenderSelect
           value={form.gender}

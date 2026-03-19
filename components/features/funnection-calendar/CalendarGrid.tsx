@@ -10,6 +10,7 @@ import {
 } from "date-fns";
 import { useState } from "react";
 
+import { BottomEventListModal } from "@/components/ui/modal/BottomEventListModal";
 import { useEventsQuery } from "@/hooks/react-query/useEventsQuery";
 import { useModal } from "@/hooks/ui/useModal";
 import { EventData } from "@/types/event.type";
@@ -27,7 +28,7 @@ export const CalendarGrid = ({
   onSelectDate,
 }: CalendarGridProps) => {
   const { data: events = [] } = useEventsQuery();
-  const { openModal } = useModal("bottom-event-list");
+  const modal = useModal();
 
   const [month, setMonth] = useState(new Date());
   const monthStart = startOfMonth(month);
@@ -83,15 +84,19 @@ export const CalendarGrid = ({
                 onSelectDate(date);
 
                 if (dayEvents.length > 0) {
-                  openModal({
-                    events: dayEvents,
-                    date: key,
-                  });
+                  modal.openModal();
                 }
               }}
             />
           );
         })}
+        {modal.isModal && (
+          <BottomEventListModal
+            events={events}
+            date={selectedDate}
+            onClose={modal.closeModal}
+          />
+        )}
       </div>
     </div>
   );

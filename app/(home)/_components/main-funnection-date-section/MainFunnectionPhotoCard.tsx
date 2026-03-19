@@ -4,12 +4,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import { MainFunnectionImageModal } from "@/components/ui/modal/MainFunnectionImageModal";
 import { FUNNECTION_PHOTOS } from "@/constants/funnection-photos.constants";
 import { useModal } from "@/hooks/ui/useModal";
 
 export const MainFunnectionPhotoCard = () => {
   const [index, setIndex] = useState(0);
-  const { openModal } = useModal("funnection-image");
+  const modal = useModal();
 
   const prev = () => {
     setIndex(
@@ -41,7 +42,7 @@ export const MainFunnectionPhotoCard = () => {
           {FUNNECTION_PHOTOS.map((photo, i) => (
             <div key={i} className="relative min-w-full">
               <Image
-                onClick={openModal}
+                onClick={modal.openModal}
                 src={photo}
                 alt="funnection meeting"
                 sizes="100vw"
@@ -75,6 +76,7 @@ export const MainFunnectionPhotoCard = () => {
           />
         ))}
       </div>
+      {modal.isModal && <MainFunnectionImageModal onClose={modal.closeModal} />}
     </div>
   );
 };

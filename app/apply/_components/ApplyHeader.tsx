@@ -16,7 +16,7 @@ export const ApplyHeader = ({ step, onBack }: ApplyHeaderProps) => {
           className="flex items-center gap-1 text-sm text-gray-400"
         >
           <ArrowLeft className="h-5 w-5" />
-          <span>{step === 2 ? "모임 다시 선택" : "돌아가기"}</span>
+          <span>{step === 2 ? "모임 다시 선택" : "홈으로"}</span>
         </button>
 
         <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 text-base font-semibold">

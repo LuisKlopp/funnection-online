@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 
+import { InitBottomSubmitModal } from "@/components/ui/modal/InitBottomSubmitModal";
 import { useModal } from "@/hooks/ui/useModal";
 import { cn, smoothScrollTo } from "@/lib/utils";
 import { HomeQuestion } from "@/types/home.type";
@@ -32,7 +33,7 @@ export const HeroSectionForm = ({
 }: HeroSectionFormProps) => {
   const [value, setValue] = useState("");
   const [startTyping, setStartTyping] = useState(false);
-  const { openModal } = useModal("init-bottom-submit");
+  const modal = useModal();
   const maxLength = 500;
 
   const handleTypingComplete = useCallback(() => {
@@ -103,11 +104,7 @@ export const HeroSectionForm = ({
         </div>
         <div className="mt-4 w-full max-w-3xl">
           <button
-            onClick={() =>
-              openModal({
-                content: value,
-              })
-            }
+            onClick={modal.openModal}
             disabled={value.length === 0}
             className={cn(
               "box-shadow-2 btn-press-in w-full rounded-xl px-4 py-3 text-sm font-normal transition-all duration-200",
@@ -126,6 +123,9 @@ export const HeroSectionForm = ({
           <ArrowDown className="h-4 w-4" />
         </div>
       </div>
+      {modal.isModal && (
+        <InitBottomSubmitModal content={value} onClose={modal.closeModal} />
+      )}
     </section>
   );
 };

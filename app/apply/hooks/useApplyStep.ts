@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type Gender = "male" | "female" | null;
@@ -12,6 +13,7 @@ export interface FormState {
 }
 
 export const useApplyStep = () => {
+  const router = useRouter();
   const [step, setStep] = useState<1 | 2>(1);
 
   useEffect(() => {
@@ -30,7 +32,13 @@ export const useApplyStep = () => {
   }, []);
 
   const goNext = () => setStep(2);
-  const goBack = () => window.history.back();
+  const goBack = () => {
+    if (step === 1) {
+      router.push("/");
+    } else {
+      window.history.back();
+    }
+  };
 
   return {
     step,

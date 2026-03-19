@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 
+import { BottomAnswerListModal } from "@/components/ui/modal/BottomAnswerListModal";
 import { useModal } from "@/hooks/ui/useModal";
 import { HomeAnswer } from "@/types/home.type";
 
@@ -13,7 +14,7 @@ interface ResponseSectionProps {
 }
 
 export const ResponseSection = ({ answers }: ResponseSectionProps) => {
-  const { openModal } = useModal("bottom-answer-list");
+  const modal = useModal();
   return (
     <section className="bg-white px-4 py-12">
       <div className="mx-auto max-w-2xl">
@@ -27,7 +28,7 @@ export const ResponseSection = ({ answers }: ResponseSectionProps) => {
         <ResponseList answersData={answers} />
 
         <div
-          onClick={openModal}
+          onClick={modal.openModal}
           className="group hover:text-primaryNavy text-gray-5 mt-4 ml-auto flex w-fit cursor-pointer items-center gap-1"
         >
           <p className="text-sm">전체 답변 구경하기 (6)</p>
@@ -37,6 +38,7 @@ export const ResponseSection = ({ answers }: ResponseSectionProps) => {
           />
         </div>
       </div>
+      {modal.isModal && <BottomAnswerListModal onClose={modal.closeModal} />}
     </section>
   );
 };

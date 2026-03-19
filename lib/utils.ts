@@ -32,6 +32,8 @@ export const smoothScrollTo = (targetY: number, duration = 1200) => {
   requestAnimationFrame(step);
 };
 
+// ---------------
+
 export const formatAgeGroup = (ageGroup: AgeGroupType): string => {
   const map: Record<AgeGroupType, string> = {
     "10s": "10대",
@@ -52,4 +54,21 @@ export const formatKoreanTime = (time: string) => {
   return format(new Date(`1970-01-01T${time}`), "a h시", {
     locale: ko,
   });
+};
+
+export const formatKoreanDate = (dateString: string) => {
+  const date = new Date(dateString);
+
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
+  const dayNames = ["일", "월", "화", "수", "목", "금", "토"];
+  const dayName = dayNames[date.getDay()];
+
+  return `${month}월 ${day}일 (${dayName})`;
+};
+
+export const parseLocalDate = (dateStr: string) => {
+  const [year, month, day] = dateStr.split("-").map(Number);
+  return new Date(year, month - 1, day);
 };

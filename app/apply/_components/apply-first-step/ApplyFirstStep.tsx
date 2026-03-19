@@ -1,12 +1,14 @@
-import { EVENTS } from "@/constants/dummy-data/events.constants";
+import { EventData } from "@/types/event.type";
 
 import { EventCard } from "./EventCard";
 
 interface ApplyFirstStepProps {
+  events: EventData[];
   selectedId: number | null;
   setSelectedId: (id: number) => void;
 }
 export const ApplyFirstStep = ({
+  events,
   selectedId,
   setSelectedId,
 }: ApplyFirstStepProps) => {
@@ -17,7 +19,7 @@ export const ApplyFirstStep = ({
         <p className="mt-1 text-sm text-white/60">신청 가능한 모임이에요</p>
       </div>
       <div className="space-y-4">
-        {EVENTS.map((event) => (
+        {events.map((event) => (
           <EventCard
             key={event.id}
             event={event}

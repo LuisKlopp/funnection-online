@@ -1,31 +1,19 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
-import { useModalStore } from "@/store/useModalStore";
+export const useModal = () => {
+  const [isModal, setIsModal] = useState<boolean>(false);
 
-export const useModal = (id: string) => {
-  const isOpen = useModalStore((s) => s.isOpen(id));
-  const modalData = useModalStore((s) => s.getModalData());
-
-  const openModal = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (data?: any) => {
-      useModalStore.getState().openModal(id, data);
-    },
-    [id]
-  );
+  const openModal = useCallback(() => {
+    setIsModal(true);
+  }, []);
 
   const closeModal = useCallback(() => {
-    useModalStore.getState().closeModal(id);
-  }, [id]);
+    setIsModal(false);
+  }, []);
 
   const toggleModal = useCallback(() => {
-    const state = useModalStore.getState();
-    if (state.isOpen(id)) {
-      state.closeModal(id);
-    } else {
-      state.openModal(id);
-    }
-  }, [id]);
+    setIsModal((isOpen) => !isOpen);
+  }, []);
 
-  return { isModal: isOpen, openModal, closeModal, toggleModal, modalData };
+  return { isModal, openModal, closeModal, toggleModal };
 };
