@@ -61,7 +61,7 @@ export const BottomEventListModal = ({
               key={event.id}
               className="box-shadow-2 border-primaryNavy/70 rounded-xl border-2 bg-white p-4"
             >
-              <div className="flex items-center gap-1">
+              <div className="flex w-full items-center justify-center gap-1">
                 <div className="text-primaryNavy font-semibold">
                   {EVENT_TYPE_LABEL[event.eventType]}
                 </div>

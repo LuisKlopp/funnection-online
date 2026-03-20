@@ -13,8 +13,8 @@ export const DepositBox = () => {
       </div>
       <div className="space-y-4 text-sm">
         <Row label="은행" value="카카오뱅크" />
-        <Row label="계좌번호" value="3333-00-0000000" highlight />
-        <Row label="예금주" value="홍길동" />
+        <Row label="계좌번호" value="3333-31-6007060" highlight />
+        <Row label="예금주" value="류현" />
         <Row
           label="입금 금액"
           value="35,000원"

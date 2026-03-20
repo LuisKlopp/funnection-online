@@ -10,7 +10,10 @@ export const useCreateAnswerMutation = () => {
   return useMutation<unknown, Error, CreateAnswerRequest>({
     mutationFn: createAnswer,
 
-    onSuccess: () => {
+    onSuccess: (_, variables) => {
+      localStorage.setItem("user_gender", variables.gender);
+      localStorage.setItem("user_age_group", variables.ageGroup);
+
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.ANSWERS],
       });

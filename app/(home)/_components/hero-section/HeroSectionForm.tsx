@@ -77,7 +77,6 @@ export const HeroSectionForm = ({
         question={questionData.question}
         onComplete={handleTypingComplete}
       />
-
       <div
         className={`transition-all duration-700 ${
           questionDone
@@ -96,10 +95,13 @@ export const HeroSectionForm = ({
               "focus:ring-primaryNavy/50 focus:ring-2"
             )}
           />
-          <div className="mt-2 flex w-full justify-end">
-            <span className="text-gray-5 text-xs">
-              {value.length}/{maxLength}
-            </span>
+          <div className="mt-1 flex items-center justify-between">
+            <span className="text-gray-7 shrink-0 text-sm">30대 🙋🏻‍♂️</span>
+            <div className="flex w-full justify-end">
+              <span className="text-gray-5 text-xs">
+                {value.length}/{maxLength}
+              </span>
+            </div>
           </div>
         </div>
         <div className="mt-4 w-full max-w-3xl">

@@ -10,7 +10,7 @@ export const ApplyCompletePageClient = () => {
   return (
     <div className="bg-applyBackgroundColor smd:mx-auto flex h-svh max-w-175 flex-col text-white">
       <ApplyCompleteHeader />
-      <div className="relative flex h-full flex-1 flex-col items-center gap-4 overflow-y-auto px-4 py-6">
+      <div className="relative flex h-full flex-1 flex-col items-center gap-4 overflow-y-auto px-4 py-8">
         <CheckBox />
         <DepositBox />
         <NoticeBox />

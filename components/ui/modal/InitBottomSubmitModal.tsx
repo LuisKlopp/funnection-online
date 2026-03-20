@@ -15,6 +15,8 @@ import { useLockBodyScroll } from "@/hooks/ui/useLockBodyScroll";
 import { useQuestionStore } from "@/store/question.store";
 import { AgeGroupType, GenderType } from "@/types/home.type";
 
+import { SubmitLoadingBar } from "../loading/SubmitLoadingBar";
+
 export const InitBottomSubmitModal = ({
   content,
   onClose,
@@ -24,18 +26,29 @@ export const InitBottomSubmitModal = ({
 }) => {
   const [selectedAge, setSelectedAge] = useState<AgeGroupType | null>(null);
   const [selectedGender, setSelectedGender] = useState<GenderType | null>(null);
-  const { mutate } = useCreateAnswerMutation();
+  const { mutate, isPending } = useCreateAnswerMutation();
+  const [isSuccess, setIsSuccess] = useState(false);
   const question = useQuestionStore((s) => s.question);
 
   const handleSubmit = () => {
     if (!question?.id || !selectedGender || !selectedAge) return;
 
-    mutate({
-      questionId: question?.id,
-      content: content,
-      gender: selectedGender,
-      ageGroup: selectedAge,
-    });
+    mutate(
+      {
+        questionId: question?.id,
+        content,
+        gender: selectedGender,
+        ageGroup: selectedAge,
+      },
+      {
+        onSuccess: () => {
+          setIsSuccess(true);
+          setTimeout(() => {
+            onClose();
+          }, 1000);
+        },
+      }
+    );
   };
 
   useLockBodyScroll();
@@ -125,9 +138,16 @@ export const InitBottomSubmitModal = ({
 
             <button
               onClick={handleSubmit}
-              className="bg-primaryNavy/90 mt-6 w-full rounded-xl py-3 text-xs font-semibold text-white"
+              disabled={isPending || isSuccess}
+              className="bg-primaryNavy/90 mt-6 flex w-full items-center justify-center rounded-xl py-3 text-xs font-semibold text-white"
             >
-              답변하기
+              {isPending ? (
+                <SubmitLoadingBar />
+              ) : isSuccess ? (
+                "제출완료"
+              ) : (
+                "답변하기"
+              )}
             </button>
           </motion.div>
         </div>

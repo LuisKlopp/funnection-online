@@ -2,7 +2,7 @@
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-2/80 w-full px-6 pt-20 pb-10">
+    <footer className="bg-gray-2/80 w-full px-6 pt-20 pb-25">
       <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
         <div>
           <h3 className="text-primaryNavy mb-4 text-xl font-bold">퍼넥션</h3>
