@@ -26,8 +26,8 @@ export const Header = () => {
     setMobileOpen(false);
   }, [pathname]);
 
-  const isFunnection = pathname === "/funnection";
-  const isElio = pathname === "/elio";
+  const isFunnection = pathname === "/about-funnection";
+  const isElio = pathname === "/about-elio";
 
   return (
     <header

@@ -44,7 +44,7 @@ export const HeaderNavMobile = ({
       >
         <div className="box-shadow-3 bg-white p-2">
           <Link
-            href="/funnection"
+            href="/about-funnection"
             className={cn(
               "block rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200",
               isFunnection
@@ -56,7 +56,7 @@ export const HeaderNavMobile = ({
           </Link>
           <div className="border-gray-2 mx-4 w-[10%] border-b" />
           <Link
-            href="/elio"
+            href="/about-elio"
             className={cn(
               "block rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200",
               isElio

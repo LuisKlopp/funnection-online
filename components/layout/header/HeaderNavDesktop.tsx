@@ -15,7 +15,7 @@ export const HeaderNavDesktop = ({
     <div className="smd:flex hidden">
       <div className="bg-primaryNavy/8 flex items-center rounded-full px-1 py-1">
         <Link
-          href="/funnection"
+          href="/about-funnection"
           className={cn(
             "rounded-full px-4 py-1 text-sm font-medium transition-all duration-200",
             isFunnection
@@ -29,7 +29,7 @@ export const HeaderNavDesktop = ({
         <div className="bg-primaryNavy/80 mx-1 h-4 w-0.5" />
 
         <Link
-          href="/elio"
+          href="/about-elio"
           className={cn(
             "rounded-full px-4 py-1 text-sm font-medium transition-all duration-200",
             isElio

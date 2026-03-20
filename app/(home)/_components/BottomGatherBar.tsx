@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight, Users } from "lucide-react";
+import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { useScrollStore } from "@/store/scroll.store";
@@ -74,8 +75,8 @@ export const BottomGatherBar = () => {
               </p>
             </div>
           </div>
-          <button
-            type="button"
+          <Link
+            href="/about-funnection"
             className={cn(
               "btn-press-in box-shadow-2 flex items-center gap-2 rounded-2xl border-[1.5px] px-3 py-2 text-xs font-semibold transition-all duration-300",
               scrolled
@@ -83,9 +84,9 @@ export const BottomGatherBar = () => {
                 : "border-primaryNavy/90 text-primaryNavy/90"
             )}
           >
-            구경하기
+            자세히 보기
             <ArrowRight className="h-4 w-4" />
-          </button>
+          </Link>
         </div>
       </div>
     </div>
