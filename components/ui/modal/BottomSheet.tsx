@@ -24,7 +24,7 @@ export const BottomSheet = ({
       className="mx-auto max-w-125"
       isOpen={isOpen}
       onClose={onClose}
-      snapPoints={[0, 0.9, 1]}
+      snapPoints={[0, 0.7, 1]}
       initialSnap={1}
       dragVelocityThreshold={800}
       disableScrollLocking

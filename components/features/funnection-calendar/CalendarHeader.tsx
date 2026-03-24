@@ -5,7 +5,7 @@ export const CalendarHeader = () => {
         <p className="text-primaryNavy text-xs tracking-wider">SCHEDULE</p>
 
         <h2 className="text-gray-8 smd:text-2xl text-xl font-bold">
-          퍼넥션 일정
+          퍼넥션 모임 일정
         </h2>
       </div>
     </div>

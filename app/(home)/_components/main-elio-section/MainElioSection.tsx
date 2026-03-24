@@ -15,7 +15,7 @@ export const MainElioSection = () => {
           이 공간을 만든 사람
         </p>
         <div className="mb-8 flex items-end gap-2">
-          <h2 className="smd:text-4xl text-4xl font-bold text-gray-900">
+          <h2 className="smd:text-4xl text-gray-8 text-4xl font-bold">
             엘리오
           </h2>
           <p className="smd:text-3xl text-gray-6 text-2xl font-normal">
