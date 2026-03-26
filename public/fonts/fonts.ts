@@ -29,6 +29,7 @@ export const pretendard = localFont({
     },
   ],
   display: "swap",
+  preload: false,
 });
 
 export const dmDisplay = localFont({
@@ -40,6 +41,7 @@ export const dmDisplay = localFont({
       style: "italic",
     },
   ],
+  preload: false,
 });
 
 export const maruBuri = localFont({
@@ -52,4 +54,5 @@ export const maruBuri = localFont({
     },
   ],
   display: "swap",
+  preload: false,
 });

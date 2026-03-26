@@ -24,7 +24,7 @@ export const BottomSheet = ({
       className="mx-auto max-w-125"
       isOpen={isOpen}
       onClose={onClose}
-      snapPoints={[0, 0.7, 1]}
+      snapPoints={[0, 0.9, 1]}
       initialSnap={1}
       dragVelocityThreshold={800}
       disableScrollLocking
@@ -34,7 +34,7 @@ export const BottomSheet = ({
           <div className="mx-auto mt-2 h-1.5 w-12 rounded-full bg-gray-500/80" />
         </Sheet.Header>
 
-        <Sheet.Content className={cn("smd:pb-20 pb-16", contentClassName)}>
+        <Sheet.Content className={cn("smd:pb-20 pb-20", contentClassName)}>
           {children}
         </Sheet.Content>
       </Sheet.Container>

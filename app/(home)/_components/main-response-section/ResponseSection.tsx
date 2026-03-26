@@ -28,7 +28,7 @@ export const ResponseSection = ({ answers }: ResponseSectionProps) => {
         <ResponseList answersData={answers} />
 
         <div
-          onClick={modal.openModal}
+          onClick={() => modal.openModal("answers")}
           className="group hover:text-primaryNavy text-gray-5 mt-4 ml-auto flex w-fit cursor-pointer items-center gap-1"
         >
           <p className="text-sm">전체 답변 구경하기 (6)</p>

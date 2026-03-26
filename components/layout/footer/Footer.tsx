@@ -2,7 +2,7 @@
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-2/80 w-full px-6 pt-20 pb-25">
+    <footer className="bg-gray-2/80 w-full px-6 pt-20 pb-30">
       <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
         <div>
           <h3 className="text-primaryNavy mb-4 text-xl font-bold">퍼넥션</h3>
@@ -32,7 +32,10 @@ export const Footer = () => {
       </div>
 
       <div className="mx-auto mt-16 flex max-w-6xl flex-col border-t border-gray-200 pt-6 text-sm text-gray-400 md:flex-row md:justify-between">
-        <p>© 2026 Funnection. All rights reserved.</p>
+        <p>
+          © 2026 Funnection. All rights reserved. <br className="smd:hidden" />
+          Created by Elio.
+        </p>
       </div>
     </footer>
   );

@@ -13,6 +13,7 @@ import {
 import { useCreateAnswerMutation } from "@/hooks/react-query/useCreateAnswerMutation";
 import { useLockBodyScroll } from "@/hooks/ui/useLockBodyScroll";
 import { useQuestionStore } from "@/store/question.store";
+import { useUserInfoStore } from "@/store/userInfo.store";
 import { AgeGroupType, GenderType } from "@/types/home.type";
 
 import { SubmitLoadingBar } from "../loading/SubmitLoadingBar";
@@ -29,6 +30,7 @@ export const InitBottomSubmitModal = ({
   const { mutate, isPending } = useCreateAnswerMutation();
   const [isSuccess, setIsSuccess] = useState(false);
   const question = useQuestionStore((s) => s.question);
+  const { setUserInfo } = useUserInfoStore();
 
   const handleSubmit = () => {
     if (!question?.id || !selectedGender || !selectedAge) return;
@@ -42,7 +44,13 @@ export const InitBottomSubmitModal = ({
       },
       {
         onSuccess: () => {
+          setUserInfo({
+            ageGroup: selectedAge,
+            gender: selectedGender,
+          });
+
           setIsSuccess(true);
+
           setTimeout(() => {
             onClose();
           }, 1000);
@@ -50,7 +58,6 @@ export const InitBottomSubmitModal = ({
       }
     );
   };
-
   useLockBodyScroll();
 
   return (

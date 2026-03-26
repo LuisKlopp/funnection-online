@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { InstagramIcon } from "@/components/ui/icons/InstagramIcon";
 
-export const MainFunnectionInstagram = () => {
+export const MainFunnectionRedirectButton = () => {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(
@@ -33,7 +33,7 @@ export const MainFunnectionInstagram = () => {
         <Link
           target="_blank"
           rel="noopener noreferrer"
-          href="https://blog.naver.com/fbgus333"
+          href="https://blog.naver.com/funnection-elio"
           className="box-shadow-2 text-gray-6 hover:bg-gray-1 inline-flex cursor-pointer items-center gap-3 rounded-full border bg-white px-6 py-2 transition-all"
         >
           <img

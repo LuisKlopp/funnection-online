@@ -3,8 +3,8 @@
 import { FunnectionCalendar } from "@/components/features/funnection-calendar/FunnectionCalendar";
 
 import { SectionHeader } from "../SectionHeader";
-import { MainFunnectionInstagram } from "./MainFunnectionInstagram";
 import { MainFunnectionPhotoCard } from "./MainFunnectionPhotoCard";
+import { MainFunnectionRedirectButton } from "./MainFunnectionRedirectButton";
 
 export const MainFunnectionDateSection = () => {
   return (
@@ -22,7 +22,7 @@ export const MainFunnectionDateSection = () => {
             ↑ 이미지를 클릭해서 확인해보세요 😆{" "}
           </p>
           <FunnectionCalendar />
-          <MainFunnectionInstagram />
+          <MainFunnectionRedirectButton />
         </div>
       </div>
     </section>

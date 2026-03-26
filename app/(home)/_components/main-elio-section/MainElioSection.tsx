@@ -41,27 +41,39 @@ export const MainElioSection = () => {
         </p>
         <ul className="smd:text-lg smd:col-start-2 smd:space-y-2 space-y-3 text-gray-700">
           <li className="flex items-start gap-3">
-            <span className="mt-2 h-2 w-2 rounded-full bg-[#4A5FD9]" />
+            <span className="bg-primaryNavy mt-2 h-2 w-2 rounded-full" />
             퍼넥션 모임 진행자
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-2 h-2 w-2 rounded-full bg-[#4A5FD9]" />웹 개발자
+            <span className="bg-primaryNavy mt-2 h-2 w-2 rounded-full" />웹
+            개발자
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-2 h-2 w-2 rounded-full bg-[#4A5FD9]" />
+            <span className="bg-primaryNavy mt-2 h-2 w-2 rounded-full" />
             사람을 연결하는 커뮤니케이터
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-2 h-2 w-2 rounded-full bg-[#4A5FD9]" />
+            <span className="bg-primaryNavy mt-2 h-2 w-2 rounded-full" />
             질문을 통해 관계를 형성합니다. 재밌게요.
           </li>
         </ul>
-        <a
-          href="/contact"
-          className="smd:col-start-2 ml-auto w-fit font-medium text-[#4A5FD9] underline underline-offset-4 hover:text-[#3B4ECC]"
-        >
-          연락하기
-        </a>
+        <div className="smd:justify-end flex w-full flex-col gap-1 text-sm">
+          <span className="text-primaryNavy font-medium">문의하기</span>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-1">
+              <span className="smd:text-[12px] text-[10px]">📞</span>
+              <span className="smd:col-start-2 text-gray-6 smd:text-base w-fit underline-offset-4">
+                010-9975-5904
+              </span>
+            </div>
+            <div className="flex items-center gap-1">
+              <span className="smd:text-[12px] text-[10px]">📩</span>
+              <span className="smd:col-start-2 text-gray-6 smd:text-base w-fit underline-offset-4">
+                fbgus333@naver.com
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

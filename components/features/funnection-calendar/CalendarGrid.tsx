@@ -84,7 +84,7 @@ export const CalendarGrid = ({
                 onSelectDate(date);
 
                 if (dayEvents.length > 0) {
-                  modal.openModal();
+                  modal.openModal("events");
                 }
               }}
             />

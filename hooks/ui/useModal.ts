@@ -1,19 +1,21 @@
 import { useCallback, useState } from "react";
 
-export const useModal = () => {
-  const [isModal, setIsModal] = useState<boolean>(false);
+type ModalType = "submit" | "answers" | "events" | "photos" | null;
 
-  const openModal = useCallback(() => {
-    setIsModal(true);
+export const useModal = () => {
+  const [isModal, setIsModal] = useState<ModalType>(null);
+
+  const openModal = useCallback((type: ModalType) => {
+    setIsModal(type);
   }, []);
 
   const closeModal = useCallback(() => {
-    setIsModal(false);
+    setIsModal(null);
   }, []);
 
-  const toggleModal = useCallback(() => {
-    setIsModal((isOpen) => !isOpen);
-  }, []);
-
-  return { isModal, openModal, closeModal, toggleModal };
+  return {
+    isModal,
+    openModal,
+    closeModal,
+  };
 };

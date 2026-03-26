@@ -20,7 +20,7 @@ export const TitleBadge = ({ title, isBackground }: TitleBadgeProps) => {
         )}
       />
 
-      <span className="smd:text-sm text-xs font-normal">{title}</span>
+      <span className="smd:text-sm text-[13px] font-normal">{title}</span>
     </div>
   );
 };

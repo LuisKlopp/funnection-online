@@ -42,7 +42,7 @@ export const MainFunnectionPhotoCard = () => {
           {FUNNECTION_PHOTOS.map((photo, i) => (
             <div key={i} className="relative min-w-full">
               <Image
-                onClick={modal.openModal}
+                onClick={() => modal.openModal("photos")}
                 src={photo}
                 alt="funnection meeting"
                 sizes="100vw"

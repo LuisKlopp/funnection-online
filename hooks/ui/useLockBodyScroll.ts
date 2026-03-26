@@ -1,27 +1,28 @@
+"use client";
+
 import { useEffect } from "react";
 
 export const useLockBodyScroll = () => {
   useEffect(() => {
     const body = document.body;
-    const html = document.documentElement;
+    const scrollY = window.scrollY;
 
-    const originalBodyOverflow = body.style.overflow;
-    const originalHtmlOverflow = html.style.overflow;
-
-    body.style.overflow = "hidden";
-    html.style.overflow = "hidden";
-
-    const preventTouch = (e: TouchEvent) => {
-      e.preventDefault();
-    };
-
-    document.addEventListener("touchmove", preventTouch, { passive: false });
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.width = "100%";
 
     return () => {
-      body.style.overflow = originalBodyOverflow;
-      html.style.overflow = originalHtmlOverflow;
+      const y = body.style.top;
 
-      document.removeEventListener("touchmove", preventTouch);
+      body.style.position = "";
+      body.style.top = "";
+      body.style.left = "";
+      body.style.right = "";
+      body.style.width = "";
+
+      window.scrollTo(0, parseInt(y || "0") * -1);
     };
   }, []);
 };
