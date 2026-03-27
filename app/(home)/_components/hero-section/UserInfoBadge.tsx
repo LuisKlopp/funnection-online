@@ -15,15 +15,18 @@ export const UserInfoBadge = ({ questionDone }: UserInfoBadgeProps) => {
   return (
     <div
       className={cn(
-        "flex w-fit px-2 pt-1 text-sm transition-all duration-700",
+        "flex w-full justify-between px-2 pt-1 text-sm transition-all duration-700",
         questionDone
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"
       )}
     >
-      <span className="text-gray-6 mr-auto h-6 font-normal">
+      <div className="text-gray-6">
         {formatAgeGroup(userInfo.ageGroup)}{" "}
-        {userInfo.gender === "male" ? "🙋🏻‍♂️" : "🙋🏻‍♀️"}
+        {userInfo.gender === "male" ? "🙋🏻‍♂️" : "🙋🏻‍♀️"}{" "}
+      </div>
+      <span className="text-primaryNavy/80 font-medium">
+        {userInfo.nickname}
       </span>
     </div>
   );

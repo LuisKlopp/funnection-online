@@ -81,7 +81,7 @@ export const ResponseCard = ({ variant, answerInfo }: ResponseCardProps) => {
           <p
             ref={textRef}
             className={cn(
-              "text-gray-5 leading-relaxed wrap-break-word",
+              "text-gray-7 leading-relaxed wrap-break-word",
               isSheet ? "text-[13px] leading-5" : "text-[14px]",
               !isSheet && !expanded && "line-clamp-2 leading-5.5",
               !isSheet && expanded && "leading-5.5"
@@ -118,7 +118,7 @@ export const ResponseCard = ({ variant, answerInfo }: ResponseCardProps) => {
                   : "bg-pink-700/40"
               )}
             />
-            <p className="text-gray-4 text-xs">닉네임</p>
+            <p className="text-gray-5 text-xs">{answerInfo.nickname}</p>
           </div>
           <LikeButton ref={likeRef} likes={answerInfo.likeCount} />
         </div>

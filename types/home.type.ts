@@ -19,6 +19,7 @@ export interface HomeAnswer {
   isHidden: boolean;
   createdAt: string;
   updatedAt: string;
+  nickname: string;
 }
 
 export interface HomeResponse {

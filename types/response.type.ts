@@ -10,4 +10,5 @@ export interface ResponsesData {
   isHidden: boolean;
   createdAt: string;
   updatedAt: string;
+  nickname: string;
 }

@@ -7,6 +7,7 @@ import { AgeGroupType, GenderType } from "@/types/home.type";
 interface UserInfoType {
   ageGroup: AgeGroupType;
   gender: GenderType;
+  nickname: string;
 }
 
 interface UserInfoStore {

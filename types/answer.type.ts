@@ -5,4 +5,5 @@ export interface CreateAnswerRequest {
   content: string;
   gender: GenderType;
   ageGroup: AgeGroupType;
+  nickname: string;
 }

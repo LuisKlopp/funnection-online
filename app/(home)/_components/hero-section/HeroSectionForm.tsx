@@ -105,11 +105,11 @@ export const HeroSectionForm = ({
               {value.length}/{maxLength}
             </span>
           </div>
-          <div className="flex items-center">
+          <div className="my-2 flex items-center">
             {userInfo && <UserInfoBadge questionDone={questionDone} />}
           </div>
         </div>
-        <div className="mt-4 w-full max-w-3xl">
+        <div className="w-full max-w-3xl">
           <button
             onClick={() => modal.openModal("submit")}
             disabled={value.length === 0}
