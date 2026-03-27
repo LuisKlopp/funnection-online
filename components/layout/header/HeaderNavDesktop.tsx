@@ -37,7 +37,7 @@ export const HeaderNavDesktop = ({
               : "text-gray-8 hover:bg-primaryNavy hover:text-white"
           )}
         >
-          엘리오는 누구인가요?
+          엘리오는 어떤 사람인가요?
         </Link>
       </div>
     </div>

@@ -11,12 +11,13 @@ import {
 import { BottomAnswerListModal } from "@/components/ui/modal/BottomAnswerListModal";
 import { InitBottomSubmitModal } from "@/components/ui/modal/InitBottomSubmitModal";
 import { useModal } from "@/hooks/ui/useModal";
-import { cn, formatAgeGroup, smoothScrollTo } from "@/lib/utils";
+import { cn, smoothScrollTo } from "@/lib/utils";
 import { useUserInfoStore } from "@/store/userInfo.store";
 import { HomeQuestion } from "@/types/home.type";
 
 import { TitleBadge } from "../TitleBadge";
 import { HeroSectionFormQuestion } from "./HeroSectionFormQuestion";
+import { UserInfoBadge } from "./UserInfoBadge";
 
 interface HeroSectionFormProps {
   visible: boolean;
@@ -83,21 +84,6 @@ export const HeroSectionForm = ({
         question={questionData.question}
         onComplete={handleTypingComplete}
       />
-      {userInfo && (
-        <div
-          className={cn(
-            "flex w-fit rounded-t-lg px-2 pt-1 text-sm transition-all duration-700",
-            questionDone
-              ? "translate-y-0 opacity-100"
-              : "pointer-events-none translate-y-4 opacity-0"
-          )}
-        >
-          <span className="text-gray-5 mr-auto h-6 font-medium">
-            {formatAgeGroup(userInfo.ageGroup)}{" "}
-            {userInfo.gender === "male" ? "🙋🏻‍♂️" : "🙋🏻‍♀️"}
-          </span>
-        </div>
-      )}
       <div
         className={`transition-all duration-700 ${
           questionDone
@@ -106,22 +92,21 @@ export const HeroSectionForm = ({
         }`}
       >
         <div className="w-full max-w-3xl">
-          <textarea
-            maxLength={maxLength}
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder={`당신의 생각을 자유롭게 적어주세요. 상세히 적을수록 좋아요!`}
-            className={cn(
-              "box-shadow-1 scroll-none no-scrollbar smd:text-base text-gray-7 h-24 w-full resize-none rounded-2xl bg-white p-4 text-base break-keep transition-all duration-200 outline-none placeholder:text-sm placeholder:text-gray-400",
-              "focus:ring-primaryNavy/50 focus:ring-2"
-            )}
-          />
-          <div className="mt-1 flex items-center justify-between">
-            <div className="flex w-full justify-end">
-              <span className="text-gray-5 text-xs">
-                {value.length}/{maxLength}
-              </span>
-            </div>
+          <div className="box-shadow-1 focus:ring-primaryNavy/50 rounded-2xl bg-white p-4 focus:ring-2">
+            <textarea
+              maxLength={maxLength}
+              wrap="soft"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              placeholder={`당신의 생각을 자유롭게 적어주세요. 상세히 적을수록 좋아요!`}
+              className="scroll-none no-scrollbar text-gray-7 h-24 w-full resize-none bg-white text-[15px] transition-all duration-200 outline-none placeholder:text-[15px] placeholder:text-gray-400"
+            />
+            <span className="text-gray-5 flex w-full justify-end text-xs">
+              {value.length}/{maxLength}
+            </span>
+          </div>
+          <div className="flex items-center">
+            {userInfo && <UserInfoBadge questionDone={questionDone} />}
           </div>
         </div>
         <div className="mt-4 w-full max-w-3xl">

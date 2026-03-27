@@ -64,7 +64,7 @@ export const HeaderNavMobile = ({
                 : "text-gray-8 hover:bg-primaryNavy/10"
             )}
           >
-            엘리오는 누구인가요?
+            엘리오는 어떤 사람인가요?
           </Link>
         </div>
       </div>
