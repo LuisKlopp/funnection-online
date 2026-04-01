@@ -1,8 +1,12 @@
+import { AdminEventGroup } from "@/types/admin-application.type";
+
 import { axiosInstance } from "./axios";
 
-export const fetchAllApplications = async () => {
-  const res = await axiosInstance.get("/funnection-online/admin/events");
-  return res.data;
+export const fetchAllApplications = async (): Promise<AdminEventGroup[]> => {
+  const { data } = await axiosInstance.get<AdminEventGroup[]>(
+    "/funnection-online/admin/events"
+  );
+  return data;
 };
 
 export const fetchApplicationsByEvent = async (eventId: number) => {
