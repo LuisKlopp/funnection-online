@@ -104,6 +104,29 @@ export const AdminEventCard = ({
 }: AdminEventCardProps) => {
   const FUNNECTION_CAPACITY = 8;
   const isFunnection = event.eventType === "FUNNECTION";
+  const headerTheme = isFunnection
+    ? {
+        cardBorder: "border-blue-200/80",
+        headerBg:
+          "bg-linear-to-r from-[#4678DD] via-[#5284E5] to-[#5E90EA]",
+        eventTypeBadge:
+          "border-[#C8DAFF] bg-[#EEF5FF] text-primaryNavy shadow-[0_2px_10px_rgba(28,75,165,0.12)]",
+        infoBadge:
+          "border-[#D7E5FF] bg-[#F4F8FF] text-gray-900 shadow-[0_2px_10px_rgba(28,75,165,0.12)]",
+        iconColor: "text-primaryNavy/80",
+        mutedText: "text-gray-600",
+      }
+    : {
+        cardBorder: "border-emerald-200/80",
+        headerBg:
+          "bg-linear-to-r from-emerald-600 via-emerald-500 to-teal-500",
+        eventTypeBadge:
+          "border-emerald-200 bg-emerald-50 text-emerald-700 shadow-[0_2px_10px_rgba(5,150,105,0.12)]",
+        infoBadge:
+          "border-emerald-100 bg-emerald-50/95 text-gray-900 shadow-[0_2px_10px_rgba(5,150,105,0.12)]",
+        iconColor: "text-emerald-700/80",
+        mutedText: "text-gray-600",
+      };
   const confirmedApplications = event.applications.filter(
     (item) => item.status === "CONFIRMED"
   );
@@ -130,7 +153,7 @@ export const AdminEventCard = ({
       layout
       className={cn(
         "overflow-hidden rounded-3xl border bg-white shadow-[0_14px_36px_rgba(15,23,42,0.08)]",
-        isFunnection ? "border-blue-100/90" : "border-emerald-100/90"
+        headerTheme.cardBorder
       )}
       transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
     >
@@ -139,14 +162,17 @@ export const AdminEventCard = ({
         onClick={onToggle}
         className={cn(
           "flex w-full flex-col gap-3 p-4 text-left transition sm:p-5",
-          isFunnection
-            ? "bg-primaryNavy"
-            : "bg-linear-to-r from-emerald-600 via-green-600 to-teal-600"
+          headerTheme.headerBg
         )}
       >
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-2">
-            <div className="inline-flex rounded-full border border-white/30 bg-white/20 px-2.5 py-1 text-[10px] font-semibold tracking-[0.16em] text-white/95 uppercase">
+            <div
+              className={cn(
+                "inline-flex rounded-full border px-2.5 py-1 text-[10px] font-semibold tracking-[0.16em] uppercase",
+                headerTheme.eventTypeBadge
+              )}
+            >
               {event.eventType}
             </div>
             <div className="text-lg font-semibold tracking-tight text-white sm:text-xl">
@@ -166,8 +192,13 @@ export const AdminEventCard = ({
 
         <div className="space-y-2">
           <div className="flex flex-wrap gap-1.5">
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/15 px-2.5 py-1 text-[11px] text-white">
-              <CalendarDays className="h-3.5 w-3.5" />
+            <div
+              className={cn(
+                "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px]",
+                headerTheme.infoBadge
+              )}
+            >
+              <CalendarDays className={cn("h-3.5 w-3.5", headerTheme.iconColor)} />
               {formatKoreanDate(event.eventDate)} ·{" "}
               {formatKoreanTime(event.startTime)}
             </div>
@@ -177,18 +208,44 @@ export const AdminEventCard = ({
             {headerStats.map((stat) => (
               <div
                 key={stat.label}
-                className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-white/15 px-2 py-1 text-[10px] font-medium text-white sm:px-2.5 sm:text-[11px]"
+                className={cn(
+                  "inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-medium text-gray-900 sm:px-2.5 sm:text-[11px]",
+                  headerTheme.infoBadge
+                )}
               >
-                <span className="text-white/72">{stat.label}</span>
-                <span className="font-semibold text-white">{stat.value}</span>
+                <span
+                  className={cn(
+                    headerTheme.mutedText,
+                    stat.label === "남" && "text-primaryNavy",
+                    stat.label === "여" && "text-pink-600"
+                  )}
+                >
+                  {stat.label}
+                </span>
+                <span
+                  className={cn(
+                    "font-semibold text-gray-900",
+                    stat.label === "남" && "text-primaryNavy",
+                    stat.label === "여" && "text-pink-600"
+                  )}
+                >
+                  {stat.value}
+                </span>
               </div>
             ))}
 
             {isFunnection && (
-              <div className="inline-flex items-center gap-1 rounded-full border border-white/25 bg-white/20 px-2 py-1 text-[10px] font-semibold text-white sm:px-2.5 sm:text-[11px]">
-                <span className="text-white/72">정원</span>
+              <div
+                className={cn(
+                  "inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold text-gray-900 sm:px-2.5 sm:text-[11px]",
+                  headerTheme.infoBadge
+                )}
+              >
+                <span className={headerTheme.mutedText}>정원</span>
                 <span>{confirmedApplications.length}</span>
-                <span className="text-white/72">/</span>
+                <span className={cn("text-gray-500", headerTheme.mutedText)}>
+                  /
+                </span>
                 <span>{FUNNECTION_CAPACITY}</span>
               </div>
             )}

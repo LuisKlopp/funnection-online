@@ -14,24 +14,18 @@ export const AdminApplicationsHeader = ({
           <div className="text-primaryNavy inline-flex rounded-full border border-blue-200/80 bg-white/80 px-2.5 py-1 text-[9px] font-semibold tracking-[0.18em] uppercase backdrop-blur-sm">
             Admin
           </div>
-          <h1 className="mt-1.5 text-lg font-semibold tracking-tight text-gray-900 sm:text-xl">
-            신청자 관리
-          </h1>
         </div>
 
-        <div className="flex items-center gap-2">
-          <div className="rounded-2xl border border-white/80 bg-white/85 px-3 py-2 shadow-sm backdrop-blur">
-            <div className="text-[10px] font-medium tracking-[0.18em] text-gray-400 uppercase">
-              Events
-            </div>
-            <div className="mt-0.5 flex items-end gap-1">
-              <span className="text-xl font-semibold text-gray-900 sm:text-2xl">
-                {totalEvents}
-              </span>
-              <span className="pb-0.5 text-[11px] text-gray-500">개</span>
-            </div>
+        <div className="flex flex-col items-center rounded-2xl py-2">
+          <div className="flex items-center gap-2">
+            <span className="text-gray-5 text-sm">현재 모임</span>
+            <span className="text-gray-8 text-xl font-semibold sm:text-2xl">
+              {totalEvents}
+            </span>
           </div>
+        </div>
 
+        <div className="flex items-center">
           {onLogout && (
             <button
               type="button"

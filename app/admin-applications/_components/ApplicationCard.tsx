@@ -14,24 +14,6 @@ interface ApplicationCardProps {
   onCancel: (applicationId: number) => void;
 }
 
-const statusStyleMap: Record<
-  AdminApplication["status"],
-  { label: string; className: string }
-> = {
-  APPLIED: {
-    label: "신청 대기",
-    className: "border-amber-200 bg-amber-50 text-amber-700",
-  },
-  CONFIRMED: {
-    label: "참여 확정",
-    className: "border-emerald-200 bg-emerald-50 text-emerald-700",
-  },
-  CANCELLED: {
-    label: "취소됨",
-    className: "border-rose-200 bg-rose-50 text-rose-700",
-  },
-};
-
 export const ApplicationCard = ({
   application,
   isActionPending,
@@ -42,8 +24,7 @@ export const ApplicationCard = ({
   const [isMemoExpanded, setIsMemoExpanded] = useState(false);
   const [isMemoOverflowing, setIsMemoOverflowing] = useState(false);
   const [expandedMemoHeight, setExpandedMemoHeight] = useState(0);
-  const statusMeta = statusStyleMap[application.status];
-  const collapsedMemoHeight = 40;
+  const collapsedMemoHeight = 20;
 
   useEffect(() => {
     if (!application.memo) return;
@@ -78,25 +59,17 @@ export const ApplicationCard = ({
           <div className="truncate text-sm font-semibold text-gray-900">
             {application.nickname}
           </div>
-          <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-gray-600">
-            <span className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2 py-0.5 font-medium">
-              <UserRound className="h-3 w-3" />
-              {application.birthYear} / {getGenderEmoji(application.gender)}
-            </span>
-            <span className="inline-flex items-center gap-1 truncate">
-              <Phone className="h-3 w-3 shrink-0 text-gray-400" />
-              <span className="truncate">{application.phoneNumber}</span>
-            </span>
-          </div>
         </div>
 
-        <div
-          className={cn(
-            "shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold",
-            statusMeta.className
-          )}
-        >
-          {statusMeta.label}
+        <div className="min-w-0 shrink-0 rounded-full bg-gray-100 px-2.5 py-1 text-[10px] font-medium text-gray-600">
+          <div className="flex items-center gap-1 whitespace-nowrap">
+            <UserRound className="h-3 w-3 shrink-0" />
+            <span>{application.birthYear}</span>
+            <span>{getGenderEmoji(application.gender)}</span>
+            <span className="text-gray-400">|</span>
+            <Phone className="h-3 w-3 shrink-0 text-gray-400" />
+            <span>{application.phoneNumber}</span>
+          </div>
         </div>
       </div>
 
