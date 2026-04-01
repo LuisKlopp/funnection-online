@@ -46,12 +46,6 @@ export const BottomGatherBar = () => {
                 퍼넥션 모임
               </p>
             </div>
-            <div
-              className={cn(
-                "border-primaryNavy/60 w-[20%] border-t",
-                scrolled && "border-white/40"
-              )}
-            />
             <div className="flex items-center gap-2">
               <p
                 className={cn(

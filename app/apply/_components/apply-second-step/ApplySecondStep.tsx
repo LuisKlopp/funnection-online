@@ -6,6 +6,7 @@ import { EventData } from "@/types/event.type";
 import { FormState } from "../../hooks/useApplyStep";
 import { FormField } from "./form/FormField";
 import { GenderSelect } from "./form/GenderSelect";
+import { NicknameInput } from "./form/NicknameInput";
 import { PhoneNumberInput } from "./form/PhoneNumberInput";
 import { TextAreaInput } from "./form/TextAreaInput";
 import { YearInput } from "./form/YearInput";
@@ -63,22 +64,34 @@ export const ApplySecondStep = ({
       </FormField>
 
       <FormField label="나이" description="태어난 년도를 입력해주세요">
-        <YearInput value={form.year} onChange={(v) => updateField("year", v)} />
+        <YearInput
+          value={form.birthYear}
+          onChange={(v) => updateField("birthYear", v)}
+        />
       </FormField>
-
+      <FormField
+        label="닉네임"
+        description="모임 중에는 닉네임 뒤에 님자를 붙여 호칭할거예요!"
+      >
+        <NicknameInput
+          value={form.nickname}
+          onChange={(v) => updateField("nickname", v)}
+        />
+      </FormField>
       <FormField
         label="자기소개"
-        description="어떤 사람인지 자유롭게 소개해주세요"
+        description="어떤 사람인지 자유롭게 소개해주세요 (10자 이상)"
       >
         <TextAreaInput
           value={form.intro}
+          maxLength={100}
           onChange={(v) => updateField("intro", v)}
         />
       </FormField>
 
       <FormField
         label="전화번호"
-        description="카카오톡으로 모임 안내를 보내드려요"
+        description="문자(SMS)로 모임 안내를 보내드려요"
       >
         <PhoneNumberInput
           value={form.phone}

@@ -72,3 +72,15 @@ export const parseLocalDate = (dateStr: string) => {
   const [year, month, day] = dateStr.split("-").map(Number);
   return new Date(year, month - 1, day);
 };
+
+export const convertYearToAgeGroup = (year: string) => {
+  const birthYear = Number(year);
+  const currentYear = new Date().getFullYear();
+  const age = currentYear - birthYear + 1;
+
+  if (age < 20) return "10s";
+  if (age < 30) return "20s";
+  if (age < 40) return "30s";
+  if (age < 50) return "40s";
+  return "50s+";
+};

@@ -16,7 +16,7 @@ export const FunnectionCalendar = () => {
         <CalendarLegend />
       </div>
       <div className="my-2 flex w-full items-center justify-center">
-        <span className="text-primaryNavy/90 text-sm tracking-tight italic">
+        <span className="text-primaryNavy text-sm tracking-tight italic">
           모임이 있는 날짜를 선택해서 신청할 수 있어요!
         </span>
       </div>

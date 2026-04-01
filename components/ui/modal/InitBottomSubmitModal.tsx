@@ -165,11 +165,12 @@ export const InitBottomSubmitModal = ({
             </div>
             <div className="mt-5 flex-1">
               <p className="text-gray-6 mb-2 text-sm font-medium">
-                닉네임 <span className="text-gray-5 text-xs">(선택)</span>
+                닉네임{" "}
+                <span className="text-gray-5 text-xs">(선택, 10자 이하)</span>
               </p>
               <input
                 type="text"
-                placeholder="빈칸으로 제출할 경우 랜덤생성돼요!"
+                placeholder="빈칸으로 둬도 괜찮아요~"
                 value={nickname}
                 maxLength={10}
                 onChange={(e) => {

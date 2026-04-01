@@ -7,9 +7,10 @@ type Gender = "male" | "female" | null;
 
 export interface FormState {
   gender: Gender;
-  year: string;
+  birthYear: string;
   intro: string;
   phone: string;
+  nickname: string;
 }
 
 export const useApplyStep = () => {

@@ -7,7 +7,7 @@ interface TextAreaInputProps {
 export const TextAreaInput = ({
   value,
   onChange,
-  maxLength = 500,
+  maxLength = 100,
 }: TextAreaInputProps) => {
   return (
     <div className="relative">

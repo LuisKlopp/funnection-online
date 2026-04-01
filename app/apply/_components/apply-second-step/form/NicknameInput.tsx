@@ -1,12 +1,13 @@
-interface YearInputProps {
+interface NicknameInputProps {
   value: string;
   onChange: (v: string) => void;
 }
 
-export const YearInput = ({ value, onChange }: YearInputProps) => {
+export const NicknameInput = ({ value, onChange }: NicknameInputProps) => {
   const handleChange = (v: string) => {
-    const filtered = v.replace(/\D/g, "").slice(0, 4);
-    onChange(filtered);
+    const filtered = v.replace(/[^a-zA-Z가-힣ㄱ-ㅎㅏ-ㅣ]/g, "");
+    const limited = filtered.slice(0, 10);
+    onChange(limited);
   };
 
   return (
@@ -14,14 +15,10 @@ export const YearInput = ({ value, onChange }: YearInputProps) => {
       <input
         value={value}
         onChange={(e) => handleChange(e.target.value)}
-        inputMode="numeric"
-        placeholder="1996"
+        maxLength={8}
+        placeholder="닉네임 입력"
         className="smd:text-base w-full rounded-2xl bg-white/5 px-4 py-4 text-[15px] text-white transition outline-none focus:bg-white/10"
       />
-
-      <span className="absolute top-1/2 right-4 -translate-y-1/2 text-sm text-gray-400">
-        년생
-      </span>
     </div>
   );
 };

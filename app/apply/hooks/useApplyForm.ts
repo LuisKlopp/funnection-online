@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+
+import { useApplyMutation } from "@/hooks/react-query/useApplyMutation";
 
 import { FormState } from "./useApplyStep";
 
@@ -11,32 +14,52 @@ interface UseApplyFormProps {
 
 export const useApplyForm = ({ selectedEventId }: UseApplyFormProps) => {
   const router = useRouter();
+  const { mutate, isPending } = useApplyMutation();
+
   const [form, setForm] = useState<FormState>({
     gender: null,
-    year: "",
+    birthYear: "",
     intro: "",
     phone: "",
+    nickname: "",
   });
 
+  const currentYear = new Date().getFullYear();
+  const birthYear = Number(form.birthYear);
+
+  const isValidYear =
+    form.birthYear.length === 4 &&
+    birthYear >= 1900 &&
+    birthYear <= currentYear;
+
   const isFormValid =
-    form.gender &&
-    form.year.length === 4 &&
-    form.intro.length > 10 &&
-    form.phone.length >= 12;
+    !!form.gender &&
+    isValidYear &&
+    form.intro.trim().length > 10 &&
+    form.phone.replace(/-/g, "").length >= 10 &&
+    form.nickname.trim().length > 0;
 
   const handleSubmit = () => {
-    if (!isFormValid) return;
+    if (!isFormValid || !selectedEventId) return;
 
     const payload = {
       eventId: selectedEventId,
       ...form,
     };
-    console.log(payload);
 
-    router.push("/apply-complete");
-    // 👉 여기 나중에 API 붙이면 됨
-    // await applyApi(payload)
-    // router.push("/apply/complete")
+    mutate(payload, {
+      onSuccess: () => {
+        router.push("/apply-complete");
+      },
+      onError: (error: any) => {
+        console.error(error);
+
+        const message =
+          error?.response?.data?.message || "신청에 실패했습니다.";
+
+        alert(message);
+      },
+    });
   };
 
   return {
@@ -44,5 +67,6 @@ export const useApplyForm = ({ selectedEventId }: UseApplyFormProps) => {
     setForm,
     isFormValid,
     handleSubmit,
+    isPending,
   };
 };
