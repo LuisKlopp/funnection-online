@@ -106,24 +106,22 @@ export const AdminEventCard = ({
   const isFunnection = event.eventType === "FUNNECTION";
   const headerTheme = isFunnection
     ? {
-        cardBorder: "border-blue-200/80",
-        headerBg:
-          "bg-linear-to-r from-[#4678DD] via-[#5284E5] to-[#5E90EA]",
+        cardBorder: "border-blue-300",
+        headerBg: "bg-white",
         eventTypeBadge:
-          "border-[#C8DAFF] bg-[#EEF5FF] text-primaryNavy shadow-[0_2px_10px_rgba(28,75,165,0.12)]",
+          "bg-[#dbeaff] text-primaryNavy shadow-[0_2px_10px_rgba(28,75,165,0.12)]",
         infoBadge:
-          "border-[#D7E5FF] bg-[#F4F8FF] text-gray-900 shadow-[0_2px_10px_rgba(28,75,165,0.12)]",
+          "bg-[#dbeaff] text-gray-900 shadow-[0_2px_10px_rgba(28,75,165,0.12)]",
         iconColor: "text-primaryNavy/80",
         mutedText: "text-gray-600",
       }
     : {
-        cardBorder: "border-emerald-200/80",
-        headerBg:
-          "bg-linear-to-r from-emerald-600 via-emerald-500 to-teal-500",
+        cardBorder: "border-emerald-200",
+        headerBg: "bg-white",
         eventTypeBadge:
-          "border-emerald-200 bg-emerald-50 text-emerald-700 shadow-[0_2px_10px_rgba(5,150,105,0.12)]",
+          "border-emerald-200 bg-emerald-100 text-emerald-700 shadow-[0_2px_10px_rgba(5,150,105,0.12)]",
         infoBadge:
-          "border-emerald-100 bg-emerald-50/95 text-gray-900 shadow-[0_2px_10px_rgba(5,150,105,0.12)]",
+          "border-emerald-100 bg-emerald-100 text-gray-900 shadow-[0_2px_10px_rgba(5,150,105,0.12)]",
         iconColor: "text-emerald-700/80",
         mutedText: "text-gray-600",
       };
@@ -152,7 +150,7 @@ export const AdminEventCard = ({
     <motion.article
       layout
       className={cn(
-        "overflow-hidden rounded-3xl border bg-white shadow-[0_14px_36px_rgba(15,23,42,0.08)]",
+        "box-shadow-1 overflow-hidden rounded-3xl border-2 bg-white",
         headerTheme.cardBorder
       )}
       transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
@@ -169,7 +167,7 @@ export const AdminEventCard = ({
           <div className="flex items-center gap-2">
             <div
               className={cn(
-                "inline-flex rounded-full border px-2.5 py-1 text-[10px] font-semibold tracking-[0.16em] uppercase",
+                "inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-[0.16em] uppercase",
                 headerTheme.eventTypeBadge
               )}
             >
@@ -180,10 +178,10 @@ export const AdminEventCard = ({
             </div>
           </div>
 
-          <div className="rounded-full bg-white/20 p-2">
+          <div className="rounded-full bg-[#EEF5FF] p-2">
             <ChevronDown
               className={cn(
-                "h-4 w-4 text-white transition-transform duration-300",
+                "h-4 w-4 text-black transition-transform duration-300",
                 isOpen && "rotate-180"
               )}
             />
@@ -194,11 +192,13 @@ export const AdminEventCard = ({
           <div className="flex flex-wrap gap-1.5">
             <div
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px]",
+                "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px]",
                 headerTheme.infoBadge
               )}
             >
-              <CalendarDays className={cn("h-3.5 w-3.5", headerTheme.iconColor)} />
+              <CalendarDays
+                className={cn("h-3.5 w-3.5", headerTheme.iconColor)}
+              />
               {formatKoreanDate(event.eventDate)} ·{" "}
               {formatKoreanTime(event.startTime)}
             </div>
@@ -209,7 +209,7 @@ export const AdminEventCard = ({
               <div
                 key={stat.label}
                 className={cn(
-                  "inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-medium text-gray-900 sm:px-2.5 sm:text-[11px]",
+                  "inline-flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-medium text-gray-900 sm:px-2.5 sm:text-[11px]",
                   headerTheme.infoBadge
                 )}
               >
@@ -237,7 +237,7 @@ export const AdminEventCard = ({
             {isFunnection && (
               <div
                 className={cn(
-                  "inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-semibold text-gray-900 sm:px-2.5 sm:text-[11px]",
+                  "inline-flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-semibold text-gray-900 sm:px-2.5 sm:text-[11px]",
                   headerTheme.infoBadge
                 )}
               >
