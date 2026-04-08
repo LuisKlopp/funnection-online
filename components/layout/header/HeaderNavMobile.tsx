@@ -26,7 +26,7 @@ export const HeaderNavMobile = ({
         onClick={() => {
           setIsOpen(!isOpen);
         }}
-        className="box-shadow-2 bg-primaryNavy/80 flex h-8 w-8 items-center justify-center rounded-full"
+        className="box-shadow-2 bg-primaryNavy flex h-8 w-8 items-center justify-center rounded-full"
       >
         {isOpen ? (
           <X className="h-4 w-4 text-white" />

@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from "next";
 import React from "react";
 
 import { LayoutShell } from "@/components/layout/LayoutShell";
+import { FirstVisitSplashProvider } from "@/hooks/ui/useFirstVisitSplash";
 import ReactQueryProvider from "@/providers/react-query-provider";
 import { dmDisplay, maruBuri, pretendard } from "@/public/fonts/fonts";
 
@@ -29,7 +30,9 @@ export default function RootLayout({
         className={`${pretendard.className} ${maruBuri.variable} ${dmDisplay.variable}`}
       >
         <ReactQueryProvider>
-          <LayoutShell>{children}</LayoutShell>
+          <FirstVisitSplashProvider>
+            <LayoutShell>{children}</LayoutShell>
+          </FirstVisitSplashProvider>
         </ReactQueryProvider>
       </body>
     </html>

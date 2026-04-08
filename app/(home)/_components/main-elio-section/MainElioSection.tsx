@@ -8,8 +8,8 @@ import { TitleBadge } from "../TitleBadge";
 
 export const MainElioSection = () => {
   return (
-    <section className="flex w-full flex-col bg-white px-6 py-14">
-      <TitleBadge title="About Elio" isBackground />
+    <section className="bg-lightNavy flex w-full flex-col px-6 py-14">
+      <TitleBadge title="About Elio" />
       <div className="mx-auto flex flex-col items-center">
         <p className="smd:text-base text-primaryNavy mb-2 text-sm font-semibold">
           이 공간을 만든 사람

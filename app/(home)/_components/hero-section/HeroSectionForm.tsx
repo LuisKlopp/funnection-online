@@ -26,6 +26,7 @@ interface HeroSectionFormProps {
   questionDone: boolean;
   setQuestionDone: Dispatch<SetStateAction<boolean>>;
 }
+
 export const HeroSectionForm = ({
   visible,
   skipTyping,
@@ -98,8 +99,8 @@ export const HeroSectionForm = ({
               wrap="soft"
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              placeholder={`당신의 생각을 자유롭게 적어주세요. 상세히 적을수록 좋아요!`}
-              className="scroll-none no-scrollbar text-gray-7 h-24 w-full resize-none bg-white text-[15px] transition-all duration-200 outline-none placeholder:text-[15px] placeholder:text-gray-400"
+              placeholder={`익명이니 편하게, 솔직하게 적어보세요 ☺️`}
+              className="scroll-none no-scrollbar text-gray-7 h-18 w-full resize-none bg-white text-[15px] leading-5.5 transition-all duration-200 outline-none placeholder:text-[15px] placeholder:text-gray-400"
             />
             <span className="text-gray-5 flex w-full justify-end text-xs">
               {value.length}/{maxLength}
