@@ -10,12 +10,12 @@ import {
 
 import { BottomAnswerListModal } from "@/components/ui/modal/BottomAnswerListModal";
 import { InitBottomSubmitModal } from "@/components/ui/modal/InitBottomSubmitModal";
+import { useSubmitAnswer } from "@/hooks/react-query/useSubmitAnswer";
 import { useModal } from "@/hooks/ui/useModal";
 import { cn, smoothScrollTo } from "@/lib/utils";
 import { useUserInfoStore } from "@/store/userInfo.store";
 import { HomeQuestion } from "@/types/home.type";
 
-import { TitleBadge } from "../TitleBadge";
 import { HeroSectionFormQuestion } from "./HeroSectionFormQuestion";
 import { UserInfoBadge } from "./UserInfoBadge";
 
@@ -37,8 +37,28 @@ export const HeroSectionForm = ({
   const [value, setValue] = useState("");
   const [startTyping, setStartTyping] = useState(false);
   const modal = useModal();
-  const maxLength = 500;
+  const maxLength = 200;
   const { userInfo, initUserInfo } = useUserInfoStore();
+  const { submitAnswer } = useSubmitAnswer();
+
+  const handleSubmit = () => {
+    if (!value) return;
+
+    if (!userInfo) {
+      modal.openModal("submit");
+      return;
+    }
+
+    submitAnswer({
+      content: value,
+      userInfo,
+      onSuccess: () => {
+        setValue("");
+        setQuestionDone(true);
+        handleScroll();
+      },
+    });
+  };
 
   const handleTypingComplete = useCallback(() => {
     setQuestionDone(true);
@@ -79,7 +99,16 @@ export const HeroSectionForm = ({
 
   return (
     <section className="fade-up mx-auto flex w-full max-w-125 flex-col justify-center px-6 py-24 text-center">
-      <TitleBadge title="퍼넥션 오늘의 질문" />
+      <div className="absolute top-0 right-2 my-2 flex">
+        {userInfo && <UserInfoBadge questionDone={questionDone} />}
+      </div>
+      <div className="mb-4 flex items-center gap-3">
+        <div className="border-primaryNavy/30 flex-1 border-b" />
+        <span className="text-primaryNavy font-pretendard text-lg font-medium whitespace-nowrap">
+          퍼넥션 오늘의 질문
+        </span>
+        <div className="border-primaryNavy/30 flex-1 border-b" />
+      </div>
       <HeroSectionFormQuestion
         startTyping={startTyping}
         question={questionData.question}
@@ -93,26 +122,23 @@ export const HeroSectionForm = ({
         }`}
       >
         <div className="w-full max-w-3xl">
-          <div className="box-shadow-1 focus:ring-primaryNavy/50 rounded-2xl bg-white p-4 focus:ring-2">
+          <div className="box-shadow-1 focus:ring-primaryNavy/50 mb-4 rounded-2xl bg-white p-4 focus:ring-2">
             <textarea
               maxLength={maxLength}
               wrap="soft"
               value={value}
               onChange={(e) => setValue(e.target.value)}
               placeholder={`익명이니 편하게, 솔직하게 적어보세요 ☺️`}
-              className="scroll-none no-scrollbar text-gray-7 h-18 w-full resize-none bg-white text-[15px] leading-5.5 transition-all duration-200 outline-none placeholder:text-[15px] placeholder:text-gray-400"
+              className="scroll-none no-scrollbar text-gray-7 h-14 w-full resize-none bg-white text-[15px] leading-5.5 transition-all duration-200 outline-none placeholder:text-[15px] placeholder:text-gray-400"
             />
             <span className="text-gray-5 flex w-full justify-end text-xs">
               {value.length}/{maxLength}
             </span>
           </div>
-          <div className="my-2 flex items-center">
-            {userInfo && <UserInfoBadge questionDone={questionDone} />}
-          </div>
         </div>
         <div className="w-full max-w-3xl">
           <button
-            onClick={() => modal.openModal("submit")}
+            onClick={handleSubmit}
             disabled={value.length === 0}
             className={cn(
               "box-shadow-2 btn-press-in w-full rounded-xl px-4 py-2.5 text-sm font-normal transition-all duration-200",

@@ -21,7 +21,7 @@ export const FunnectionCalendar = () => {
         </span>
       </div>
 
-      <div className="box-shadow-2 bg-lightNavy border-primaryNavy/70 rounded-3xl border bg-linear-to-br px-8 py-6">
+      <div className="box-shadow-2 border-primaryNavy/70 rounded-3xl border-2 bg-[#FFF9E3] bg-linear-to-br px-8 py-6">
         <CalendarGrid
           selectedDate={selectedDate}
           onSelectDate={setSelectedDate}

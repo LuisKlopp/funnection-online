@@ -10,11 +10,9 @@ import {
   GENDER_LABEL,
   GENDER_OPTIONS,
 } from "@/constants/user-options.constants";
-import { useCreateAnswerMutation } from "@/hooks/react-query/useCreateAnswerMutation";
+import { useSubmitAnswer } from "@/hooks/react-query/useSubmitAnswer";
 import { useLockBodyScroll } from "@/hooks/ui/useLockBodyScroll";
 import { cn } from "@/lib/utils";
-import { useQuestionStore } from "@/store/question.store";
-import { useUserInfoStore } from "@/store/userInfo.store";
 import { AgeGroupType, GenderType } from "@/types/home.type";
 
 import { SubmitLoadingBar } from "../loading/SubmitLoadingBar";
@@ -39,42 +37,34 @@ export const InitBottomSubmitModal = ({
   const [selectedAge, setSelectedAge] = useState<AgeGroupType | null>(null);
   const [selectedGender, setSelectedGender] = useState<GenderType | null>(null);
   const [nickname, setNickname] = useState("");
-  const { mutate, isPending } = useCreateAnswerMutation();
   const [isSuccess, setIsSuccess] = useState(false);
-  const question = useQuestionStore((s) => s.question);
-  const { setUserInfo } = useUserInfoStore();
+  const { submitAnswer, isPending } = useSubmitAnswer();
 
   const handleSubmit = () => {
-    if (!question?.id || !selectedGender || !selectedAge) return;
+    if (!selectedGender || !selectedAge) return;
 
     const finalNickname =
       nickname.trim() !== "" ? nickname : generateRandomNickname();
 
-    mutate(
-      {
-        questionId: question?.id,
-        content,
-        gender: selectedGender,
-        ageGroup: selectedAge,
-        nickname: finalNickname,
+    const newUserInfo = {
+      ageGroup: selectedAge,
+      gender: selectedGender,
+      nickname: finalNickname,
+    };
+
+    submitAnswer({
+      content,
+      userInfo: newUserInfo,
+      onSuccess: () => {
+        setIsSuccess(true);
+
+        setTimeout(() => {
+          onClose();
+        }, 1000);
       },
-      {
-        onSuccess: () => {
-          setUserInfo({
-            ageGroup: selectedAge,
-            gender: selectedGender,
-            nickname: finalNickname,
-          });
-
-          setIsSuccess(true);
-
-          setTimeout(() => {
-            onClose();
-          }, 1000);
-        },
-      }
-    );
+    });
   };
+
   useLockBodyScroll();
 
   return (
@@ -124,7 +114,7 @@ export const InitBottomSubmitModal = ({
                     onClick={() => setSelectedAge(age)}
                     className={`box-shadow-1 rounded-xl border py-2 text-sm font-medium transition ${
                       active
-                        ? "border-2 border-gray-400 bg-gray-100 text-gray-800"
+                        ? "border-gray-6 text-gray-8 border-2 bg-gray-50"
                         : "border-gray-200 hover:bg-gray-50"
                     }`}
                   >

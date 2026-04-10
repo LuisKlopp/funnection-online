@@ -2,13 +2,7 @@
 
 import { create } from "zustand";
 
-import { AgeGroupType, GenderType } from "@/types/home.type";
-
-interface UserInfoType {
-  ageGroup: AgeGroupType;
-  gender: GenderType;
-  nickname: string;
-}
+import { UserInfoType } from "@/types/user-info.type";
 
 interface UserInfoStore {
   userInfo: UserInfoType | null;

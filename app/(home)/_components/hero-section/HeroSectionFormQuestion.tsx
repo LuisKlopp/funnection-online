@@ -32,7 +32,7 @@ export const HeroSectionFormQuestion = ({
   }, [startTyping, question, onComplete]);
 
   return (
-    <h1 className="text-gray-8 smd:text-2xl smd:w-full smd:max-w-3xl font-nanum mx-auto mb-4 text-[24px] leading-9 tracking-tight break-keep">
+    <h1 className="text-gray-7 smd:text-2xl smd:w-full smd:max-w-3xl font-nanum mx-auto mb-4 text-[22px] leading-9 tracking-tight break-keep">
       "{displayText}"
     </h1>
   );

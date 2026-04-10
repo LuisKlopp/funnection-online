@@ -16,7 +16,7 @@ export const HeroSection = ({ questionData }: HeroSectionProps) => {
   const [questionDone, setQuestionDone] = useState(false);
 
   return (
-    <section className="bg-lightNavy relative h-svh w-full">
+    <section className="bg-skyNavy relative h-svh w-full">
       <div className="flex h-full w-full items-center justify-center">
         {!showSplash && checked && (
           <HeroSectionForm
