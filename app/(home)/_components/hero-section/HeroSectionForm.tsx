@@ -8,10 +8,14 @@ import {
   useState,
 } from "react";
 
+import { FullscreenOverlay } from "@/components/ui/loading/FullScreenOverlay";
+import { Spinner } from "@/components/ui/loading/Spinner";
 import { BottomAnswerListModal } from "@/components/ui/modal/BottomAnswerListModal";
 import { InitBottomSubmitModal } from "@/components/ui/modal/InitBottomSubmitModal";
+import { ResultModal } from "@/components/ui/modal/ResultModal";
 import { useSubmitAnswer } from "@/hooks/react-query/useSubmitAnswer";
 import { useModal } from "@/hooks/ui/useModal";
+import { useResultModal } from "@/hooks/ui/useResultModal";
 import { cn, smoothScrollTo } from "@/lib/utils";
 import { useUserInfoStore } from "@/store/userInfo.store";
 import { HomeQuestion } from "@/types/home.type";
@@ -39,7 +43,8 @@ export const HeroSectionForm = ({
   const modal = useModal();
   const maxLength = 200;
   const { userInfo, initUserInfo } = useUserInfoStore();
-  const { submitAnswer } = useSubmitAnswer();
+  const { submitAnswer, isPending } = useSubmitAnswer();
+  const resultModal = useResultModal();
 
   const handleSubmit = () => {
     if (!value) return;
@@ -54,6 +59,7 @@ export const HeroSectionForm = ({
       userInfo,
       onSuccess: () => {
         setValue("");
+        resultModal.show("답변이 등록됐어요. 👍");
         setQuestionDone(true);
         handleScroll();
       },
@@ -165,6 +171,16 @@ export const HeroSectionForm = ({
       {modal.isModal === "answers" && (
         <BottomAnswerListModal onClose={modal.closeModal} />
       )}
+      {isPending && (
+        <FullscreenOverlay>
+          <Spinner size={48} />
+        </FullscreenOverlay>
+      )}
+      <ResultModal
+        open={resultModal.isOpen}
+        message={resultModal.message}
+        onClose={resultModal.close}
+      />
     </section>
   );
 };
