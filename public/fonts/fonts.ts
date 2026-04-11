@@ -56,3 +56,15 @@ export const maruBuri = localFont({
   display: "swap",
   preload: false,
 });
+
+export const bmDohyun = localFont({
+  variable: "--font-bmDohyun",
+  src: [
+    {
+      path: "./BM-Dohyun.otf",
+      weight: "600",
+      style: "light",
+    },
+  ],
+  preload: false,
+});

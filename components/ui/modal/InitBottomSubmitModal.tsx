@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 import { Portal } from "@/components/layout/PortalWrapper";
 import {
@@ -27,13 +27,21 @@ const generateRandomNickname = () => {
   return `${adj} ${animal}`;
 };
 
+interface InitBottomSubmitModalProps {
+  content: string;
+  onClose: () => void;
+  setValue: Dispatch<SetStateAction<string>>;
+  setQuestionDone: Dispatch<SetStateAction<boolean>>;
+  onSuccessShowResult: (message: string) => void;
+}
+
 export const InitBottomSubmitModal = ({
   content,
   onClose,
-}: {
-  content: string;
-  onClose: () => void;
-}) => {
+  setValue,
+  setQuestionDone,
+  onSuccessShowResult,
+}: InitBottomSubmitModalProps) => {
   const [selectedAge, setSelectedAge] = useState<AgeGroupType | null>(null);
   const [selectedGender, setSelectedGender] = useState<GenderType | null>(null);
   const [nickname, setNickname] = useState("");
@@ -57,10 +65,10 @@ export const InitBottomSubmitModal = ({
       userInfo: newUserInfo,
       onSuccess: () => {
         setIsSuccess(true);
-
-        setTimeout(() => {
-          onClose();
-        }, 1000);
+        setValue("");
+        setQuestionDone(true);
+        onSuccessShowResult("답변이 등록됐어요. 👍");
+        onClose();
       },
     });
   };

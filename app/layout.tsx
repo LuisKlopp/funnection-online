@@ -6,7 +6,12 @@ import React from "react";
 import { LayoutShell } from "@/components/layout/LayoutShell";
 import { FirstVisitSplashProvider } from "@/hooks/ui/useFirstVisitSplash";
 import ReactQueryProvider from "@/providers/react-query-provider";
-import { dmDisplay, maruBuri, pretendard } from "@/public/fonts/fonts";
+import {
+  bmDohyun,
+  dmDisplay,
+  maruBuri,
+  pretendard,
+} from "@/public/fonts/fonts";
 
 export const metadata: Metadata = {
   title: "Funnection Online",
@@ -27,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${pretendard.className} ${maruBuri.variable} ${dmDisplay.variable}`}
+        className={`${pretendard.className} ${maruBuri.variable} ${dmDisplay.variable} ${bmDohyun.variable} `}
       >
         <ReactQueryProvider>
           <FirstVisitSplashProvider>

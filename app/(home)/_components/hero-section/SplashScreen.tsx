@@ -42,7 +42,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         </div>
 
         <h1
-          className="fade-up text-primaryNavy text-4xl font-semibold tracking-tight"
+          className="fade-up text-primaryNavy font-dohyun text-3xl font-semibold tracking-wide"
           style={{ animationDelay: "0.6s" }}
         >
           Funnection

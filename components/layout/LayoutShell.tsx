@@ -25,11 +25,11 @@ export const LayoutShell = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <>
+    <div className="smd:border-primaryNavy/30 smd:border-2 mx-auto w-full max-w-175">
       {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       {!hideLayout && !showSplash && <Header />}
       {children}
       {!hideLayout && !showSplash && <Footer />}
-    </>
+    </div>
   );
 };

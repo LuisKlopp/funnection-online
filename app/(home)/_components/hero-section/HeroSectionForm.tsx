@@ -16,7 +16,7 @@ import { ResultModal } from "@/components/ui/modal/ResultModal";
 import { useSubmitAnswer } from "@/hooks/react-query/useSubmitAnswer";
 import { useModal } from "@/hooks/ui/useModal";
 import { useResultModal } from "@/hooks/ui/useResultModal";
-import { cn, smoothScrollTo } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { useUserInfoStore } from "@/store/userInfo.store";
 import { HomeQuestion } from "@/types/home.type";
 
@@ -61,7 +61,6 @@ export const HeroSectionForm = ({
         setValue("");
         resultModal.show("답변이 등록됐어요. 👍");
         setQuestionDone(true);
-        handleScroll();
       },
     });
   };
@@ -69,19 +68,6 @@ export const HeroSectionForm = ({
   const handleTypingComplete = useCallback(() => {
     setQuestionDone(true);
   }, []);
-
-  const handleScroll = () => {
-    const section = document.getElementById("responses");
-    if (!section) return;
-
-    const headerOffset = 80;
-    const elementPosition =
-      section.getBoundingClientRect().top + window.scrollY;
-
-    const targetY = elementPosition - headerOffset;
-
-    smoothScrollTo(targetY, 900);
-  };
 
   useEffect(() => {
     if (!visible) return;
@@ -160,13 +146,17 @@ export const HeroSectionForm = ({
           onClick={() => modal.openModal("answers")}
           className="text-gray-6 hover:text-primaryNavy box-shadow-1 btn-press-in mt-3 ml-auto flex w-fit cursor-pointer items-center rounded-xl bg-white px-3 py-2"
         >
-          <p className="text-xs" onClick={handleScroll}>
-            다른 사람들은 어떻게 답변했을까요?
-          </p>
+          <p className="text-xs">다른 사람들은 어떻게 답변했을까요?</p>
         </div>
       </div>
       {modal.isModal === "submit" && (
-        <InitBottomSubmitModal content={value} onClose={modal.closeModal} />
+        <InitBottomSubmitModal
+          content={value}
+          onClose={modal.closeModal}
+          setQuestionDone={setQuestionDone}
+          setValue={setValue}
+          onSuccessShowResult={(message) => resultModal.show(message)}
+        />
       )}
       {modal.isModal === "answers" && (
         <BottomAnswerListModal onClose={modal.closeModal} />

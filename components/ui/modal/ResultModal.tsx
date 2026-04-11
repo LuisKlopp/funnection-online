@@ -14,7 +14,6 @@ export const ResultModal = ({
   onClose: () => void;
 }) => {
   if (!open) return null;
-
   return (
     <Portal>
       <AnimatePresence>
@@ -36,7 +35,7 @@ export const ResultModal = ({
               damping: 18,
               mass: 0.8,
             }}
-            className="bg-lightNavy border-primaryNavy/10 relative z-10 w-[80%] max-w-xs rounded-2xl border px-6 py-6 text-center shadow-xl"
+            className="border-primaryNavy/80 relative z-10 w-[80%] max-w-xs rounded-2xl border-2 bg-[#f8f8e8] px-6 py-6 text-center shadow-xl"
           >
             <p className="text-primaryNavy text-base font-medium">{message}</p>
           </motion.div>

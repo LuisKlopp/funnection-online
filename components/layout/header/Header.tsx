@@ -38,16 +38,16 @@ export const Header = () => {
     >
       <div
         className={cn(
-          "smd:max-w-full smd:px-48 mx-auto flex h-14 w-full items-center justify-between px-4 transition-all duration-200",
+          "smd:max-w-175 smd:px-8 mx-auto flex h-14 w-full items-center justify-between px-4 transition-all duration-200",
           mobileOpen ? "bg-white" : "bg-transparent"
         )}
       >
         <Link
           href="/"
-          className="smd:text-2xl text-primaryNavy text-xl font-semibold"
+          className="smd:text-2xl text-primaryNavy font-dohyun text-lg font-semibold"
         >
           Funnection{" "}
-          <span className="text-gray-9 smd:text-[14px] bg-primaryNavy/10 rounded-3xl px-2 py-1 text-[11px] font-normal">
+          <span className="text-gray-9 smd:text-[14px] bg-primaryNavy/10 font-pretendard rounded-3xl px-2 py-1 text-[11px] font-normal">
             Online
           </span>
         </Link>

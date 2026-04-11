@@ -47,6 +47,7 @@ const config = {
         pretendard: ["Pretendard", "sans-serif"],
         dmdisplay: ["var(--font-dmDisplay)", "serif"],
         nanum: ["var(--font-MaruBuri-Semibold)"],
+        dohyun: ["var(--font-bmDohyun)"],
       },
 
       screens: {
