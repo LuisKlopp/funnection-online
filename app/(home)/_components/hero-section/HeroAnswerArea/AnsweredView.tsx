@@ -29,7 +29,7 @@ export const AnsweredView = ({
         </button>
 
         <button className="border-primaryNavy text-primaryNavy rounded-xl border px-4 py-3 text-sm">
-          이 질문으로 대화하는 모임 구경하기 →
+          이런 질문들로 대화하는 모임 구경하기 →
         </button>
       </div>
     </div>

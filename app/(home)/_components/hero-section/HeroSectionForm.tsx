@@ -14,9 +14,9 @@ import { BottomAnswerListModal } from "@/components/ui/modal/BottomAnswerListMod
 import { InitBottomSubmitModal } from "@/components/ui/modal/InitBottomSubmitModal";
 import { ResultModal } from "@/components/ui/modal/ResultModal";
 import { useSubmitAnswer } from "@/hooks/react-query/useSubmitAnswer";
+import { useSyncMyAnswer } from "@/hooks/react-query/useSyncMyAnswer";
 import { useModal } from "@/hooks/ui/useModal";
 import { useResultModal } from "@/hooks/ui/useResultModal";
-import { cn } from "@/lib/utils";
 import { useCheckAnsweredStore } from "@/store/checkAnswered.store";
 import { useUserInfoStore } from "@/store/userInfo.store";
 import { HomeQuestion } from "@/types/home.type";
@@ -48,16 +48,16 @@ export const HeroSectionForm = ({
   const { userInfo, initUserInfo } = useUserInfoStore();
   const { submitAnswer, isPending } = useSubmitAnswer();
   const resultModal = useResultModal();
-  const answered = useCheckAnsweredStore((s) => s.answeredMap[questionData.id]);
+  const myAnswer = useCheckAnsweredStore((s) => s.myAnswers[questionData.id]);
+
+  useSyncMyAnswer(questionData.id);
 
   const handleSubmit = () => {
     if (!value) return;
-
     if (!userInfo) {
       modal.openModal("submit");
       return;
     }
-
     submitAnswer({
       content: value,
       userInfo,
@@ -100,7 +100,7 @@ export const HeroSectionForm = ({
       </div>
       <div className="mb-4 flex items-center gap-3">
         <div className="border-primaryNavy/30 flex-1 border-b" />
-        <span className="text-primaryNavy font-pretendard text-lg font-medium whitespace-nowrap">
+        <span className="text-primaryNavy font-nanum text-base font-medium whitespace-nowrap">
           퍼넥션 오늘의 질문
         </span>
         <div className="border-primaryNavy/30 flex-1 border-b" />
@@ -117,7 +117,7 @@ export const HeroSectionForm = ({
             : "pointer-events-none translate-y-4 opacity-0"
         }`}
       >
-        {answered ? (
+        {myAnswer ? (
           <AnsweredView
             questionId={questionData.id}
             onOpenAnswers={() => modal.openModal("answers")}
