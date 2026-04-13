@@ -9,7 +9,6 @@ interface UserInfoBadgeProps {
 
 export const UserInfoBadge = ({ questionDone }: UserInfoBadgeProps) => {
   const { userInfo } = useUserInfoStore();
-  const isMale = userInfo?.gender === "male";
 
   if (!userInfo) return null;
 
@@ -22,11 +21,9 @@ export const UserInfoBadge = ({ questionDone }: UserInfoBadgeProps) => {
           : "pointer-events-none translate-y-4 opacity-0"
       )}
     >
-      <div className="box-shadow-1 flex gap-1 rounded-xl bg-[#ffffe3] px-4 py-2">
+      <div className="box-shadow-1 flex gap-1 rounded-xl bg-amber-50 px-3 py-1 text-sm">
         <span>{getGenderEmoji(userInfo.gender)}</span>
-        <span className={cn(isMale ? "text-primaryNavy" : "text-pink-700/70")}>
-          {userInfo.nickname}
-        </span>
+        <span className="text-gray-6">{userInfo.nickname}</span>
       </div>
     </div>
   );

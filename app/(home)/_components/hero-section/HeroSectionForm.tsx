@@ -17,9 +17,12 @@ import { useSubmitAnswer } from "@/hooks/react-query/useSubmitAnswer";
 import { useModal } from "@/hooks/ui/useModal";
 import { useResultModal } from "@/hooks/ui/useResultModal";
 import { cn } from "@/lib/utils";
+import { useCheckAnsweredStore } from "@/store/checkAnswered.store";
 import { useUserInfoStore } from "@/store/userInfo.store";
 import { HomeQuestion } from "@/types/home.type";
 
+import { AnsweredView } from "./HeroAnswerArea/AnsweredView";
+import { UnansweredView } from "./HeroAnswerArea/UnansweredView";
 import { HeroSectionFormQuestion } from "./HeroSectionFormQuestion";
 import { UserInfoBadge } from "./UserInfoBadge";
 
@@ -45,6 +48,7 @@ export const HeroSectionForm = ({
   const { userInfo, initUserInfo } = useUserInfoStore();
   const { submitAnswer, isPending } = useSubmitAnswer();
   const resultModal = useResultModal();
+  const answered = useCheckAnsweredStore((s) => s.answeredMap[questionData.id]);
 
   const handleSubmit = () => {
     if (!value) return;
@@ -113,41 +117,19 @@ export const HeroSectionForm = ({
             : "pointer-events-none translate-y-4 opacity-0"
         }`}
       >
-        <div className="w-full max-w-3xl">
-          <div className="box-shadow-1 focus:ring-primaryNavy/50 mb-4 rounded-2xl bg-white p-4 focus:ring-2">
-            <textarea
-              maxLength={maxLength}
-              wrap="soft"
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-              placeholder={`익명이니 편하게, 솔직하게 적어보세요 ☺️`}
-              className="scroll-none no-scrollbar text-gray-7 h-14 w-full resize-none bg-white text-[15px] leading-5.5 transition-all duration-200 outline-none placeholder:text-[15px] placeholder:text-gray-400"
-            />
-            <span className="text-gray-5 flex w-full justify-end text-xs">
-              {value.length}/{maxLength}
-            </span>
-          </div>
-        </div>
-        <div className="w-full max-w-3xl">
-          <button
-            onClick={handleSubmit}
-            disabled={value.length === 0}
-            className={cn(
-              "box-shadow-2 btn-press-in w-full rounded-xl px-4 py-2.5 text-sm font-normal transition-all duration-200",
-              value.length === 0
-                ? "bg-primaryNavy/40 pointer-events-none cursor-not-allowed text-white"
-                : "bg-primaryNavy/90 hover:bg-deepNavy btn-press-in text-white"
-            )}
-          >
-            내 생각 남기기
-          </button>
-        </div>
-        <div
-          onClick={() => modal.openModal("answers")}
-          className="text-gray-6 hover:text-primaryNavy box-shadow-1 btn-press-in mt-3 ml-auto flex w-fit cursor-pointer items-center rounded-xl bg-white px-3 py-2"
-        >
-          <p className="text-xs">다른 사람들은 어떻게 답변했을까요?</p>
-        </div>
+        {answered ? (
+          <AnsweredView
+            questionId={questionData.id}
+            onOpenAnswers={() => modal.openModal("answers")}
+          />
+        ) : (
+          <UnansweredView
+            value={value}
+            setValue={setValue}
+            onSubmit={handleSubmit}
+            maxLength={maxLength}
+          />
+        )}
       </div>
       {modal.isModal === "submit" && (
         <InitBottomSubmitModal

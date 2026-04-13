@@ -2,12 +2,12 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { createAnswer } from "@/api/createAnswer.api";
 import { QUERY_KEYS } from "@/constants/query-keys.constants";
-import { CreateAnswerRequest } from "@/types/answer.type";
+import { CreateAnswerRequest, CreateAnswerResponse } from "@/types/answer.type";
 
 export const useCreateAnswerMutation = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<unknown, Error, CreateAnswerRequest>({
+  return useMutation<CreateAnswerResponse, Error, CreateAnswerRequest>({
     mutationFn: createAnswer,
 
     onSuccess: () => {

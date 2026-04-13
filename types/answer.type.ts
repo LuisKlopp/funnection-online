@@ -6,4 +6,23 @@ export interface CreateAnswerRequest {
   gender: GenderType;
   ageGroup: AgeGroupType;
   nickname: string;
+  anonId?: string;
+}
+
+export interface CreateAnswerResponse {
+  success: boolean;
+  hasAnswered: boolean;
+  answer: {
+    id: number;
+    questionId: number;
+    content: string;
+    gender: GenderType;
+    ageGroup: AgeGroupType;
+    nickname: string;
+    anonId: string;
+    likeCount: number;
+    isHidden: boolean;
+    createdAt: string;
+    updatedAt: string;
+  };
 }
