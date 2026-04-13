@@ -9,20 +9,22 @@ export interface CreateAnswerRequest {
   anonId?: string;
 }
 
+export interface AnswerType {
+  id: number;
+  questionId: number;
+  content: string;
+  gender: GenderType;
+  ageGroup: AgeGroupType;
+  nickname: string;
+  anonId: string;
+  likeCount: number;
+  isHidden: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface CreateAnswerResponse {
   success: boolean;
   hasAnswered: boolean;
-  answer: {
-    id: number;
-    questionId: number;
-    content: string;
-    gender: GenderType;
-    ageGroup: AgeGroupType;
-    nickname: string;
-    anonId: string;
-    likeCount: number;
-    isHidden: boolean;
-    createdAt: string;
-    updatedAt: string;
-  };
+  answer: AnswerType;
 }

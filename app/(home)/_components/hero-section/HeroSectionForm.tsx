@@ -1,28 +1,19 @@
 "use client";
 
-import {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import { Dispatch, SetStateAction } from "react";
 
 import { FullscreenOverlay } from "@/components/ui/loading/FullScreenOverlay";
 import { Spinner } from "@/components/ui/loading/Spinner";
 import { BottomAnswerListModal } from "@/components/ui/modal/BottomAnswerListModal";
 import { InitBottomSubmitModal } from "@/components/ui/modal/InitBottomSubmitModal";
 import { ResultModal } from "@/components/ui/modal/ResultModal";
-import { useSubmitAnswer } from "@/hooks/react-query/useSubmitAnswer";
-import { useSyncMyAnswer } from "@/hooks/react-query/useSyncMyAnswer";
-import { useModal } from "@/hooks/ui/useModal";
-import { useResultModal } from "@/hooks/ui/useResultModal";
-import { useCheckAnsweredStore } from "@/store/checkAnswered.store";
-import { useUserInfoStore } from "@/store/userInfo.store";
 import { HomeQuestion } from "@/types/home.type";
 
-import { AnsweredView } from "./HeroAnswerArea/AnsweredView";
-import { UnansweredView } from "./HeroAnswerArea/UnansweredView";
+import {
+  HERO_SECTION_FORM_MAX_LENGTH,
+  useHeroSectionForm,
+} from "../../hooks/useHeroSectionForm";
+import { HeroSectionFormContent } from "./HeroSectionFormContent";
 import { HeroSectionFormQuestion } from "./HeroSectionFormQuestion";
 import { UserInfoBadge } from "./UserInfoBadge";
 
@@ -41,57 +32,24 @@ export const HeroSectionForm = ({
   questionDone,
   setQuestionDone,
 }: HeroSectionFormProps) => {
-  const [value, setValue] = useState("");
-  const [startTyping, setStartTyping] = useState(false);
-  const modal = useModal();
-  const maxLength = 200;
-  const { userInfo, initUserInfo } = useUserInfoStore();
-  const { submitAnswer, isPending } = useSubmitAnswer();
-  const resultModal = useResultModal();
-  const myAnswer = useCheckAnsweredStore((s) => s.myAnswers[questionData.id]);
-
-  useSyncMyAnswer(questionData.id);
-
-  const handleSubmit = () => {
-    if (!value) return;
-    if (!userInfo) {
-      modal.openModal("submit");
-      return;
-    }
-    submitAnswer({
-      content: value,
-      userInfo,
-      onSuccess: () => {
-        setValue("");
-        resultModal.show("답변이 등록됐어요. 👍");
-        setQuestionDone(true);
-      },
-    });
-  };
-
-  const handleTypingComplete = useCallback(() => {
-    setQuestionDone(true);
-  }, []);
-
-  useEffect(() => {
-    if (!visible) return;
-
-    if (skipTyping) {
-      setStartTyping(true);
-      setQuestionDone(true);
-      return;
-    }
-
-    const timer = setTimeout(() => {
-      setStartTyping(true);
-    }, 600);
-
-    return () => clearTimeout(timer);
-  }, [visible, skipTyping]);
-
-  useEffect(() => {
-    initUserInfo();
-  }, []);
+  const {
+    value,
+    setValue,
+    startTyping,
+    userInfo,
+    hasAnswered,
+    isPending,
+    modal,
+    resultModal,
+    handleSubmit,
+    handleTypingComplete,
+    handleOpenAnswers,
+  } = useHeroSectionForm({
+    questionId: questionData.id,
+    visible,
+    skipTyping,
+    setQuestionDone,
+  });
 
   return (
     <section className="fade-up mx-auto flex w-full max-w-125 flex-col justify-center px-6 py-24 text-center">
@@ -110,27 +68,16 @@ export const HeroSectionForm = ({
         question={questionData.question}
         onComplete={handleTypingComplete}
       />
-      <div
-        className={`transition-all duration-700 ${
-          questionDone
-            ? "translate-y-0 opacity-100"
-            : "pointer-events-none translate-y-4 opacity-0"
-        }`}
-      >
-        {myAnswer ? (
-          <AnsweredView
-            questionId={questionData.id}
-            onOpenAnswers={() => modal.openModal("answers")}
-          />
-        ) : (
-          <UnansweredView
-            value={value}
-            setValue={setValue}
-            onSubmit={handleSubmit}
-            maxLength={maxLength}
-          />
-        )}
-      </div>
+      <HeroSectionFormContent
+        questionDone={questionDone}
+        questionId={questionData.id}
+        hasAnswered={hasAnswered}
+        value={value}
+        onValueChange={setValue}
+        onSubmit={handleSubmit}
+        maxLength={HERO_SECTION_FORM_MAX_LENGTH}
+        onOpenAnswers={handleOpenAnswers}
+      />
       {modal.isModal === "submit" && (
         <InitBottomSubmitModal
           content={value}

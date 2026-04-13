@@ -1,9 +1,9 @@
-import { HomeAnswer } from "@/types/home.type";
+import { AnswerType } from "@/types/answer.type";
 
 import { ResponseCard } from "./ResponseCard";
 
 interface ResponseListProps {
-  answersData: HomeAnswer[];
+  answersData: AnswerType[];
 }
 
 export const ResponseList = ({ answersData }: ResponseListProps) => {

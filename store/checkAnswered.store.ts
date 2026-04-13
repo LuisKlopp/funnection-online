@@ -1,23 +1,13 @@
 import { create } from "zustand";
 
-interface Answer {
-  id: number;
-  content: string;
-  questionId: number;
-  nickname: string;
-  gender: string;
-  ageGroup: string;
-  anonId: string;
-  likeCount: number;
-  createdAt: string;
-}
+import { AnswerType } from "@/types/answer.type";
 
 interface CheckAnsweredState {
   answeredMap: Record<number, boolean>;
-  myAnswers: Record<number, Answer>;
+  myAnswers: Record<number, AnswerType>;
 
   setAnswered: (questionId: number) => void;
-  setMyAnswer: (questionId: number, answer: Answer) => void;
+  setMyAnswer: (questionId: number, answer: AnswerType) => void;
 
   init: (map: Record<number, boolean>) => void;
 }

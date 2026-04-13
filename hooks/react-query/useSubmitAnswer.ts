@@ -31,7 +31,6 @@ export const useSubmitAnswer = () => {
       },
       {
         onSuccess: (res) => {
-          console.log("저장됨", res.answer);
           setAnswered(question.id);
           setMyAnswer(question.id, res.answer);
           setAnsweredLocal(question.id);

@@ -34,9 +34,9 @@ export const MainElioSection = () => {
             className="h-full w-full object-cover"
           />
         </div>
-        <p className="smd:col-start-2 smd:self-center smd:justify-self-center leading-relaxed text-gray-400 italic">
+        <p className="smd:col-start-2 smd:self-center smd:justify-self-center text-gray-6 leading-relaxed tracking-wide italic">
           "우리는 질문으로 서로를 이해하고,
-          <br className="smd:hidden" /> 대화로 연결됩니다.
+          <br /> 대화로 연결됩니다.
           <br /> 퍼넥션은 그런 연결의 공간이 되고자 합니다."
         </p>
         <ul className="smd:text-lg smd:col-start-2 smd:space-y-2 space-y-3 text-gray-700">
@@ -57,9 +57,9 @@ export const MainElioSection = () => {
             질문을 통해 관계를 형성합니다. 재밌게요.
           </li>
         </ul>
-        <div className="smd:justify-end flex w-full flex-col gap-1 text-sm">
+        <div className="smd:justify-end flex w-full flex-col gap-2 text-sm">
           <span className="text-primaryNavy font-medium">문의하기</span>
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-1">
             <div className="flex items-center gap-1">
               <span className="smd:text-[12px] text-[10px]">📞</span>
               <span className="smd:col-start-2 text-gray-6 smd:text-base w-fit underline-offset-4">

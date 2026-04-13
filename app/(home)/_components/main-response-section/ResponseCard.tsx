@@ -5,13 +5,13 @@ import { useEffect, useRef, useState } from "react";
 
 import { useDoubleTap } from "@/hooks/ui/useDoubleTap";
 import { cn, formatAgeGroup, getGenderEmoji } from "@/lib/utils";
-import { HomeAnswer } from "@/types/home.type";
+import { AnswerType } from "@/types/answer.type";
 
 import { LikeButton, LikeButtonRef } from "./LikeButton";
 
 interface ResponseCardProps {
   variant: "preview" | "bottom-sheet";
-  answerInfo: HomeAnswer;
+  answerInfo: AnswerType;
 }
 
 export const ResponseCard = ({ variant, answerInfo }: ResponseCardProps) => {
@@ -40,25 +40,27 @@ export const ResponseCard = ({ variant, answerInfo }: ResponseCardProps) => {
 
   return (
     <div className="mx-auto flex w-full max-w-100 items-start gap-2">
-      <div className="flex flex-col gap-1">
-        <div
-          className={cn(
-            "bg-lightNavy rounded-full px-2 py-2",
-            answerInfo.gender === "male"
-              ? "bg-primaryNavy/40"
-              : "bg-pink-700/40"
-          )}
-        >
-          <p className="text-gray-5 text-sm font-medium">
-            {getGenderEmoji(answerInfo.gender)}
-          </p>
+      {!isSheet && (
+        <div className="flex flex-col gap-1">
+          <div
+            className={cn(
+              "bg-lightNavy rounded-full px-2 py-2",
+              answerInfo.gender === "male"
+                ? "bg-primaryNavy/40"
+                : "bg-pink-700/40"
+            )}
+          >
+            <p className="text-gray-5 text-sm font-medium">
+              {getGenderEmoji(answerInfo.gender)}
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <p className="text-gray-5 text-xs font-medium">
+              {formatAgeGroup(answerInfo.ageGroup)}
+            </p>
+          </div>
         </div>
-        <div className="flex justify-center">
-          <p className="text-gray-5 text-xs font-medium">
-            {formatAgeGroup(answerInfo.ageGroup)}
-          </p>
-        </div>
-      </div>
+      )}
       <div
         onPointerUp={detectDoubleTap}
         className={cn(
