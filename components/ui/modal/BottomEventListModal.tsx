@@ -88,7 +88,7 @@ export const BottomEventListModal = ({
               </div>
 
               <Link
-                href="/apply"
+                href={`/apply?eventId=${event.id}`}
                 onClick={onClose}
                 className="mt-3 block w-full rounded-lg bg-[#3471eb] py-2 text-center text-sm font-semibold text-white"
               >

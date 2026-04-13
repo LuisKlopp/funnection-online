@@ -4,13 +4,13 @@ import { ArrowRight } from "lucide-react";
 
 import { BottomAnswerListModal } from "@/components/ui/modal/BottomAnswerListModal";
 import { useModal } from "@/hooks/ui/useModal";
-import { HomeAnswer } from "@/types/home.type";
+import { AnswerType } from "@/types/answer.type";
 
 import { SectionHeader } from "../SectionHeader";
 import { ResponseList } from "./ResponseList";
 
 interface ResponseSectionProps {
-  answers: HomeAnswer[];
+  answers: AnswerType[];
 }
 
 export const ResponseSection = ({ answers }: ResponseSectionProps) => {
@@ -25,7 +25,6 @@ export const ResponseSection = ({ answers }: ResponseSectionProps) => {
           description={`${answers.length}개의 솔직한 이야기`}
         />
         <ResponseList answersData={answers} />
-
         <div
           onClick={() => modal.openModal("answers")}
           className="group hover:text-primaryNavy text-gray-5 mt-4 ml-auto flex w-fit cursor-pointer items-center gap-1"

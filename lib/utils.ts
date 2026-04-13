@@ -57,7 +57,9 @@ export const formatKoreanTime = (time: string) => {
 };
 
 export const formatKoreanDate = (dateString: string) => {
-  const date = new Date(dateString);
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(dateString)
+    ? parseLocalDate(dateString)
+    : new Date(dateString);
 
   const month = date.getMonth() + 1;
   const day = date.getDate();

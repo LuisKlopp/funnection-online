@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { useEventsQuery } from "@/hooks/react-query/useEventsQuery";
@@ -14,9 +15,11 @@ import { useApplyForm } from "./hooks/useApplyForm";
 import { useApplyStep } from "./hooks/useApplyStep";
 
 export const ApplyPageClient = () => {
-  const { step, goNext, goBack } = useApplyStep();
+  const searchParams = useSearchParams();
+  const { step, setStep, goNext, goBack } = useApplyStep();
   const [selectedEventId, setSelectedEventId] = useState<number | null>(null);
-  const { data: events = [] } = useEventsQuery();
+  const initializedFromSearchRef = useRef(false);
+  const { data: events = [], isFetched } = useEventsQuery();
   const selectedEvent = events.find((e) => e.id === selectedEventId) ?? null;
   const { form, setForm, isFormValid, handleSubmit } = useApplyForm({
     selectedEventId,
@@ -24,6 +27,7 @@ export const ApplyPageClient = () => {
 
   const step1Ref = useRef<HTMLDivElement>(null);
   const step2Ref = useRef<HTMLDivElement>(null);
+  const eventIdParam = searchParams.get("eventId");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -35,6 +39,33 @@ export const ApplyPageClient = () => {
 
     return () => clearTimeout(timer);
   }, [step]);
+
+  useEffect(() => {
+    if (initializedFromSearchRef.current) return;
+
+    if (!eventIdParam) {
+      initializedFromSearchRef.current = true;
+      return;
+    }
+
+    if (!isFetched) return;
+
+    const nextEventId = Number(eventIdParam);
+
+    if (!Number.isInteger(nextEventId)) {
+      initializedFromSearchRef.current = true;
+      return;
+    }
+
+    const matchedEvent = events.find((event) => event.id === nextEventId);
+
+    if (matchedEvent) {
+      setSelectedEventId(matchedEvent.id);
+      setStep(2);
+    }
+
+    initializedFromSearchRef.current = true;
+  }, [eventIdParam, events, isFetched, setStep]);
 
   return (
     <div className="bg-applyBackgroundColor smd:mx-auto flex h-svh max-w-175 flex-col text-white">
