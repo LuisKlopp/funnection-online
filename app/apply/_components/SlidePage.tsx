@@ -28,6 +28,7 @@ export const SlidePage = forwardRef<HTMLDivElement, SlidePageProps>(
         initial={false}
         animate={{ x }}
         transition={spring}
+        data-scroll-container="apply-step"
         className={cn(
           "h-full overflow-y-auto",
           active ? "relative" : "pointer-events-none absolute inset-0"

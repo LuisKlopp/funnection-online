@@ -9,8 +9,14 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
-export const smoothScrollTo = (targetY: number, duration = 1200) => {
-  const startY = window.scrollY;
+export const smoothScrollTo = (
+  targetY: number,
+  duration = 1200,
+  container?: Window | HTMLElement
+) => {
+  const scrollContainer = container ?? window;
+  const startY =
+    scrollContainer === window ? window.scrollY : scrollContainer.scrollTop;
   const distance = targetY - startY;
   const startTime = performance.now();
 
@@ -21,8 +27,13 @@ export const smoothScrollTo = (targetY: number, duration = 1200) => {
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
     const eased = easeInOutCubic(progress);
+    const nextY = startY + distance * eased;
 
-    window.scrollTo(0, startY + distance * eased);
+    if (scrollContainer === window) {
+      window.scrollTo(0, nextY);
+    } else {
+      scrollContainer.scrollTo({ top: nextY });
+    }
 
     if (progress < 1) {
       requestAnimationFrame(step);

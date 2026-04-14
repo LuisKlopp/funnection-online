@@ -6,6 +6,7 @@ body,
 :root {
   --vvh: 100dvh;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
   line-height: normal;
   -ms-overflow-style: none;
   scrollbar-width: none;

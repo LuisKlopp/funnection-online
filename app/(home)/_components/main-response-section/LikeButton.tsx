@@ -47,11 +47,11 @@ export const LikeButton = forwardRef<LikeButtonRef, LikeButtonProps>(
 
         fillTimerRef.current = setTimeout(() => {
           setDisplayFilled(true);
-        }, 180);
+        }, 260);
 
         overlayTimerRef.current = setTimeout(() => {
           setShowOverlay(false);
-        }, 360);
+        }, 520);
 
         prevLikedRef.current = liked;
         return () => {
@@ -102,16 +102,16 @@ export const LikeButton = forwardRef<LikeButtonRef, LikeButtonProps>(
         <AnimatePresence>
           {showOverlay && (
             <motion.div
-              initial={{ scale: 0.72, opacity: 0 }}
-              animate={{ scale: 1.08, opacity: 0.95 }}
-              exit={{ scale: 0.94, opacity: 0 }}
+              initial={{ scale: 0.68, opacity: 0 }}
+              animate={{ scale: 1.14, opacity: 1 }}
+              exit={{ scale: 0.98, opacity: 0 }}
               transition={{
-                duration: 0.34,
+                duration: 0.48,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="pointer-events-none absolute top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2"
             >
-              <Heart className="h-14 w-14 fill-red-300 text-red-300 drop-shadow-lg" />
+              <Heart className="h-14 w-14 fill-red-500 text-red-500 drop-shadow-[0_10px_24px_rgba(239,68,68,0.35)]" />
             </motion.div>
           )}
         </AnimatePresence>

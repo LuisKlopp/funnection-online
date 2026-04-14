@@ -8,9 +8,9 @@ import { NoticeBox } from "./_components/NoticeBox";
 
 export const ApplyCompletePageClient = () => {
   return (
-    <div className="bg-applyBackgroundColor smd:mx-auto flex h-svh max-w-175 flex-col text-white">
+    <div className="bg-applyBackgroundColor smd:mx-auto flex h-svh max-w-175 flex-col overflow-hidden text-white">
       <ApplyCompleteHeader />
-      <div className="relative flex h-full flex-1 flex-col items-center gap-4 overflow-y-auto px-4 py-8">
+      <div className="relative flex min-h-0 flex-1 flex-col items-center gap-4 overflow-y-auto px-4 py-8">
         <CheckBox />
         <DepositBox />
         <NoticeBox />

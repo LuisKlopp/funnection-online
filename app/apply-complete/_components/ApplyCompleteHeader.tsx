@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const ApplyCompleteHeader = () => {
   return (
-    <div className="bg-applyBackgroundColor sticky top-0 z-10 border-b border-white/10 px-4 py-4">
+    <div className="bg-applyBackgroundColor z-10 shrink-0 border-b border-white/10 px-4 py-4">
       <div className="relative flex items-center">
         <Link
           href="/"
