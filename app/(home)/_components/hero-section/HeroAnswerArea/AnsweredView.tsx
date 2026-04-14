@@ -26,17 +26,17 @@ export const AnsweredView = ({
         isMine
         onOpenDetail={onOpenMyAnswer}
       />
-      <div className="flex flex-col gap-3">
+      <div className="mx-auto flex max-w-100 flex-col gap-3">
         <button
           onClick={onOpenAnswers}
-          className="bg-primaryNavy box-shadow-1 rounded-xl px-4 py-3 text-sm text-white"
+          className="bg-primaryNavy btn-press-in box-shadow-1 rounded-xl px-4 py-3 text-sm text-white"
         >
           이 질문, 사람들과 만나서 얘기해볼까요?
         </button>
 
         <button
           onClick={onOpenAnswers}
-          className="text-primaryNavy box-shadow-1 rounded-xl border bg-white px-4 py-3 text-sm"
+          className="text-primaryNavy btn-press-in box-shadow-1 rounded-xl border bg-white px-4 py-3 text-sm"
         >
           다른 사람들은 어떻게 답했을까?
         </button>

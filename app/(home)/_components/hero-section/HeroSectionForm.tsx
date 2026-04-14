@@ -61,7 +61,7 @@ export const HeroSectionForm = ({
       </div>
       <div className="mb-4 flex items-center gap-3">
         <div className="border-primaryNavy/30 flex-1 border-b" />
-        <span className="text-primaryNavy font-nanum text-base font-medium whitespace-nowrap">
+        <span className="text-primaryNavy font-nanum smd:text-xl text-xl font-medium whitespace-nowrap">
           퍼넥션 오늘의 질문
         </span>
         <div className="border-primaryNavy/30 flex-1 border-b" />

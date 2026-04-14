@@ -48,7 +48,7 @@ export const maruBuri = localFont({
   variable: "--font-MaruBuri-Semibold",
   src: [
     {
-      path: "./MaruBuri-Bold.otf",
+      path: "./omu.woff2",
       weight: "600",
       style: "light",
     },

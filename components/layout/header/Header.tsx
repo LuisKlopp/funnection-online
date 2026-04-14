@@ -44,7 +44,7 @@ export const Header = () => {
       >
         <Link
           href="/"
-          className="smd:text-2xl text-primaryNavy font-dohyun text-lg font-semibold"
+          className="smd:text-2xl text-primaryNavy font-dohyun text-base font-semibold"
         >
           Funnection{" "}
           <span className="text-gray-9 smd:text-[14px] bg-primaryNavy/10 font-pretendard rounded-3xl px-2 py-1 text-[11px] font-normal">

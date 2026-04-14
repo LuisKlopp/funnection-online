@@ -24,7 +24,7 @@ export const UnansweredView = ({
             value={value}
             onChange={(e) => setValue(e.target.value)}
             placeholder="익명이니 편하게, 솔직하게 적어보세요 ☺️"
-            className="text-gray-7 h-[59.75px] w-[106.667%] origin-top-left scale-[0.9375] resize-none bg-white text-[16px] leading-5.5 outline-none placeholder:text-gray-400 smd:h-14 smd:w-full smd:scale-100 smd:text-[15px]"
+            className="text-gray-7 smd:h-14 smd:w-full smd:scale-100 smd:text-[15px] h-[59.75px] w-[106.667%] origin-top-left scale-[0.9375] resize-none bg-white text-[16px] leading-5.5 outline-none placeholder:text-gray-400"
           />
           <span className="text-gray-5 flex justify-end text-xs">
             {value.length}/{maxLength}

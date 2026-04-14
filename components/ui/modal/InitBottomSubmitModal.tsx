@@ -181,7 +181,7 @@ export const InitBottomSubmitModal = ({
 
                   setNickname(filtered);
                 }}
-                className="box-shadow-1 focus:ring-primaryNavy/50 w-full rounded-xl border border-gray-200 px-3 py-3 text-sm outline-none placeholder:text-[13px] placeholder:text-gray-400 focus:ring-2"
+                className="box-shadow-1 focus:ring-primaryNavy/50 h-[53.714px] w-[114.286%] origin-top-left scale-[0.875] rounded-xl border border-gray-200 px-3 py-3 text-[16px] outline-none placeholder:text-[14.857px] placeholder:text-gray-400 focus:ring-2 smd:h-auto smd:w-full smd:scale-100 smd:text-sm smd:placeholder:text-[13px]"
               />
             </div>
 
