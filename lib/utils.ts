@@ -9,6 +9,12 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
+const isWindowScrollContainer = (
+  container: Window | HTMLElement
+): container is Window => {
+  return "scrollY" in container;
+};
+
 export const smoothScrollTo = (
   targetY: number,
   duration = 1200,
@@ -16,7 +22,9 @@ export const smoothScrollTo = (
 ) => {
   const scrollContainer = container ?? window;
   const startY =
-    scrollContainer === window ? window.scrollY : scrollContainer.scrollTop;
+    isWindowScrollContainer(scrollContainer)
+      ? scrollContainer.scrollY
+      : scrollContainer.scrollTop;
   const distance = targetY - startY;
   const startTime = performance.now();
 
@@ -29,8 +37,8 @@ export const smoothScrollTo = (
     const eased = easeInOutCubic(progress);
     const nextY = startY + distance * eased;
 
-    if (scrollContainer === window) {
-      window.scrollTo(0, nextY);
+    if (isWindowScrollContainer(scrollContainer)) {
+      scrollContainer.scrollTo(0, nextY);
     } else {
       scrollContainer.scrollTo({ top: nextY });
     }
