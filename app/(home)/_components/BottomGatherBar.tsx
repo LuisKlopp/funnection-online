@@ -2,12 +2,62 @@
 
 import { ArrowRight, Users } from "lucide-react";
 import Link from "next/link";
+import { useMemo } from "react";
 
-import { cn } from "@/lib/utils";
+import { useEventsQuery } from "@/hooks/react-query/useEventsQuery";
+import {
+  cn,
+  formatKoreanDate,
+  formatKoreanTime,
+  parseLocalDate,
+} from "@/lib/utils";
 import { useScrollStore } from "@/store/scroll.store";
+import { EventData } from "@/types/event.type";
+
+const getEventDateTime = (event: EventData) => {
+  const date = parseLocalDate(event.eventDate);
+  const [hours = 0, minutes = 0, seconds = 0] = event.startTime
+    .split(":")
+    .map(Number);
+
+  date.setHours(hours, minutes, seconds, 0);
+
+  return date;
+};
+
+const getNearestEvent = (events: EventData[]) => {
+  const funnectionEvents = events.filter(
+    (event) => event.eventType === "FUNNECTION"
+  );
+
+  if (!funnectionEvents.length) return null;
+
+  const now = new Date();
+  const upcomingEvents = funnectionEvents
+    .filter((event) => getEventDateTime(event).getTime() >= now.getTime())
+    .sort(
+      (a, b) => getEventDateTime(a).getTime() - getEventDateTime(b).getTime()
+    );
+
+  if (upcomingEvents.length) {
+    return upcomingEvents[0];
+  }
+
+  return [...funnectionEvents].sort(
+    (a, b) => getEventDateTime(b).getTime() - getEventDateTime(a).getTime()
+  )[0];
+};
 
 export const BottomGatherBar = () => {
   const { scrolled } = useScrollStore();
+  const { data: events = [] } = useEventsQuery();
+  const nearestEvent = useMemo(() => getNearestEvent(events), [events]);
+  const participantCount = nearestEvent
+    ? Math.max(nearestEvent.maxParticipants - nearestEvent.seatsLeft, 0)
+    : null;
+  const eventDateLabel = nearestEvent
+    ? `${formatKoreanDate(nearestEvent.eventDate)} ${formatKoreanTime(nearestEvent.startTime)}`
+    : "새 일정 업데이트 예정";
 
   return (
     <div
@@ -46,7 +96,7 @@ export const BottomGatherBar = () => {
                 퍼넥션 모임
               </p>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <p
                 className={cn(
                   "flex items-center gap-1 text-xs font-medium transition-all",
@@ -56,7 +106,11 @@ export const BottomGatherBar = () => {
                 <Users
                   className={cn("h-4 w-4", scrolled ? "text-white/70" : "")}
                 />
-                <span>6명 참여 중</span>
+                <span>
+                  {participantCount !== null
+                    ? `${participantCount}명 참여`
+                    : "모임 일정 준비 중"}
+                </span>
               </p>
 
               <p
@@ -65,7 +119,7 @@ export const BottomGatherBar = () => {
                   scrolled ? "text-white/65" : "text-gray-4"
                 )}
               >
-                / 3월 12일 (토) 저녁
+                {nearestEvent ? `/ ${eventDateLabel}` : eventDateLabel}
               </p>
             </div>
           </div>

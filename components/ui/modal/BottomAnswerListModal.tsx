@@ -13,6 +13,8 @@ import { AnswerType } from "@/types/answer.type";
 import { BottomSheet } from "./BottomSheet";
 
 const EMPTY_ANSWERS: AnswerType[] = [];
+const ANSWER_LIST_SNAP_POINTS = [0, 0.65, 0.9, 1];
+const FULLY_EXPANDED_SNAP_INDEX = ANSWER_LIST_SNAP_POINTS.length - 1;
 
 const sortAnswersByLike = (
   a: { likeCount: number; createdAt: string },
@@ -86,7 +88,10 @@ export const BottomAnswerListModal = ({ onClose }: { onClose: () => void }) => {
       <BottomSheet
         isOpen={true}
         onClose={onClose}
-        onSnap={(index) => setIsSheetExpanded(index === 2)}
+        snapPoints={ANSWER_LIST_SNAP_POINTS}
+        initialSnap={2}
+        dragVelocityThreshold={1200}
+        onSnap={(index) => setIsSheetExpanded(index === FULLY_EXPANDED_SNAP_INDEX)}
         contentClassName="h-full pb-0"
       >
         <div className="flex h-full min-h-0 flex-col">

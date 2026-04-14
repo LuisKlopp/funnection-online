@@ -21,7 +21,7 @@ export const UserInfoBadge = ({ questionDone }: UserInfoBadgeProps) => {
           : "pointer-events-none translate-y-4 opacity-0"
       )}
     >
-      <div className="box-shadow-1 flex gap-1 rounded-xl bg-amber-50 px-3 py-1 text-sm">
+      <div className="box-shadow-1 flex gap-1 rounded-xl bg-white px-3 py-1 text-sm">
         <span>{getGenderEmoji(userInfo.gender)}</span>
         <span className="text-gray-6">{userInfo.nickname}</span>
       </div>

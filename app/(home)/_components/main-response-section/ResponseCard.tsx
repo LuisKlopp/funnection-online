@@ -31,6 +31,7 @@ export const ResponseCard = ({
 
   const isSheet = variant === "bottom-sheet";
   const likeDisabled = isLikePending;
+  const isMale = answerInfo.gender === "male";
 
   const [expanded, setExpanded] = useState(false);
   const [isOverflow, setIsOverflow] = useState(false);
@@ -65,9 +66,7 @@ export const ResponseCard = ({
           <div
             className={cn(
               "bg-lightNavy rounded-full px-2 py-2",
-              answerInfo.gender === "male"
-                ? "bg-primaryNavy/40"
-                : "bg-pink-700/40"
+              isMale ? "bg-primaryNavy/40" : "bg-pink-700/40"
             )}
           >
             <p className="text-gray-5 text-sm font-medium">
@@ -86,24 +85,27 @@ export const ResponseCard = ({
         className={cn(
           "box-shadow-2 border-primaryNavy/60 relative w-full rounded-2xl border-2 bg-white px-4 py-3",
           isMine && "text-left",
-          answerInfo.gender === "male"
-            ? "border-primaryNavy/60"
-            : "border-pink-700/40"
+          isMale ? "border-primaryNavy/60" : "border-pink-700/40"
         )}
       >
         <div
           className={cn(
             "absolute right-10 bottom-0 h-1 w-12 rounded-full",
-            answerInfo.gender === "male"
-              ? "bg-primaryNavy/70"
-              : "bg-pink-700/70"
+            isMale ? "bg-primaryNavy/70" : "bg-pink-700/70"
           )}
         />
 
         <div className="relative">
           {isMine && (
             <div className="mb-2">
-              <span className="bg-primaryNavy/10 text-primaryNavy inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold">
+              <span
+                className={cn(
+                  "inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold",
+                  isMale
+                    ? "bg-primaryNavy/70 text-white"
+                    : "bg-pink-700/50 text-white"
+                )}
+              >
                 내 답변
               </span>
             </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { EVENT_TYPE_LABEL } from "@/constants/event-type.constants";
 import { formatKoreanDate, formatKoreanTime } from "@/lib/utils";
 import { EventData } from "@/types/event.type";
 
@@ -23,6 +24,8 @@ export const ApplySecondStep = ({
   setForm,
   event,
 }: ApplySecondStepProps) => {
+  const isBoardgame = event?.eventType === "BOARDGAME";
+
   const updateField = <K extends keyof FormState>(
     key: K,
     value: FormState[K]
@@ -40,17 +43,38 @@ export const ApplySecondStep = ({
         <span className="text-gray-4 text-base">간단한 정보만 남겨주세요.</span>
       </div>
       {event && (
-        <div className="border-primaryAmber/30 bg-primaryAmber/10 rounded-2xl border p-4">
+        <div
+          className={`rounded-2xl border p-4 ${
+            isBoardgame
+              ? "border-green-500/30 bg-green-500/10"
+              : "border-primaryNavy/30 bg-primaryNavy/10"
+          }`}
+        >
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-primaryAmber text-sm">신청 중인 모임</p>
+              <p
+                className={`text-sm ${
+                  isBoardgame ? "text-green-400" : "text-[#9fc0ff]"
+                }`}
+              >
+                신청 중인 모임
+              </p>
               <p className="mt-1 text-sm font-semibold">
-                {event.round}회차 · {formatKoreanDate(event.eventDate)}{" "}
+                {event.eventType === "FUNNECTION"
+                  ? `${event.round}회차 · `
+                  : `${EVENT_TYPE_LABEL[event.eventType]} · `}
+                {formatKoreanDate(event.eventDate)}{" "}
                 {formatKoreanTime(event.startTime)}
               </p>
             </div>
 
-            <div className="rounded-full bg-green-500/20 px-3 py-1 text-sm text-green-400">
+            <div
+              className={`rounded-full px-3 py-1 text-sm ${
+                isBoardgame
+                  ? "bg-green-500/20 text-green-400"
+                  : "bg-primaryNavy/18 text-[#9fc0ff]"
+              }`}
+            >
               잔여 {event.seatsLeft}
             </div>
           </div>

@@ -13,18 +13,18 @@ export const CalendarMonthNavigation = ({ month, onPrev, onNext }: Props) => {
     <div className="flex items-center justify-between">
       <button
         onClick={onPrev}
-        className="flex h-8 w-8 items-center justify-center rounded-full"
+        className="text-primaryNavy hover:border-primaryAmber/45 hover:bg-primaryAmber/15 box-shadow-1 flex h-9 w-9 items-center justify-center rounded-full bg-white transition-colors"
       >
         <ChevronLeft />
       </button>
 
-      <p className="text-gray-7 text-xl font-semibold">
+      <p className="text-primaryNavy text-xl font-semibold tracking-tight">
         {format(month, "yyyy년 M월", { locale: ko })}
       </p>
 
       <button
         onClick={onNext}
-        className="flex h-8 w-8 items-center justify-center rounded-full"
+        className="text-primaryNavy hover:border-primaryAmber/45 hover:bg-primaryAmber/15 box-shadow-1 flex h-9 w-9 items-center justify-center rounded-full bg-white transition-colors"
       >
         <ChevronRight />
       </button>

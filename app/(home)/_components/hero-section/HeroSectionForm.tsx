@@ -24,6 +24,7 @@ interface HeroSectionFormProps {
   questionData: HomeQuestion;
   questionDone: boolean;
   setQuestionDone: Dispatch<SetStateAction<boolean>>;
+  onOpenGatheringSection: () => void;
 }
 
 export const HeroSectionForm = ({
@@ -32,6 +33,7 @@ export const HeroSectionForm = ({
   questionData,
   questionDone,
   setQuestionDone,
+  onOpenGatheringSection,
 }: HeroSectionFormProps) => {
   const {
     value,
@@ -61,7 +63,7 @@ export const HeroSectionForm = ({
       </div>
       <div className="mb-4 flex items-center gap-3">
         <div className="border-primaryNavy/30 flex-1 border-b" />
-        <span className="text-primaryNavy font-nanum smd:text-xl text-xl font-medium whitespace-nowrap">
+        <span className="text-primaryNavy font-nanum smd:text-xl text-2xl font-medium whitespace-nowrap">
           퍼넥션 오늘의 질문
         </span>
         <div className="border-primaryNavy/30 flex-1 border-b" />
@@ -81,6 +83,7 @@ export const HeroSectionForm = ({
         maxLength={HERO_SECTION_FORM_MAX_LENGTH}
         onOpenAnswers={handleOpenAnswers}
         onOpenMyAnswer={handleOpenMyAnswer}
+        onOpenGatheringSection={onOpenGatheringSection}
       />
       {modal.isModal === "submit" && (
         <InitBottomSubmitModal

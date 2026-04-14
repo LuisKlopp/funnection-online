@@ -6,12 +6,14 @@ import { ResponseCard } from "../../main-response-section/ResponseCard";
 
 interface AnsweredViewProps {
   questionId: number;
+  onOpenGatheringSection: () => void;
   onOpenAnswers: () => void;
   onOpenMyAnswer: () => void;
 }
 
 export const AnsweredView = ({
   questionId,
+  onOpenGatheringSection,
   onOpenAnswers,
   onOpenMyAnswer,
 }: AnsweredViewProps) => {
@@ -28,7 +30,7 @@ export const AnsweredView = ({
       />
       <div className="mx-auto flex max-w-100 flex-col gap-3">
         <button
-          onClick={onOpenAnswers}
+          onClick={onOpenGatheringSection}
           className="bg-primaryNavy btn-press-in box-shadow-1 rounded-xl px-4 py-3 text-sm text-white"
         >
           이 질문, 사람들과 만나서 얘기해볼까요?

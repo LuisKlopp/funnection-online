@@ -23,8 +23,10 @@ export const MainFunnectionRedirectButton = () => {
         <br /> 네이버 블로그에서 확인할 수 있어요!
       </p>
 
-      <div className="flex w-full justify-center gap-1">
+      <div className="smd:justify-center flex w-full justify-evenly gap-1">
         <Link
+          target="_blank"
+          rel="noopener noreferrer"
           href="https://www.instagram.com/el_25_ryu"
           className="box-shadow-2 text-gray-6 hover:bg-gray-1 inline-flex cursor-pointer items-center gap-3 rounded-full border bg-white px-6 py-2 transition-all"
         >

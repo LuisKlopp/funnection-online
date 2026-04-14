@@ -11,6 +11,10 @@ interface BottomSheetProps {
   children: React.ReactNode;
   headerClassName?: string;
   contentClassName?: string;
+  snapPoints?: number[];
+  initialSnap?: number;
+  dragCloseThreshold?: number;
+  dragVelocityThreshold?: number;
 }
 
 export const BottomSheet = ({
@@ -20,15 +24,20 @@ export const BottomSheet = ({
   children,
   headerClassName,
   contentClassName,
+  snapPoints = [0, 0.9, 1],
+  initialSnap = 1,
+  dragCloseThreshold,
+  dragVelocityThreshold = 800,
 }: BottomSheetProps) => {
   return (
     <Sheet
       className="mx-auto max-w-125"
       isOpen={isOpen}
       onClose={onClose}
-      snapPoints={[0, 0.9, 1]}
-      initialSnap={1}
-      dragVelocityThreshold={800}
+      snapPoints={snapPoints}
+      initialSnap={initialSnap}
+      dragCloseThreshold={dragCloseThreshold}
+      dragVelocityThreshold={dragVelocityThreshold}
       disableScrollLocking
       onSnap={onSnap}
     >

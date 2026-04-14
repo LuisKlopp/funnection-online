@@ -28,6 +28,11 @@ export const ApplyPageClient = () => {
   const step1Ref = useRef<HTMLDivElement>(null);
   const step2Ref = useRef<HTMLDivElement>(null);
   const eventIdParam = searchParams.get("eventId");
+  const selectedStepOneText = selectedEvent
+    ? selectedEvent.eventType === "BOARDGAME"
+      ? "보드게임 신청서 작성하기 →"
+      : `${selectedEvent.round}회차 신청서 작성하기 →`
+    : "신청할 모임을 선택해주세요!";
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -95,11 +100,7 @@ export const ApplyPageClient = () => {
         <BottomCtaButton
           disabled={!selectedEventId}
           onClick={goNext}
-          text={
-            selectedEventId
-              ? `${selectedEvent?.round}회차 신청서 작성하기 →`
-              : "신청할 모임을 선택해주세요!"
-          }
+          text={selectedStepOneText}
         />
       )}
       {step === 2 && (

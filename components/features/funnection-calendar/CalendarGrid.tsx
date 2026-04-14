@@ -23,6 +23,16 @@ interface CalendarGridProps {
   onSelectDate: (date: Date) => void;
 }
 
+const WEEKDAY_LABELS = [
+  { label: "일", className: "text-red-600" },
+  { label: "월", className: "text-primaryNavy/72" },
+  { label: "화", className: "text-primaryNavy/72" },
+  { label: "수", className: "text-primaryNavy/72" },
+  { label: "목", className: "text-primaryNavy/72" },
+  { label: "금", className: "text-primaryNavy/72" },
+  { label: "토", className: "text-primaryNavy/72" },
+] as const;
+
 export const CalendarGrid = ({
   selectedDate,
   onSelectDate,
@@ -56,19 +66,20 @@ export const CalendarGrid = ({
         onPrev={() => setMonth(addMonths(month, -1))}
         onNext={() => setMonth(addMonths(month, 1))}
       />
-      <div className="border-gray-2 mx-auto my-4 w-[90%] border-b" />
-      <div className="text-gray-6 grid grid-cols-7 text-center text-sm">
-        <span>일</span>
-        <span>월</span>
-        <span>화</span>
-        <span>수</span>
-        <span>목</span>
-        <span>금</span>
-        <span>토</span>
+      <div className="border-primaryNavy/10 mx-auto my-4 w-[90%] border-b" />
+      <div className="grid grid-cols-7 justify-items-center text-center text-sm font-medium">
+        {WEEKDAY_LABELS.map(({ label, className }) => (
+          <span
+            key={label}
+            className={`${className} flex h-9 w-full items-center justify-center`}
+          >
+            {label}
+          </span>
+        ))}
       </div>
-      <div className="mt-4 grid grid-cols-7 place-items-center gap-x-3">
+      <div className="mt-3 grid grid-cols-7 justify-items-center gap-y-3">
         {blanks.map((_, i) => (
-          <div key={`blank-${i}`} />
+          <div key={`blank-${i}`} className="h-9 w-full" />
         ))}
         {days.map((date) => {
           const key = format(date, "yyyy-MM-dd");

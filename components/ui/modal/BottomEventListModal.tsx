@@ -59,10 +59,20 @@ export const BottomEventListModal = ({
           {filteredEvents.map((event) => (
             <div
               key={event.id}
-              className="box-shadow-2 border-primaryNavy/70 rounded-xl border-2 bg-white p-4"
+              className={`box-shadow-2 rounded-xl border-2 bg-white p-4 ${
+                event.eventType === "BOARDGAME"
+                  ? "border-green-600/60"
+                  : "border-primaryNavy/70"
+              }`}
             >
               <div className="flex w-full items-center justify-center gap-1">
-                <div className="text-primaryNavy font-semibold">
+                <div
+                  className={`font-semibold ${
+                    event.eventType === "BOARDGAME"
+                      ? "text-green-700"
+                      : "text-primaryNavy"
+                  }`}
+                >
                   {EVENT_TYPE_LABEL[event.eventType]}
                 </div>
                 <div className="text-gray-7 rounded-full text-[13px] font-semibold">
@@ -90,7 +100,11 @@ export const BottomEventListModal = ({
               <Link
                 href={`/apply?eventId=${event.id}`}
                 onClick={onClose}
-                className="mt-3 block w-full rounded-lg bg-[#3471eb] py-2 text-center text-sm font-semibold text-white"
+                className={`mt-3 block w-full rounded-lg py-2 text-center text-sm font-semibold text-white ${
+                  event.eventType === "BOARDGAME"
+                    ? "bg-green-600"
+                    : "bg-[#3471eb]"
+                }`}
               >
                 신청하기
               </Link>

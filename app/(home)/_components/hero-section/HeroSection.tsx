@@ -1,10 +1,13 @@
 "use client";
+
 import { useState } from "react";
 
 import { useFirstVisitSplash } from "@/hooks/ui/useFirstVisitSplash";
+import { smoothScrollTo } from "@/lib/utils";
 import { HomeQuestion } from "@/types/home.type";
 
 import { BottomGatherBar } from "../BottomGatherBar";
+import { FUNNECTION_DATE_SECTION_ID } from "../main-funnection-date-section/MainFunnectionDateSection";
 import { HeroSectionForm } from "./HeroSectionForm";
 
 interface HeroSectionProps {
@@ -14,6 +17,15 @@ interface HeroSectionProps {
 export const HeroSection = ({ questionData }: HeroSectionProps) => {
   const { showSplash, checked, isFirstVisit } = useFirstVisitSplash();
   const [questionDone, setQuestionDone] = useState(false);
+  const handleOpenGatheringSection = () => {
+    const section = document.getElementById(FUNNECTION_DATE_SECTION_ID);
+
+    if (!section) return;
+
+    const targetY = window.scrollY + section.getBoundingClientRect().top;
+
+    smoothScrollTo(targetY, 900);
+  };
 
   return (
     <section className="bg-skyNavy relative h-svh w-full">
@@ -25,6 +37,7 @@ export const HeroSection = ({ questionData }: HeroSectionProps) => {
             setQuestionDone={setQuestionDone}
             skipTyping={!isFirstVisit}
             visible={!showSplash}
+            onOpenGatheringSection={handleOpenGatheringSection}
           />
         )}
       </div>

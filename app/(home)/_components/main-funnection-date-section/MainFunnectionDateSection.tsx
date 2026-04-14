@@ -6,9 +6,14 @@ import { SectionHeader } from "../SectionHeader";
 import { MainFunnectionPhotoCard } from "./MainFunnectionPhotoCard";
 import { MainFunnectionRedirectButton } from "./MainFunnectionRedirectButton";
 
+export const FUNNECTION_DATE_SECTION_ID = "funnection-offline-section";
+
 export const MainFunnectionDateSection = () => {
   return (
-    <section className="flex w-full flex-col items-center bg-white px-6 py-12">
+    <section
+      id={FUNNECTION_DATE_SECTION_ID}
+      className="flex w-full flex-col items-center bg-white px-6 py-12"
+    >
       <div className="max-w-150">
         <SectionHeader
           titleBadge="Funnection Offline Gathering"
@@ -19,9 +24,6 @@ export const MainFunnectionDateSection = () => {
         />
         <div className="flex flex-col gap-4">
           <MainFunnectionPhotoCard />
-          <p className="text-gray-5 mx-auto text-xs">
-            ↑ 이미지를 클릭해서 확인해보세요 😆{" "}
-          </p>
           <FunnectionCalendar />
           <MainFunnectionRedirectButton />
         </div>
