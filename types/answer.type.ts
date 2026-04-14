@@ -7,11 +7,12 @@ export interface AnswerType {
   gender: GenderType;
   ageGroup: AgeGroupType;
   nickname: string;
-  anonId: string;
   likeCount: number;
   isHidden: boolean;
   createdAt: string;
   updatedAt: string;
+  isMine: boolean;
+  likedByMe: boolean;
 }
 
 export interface CreateAnswerRequest {
@@ -32,4 +33,10 @@ export interface CreateAnswerResponse {
 export interface ListAnswerType {
   answers: AnswerType[];
   hasAnswered: boolean;
+}
+
+export interface LikeAnswerResponse {
+  success: boolean;
+  likedByMe: boolean;
+  likeCount: number;
 }

@@ -3,6 +3,7 @@
 import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import { useLikeAnswerMutation } from "@/hooks/react-query/useLikeAnswerMutation";
 import { useDoubleTap } from "@/hooks/ui/useDoubleTap";
 import { cn, formatAgeGroup, getGenderEmoji } from "@/lib/utils";
 import { AnswerType } from "@/types/answer.type";
@@ -24,13 +25,26 @@ export const ResponseCard = ({
 }: ResponseCardProps) => {
   const likeRef = useRef<LikeButtonRef>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
+  const { likeOne, isPending: isLikePending } = useLikeAnswerMutation(
+    answerInfo.questionId
+  );
 
   const isSheet = variant === "bottom-sheet";
+  const likeDisabled = isLikePending;
 
   const [expanded, setExpanded] = useState(false);
   const [isOverflow, setIsOverflow] = useState(false);
 
+  const handleLike = async () => {
+    const result = await likeOne(answerInfo.id);
+
+    if (!result.ok) {
+      alert(result.message);
+    }
+  };
+
   const triggerLike = () => {
+    if (likeDisabled) return;
     likeRef.current?.triggerLike();
   };
 
@@ -98,7 +112,7 @@ export const ResponseCard = ({
           <p
             ref={textRef}
             className={cn(
-              "text-gray-7 wrap-break-word overflow-hidden text-ellipsis leading-relaxed",
+              "text-gray-7 overflow-hidden leading-relaxed wrap-break-word text-ellipsis",
               isMine && "text-left",
               isSheet ? "text-[13px] leading-5" : "text-[14px]",
               isMine && "line-clamp-3",
@@ -137,12 +151,7 @@ export const ResponseCard = ({
           )}
         </div>
         <div className="border-gray-2 mx-auto my-2 w-[90%] border-t" />
-        <div
-          className={cn(
-            "flex w-full",
-            isMine ? "justify-start" : "justify-between"
-          )}
-        >
+        <div className="flex w-full justify-between">
           <div className="flex items-center gap-1">
             <div
               className={cn(
@@ -154,7 +163,16 @@ export const ResponseCard = ({
             />
             <p className="text-gray-5 text-xs">{answerInfo.nickname}</p>
           </div>
-          {!isMine && <LikeButton ref={likeRef} likes={answerInfo.likeCount} />}
+          {!isMine && (
+            <LikeButton
+              ref={likeRef}
+              likes={answerInfo.likeCount}
+              liked={answerInfo.likedByMe}
+              disabled={false}
+              isPending={isLikePending}
+              onLike={handleLike}
+            />
+          )}
         </div>
       </div>
     </div>
