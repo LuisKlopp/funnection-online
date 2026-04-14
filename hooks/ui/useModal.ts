@@ -1,6 +1,13 @@
 import { useCallback, useState } from "react";
 
-type ModalType = "submit" | "answers" | "events" | "photos" | "result" | null;
+type ModalType =
+  | "submit"
+  | "answers"
+  | "events"
+  | "photos"
+  | "my-answer"
+  | "result"
+  | null;
 
 export const useModal = () => {
   const [isModal, setIsModal] = useState<ModalType>(null);

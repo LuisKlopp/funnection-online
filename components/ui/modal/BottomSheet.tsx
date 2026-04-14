@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 interface BottomSheetProps {
   isOpen: boolean;
   onClose: () => void;
+  onSnap?: (index: number) => void;
   children: React.ReactNode;
   headerClassName?: string;
   contentClassName?: string;
@@ -15,6 +16,7 @@ interface BottomSheetProps {
 export const BottomSheet = ({
   isOpen,
   onClose,
+  onSnap,
   children,
   headerClassName,
   contentClassName,
@@ -28,6 +30,7 @@ export const BottomSheet = ({
       initialSnap={1}
       dragVelocityThreshold={800}
       disableScrollLocking
+      onSnap={onSnap}
     >
       <Sheet.Container className="rounded-t-[28px]! shadow-2xl">
         <Sheet.Header className={cn("rounded-t-[28px]", headerClassName)}>

@@ -38,6 +38,7 @@ export const useHeroSectionForm = ({
 
   const { userInfo, initUserInfo } = useUserInfoStore();
   const { submitAnswer, isPending } = useSubmitAnswer();
+  const myAnswer = useCheckAnsweredStore((state) => state.myAnswers[questionId]);
   const hasAnswered = useCheckAnsweredStore((state) =>
     Boolean(state.myAnswers[questionId])
   );
@@ -71,6 +72,10 @@ export const useHeroSectionForm = ({
     modal.openModal("answers");
   }, [modal]);
 
+  const handleOpenMyAnswer = useCallback(() => {
+    modal.openModal("my-answer");
+  }, [modal]);
+
   useEffect(() => {
     if (!visible) return;
 
@@ -96,6 +101,7 @@ export const useHeroSectionForm = ({
     setValue,
     startTyping,
     userInfo,
+    myAnswer,
     hasAnswered,
     isPending,
     modal,
@@ -103,5 +109,6 @@ export const useHeroSectionForm = ({
     handleSubmit,
     handleTypingComplete,
     handleOpenAnswers,
+    handleOpenMyAnswer,
   };
 };

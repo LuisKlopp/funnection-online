@@ -6,6 +6,7 @@ import { FullscreenOverlay } from "@/components/ui/loading/FullScreenOverlay";
 import { Spinner } from "@/components/ui/loading/Spinner";
 import { BottomAnswerListModal } from "@/components/ui/modal/BottomAnswerListModal";
 import { InitBottomSubmitModal } from "@/components/ui/modal/InitBottomSubmitModal";
+import { MyAnswerDetailModal } from "@/components/ui/modal/MyAnswerDetailModal";
 import { ResultModal } from "@/components/ui/modal/ResultModal";
 import { HomeQuestion } from "@/types/home.type";
 
@@ -37,6 +38,7 @@ export const HeroSectionForm = ({
     setValue,
     startTyping,
     userInfo,
+    myAnswer,
     hasAnswered,
     isPending,
     modal,
@@ -44,6 +46,7 @@ export const HeroSectionForm = ({
     handleSubmit,
     handleTypingComplete,
     handleOpenAnswers,
+    handleOpenMyAnswer,
   } = useHeroSectionForm({
     questionId: questionData.id,
     visible,
@@ -53,7 +56,7 @@ export const HeroSectionForm = ({
 
   return (
     <section className="fade-up mx-auto flex w-full max-w-125 flex-col justify-center px-6 py-24 text-center">
-      <div className="absolute top-0 right-2 my-2 flex">
+      <div className="absolute top-8 right-2 my-2 flex">
         {userInfo && <UserInfoBadge questionDone={questionDone} />}
       </div>
       <div className="mb-4 flex items-center gap-3">
@@ -77,6 +80,7 @@ export const HeroSectionForm = ({
         onSubmit={handleSubmit}
         maxLength={HERO_SECTION_FORM_MAX_LENGTH}
         onOpenAnswers={handleOpenAnswers}
+        onOpenMyAnswer={handleOpenMyAnswer}
       />
       {modal.isModal === "submit" && (
         <InitBottomSubmitModal
@@ -89,6 +93,9 @@ export const HeroSectionForm = ({
       )}
       {modal.isModal === "answers" && (
         <BottomAnswerListModal onClose={modal.closeModal} />
+      )}
+      {modal.isModal === "my-answer" && myAnswer && (
+        <MyAnswerDetailModal answer={myAnswer} onClose={modal.closeModal} />
       )}
       {isPending && (
         <FullscreenOverlay>

@@ -1,10 +1,10 @@
-import { AnswerType } from "@/types/answer.type";
+import { ListAnswerType } from "@/types/answer.type";
 
 import { axiosInstance } from "./axios";
 
 export const fetchResponsesData = async (
   questionId: number
-): Promise<AnswerType[]> => {
+): Promise<ListAnswerType> => {
   const { data } = await axiosInstance.get("/funnection-online/answers", {
     params: {
       questionId,

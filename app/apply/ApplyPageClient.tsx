@@ -16,7 +16,7 @@ import { useApplyStep } from "./hooks/useApplyStep";
 
 export const ApplyPageClient = () => {
   const searchParams = useSearchParams();
-  const { step, setStep, goNext, goBack } = useApplyStep();
+  const { step, goNext, goBack } = useApplyStep();
   const [selectedEventId, setSelectedEventId] = useState<number | null>(null);
   const initializedFromSearchRef = useRef(false);
   const { data: events = [], isFetched } = useEventsQuery();
@@ -61,11 +61,10 @@ export const ApplyPageClient = () => {
 
     if (matchedEvent) {
       setSelectedEventId(matchedEvent.id);
-      setStep(2);
     }
 
     initializedFromSearchRef.current = true;
-  }, [eventIdParam, events, isFetched, setStep]);
+  }, [eventIdParam, events, isFetched]);
 
   return (
     <div className="bg-applyBackgroundColor smd:mx-auto flex h-svh max-w-175 flex-col text-white">

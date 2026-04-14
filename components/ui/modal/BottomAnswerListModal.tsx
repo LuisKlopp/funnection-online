@@ -1,6 +1,7 @@
 "use client";
 
 import { X } from "lucide-react";
+import { useState } from "react";
 
 import { ResponseCard } from "@/app/(home)/_components/main-response-section/ResponseCard";
 import { Portal } from "@/components/layout/PortalWrapper";
@@ -12,37 +13,56 @@ import { BottomSheet } from "./BottomSheet";
 
 export const BottomAnswerListModal = ({ onClose }: { onClose: () => void }) => {
   useLockBodyScroll();
+  const [isSheetExpanded, setIsSheetExpanded] = useState(false);
 
   const question = useQuestionStore((s) => s.question);
   const { data } = useResponsesQuery(question?.id);
 
+  if (!data) return null;
+
+  const { answers } = data;
+
   return (
     <Portal>
-      <BottomSheet isOpen={true} onClose={onClose}>
-        <div className="flex items-center justify-between px-6 py-4">
-          <div>
-            <h2 className="text-gray-8 text-lg font-semibold">전체 답변</h2>
-            <p className="text-gray-4 text-xs">
-              좋아요 많은 순 · 총 {data?.length}개
-            </p>
-          </div>
+      <BottomSheet
+        isOpen={true}
+        onClose={onClose}
+        onSnap={(index) => setIsSheetExpanded(index === 2)}
+        contentClassName="h-full pb-0"
+      >
+        <div className="flex h-full min-h-0 flex-col">
+          <div className="flex items-center justify-between px-6 py-4">
+            <div>
+              <h2 className="text-gray-8 text-lg font-semibold">전체 답변</h2>
+              <p className="text-gray-4 text-xs">
+                좋아요 많은 순 · 총 {answers.length}개
+              </p>
+            </div>
 
-          <button
-            onClick={onClose}
-            className="bg-primaryNavy/85 rounded-full p-2"
+            <button
+              onClick={onClose}
+              className="bg-primaryNavy/85 rounded-full p-2"
+            >
+              <X size={18} className="text-white" />
+            </button>
+          </div>
+          <div className="bg-primaryNavy/30 mx-auto my-2 h-px w-[40%] shrink-0" />
+          <div
+            className={`flex-1 overflow-y-auto px-6 ${
+              isSheetExpanded ? "pb-4" : "pb-20"
+            }`}
           >
-            <X size={18} className="text-white" />
-          </button>
-        </div>
-        <div className="bg-primaryNavy/30 mx-auto my-2 h-px w-[40%]" />
-        <div className="space-y-4 overflow-y-auto px-6 pb-6">
-          {data?.map((answer) => (
-            <ResponseCard
-              key={answer.id}
-              answerInfo={answer}
-              variant="bottom-sheet"
-            />
-          ))}
+            <div className="space-y-4">
+              {answers.map((answer) => (
+                <ResponseCard
+                  key={answer.id}
+                  answerInfo={answer}
+                  variant="bottom-sheet"
+                  isMine={false}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </BottomSheet>
     </Portal>
