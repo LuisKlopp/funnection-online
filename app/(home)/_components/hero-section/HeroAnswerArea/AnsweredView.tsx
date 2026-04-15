@@ -9,6 +9,7 @@ interface AnsweredViewProps {
   onOpenGatheringSection: () => void;
   onOpenAnswers: () => void;
   onOpenMyAnswer: () => void;
+  onEditMyAnswer: () => void;
 }
 
 export const AnsweredView = ({
@@ -16,18 +17,29 @@ export const AnsweredView = ({
   onOpenGatheringSection,
   onOpenAnswers,
   onOpenMyAnswer,
+  onEditMyAnswer,
 }: AnsweredViewProps) => {
   const myAnswer = useCheckAnsweredStore((s) => s.myAnswers[questionId]);
   if (!myAnswer) return null;
 
   return (
     <div className="w-full max-w-3xl space-y-6">
-      <ResponseCard
-        variant="bottom-sheet"
-        answerInfo={myAnswer}
-        isMine
-        onOpenDetail={onOpenMyAnswer}
-      />
+      <div className="relative mx-auto w-full max-w-100">
+        <button
+          type="button"
+          aria-label="내 답변 수정하기"
+          onClick={onEditMyAnswer}
+          className="absolute top-0 right-0 z-10 flex h-9 w-9 translate-x-1/4 -translate-y-1/4 items-center justify-center rounded-full border border-white/70 bg-[#fff6d8] text-lg shadow-md transition-transform hover:scale-105"
+        >
+          ✏️
+        </button>
+        <ResponseCard
+          variant="bottom-sheet"
+          answerInfo={myAnswer}
+          isMine
+          onOpenDetail={onOpenMyAnswer}
+        />
+      </div>
       <div className="mx-auto flex max-w-100 flex-col gap-3">
         <button
           onClick={onOpenGatheringSection}

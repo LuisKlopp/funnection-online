@@ -49,7 +49,7 @@ export const MainFunnectionImageModal = ({
   return (
     <Portal>
       <div
-        className="bg-applyBackgroundColor fixed inset-0 z-9999 flex flex-col items-center justify-center gap-4"
+        className="fixed inset-0 z-9999 flex flex-col items-center justify-center gap-4 bg-[#2d3556]"
         onClick={onClose}
       >
         <button
@@ -63,7 +63,7 @@ export const MainFunnectionImageModal = ({
           onClick={(e) => e.stopPropagation()}
           className="z-20 flex w-full justify-center"
         >
-          <p className="text-lightNavy smd:text-2xl font-nanum text-lg">
+          <p className="text-lightNavy smd:text-2xl font-nanum text-2xl">
             퍼넥션에서 함께한 순간들
           </p>
         </div>

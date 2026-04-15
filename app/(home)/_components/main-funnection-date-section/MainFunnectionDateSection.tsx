@@ -1,5 +1,8 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+
 import { FunnectionCalendar } from "@/components/features/funnection-calendar/FunnectionCalendar";
 
 import { SectionHeader } from "../SectionHeader";
@@ -7,6 +10,7 @@ import { MainFunnectionPhotoCard } from "./MainFunnectionPhotoCard";
 import { MainFunnectionRedirectButton } from "./MainFunnectionRedirectButton";
 
 export const FUNNECTION_DATE_SECTION_ID = "funnection-offline-section";
+export const FUNNECTION_CALENDAR_ID = "funnection-calendar";
 
 export const MainFunnectionDateSection = () => {
   return (
@@ -22,9 +26,20 @@ export const MainFunnectionDateSection = () => {
           secondDescription="정답 없는 질문 속에서 우리는 서로를 이해하고 연결됩니다."
           isBackground
         />
-        <div className="flex flex-col gap-4">
+        <div className="mt-6 flex flex-col gap-4">
           <MainFunnectionPhotoCard />
-          <FunnectionCalendar />
+          <div className="smd:justify-end flex justify-center">
+            <Link
+              href="/about-funnection"
+              className="box-shadow-2 text-primaryNavy border-primaryNavy/60 smd:w-auto inline-flex w-full items-center justify-center gap-2 rounded-2xl border bg-white px-5 py-3 text-sm font-semibold transition hover:bg-gray-50"
+            >
+              퍼넥션 자세히 들여다보기
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div id={FUNNECTION_CALENDAR_ID}>
+            <FunnectionCalendar />
+          </div>
           <MainFunnectionRedirectButton />
         </div>
       </div>

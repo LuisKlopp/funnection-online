@@ -6,6 +6,7 @@ type ModalType =
   | "events"
   | "photos"
   | "my-answer"
+  | "edit-answer"
   | "result"
   | null;
 

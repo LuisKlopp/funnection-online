@@ -5,6 +5,7 @@ import { Dispatch, SetStateAction } from "react";
 import { FullscreenOverlay } from "@/components/ui/loading/FullScreenOverlay";
 import { Spinner } from "@/components/ui/loading/Spinner";
 import { BottomAnswerListModal } from "@/components/ui/modal/BottomAnswerListModal";
+import { EditMyAnswerModal } from "@/components/ui/modal/EditMyAnswerModal";
 import { InitBottomSubmitModal } from "@/components/ui/modal/InitBottomSubmitModal";
 import { MyAnswerDetailModal } from "@/components/ui/modal/MyAnswerDetailModal";
 import { ResultModal } from "@/components/ui/modal/ResultModal";
@@ -43,12 +44,15 @@ export const HeroSectionForm = ({
     myAnswer,
     hasAnswered,
     isPending,
+    isEditPending,
     modal,
     resultModal,
     handleSubmit,
     handleTypingComplete,
     handleOpenAnswers,
     handleOpenMyAnswer,
+    handleOpenEditMyAnswer,
+    handleEditMyAnswer,
   } = useHeroSectionForm({
     questionId: questionData.id,
     visible,
@@ -83,6 +87,7 @@ export const HeroSectionForm = ({
         maxLength={HERO_SECTION_FORM_MAX_LENGTH}
         onOpenAnswers={handleOpenAnswers}
         onOpenMyAnswer={handleOpenMyAnswer}
+        onEditMyAnswer={handleOpenEditMyAnswer}
         onOpenGatheringSection={onOpenGatheringSection}
       />
       {modal.isModal === "submit" && (
@@ -99,6 +104,15 @@ export const HeroSectionForm = ({
       )}
       {modal.isModal === "my-answer" && myAnswer && (
         <MyAnswerDetailModal answer={myAnswer} onClose={modal.closeModal} />
+      )}
+      {modal.isModal === "edit-answer" && myAnswer && (
+        <EditMyAnswerModal
+          answer={myAnswer}
+          maxLength={HERO_SECTION_FORM_MAX_LENGTH}
+          isPending={isEditPending}
+          onClose={modal.closeModal}
+          onSubmit={handleEditMyAnswer}
+        />
       )}
       {isPending && (
         <FullscreenOverlay>

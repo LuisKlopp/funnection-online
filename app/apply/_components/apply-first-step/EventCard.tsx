@@ -23,8 +23,8 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(
           "relative cursor-pointer rounded-2xl border p-4 transition-all duration-300 ease-out",
           selected
             ? isBoardgame
-              ? "border-primaryAmber shadow-[0_10px_30px_rgba(34,197,94,0.12)]"
-              : "border-primaryAmber bg-primaryAmber/3 shadow-[0_10px_30px_rgba(28,75,165,0.14)]"
+              ? "border-primaryAmber bg-primaryAmber/7"
+              : "border-primaryAmber bg-primaryAmber/7"
             : isBoardgame
               ? "border-green-500/20 hover:border-green-500/35"
               : "border-primaryNavy/20 hover:border-primaryNavy/35"

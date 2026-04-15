@@ -15,6 +15,7 @@ interface BottomSheetProps {
   initialSnap?: number;
   dragCloseThreshold?: number;
   dragVelocityThreshold?: number;
+  avoidKeyboard?: boolean;
 }
 
 export const BottomSheet = ({
@@ -28,12 +29,14 @@ export const BottomSheet = ({
   initialSnap = 1,
   dragCloseThreshold,
   dragVelocityThreshold = 800,
+  avoidKeyboard = true,
 }: BottomSheetProps) => {
   return (
     <Sheet
       className="mx-auto max-w-125"
       isOpen={isOpen}
       onClose={onClose}
+      avoidKeyboard={avoidKeyboard}
       snapPoints={snapPoints}
       initialSnap={initialSnap}
       dragCloseThreshold={dragCloseThreshold}

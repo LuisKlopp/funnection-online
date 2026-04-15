@@ -2,7 +2,7 @@
 
 import { CreditCard, Info } from "lucide-react";
 
-export const DepositBox = () => {
+export const DepositBox = ({ amount }: { amount: string }) => {
   return (
     <div className="border-primaryAmber/30 box-shadow-4 w-full rounded-3xl border bg-linear-to-br from-[#1F2937] to-[#111827] p-6">
       <div className="mb-6 flex items-center gap-2">
@@ -17,7 +17,7 @@ export const DepositBox = () => {
         <Row label="예금주" value="류현" />
         <Row
           label="입금 금액"
-          value="35,000원"
+          value={amount}
           className="text-primaryAmber font-bold"
         />
       </div>

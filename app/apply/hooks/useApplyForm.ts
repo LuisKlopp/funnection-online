@@ -10,9 +10,15 @@ import { FormState } from "./useApplyStep";
 
 interface UseApplyFormProps {
   selectedEventId: number | null;
+  selectedEventType: "FUNNECTION" | "BOARDGAME" | null;
 }
 
-export const useApplyForm = ({ selectedEventId }: UseApplyFormProps) => {
+const APPLY_COMPLETE_EVENT_TYPE_KEY = "applyCompleteEventType";
+
+export const useApplyForm = ({
+  selectedEventId,
+  selectedEventType,
+}: UseApplyFormProps) => {
   const router = useRouter();
   const { mutate, isPending } = useApplyMutation();
 
@@ -49,6 +55,12 @@ export const useApplyForm = ({ selectedEventId }: UseApplyFormProps) => {
 
     mutate(payload, {
       onSuccess: () => {
+        if (selectedEventType) {
+          sessionStorage.setItem(
+            APPLY_COMPLETE_EVENT_TYPE_KEY,
+            selectedEventType
+          );
+        }
         router.push("/apply-complete");
       },
       onError: (error: any) => {

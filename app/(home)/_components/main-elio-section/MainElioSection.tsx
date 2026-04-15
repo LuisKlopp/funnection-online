@@ -1,6 +1,8 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import MainElio from "@/public/images/main-elio-1.webp";
 
@@ -54,9 +56,19 @@ export const MainElioSection = () => {
           </li>
           <li className="flex items-start gap-3">
             <span className="bg-primaryNavy mt-2 h-2 w-2 rounded-full" />
-            질문을 통해 관계를 형성합니다. 재밌게요.
+            질문을 통해 관계를 형성합니다. <br className="smd:block hidden" />
+            재밌게요.
           </li>
         </ul>
+        <div className="smd:col-start-2 flex w-full">
+          <Link
+            href="/about-elio"
+            className="box-shadow-2 text-primaryNavy border-primaryNavy/20 smd:w-auto inline-flex w-full items-center justify-center gap-2 rounded-2xl border bg-white px-5 py-3 text-sm font-semibold transition hover:bg-white/70"
+          >
+            엘리오는 뭐하는 사람인가요?
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
         <div className="smd:justify-end flex w-full flex-col gap-2 text-sm">
           <span className="text-primaryNavy font-medium">문의하기</span>
           <div className="flex flex-col gap-1">

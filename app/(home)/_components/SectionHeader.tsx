@@ -18,7 +18,7 @@ export const SectionHeader = ({
   isBackground,
 }: SectionHeaderProps) => {
   return (
-    <div className="mb-12 text-center" id={id}>
+    <div className="mb-4 text-center" id={id}>
       <TitleBadge title={titleBadge} isBackground={isBackground} />
 
       <h2 className="text-gray-8 smd:text-3xl text-[22px] font-semibold tracking-tight">

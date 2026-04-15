@@ -13,6 +13,7 @@ interface HeroSectionFormContentProps {
   onSubmit: () => void;
   onOpenAnswers: () => void;
   onOpenMyAnswer: () => void;
+  onEditMyAnswer: () => void;
   onOpenGatheringSection: () => void;
 }
 
@@ -26,6 +27,7 @@ export const HeroSectionFormContent = ({
   onSubmit,
   onOpenAnswers,
   onOpenMyAnswer,
+  onEditMyAnswer,
   onOpenGatheringSection,
 }: HeroSectionFormContentProps) => {
   return (
@@ -42,6 +44,7 @@ export const HeroSectionFormContent = ({
           onOpenGatheringSection={onOpenGatheringSection}
           onOpenAnswers={onOpenAnswers}
           onOpenMyAnswer={onOpenMyAnswer}
+          onEditMyAnswer={onEditMyAnswer}
         />
       ) : (
         <UnansweredView

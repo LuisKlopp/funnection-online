@@ -30,6 +30,17 @@ export interface CreateAnswerResponse {
   answer: AnswerType;
 }
 
+export interface EditAnswerRequest {
+  questionId: number;
+  content: string;
+  anonId?: string;
+}
+
+export interface EditAnswerResponse {
+  success: boolean;
+  answer: AnswerType;
+}
+
 export interface ListAnswerType {
   answers: AnswerType[];
   hasAnswered: boolean;

@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 
+import { useEditAnswerMutation } from "@/hooks/react-query/useEditAnswerMutation";
 import { useSubmitAnswer } from "@/hooks/react-query/useSubmitAnswer";
 import { useSyncMyAnswer } from "@/hooks/react-query/useSyncMyAnswer";
 import { useModal } from "@/hooks/ui/useModal";
@@ -38,6 +39,8 @@ export const useHeroSectionForm = ({
 
   const { userInfo, initUserInfo } = useUserInfoStore();
   const { submitAnswer, isPending } = useSubmitAnswer();
+  const { editMyAnswer, isPending: isEditPending } =
+    useEditAnswerMutation(questionId);
   const myAnswer = useCheckAnsweredStore((state) => state.myAnswers[questionId]);
   const hasAnswered = useCheckAnsweredStore((state) =>
     Boolean(state.myAnswers[questionId])
@@ -76,6 +79,25 @@ export const useHeroSectionForm = ({
     modal.openModal("my-answer");
   }, [modal]);
 
+  const handleOpenEditMyAnswer = useCallback(() => {
+    modal.openModal("edit-answer");
+  }, [modal]);
+
+  const handleEditMyAnswer = useCallback(
+    async (content: string) => {
+      const result = await editMyAnswer(content);
+
+      if (!result.ok) {
+        alert(result.message);
+        return;
+      }
+
+      modal.closeModal();
+      resultModal.show("답변이 수정됐어요. ✏️");
+    },
+    [editMyAnswer, modal, resultModal]
+  );
+
   useEffect(() => {
     if (!visible) return;
 
@@ -104,11 +126,14 @@ export const useHeroSectionForm = ({
     myAnswer,
     hasAnswered,
     isPending,
+    isEditPending,
     modal,
     resultModal,
     handleSubmit,
     handleTypingComplete,
     handleOpenAnswers,
     handleOpenMyAnswer,
+    handleOpenEditMyAnswer,
+    handleEditMyAnswer,
   };
 };

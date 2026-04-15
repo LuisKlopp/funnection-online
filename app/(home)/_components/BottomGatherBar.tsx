@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRight, Users } from "lucide-react";
-import Link from "next/link";
 import { useMemo } from "react";
 
 import { useEventsQuery } from "@/hooks/react-query/useEventsQuery";
@@ -10,9 +9,12 @@ import {
   formatKoreanDate,
   formatKoreanTime,
   parseLocalDate,
+  smoothScrollTo,
 } from "@/lib/utils";
 import { useScrollStore } from "@/store/scroll.store";
 import { EventData } from "@/types/event.type";
+
+import { FUNNECTION_CALENDAR_ID } from "./main-funnection-date-section/MainFunnectionDateSection";
 
 const getEventDateTime = (event: EventData) => {
   const date = parseLocalDate(event.eventDate);
@@ -58,6 +60,16 @@ export const BottomGatherBar = () => {
   const eventDateLabel = nearestEvent
     ? `${formatKoreanDate(nearestEvent.eventDate)} ${formatKoreanTime(nearestEvent.startTime)}`
     : "새 일정 업데이트 예정";
+
+  const handleOpenGatheringCalendar = () => {
+    const calendar = document.getElementById(FUNNECTION_CALENDAR_ID);
+
+    if (!calendar) return;
+
+    const targetY = window.scrollY + calendar.getBoundingClientRect().top - 24;
+
+    smoothScrollTo(targetY, 900);
+  };
 
   return (
     <div
@@ -123,8 +135,9 @@ export const BottomGatherBar = () => {
               </p>
             </div>
           </div>
-          <Link
-            href="/about-funnection"
+          <button
+            type="button"
+            onClick={handleOpenGatheringCalendar}
             className={cn(
               "btn-press-in box-shadow-2 flex items-center gap-2 rounded-2xl border-[1.5px] px-3 py-2 text-xs font-semibold transition-all duration-300",
               scrolled
@@ -132,9 +145,9 @@ export const BottomGatherBar = () => {
                 : "border-primaryNavy/90 text-primaryNavy/90"
             )}
           >
-            자세히 보기
+            모임 신청
             <ArrowRight className="h-4 w-4" />
-          </Link>
+          </button>
         </div>
       </div>
     </div>

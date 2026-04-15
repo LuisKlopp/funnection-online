@@ -23,6 +23,7 @@ export const ApplyPageClient = () => {
   const selectedEvent = events.find((e) => e.id === selectedEventId) ?? null;
   const { form, setForm, isFormValid, handleSubmit } = useApplyForm({
     selectedEventId,
+    selectedEventType: selectedEvent?.eventType ?? null,
   });
 
   const step1Ref = useRef<HTMLDivElement>(null);
