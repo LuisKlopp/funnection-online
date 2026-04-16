@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export const Footer = () => {
   return (
     <footer className="w-full bg-white px-6 pt-20 pb-30">
@@ -16,6 +18,9 @@ export const Footer = () => {
         </div>
 
         <div className="text-gray-8 flex flex-col items-start gap-3 md:items-end">
+          <Link href="/refund-policy" className="hover:text-primaryNavy">
+            환불정책
+          </Link>
           <a href="#" className="hover:text-primaryNavy">
             오늘의 질문
           </a>
