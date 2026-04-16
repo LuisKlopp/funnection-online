@@ -41,7 +41,7 @@ export const CalendarDay = ({
       onClick={() => onSelectDate(date)}
       className={`relative flex h-9 w-9 items-center justify-center rounded-full text-sm transition-all ${
         isSelected
-          ? "bg-primaryNavy/80 text-white ring-2 ring-offset-2 ring-offset-[#fff9ed]"
+          ? "bg-deepNavy/80 text-white ring-offset-[#fff9ed]"
           : isToday
             ? isSunday
               ? "bg-primaryAmber/22 font-semibold text-red-600"

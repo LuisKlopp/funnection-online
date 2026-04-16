@@ -29,7 +29,7 @@ const toneClasses = {
 
 export const AtAGlanceSection = () => {
   return (
-    <section className="bg-white px-6 py-22 sm:py-24">
+    <section className="bg-white px-6 py-22 smd:py-24">
       <div className="mx-auto max-w-280">
         <RefundSectionHeading
           eyebrow="AT A GLANCE"
@@ -37,9 +37,9 @@ export const AtAGlanceSection = () => {
           description="한눈에 확인하세요."
         />
 
-        <div className="mdl:grid-cols-2 grid gap-4">
+        <div className="grid gap-4 smd:grid-cols-2">
           <div
-            className={`mdl:p-5 rounded-[28px] border p-5 sm:p-6 ${toneClasses.blue.panel}`}
+            className={`rounded-[28px] border p-5 smd:p-6 ${toneClasses.blue.panel}`}
           >
             <div className="mb-4 flex items-center gap-3">
               <div
@@ -51,7 +51,7 @@ export const AtAGlanceSection = () => {
                 <p className="text-primaryNavy text-sm font-bold tracking-wide uppercase">
                   Refundable
                 </p>
-                <h3 className="text-gray-8 mdl:text-[22px] text-xl font-semibold sm:text-xl">
+                <h3 className="text-gray-8 text-xl font-semibold smd:text-[22px]">
                   환불 가능
                 </h3>
               </div>
@@ -61,12 +61,12 @@ export const AtAGlanceSection = () => {
               {refundableItems.map((item) => (
                 <div
                   key={item.text}
-                  className="box-shadow-1 mdl:px-3.5 mdl:py-3 flex items-center gap-3 rounded-2xl bg-white px-4 py-3.5"
+                  className="box-shadow-1 flex items-center gap-3 rounded-2xl bg-white px-4 py-3.5 smd:px-3.5 smd:py-3"
                 >
                   <div className="bg-primaryNavy/8 text-primaryNavy flex h-8 w-8 items-center justify-center rounded-xl">
                     <RefundPolicyIcon name={item.icon} className="h-4 w-4" />
                   </div>
-                  <span className="text-gray-7 mdl:text-[15px] text-sm font-medium">
+                  <span className="text-gray-7 text-sm font-medium smd:text-[15px]">
                     {item.text}
                   </span>
                 </div>
@@ -75,7 +75,7 @@ export const AtAGlanceSection = () => {
           </div>
 
           <div
-            className={`mdl:p-5 rounded-[28px] border p-5 sm:p-6 ${toneClasses.red.panel}`}
+            className={`rounded-[28px] border p-5 smd:p-6 ${toneClasses.red.panel}`}
           >
             <div className="mb-4 flex items-center gap-3">
               <div
@@ -87,7 +87,7 @@ export const AtAGlanceSection = () => {
                 <p className="text-[13px] font-bold tracking-wide text-[#ff4d4f] uppercase">
                   Non-refundable
                 </p>
-                <h3 className="text-gray-8 mdl:text-[22px] text-xl font-semibold sm:text-xl">
+                <h3 className="text-gray-8 text-xl font-semibold smd:text-[22px]">
                   환불 불가
                 </h3>
               </div>
@@ -96,12 +96,12 @@ export const AtAGlanceSection = () => {
               {nonRefundableItems.map((item) => (
                 <div
                   key={item.text}
-                  className="box-shadow-1 mdl:px-3.5 mdl:py-3 flex items-center gap-3 rounded-2xl bg-white px-4 py-3.5"
+                  className="box-shadow-1 flex items-center gap-3 rounded-2xl bg-white px-4 py-3.5 smd:px-3.5 smd:py-3"
                 >
                   <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#ff5e5e]/10 text-[#ff4d4f]">
                     <RefundPolicyIcon name={item.icon} className="h-4 w-4" />
                   </div>
-                  <span className="text-gray-7 mdl:text-[15px] text-sm font-medium">
+                  <span className="text-gray-7 text-sm font-medium smd:text-[15px]">
                     {item.text}
                   </span>
                 </div>

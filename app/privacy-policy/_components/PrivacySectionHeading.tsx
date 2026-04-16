@@ -1,14 +1,14 @@
-interface TermsSectionHeadingProps {
+interface PrivacySectionHeadingProps {
   eyebrow: string;
   title: string;
   description?: string;
 }
 
-export const TermsSectionHeading = ({
+export const PrivacySectionHeading = ({
   eyebrow,
   title,
   description,
-}: TermsSectionHeadingProps) => {
+}: PrivacySectionHeadingProps) => {
   return (
     <div className="mx-auto mb-12 max-w-3xl text-center">
       <p className="text-primaryNavy mb-3 text-xs font-bold tracking-[0.24em] uppercase">

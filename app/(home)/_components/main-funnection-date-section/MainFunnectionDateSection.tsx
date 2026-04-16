@@ -1,11 +1,9 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-
 import { FunnectionCalendar } from "@/components/features/funnection-calendar/FunnectionCalendar";
 
 import { SectionHeader } from "../SectionHeader";
+import { SectionLinkButton } from "../SectionLinkButton";
 import { MainFunnectionPhotoCard } from "./MainFunnectionPhotoCard";
 import { MainFunnectionRedirectButton } from "./MainFunnectionRedirectButton";
 
@@ -29,13 +27,9 @@ export const MainFunnectionDateSection = () => {
         <div className="mt-6 flex flex-col gap-4">
           <MainFunnectionPhotoCard />
           <div className="smd:justify-end flex justify-center">
-            <Link
-              href="/about-funnection"
-              className="box-shadow-2 text-primaryNavy border-primaryNavy/60 smd:w-auto inline-flex w-full items-center justify-center gap-2 rounded-2xl border bg-white px-5 py-3 text-sm font-semibold transition hover:bg-gray-50"
-            >
+            <SectionLinkButton href="/about-funnection">
               퍼넥션 자세히 들여다보기
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            </SectionLinkButton>
           </div>
           <div id={FUNNECTION_CALENDAR_ID}>
             <FunnectionCalendar />

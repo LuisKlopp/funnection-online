@@ -104,7 +104,7 @@ export const PolicyArticleCard = ({ article }: PolicyArticleCardProps) => {
     >
       <div className="border-gray-2 smd:px-6 flex items-center gap-3 border-b px-5 py-5">
         <span className="bg-primaryNavy h-7 w-1 rounded-full" />
-        <h3 className="text-gray-8 smd:text-lg smd:leading-9 text-xl font-semibold">
+        <h3 className="text-gray-8 smd:leading-9 text-lg font-semibold">
           {article.title}
         </h3>
       </div>
@@ -158,7 +158,7 @@ export const PolicyArticleCard = ({ article }: PolicyArticleCardProps) => {
                 <p className="text-primaryNavy mb-4 text-sm font-semibold">
                   {block.title}
                 </p>
-                <div className="grid gap-3 smd:grid-cols-3">
+                <div className="smd:grid-cols-3 grid gap-3">
                   {block.items.map((item) => (
                     <div
                       key={item.label}
@@ -184,7 +184,7 @@ export const PolicyArticleCard = ({ article }: PolicyArticleCardProps) => {
             return (
               <div
                 key={`${article.id}-info-grid-${index}`}
-                className="grid gap-3 smd:grid-cols-3"
+                className="smd:grid-cols-3 grid gap-3"
               >
                 {block.items.map((item) => (
                   <div

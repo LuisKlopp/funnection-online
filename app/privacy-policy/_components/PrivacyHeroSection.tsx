@@ -1,8 +1,8 @@
-import { Clock3, FileText } from "lucide-react";
+import { Clock3, ShieldCheck } from "lucide-react";
 
 import { BackToPreviousButton } from "./BackToPreviousButton";
 
-export const TermsHeroSection = () => {
+export const PrivacyHeroSection = () => {
   return (
     <section className="smd:pt-30 smd:pb-28 relative overflow-hidden bg-linear-to-b from-[#edf2ff] via-[#f8faff] to-white px-6 pt-24 pb-22">
       <div className="bg-primaryNavy/8 absolute top-18 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full blur-3xl" />
@@ -13,19 +13,18 @@ export const TermsHeroSection = () => {
         </div>
 
         <div className="border-primaryNavy/15 text-primaryNavy box-shadow-1 mb-7 inline-flex items-center gap-2 rounded-full border bg-white/90 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
-          <FileText className="h-4 w-4" />
-          이용 약관
+          <ShieldCheck className="h-4 w-4" />
+          개인정보 처리방침
         </div>
 
-        <h1 className="text-gray-8 smd:text-[34px] text-[32px] leading-none font-semibold tracking-tight">
-          퍼넥션 온라인 이용약관
+        <h1 className="text-gray-8 smd:text-[40px] text-[32px] leading-none font-semibold tracking-tight">
+          개인정보처리방침
         </h1>
 
-        <p className="text-gray-5 smd:text-base smd:leading-7 mt-6 max-w-3xl text-sm leading-7">
-          퍼넥션 온라인 서비스의 이용 조건과 절차, 이용자와 서비스 간의 권리와
-          의무, 책임사항을 안내합니다.
-          <br className="smd:block hidden" /> 온라인 콘텐츠와 오프라인 모임
-          이용에 필요한 기준을 읽기 쉽게 정리했습니다.
+        <p className="text-gray-5 smd:leading-7 mt-6 max-w-3xl text-base leading-7">
+          퍼넥션 온라인이 어떤 개인정보를 어떤 목적으로 처리하는지,
+          <br className="smd:block hidden" /> 그리고 이용자가 행사할 수 있는
+          권리는 무엇인지 안내합니다.
         </p>
 
         <div className="text-gray-4 mt-9 inline-flex items-center gap-2 text-sm">

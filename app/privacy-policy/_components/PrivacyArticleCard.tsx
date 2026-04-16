@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
 
-import { TermsArticle, TermsTone } from "../_data/termsOfUseData";
+import { PrivacyArticle, PrivacyTone } from "../_data/privacyPolicyData";
 
-interface TermsArticleCardProps {
-  article: TermsArticle;
+interface PrivacyArticleCardProps {
+  article: PrivacyArticle;
 }
 
 const toneStyle = {
@@ -24,12 +24,12 @@ const toneStyle = {
   },
 };
 
-const TermsNumberList = ({
+const PrivacyNumberList = ({
   items,
   tone,
 }: {
   items: string[];
-  tone: TermsTone;
+  tone: PrivacyTone;
 }) => {
   const style = toneStyle[tone];
 
@@ -57,7 +57,7 @@ const TermsNumberList = ({
   );
 };
 
-export const TermsArticleCard = ({ article }: TermsArticleCardProps) => {
+export const PrivacyArticleCard = ({ article }: PrivacyArticleCardProps) => {
   return (
     <article
       id={article.id}
@@ -102,7 +102,7 @@ export const TermsArticleCard = ({ article }: TermsArticleCardProps) => {
           }
 
           return (
-            <TermsNumberList
+            <PrivacyNumberList
               key={`${article.id}-number-list-${index}`}
               items={block.items}
               tone={block.tone}

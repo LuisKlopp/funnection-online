@@ -1,11 +1,10 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 import MainElio from "@/public/images/main-elio-1.webp";
 
+import { SectionLinkButton } from "../SectionLinkButton";
 import { TitleBadge } from "../TitleBadge";
 
 export const MainElioSection = () => {
@@ -61,13 +60,9 @@ export const MainElioSection = () => {
           </li>
         </ul>
         <div className="smd:col-start-2 flex w-full">
-          <Link
-            href="/about-elio"
-            className="box-shadow-2 text-primaryNavy border-primaryNavy/20 smd:w-auto inline-flex w-full items-center justify-center gap-2 rounded-2xl border bg-white px-5 py-3 text-sm font-semibold transition hover:bg-white/70"
-          >
+          <SectionLinkButton href="/about-elio">
             엘리오는 뭐하는 사람인가요?
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          </SectionLinkButton>
         </div>
         <div className="smd:justify-end flex w-full flex-col gap-2 text-sm">
           <span className="text-primaryNavy font-medium">문의하기</span>

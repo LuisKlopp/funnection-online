@@ -1,7 +1,7 @@
-import { AlertTriangle, CreditCard, MessageSquareText } from "lucide-react";
+import { Database, HardDrive, UserRoundCheck } from "lucide-react";
 
-import { termsSummaryItems } from "../_data/termsOfUseData";
-import { TermsSectionHeading } from "./TermsSectionHeading";
+import { privacySummaryItems } from "../_data/privacyPolicyData";
+import { PrivacySectionHeading } from "./PrivacySectionHeading";
 
 const toneStyle = {
   blue: {
@@ -15,29 +15,29 @@ const toneStyle = {
 };
 
 const summaryIcons = [
-  <MessageSquareText key="content" className="h-5 w-5" />,
-  <AlertTriangle key="duty" className="h-5 w-5" />,
-  <CreditCard key="payment" className="h-5 w-5" />,
+  <UserRoundCheck key="apply" className="h-5 w-5" />,
+  <Database key="answer" className="h-5 w-5" />,
+  <HardDrive key="storage" className="h-5 w-5" />,
 ];
 
-export const TermsQuickSummarySection = () => {
+export const PrivacyQuickSummarySection = () => {
   return (
-    <section className="smd:py-24 bg-white px-6 py-22">
+    <section className="bg-white px-6 py-22 smd:py-24">
       <div className="mx-auto max-w-280">
-        <TermsSectionHeading
+        <PrivacySectionHeading
           eyebrow="QUICK SUMMARY"
-          title="핵심 이용 기준"
-          description="서비스 이용 전 꼭 확인해야 할 중요한 기준을 먼저 안내합니다."
+          title="핵심 개인정보 처리 기준"
+          description="서비스 이용 전에 어떤 정보가 어떻게 사용되는지 먼저 확인하세요."
         />
 
-        <div className="smd:grid-cols-3 grid gap-4">
-          {termsSummaryItems.map((item, index) => {
+        <div className="grid gap-4 smd:grid-cols-3">
+          {privacySummaryItems.map((item, index) => {
             const tone = toneStyle[item.tone];
 
             return (
               <article
                 key={item.title}
-                className="border-gray-2 box-shadow-1 smd:p-6 rounded-3xl border bg-white p-5"
+                className="border-gray-2 box-shadow-1 rounded-3xl border bg-white p-5 smd:p-6"
               >
                 <div className="mb-7 flex items-start justify-between gap-3">
                   <div
@@ -45,7 +45,6 @@ export const TermsQuickSummarySection = () => {
                   >
                     {summaryIcons[index]}
                   </div>
-
                   <span
                     className={`rounded-full border px-3 py-1 text-xs font-semibold ${tone.chip}`}
                   >
@@ -56,7 +55,7 @@ export const TermsQuickSummarySection = () => {
                 <h3 className="text-gray-8 text-base leading-7 font-semibold">
                   {item.title}
                 </h3>
-                <p className="text-gray-5 mt-3 text-sm leading-6">
+                <p className="text-gray-5 mt-3 text-sm leading-6 smd:text-base smd:leading-7">
                   {item.description}
                 </p>
               </article>

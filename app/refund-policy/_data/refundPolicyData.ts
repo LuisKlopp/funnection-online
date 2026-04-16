@@ -191,7 +191,6 @@ export const policyArticles: PolicyArticle[] = [
         items: [
           "모임 시작 4일 이내 취소 요청 시 환불 불가",
           "사전 통보 없이 불참(노쇼)한 경우",
-          "이용자의 단순 변심 또는 일정 착오",
         ],
       },
     ],
@@ -271,7 +270,6 @@ export const policyArticles: PolicyArticle[] = [
         items: [
           "모임 시작 4일 이내 취소 요청",
           "사전 통보 없이 모임에 참여하지 않은 경우",
-          "이용자의 개인 사정(단순 변심, 일정 착오 등)",
           "허위 정보 또는 악의적인 환불 요청이 확인된 경우",
         ],
       },
@@ -305,7 +303,7 @@ export const applySteps: ApplyStep[] = [
     icon: "file",
     title: "필요 정보 전달",
     description:
-      "신청자 이름, 참여 예정 모임 정보, 입금 정보 및 환불 사유를 함께 전달해주세요.",
+      "신청자 이름, 참여 예정 모임 정보, 입금 정보를 함께 전달해주세요.",
   },
   {
     icon: "search",

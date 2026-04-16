@@ -24,6 +24,9 @@ export const Footer = () => {
           <Link href="/terms-of-use" className="hover:text-primaryNavy">
             이용약관
           </Link>
+          <Link href="/privacy-policy" className="hover:text-primaryNavy">
+            개인정보처리방침
+          </Link>
           <a href="#" className="hover:text-primaryNavy">
             오늘의 질문
           </a>
