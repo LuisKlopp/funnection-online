@@ -21,6 +21,9 @@ export const Footer = () => {
           <Link href="/refund-policy" className="hover:text-primaryNavy">
             환불정책
           </Link>
+          <Link href="/terms-of-use" className="hover:text-primaryNavy">
+            이용약관
+          </Link>
           <a href="#" className="hover:text-primaryNavy">
             오늘의 질문
           </a>
