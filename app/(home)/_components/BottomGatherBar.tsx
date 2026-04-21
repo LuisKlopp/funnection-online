@@ -66,9 +66,9 @@ export const BottomGatherBar = () => {
 
     if (!calendar) return;
 
-    const targetY = window.scrollY + calendar.getBoundingClientRect().top - 24;
+    const targetY = window.scrollY + calendar.getBoundingClientRect().top - 48;
 
-    smoothScrollTo(targetY, 900);
+    smoothScrollTo(targetY, 1200);
   };
 
   return (

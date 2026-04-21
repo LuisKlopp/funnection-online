@@ -26,7 +26,7 @@ export const SectionHeader = ({
       </h2>
 
       <p className="mt-1 text-sm text-gray-400">{description}</p>
-      <p className="text-primaryNavy mt-2 text-[13px] italic">
+      <p className="text-deepNavy mt-2 text-[13px] italic">
         {secondDescription}
       </p>
     </div>

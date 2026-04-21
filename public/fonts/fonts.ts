@@ -54,7 +54,6 @@ export const maruBuri = localFont({
     },
   ],
   display: "swap",
-  preload: false,
 });
 
 export const bmDohyun = localFont({

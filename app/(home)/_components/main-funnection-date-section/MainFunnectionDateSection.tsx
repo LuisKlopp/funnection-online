@@ -31,7 +31,7 @@ export const MainFunnectionDateSection = () => {
               퍼넥션 자세히 들여다보기
             </SectionLinkButton>
           </div>
-          <div id={FUNNECTION_CALENDAR_ID}>
+          <div className="mt-12" id={FUNNECTION_CALENDAR_ID}>
             <FunnectionCalendar />
           </div>
           <MainFunnectionRedirectButton />

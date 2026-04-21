@@ -9,7 +9,9 @@ export const Footer = () => {
         <div>
           <h3 className="text-primaryNavy mb-4 text-2xl font-bold">퍼넥션</h3>
 
-          <p className="text-gray-8 mb-4">질문으로 연결되는 사람들</p>
+          <p className="text-gray-8 mb-4 font-medium">
+            질문으로 연결되는 사람들
+          </p>
 
           <p className="text-gray-7 text-sm leading-relaxed">
             엘리오가 만든 감정 기반 질문 플랫폼입니다.
@@ -18,15 +20,6 @@ export const Footer = () => {
         </div>
 
         <div className="text-gray-8 flex flex-col items-start gap-3 md:items-end">
-          <Link href="/refund-policy" className="hover:text-primaryNavy">
-            환불정책
-          </Link>
-          <Link href="/terms-of-use" className="hover:text-primaryNavy">
-            이용약관
-          </Link>
-          <Link href="/privacy-policy" className="hover:text-primaryNavy">
-            개인정보처리방침
-          </Link>
           <a href="#" className="hover:text-primaryNavy">
             오늘의 질문
           </a>
@@ -36,6 +29,15 @@ export const Footer = () => {
           <a href="#" className="hover:text-primaryNavy">
             엘리오 소개
           </a>
+          <Link href="/refund-policy" className="hover:text-primaryNavy">
+            환불정책
+          </Link>
+          <Link href="/terms-of-use" className="hover:text-primaryNavy">
+            이용약관
+          </Link>
+          <Link href="/privacy-policy" className="hover:text-primaryNavy">
+            개인정보처리방침
+          </Link>
           <a href="#" className="hover:text-primaryNavy">
             문의하기
           </a>

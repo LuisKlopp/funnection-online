@@ -30,7 +30,7 @@ export const AboutFunnectionHeroSection = () => {
         <span className="text-gray-1 text-lg">질문으로 연결되는 사람들</span>
         <span className="text-gray-3 text-center text-base leading-6">
           서로의 생각을 나누고, <br className="smd:hidden" /> 새로운 관계를
-          만들어가는 3시간
+          만들어가는 3시간이에요
         </span>
 
         <div className="absolute -bottom-40 flex cursor-pointer flex-col items-center">

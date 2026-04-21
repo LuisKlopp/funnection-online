@@ -22,7 +22,7 @@ export const HeroSection = ({ questionData }: HeroSectionProps) => {
 
     if (!section) return;
 
-    const targetY = window.scrollY + section.getBoundingClientRect().top;
+    const targetY = window.scrollY + section.getBoundingClientRect().top - 48;
 
     smoothScrollTo(targetY, 900);
   };

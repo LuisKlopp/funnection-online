@@ -60,7 +60,7 @@ export const MainElioSection = () => {
           </li>
         </ul>
         <div className="smd:col-start-2 flex w-full">
-          <SectionLinkButton href="/about-elio">
+          <SectionLinkButton href="/about-elio" isElio>
             엘리오는 뭐하는 사람인가요?
           </SectionLinkButton>
         </div>
