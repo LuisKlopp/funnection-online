@@ -6,48 +6,50 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Portal } from "@/components/layout/PortalWrapper";
-import { FUNNECTION_PHOTOS } from "@/constants/funnection-photos.constants";
 import { useLockBodyScroll } from "@/hooks/ui/useLockBodyScroll";
 
-interface MainFunnectionImageModalProps {
-  initialIndex?: number;
+interface AlbumPhotoModalProps {
+  initialIndex: number;
   onClose: () => void;
+  photos: readonly string[];
 }
 
-export const MainFunnectionImageModal = ({
-  initialIndex = 0,
+export const AlbumPhotoModal = ({
+  initialIndex,
   onClose,
-}: MainFunnectionImageModalProps) => {
-  const [index, setIndex] = useState(initialIndex);
+  photos,
+}: AlbumPhotoModalProps) => {
+  const [activeIndex, setActiveIndex] = useState(initialIndex);
   const touchStartX = useRef<number | null>(null);
 
   useLockBodyScroll();
 
-  const moveTo = useCallback((nextIndex: number) => {
-    setIndex(
-      (nextIndex + FUNNECTION_PHOTOS.length) % FUNNECTION_PHOTOS.length
-    );
-  }, []);
+  const moveTo = useCallback(
+    (nextIndex: number) => {
+      setActiveIndex((nextIndex + photos.length) % photos.length);
+    },
+    [photos.length]
+  );
 
   const prev = useCallback(() => {
-    moveTo(index - 1);
-  }, [index, moveTo]);
+    moveTo(activeIndex - 1);
+  }, [activeIndex, moveTo]);
 
   const next = useCallback(() => {
-    moveTo(index + 1);
-  }, [index, moveTo]);
+    moveTo(activeIndex + 1);
+  }, [activeIndex, moveTo]);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
+  const handleTouchStart = (event: React.TouchEvent) => {
+    touchStartX.current = event.touches[0].clientX;
   };
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
+  const handleTouchEnd = (event: React.TouchEvent) => {
     if (touchStartX.current === null) return;
 
-    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    const diff = touchStartX.current - event.changedTouches[0].clientX;
 
-    if (diff > 50) next();
-    if (diff < -50) prev();
+    if (diff > 48) next();
+    if (diff < -48) prev();
 
     touchStartX.current = null;
   };
@@ -66,7 +68,10 @@ export const MainFunnectionImageModal = ({
     };
   }, [next, onClose, prev]);
 
-  const activePhoto = FUNNECTION_PHOTOS[index];
+  if (photos.length === 0) return null;
+
+  const activePhoto = photos[activeIndex];
+  const hasMultiplePhotos = photos.length > 1;
 
   return (
     <Portal>
@@ -92,8 +97,8 @@ export const MainFunnectionImageModal = ({
                   Funnection Album
                 </p>
                 <p className="mt-1 text-sm font-semibold text-white/92">
-                  {String(index + 1).padStart(2, "0")} /{" "}
-                  {String(FUNNECTION_PHOTOS.length).padStart(2, "0")}
+                  {String(activeIndex + 1).padStart(2, "0")} /{" "}
+                  {String(photos.length).padStart(2, "0")}
                 </p>
               </div>
               <button
@@ -112,44 +117,50 @@ export const MainFunnectionImageModal = ({
               onTouchEnd={handleTouchEnd}
             >
               <img
-                src={activePhoto.src}
-                alt={`퍼넥션 앨범 사진 ${index + 1}`}
+                src={activePhoto}
+                alt={`퍼넥션 앨범 사진 ${activeIndex + 1}`}
                 draggable={false}
                 className="max-h-full max-w-full rounded-[18px] object-contain select-none smd:rounded-[24px]"
               />
 
-              <button
-                type="button"
-                onClick={prev}
-                className="absolute top-1/2 left-3 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-black/72 text-white shadow-[0_10px_24px_rgba(0,0,0,0.24)] backdrop-blur transition hover:bg-black smd:left-5 smd:h-12 smd:w-12"
-                aria-label="이전 앨범 사진 보기"
-              >
-                <ChevronLeft className="h-5 w-5" strokeWidth={2.3} />
-              </button>
-              <button
-                type="button"
-                onClick={next}
-                className="absolute top-1/2 right-3 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-black/72 text-white shadow-[0_10px_24px_rgba(0,0,0,0.24)] backdrop-blur transition hover:bg-black smd:right-5 smd:h-12 smd:w-12"
-                aria-label="다음 앨범 사진 보기"
-              >
-                <ChevronRight className="h-5 w-5" strokeWidth={2.3} />
-              </button>
+              {hasMultiplePhotos && (
+                <>
+                  <button
+                    type="button"
+                    onClick={prev}
+                    className="absolute top-1/2 left-3 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-black/72 text-white shadow-[0_10px_24px_rgba(0,0,0,0.24)] backdrop-blur transition hover:bg-black smd:left-5 smd:h-12 smd:w-12"
+                    aria-label="이전 앨범 사진 보기"
+                  >
+                    <ChevronLeft className="h-5 w-5" strokeWidth={2.3} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={next}
+                    className="absolute top-1/2 right-3 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-black/72 text-white shadow-[0_10px_24px_rgba(0,0,0,0.24)] backdrop-blur transition hover:bg-black smd:right-5 smd:h-12 smd:w-12"
+                    aria-label="다음 앨범 사진 보기"
+                  >
+                    <ChevronRight className="h-5 w-5" strokeWidth={2.3} />
+                  </button>
+                </>
+              )}
             </div>
 
-            <div className="mt-4 flex justify-center gap-2">
-              {FUNNECTION_PHOTOS.map((photo, i) => (
-                <button
-                  key={`main-modal-dot-${photo.src}-${i}`}
-                  type="button"
-                  onClick={() => moveTo(i)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === index ? "w-8 bg-white" : "w-2 bg-white/35"
-                  }`}
-                  aria-label={`${i + 1}번째 앨범 사진 보기`}
-                  aria-current={i === index}
-                />
-              ))}
-            </div>
+            {hasMultiplePhotos && (
+              <div className="mt-4 flex justify-center gap-2">
+                {photos.map((photoUrl, index) => (
+                  <button
+                    key={`modal-dot-${photoUrl}-${index}`}
+                    type="button"
+                    onClick={() => moveTo(index)}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      activeIndex === index ? "w-8 bg-white" : "w-2 bg-white/35"
+                    }`}
+                    aria-label={`${index + 1}번째 앨범 사진 보기`}
+                    aria-current={activeIndex === index}
+                  />
+                ))}
+              </div>
+            )}
           </motion.div>
         </motion.div>
       </AnimatePresence>

@@ -19,7 +19,7 @@ export const Footer = () => {
           </p>
         </div>
 
-        <div className="text-gray-8 flex flex-col items-start gap-3 md:items-end">
+        <div className="text-gray-8 flex flex-col items-start gap-2 text-sm md:items-end">
           <a href="#" className="hover:text-primaryNavy">
             오늘의 질문
           </a>

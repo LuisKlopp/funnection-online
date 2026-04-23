@@ -28,6 +28,7 @@ export const Header = () => {
 
   const isFunnection = pathname === "/about-funnection";
   const isElio = pathname === "/about-elio";
+  const useHeroBadgeStyle = isFunnection && !scrolled && !mobileOpen;
 
   return (
     <header
@@ -47,7 +48,14 @@ export const Header = () => {
           className="smd:text-xl text-primaryNavy font-dohyun text-base font-semibold"
         >
           Funnection{" "}
-          <span className="text-gray-9 smd:text-[12px] bg-primaryNavy/10 font-pretendard rounded-3xl px-2 py-1 text-[11px] font-normal">
+          <span
+            className={cn(
+              "font-pretendard smd:text-[12px] rounded-3xl px-2 py-1 text-[11px] font-normal transition-colors duration-200",
+              useHeroBadgeStyle
+                ? "relative -left-px top-px text-white backdrop-blur-sm"
+                : "bg-primaryNavy/10 text-gray-9"
+            )}
+          >
             Online
           </span>
         </Link>

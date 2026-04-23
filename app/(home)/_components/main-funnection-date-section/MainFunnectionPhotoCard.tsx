@@ -85,7 +85,12 @@ export const MainFunnectionPhotoCard = () => {
       </p>
       <MainFunnectionStats />
 
-      {modal.isModal && <MainFunnectionImageModal onClose={modal.closeModal} />}
+      {modal.isModal && (
+        <MainFunnectionImageModal
+          initialIndex={index}
+          onClose={modal.closeModal}
+        />
+      )}
     </div>
   );
 };
