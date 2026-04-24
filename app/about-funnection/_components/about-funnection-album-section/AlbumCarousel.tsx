@@ -65,12 +65,12 @@ export const AlbumCarousel = ({ photos }: AlbumCarouselProps) => {
   }, [activeIndex, photos.length]);
 
   return (
-    <div className="smd:mt-12 mt-10">
+    <div className="mt-10">
       <div className="relative">
         <div
           ref={trackRef}
           onScroll={handleScroll}
-          className="scrollbar-none -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-3 smd:-mx-8 smd:px-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="scrollbar-none smd:-mx-8 smd:px-8 -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {photos.map((photoUrl, index) => (
             <AlbumPhotoCard

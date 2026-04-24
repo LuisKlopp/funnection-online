@@ -13,7 +13,7 @@ export const ContentsIntro = () => {
         이어져요
       </h2>
 
-      <div className="text-gray-6 mt-10 space-y-6 break-keep">
+      <div className="text-gray-6 mt-6 space-y-6 break-keep">
         <p className="smd:text-[16px] smd:leading-7 text-[16px] leading-[1.7] font-medium">
           설명만 길게 듣기보다,
           <br />

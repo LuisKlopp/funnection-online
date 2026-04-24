@@ -75,27 +75,31 @@ export const AboutFunnectionReviewSection = ({
   }, []);
 
   return (
-    <section className="bg-white px-4 py-12 smd:px-8 smd:py-18">
+    <section className="smd:px-8 smd:py-18 bg-white px-4 py-12">
       <div className="mx-auto max-w-175">
         <div className="mx-auto max-w-3xl">
           <span className="text-primaryNavy text-[12px] font-bold tracking-widest uppercase">
             Reviews
           </span>
-          <h2 className="mt-5 text-[24px] leading-[1.18] font-bold tracking-tight text-gray-9 break-keep smd:text-[36px] smd:leading-[1.15]">
+          <h2 className="text-gray-9 smd:text-[36px] smd:leading-[1.15] mt-5 text-[24px] leading-[1.18] font-bold tracking-tight break-keep">
             먼저 다녀간 사람들이
             <br />
             남긴 이야기예요
           </h2>
-          <p className="mt-8 text-[14px] leading-6 font-medium text-gray-6 break-keep smd:text-[16px] smd:leading-7">
-            실제 참여자들이 남긴 후기를 이미지로 모아 보여드려요.
-          </p>
+          <div className="text-gray-6 mt-6 space-y-6 break-keep">
+            <p className="smd:text-[16px] smd:leading-7 text-[14px] leading-6">
+              거짓 후기는 안키워요
+              <br />
+              500개 넘는 후기를 보여드릴게요
+            </p>
+          </div>
         </div>
 
-        <div className="relative mt-10 smd:mt-12">
+        <div className="relative mt-10">
           <div
             ref={trackRef}
             onScroll={handleScroll}
-            className="scrollbar-none -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-3 smd:-mx-8 smd:px-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="scrollbar-none smd:-mx-8 smd:px-8 -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {reviews.map((review, index) => (
               <article
@@ -104,35 +108,35 @@ export const AboutFunnectionReviewSection = ({
                     ? `${review}-${index}`
                     : `${review.title}-${index}`
                 }
-                className="smd:min-w-[46%] mdl:min-w-[38%] min-w-[78%] snap-center overflow-hidden rounded-[28px] bg-white shadow-[0_22px_55px_rgba(17,24,39,0.12)] ring-1 ring-gray-2"
+                className="smd:min-w-[46%] mdl:min-w-[38%] ring-gray-2 min-w-[78%] snap-center overflow-hidden rounded-[28px] bg-white shadow-[0_22px_55px_rgba(17,24,39,0.12)] ring-1"
               >
                 {typeof review === "string" ? (
                   <img
                     src={review}
                     alt={`퍼넥션 참여자 리뷰 ${index + 1}`}
                     loading={index === 0 ? "eager" : "lazy"}
-                    className="aspect-[3/4] w-full object-cover"
+                    className="aspect-3/4 w-full object-cover"
                   />
                 ) : (
-                  <div className="aspect-[3/4] bg-gray-1 p-5">
+                  <div className="bg-gray-1 aspect-3/4 p-5">
                     <div className="h-full rounded-[22px] bg-white px-5 py-6 shadow-sm">
                       <div className="flex gap-1.5">
-                        <span className="h-2.5 w-2.5 rounded-full bg-gray-3" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-gray-3" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-primaryAmber" />
+                        <span className="bg-gray-3 h-2.5 w-2.5 rounded-full" />
+                        <span className="bg-gray-3 h-2.5 w-2.5 rounded-full" />
+                        <span className="bg-primaryAmber h-2.5 w-2.5 rounded-full" />
                       </div>
                       <div className="mt-8">
-                        <p className="text-[18px] leading-[1.2] font-bold text-gray-9 break-keep smd:text-[20px]">
+                        <p className="text-gray-9 smd:text-[20px] text-[18px] leading-[1.2] font-bold break-keep">
                           {review.title}
                         </p>
-                        <p className="mt-5 text-[15px] leading-6 font-medium text-gray-6 break-keep smd:text-[16px] smd:leading-6.5">
+                        <p className="text-gray-6 smd:text-[16px] smd:leading-6.5 mt-5 text-[15px] leading-6 font-medium break-keep">
                           {review.body}
                         </p>
                       </div>
                       <div className="mt-8 space-y-3">
-                        <div className="h-2 rounded-full bg-lightNavy" />
-                        <div className="h-2 w-10/12 rounded-full bg-lightNavy" />
-                        <div className="h-2 w-7/12 rounded-full bg-lightNavy" />
+                        <div className="bg-lightNavy h-2 rounded-full" />
+                        <div className="bg-lightNavy h-2 w-10/12 rounded-full" />
+                        <div className="bg-lightNavy h-2 w-7/12 rounded-full" />
                       </div>
                     </div>
                   </div>

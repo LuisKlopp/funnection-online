@@ -19,7 +19,7 @@ export const ContentStepCard = ({ step, index }: ContentStepCardProps) => {
         </span>
       </div>
 
-      <h3 className="text-gray-9 smd:text-[20px] mt-4 text-[18px] leading-[1.2] font-bold tracking-tight">
+      <h3 className="text-gray-9 smd:text-[18px] mt-4 text-[18px] leading-[1.2] font-bold tracking-tight">
         {name}
       </h3>
       <p className="text-gray-6 smd:text-[16px] smd:leading-6.5 mt-2.5 text-[15px] leading-6 break-keep">

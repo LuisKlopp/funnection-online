@@ -54,7 +54,7 @@ export const AboutFunnectionDetailSection = () => {
               연결하는 모임이에요
             </h2>
 
-            <div className="text-gray-6 mt-10 space-y-6 break-keep">
+            <div className="text-gray-6 mt-6 space-y-6 break-keep">
               <p className="smd:text-[16px] smd:leading-7 text-[14px] leading-6">
                 3시간 동안 여러 프로그램을 통해
                 <br />
@@ -64,7 +64,7 @@ export const AboutFunnectionDetailSection = () => {
           </div>
         </div>
 
-        <div className="smd:mt-18 mx-auto mt-14 grid max-w-3xl gap-5">
+        <div className="mx-auto mt-10 grid max-w-3xl gap-5">
           {FEATURE_CARDS.map(({ title, description, index }) => (
             <article
               key={title}
@@ -75,7 +75,7 @@ export const AboutFunnectionDetailSection = () => {
                   {index}.
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-gray-9 smd:text-[20px] text-[18px] leading-[1.2] font-bold tracking-tight">
+                  <h3 className="text-gray-9 smd:text-[18px] text-[18px] leading-[1.2] font-bold tracking-tight">
                     {title}
                   </h3>
                   <p className="text-gray-6 smd:mt-3 smd:text-[16px] smd:leading-6.5 mt-2.5 text-[15px] leading-6 break-keep">

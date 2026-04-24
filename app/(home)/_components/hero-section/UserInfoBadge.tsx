@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, getGenderEmoji } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { useUserInfoStore } from "@/store/userInfo.store";
 
 interface UserInfoBadgeProps {
@@ -21,9 +21,10 @@ export const UserInfoBadge = ({ questionDone }: UserInfoBadgeProps) => {
           : "pointer-events-none translate-y-4 opacity-0"
       )}
     >
-      <div className="box-shadow-1 flex gap-1 rounded-xl bg-white px-3 py-1 text-sm">
-        <span>{getGenderEmoji(userInfo.gender)}</span>
-        <span className="text-gray-6">{userInfo.nickname}</span>
+      <div className="flex gap-1 rounded-xl px-3 py-1 text-[15px]">
+        <span className="text-gray-9">
+          <span className="text-gray-9">{userInfo.nickname}</span>님 환영해요 🤗
+        </span>
       </div>
     </div>
   );

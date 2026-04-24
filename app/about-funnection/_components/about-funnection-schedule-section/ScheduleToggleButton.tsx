@@ -14,7 +14,7 @@ export const ScheduleToggleButton = ({
       <button
         type="button"
         onClick={onClick}
-        className="border-primaryNavy/15 text-primaryNavy flex h-11 items-center gap-2 rounded-full border bg-white px-5 text-sm font-bold shadow-[0_10px_24px_rgba(53,112,233,0.08)] transition hover:border-primaryNavy/30"
+        className="border-primaryNavy/15 text-primaryNavy hover:border-primaryNavy/30 flex h-11 cursor-pointer items-center gap-2 rounded-full border bg-white px-5 text-sm font-bold shadow-[0_10px_24px_rgba(53,112,233,0.08)] transition"
       >
         {isExpanded ? "접기" : "더보기"}
         {isExpanded ? (

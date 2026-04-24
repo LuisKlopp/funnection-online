@@ -28,7 +28,8 @@ export const AboutFunnectionHeroSection = () => {
           <span className="smd:text-5xl text-4xl text-[#558dff]">퍼넥션</span>
         </div>
         <span className="text-gray-3 text-center text-base leading-6 break-keep">
-          소개팅이 아니에요.
+          <span className="text-[22px] text-white">소개팅이 아니에요</span>
+          <br />
           <br />
           처음 보는 남녀 8명이 한 공간에 모여
           <br />
