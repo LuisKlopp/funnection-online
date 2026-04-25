@@ -13,7 +13,7 @@ export const AboutFunnectionAlbumSection = ({
   if (photos.length === 0) return null;
 
   return (
-    <section className="bg-white px-4 py-8 smd:px-8 smd:py-18">
+    <section className="bg-white px-4 py-12 smd:px-8 smd:py-18">
       <div className="mx-auto max-w-175">
         <AlbumIntro />
         <AlbumCarousel photos={photos} />

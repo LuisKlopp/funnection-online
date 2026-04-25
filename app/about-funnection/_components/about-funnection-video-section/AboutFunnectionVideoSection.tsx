@@ -11,7 +11,7 @@ export const AboutFunnectionVideoSection = () => {
 
   return (
     <>
-      <section className="bg-white px-4 py-8 smd:px-8">
+      <section className="bg-white px-4 py-12 smd:px-8 smd:py-8">
         <div className="mx-auto max-w-6xl">
           <div className="smd:grid-cols-[minmax(0,1fr)_auto] grid items-center gap-8">
             <VideoIntro />

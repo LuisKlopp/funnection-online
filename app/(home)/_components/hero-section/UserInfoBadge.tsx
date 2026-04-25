@@ -23,7 +23,7 @@ export const UserInfoBadge = ({ questionDone }: UserInfoBadgeProps) => {
     >
       <div className="flex gap-1 rounded-xl px-3 py-1 text-[15px]">
         <span className="text-gray-9">
-          <span className="text-gray-9">{userInfo.nickname}</span>님 환영해요 🤗
+          <span className="text-gray-9">{userInfo.nickname}</span>님 환영해요!
         </span>
       </div>
     </div>

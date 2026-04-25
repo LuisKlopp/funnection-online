@@ -38,7 +38,7 @@ const FEATURE_CARDS: Array<{
 
 export const AboutFunnectionDetailSection = () => {
   return (
-    <section className="bg-lightNavy smd:px-8 smd:py-18 px-4 py-8">
+    <section className="bg-lightNavy smd:px-8 smd:py-18 px-4 py-12">
       <div className="mx-auto max-w-175">
         <div className="mx-auto max-w-3xl">
           <div>

@@ -86,7 +86,7 @@ export const AboutFunnectionReviewSection = ({
   return (
     <section className="smd:px-8 smd:py-18 bg-white px-4 py-12">
       <div className="mx-auto max-w-175">
-        <div className="mx-auto max-w-3xl smd:flex smd:max-w-175 smd:items-start smd:justify-between smd:gap-10">
+        <div className="smd:flex smd:max-w-175 smd:items-start smd:justify-between smd:gap-10 mx-auto max-w-3xl">
           <div className="smd:max-w-110">
             <span className="text-primaryNavy text-[12px] font-bold tracking-widest uppercase">
               Reviews
@@ -103,14 +103,14 @@ export const AboutFunnectionReviewSection = ({
                 만족도 100%의 압도적인 후기를 보여드릴게요.
               </p>
               {reviewPhotoUrls.length > 0 && (
-                <p className="smd:text-[15px] text-[13px] leading-6 font-bold text-primaryNavy">
+                <p className="smd:text-[15px] text-primaryNavy text-sm leading-6 font-bold">
                   리뷰 사진을 눌러서 크게 확인해보세요.
                 </p>
               )}
             </div>
           </div>
 
-          <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-[24px] bg-white shadow-[0_18px_48px_rgba(17,24,39,0.1)] ring-1 ring-gray-2 smd:mx-0 smd:mt-0 smd:w-56 smd:max-w-56 smd:shrink-0 smd:rounded-[20px]">
+          <div className="ring-gray-2 smd:mx-0 smd:mt-0 smd:w-64 smd:max-w-64 smd:shrink-0 smd:rounded-[20px] mx-auto mt-8 max-w-3xl overflow-hidden rounded-3xl bg-white shadow-[0_18px_48px_rgba(17,24,39,0.1)] ring-1">
             <img
               src="/images/review-count.jpeg"
               alt="퍼넥션에 쌓인 참여자 리뷰 수"
@@ -132,7 +132,7 @@ export const AboutFunnectionReviewSection = ({
                     ? `${review}-${index}`
                     : `${review.title}-${index}`
                 }
-                className="smd:min-w-[46%] mdl:min-w-[38%] ring-gray-2 min-w-[78%] snap-center overflow-hidden rounded-[28px] bg-white shadow-[0_22px_55px_rgba(17,24,39,0.12)] ring-1"
+                className="smd:min-w-[46%] border-gray-5 mdl:min-w-[38%] ring-gray-2 min-w-[78%] snap-center overflow-hidden rounded-[28px] border-2 bg-white shadow-[0_22px_55px_rgba(17,24,39,0.12)] ring-1"
               >
                 {typeof review === "string" ? (
                   <div className="bg-gray-1 p-3">
@@ -149,7 +149,7 @@ export const AboutFunnectionReviewSection = ({
                         className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-[1.02]"
                       />
                       <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/10">
-                        <span className="flex h-13 w-13 items-center justify-center rounded-full bg-white/92 text-primaryNavy shadow-[0_14px_34px_rgba(17,24,39,0.22)] backdrop-blur transition group-hover:scale-105">
+                        <span className="text-primaryNavy flex h-13 w-13 items-center justify-center rounded-full bg-white/92 shadow-[0_14px_34px_rgba(17,24,39,0.22)] backdrop-blur transition group-hover:scale-105">
                           <ZoomIn className="h-5.5 w-5.5" strokeWidth={2.2} />
                         </span>
                       </span>

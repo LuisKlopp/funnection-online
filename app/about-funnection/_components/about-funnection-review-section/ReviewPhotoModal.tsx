@@ -70,7 +70,7 @@ export const ReviewPhotoModal = ({
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: 18, opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="smd:max-w-108 smd:max-h-[calc(100dvh-80px)] relative flex max-h-[calc(100dvh-64px)] w-full max-w-[360px] flex-col justify-center"
+            className="smd:max-w-108 smd:max-h-[calc(100dvh-80px)] relative flex max-h-[calc(100dvh-64px)] w-full max-w-90 flex-col justify-center"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="smd:max-w-86 smd:mb-3 mx-auto mb-2 flex w-full max-w-73 items-center justify-between gap-3 text-white">
@@ -93,9 +93,7 @@ export const ReviewPhotoModal = ({
               </button>
             </div>
 
-            <div
-              className="smd:max-w-86 smd:min-h-0 smd:rounded-4xl smd:p-3 relative mx-auto flex aspect-9/16 w-full max-w-73 max-h-[calc(100dvh-240px)] min-h-78 items-center justify-center overflow-hidden rounded-3xl bg-white p-2 shadow-[0_28px_90px_rgba(0,0,0,0.4)]"
-            >
+            <div className="smd:max-w-86 smd:min-h-0 smd:rounded-4xl smd:p-3 relative mx-auto flex aspect-9/16 max-h-[calc(100dvh-240px)] min-h-78 w-full max-w-73 items-center justify-center overflow-hidden rounded-3xl bg-white p-2 shadow-[0_28px_90px_rgba(0,0,0,0.4)]">
               <img
                 src={activePhoto}
                 alt={`퍼넥션 참여자 리뷰 ${activeIndex + 1}`}
@@ -105,7 +103,7 @@ export const ReviewPhotoModal = ({
             </div>
 
             {hasMultiplePhotos && (
-              <div className="smd:mt-4 mx-auto mt-3 flex w-full max-w-[360px] items-center justify-center gap-3">
+              <div className="smd:mt-4 mx-auto mt-3 flex w-full max-w-90 items-center justify-center gap-3">
                 <button
                   type="button"
                   onClick={prev}

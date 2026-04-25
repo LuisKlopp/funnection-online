@@ -34,7 +34,7 @@ export const AboutFunnectionScheduleSection = () => {
   const canToggle = funnectionEvents.length > DEFAULT_VISIBLE_COUNT;
 
   return (
-    <section className="bg-lightNavy smd:px-8 smd:py-20 px-4 py-14">
+    <section className="bg-lightNavy smd:px-8 smd:py-20 px-4 py-12">
       <div className="mx-auto max-w-175">
         <ScheduleSectionHeader />
 

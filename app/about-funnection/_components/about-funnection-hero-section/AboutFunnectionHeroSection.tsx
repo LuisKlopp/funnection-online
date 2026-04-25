@@ -1,21 +1,22 @@
 import { MessageCircle } from "lucide-react";
-import Image from "next/image";
 
 import AboutFunnectionImage from "@/public/images/about-funnection-image/about-funnection-main.webp";
+import AboutFunnectionMiniImage from "@/public/images/about-funnection-image/about-funnection-main-mini.webp";
 
 export const AboutFunnectionHeroSection = () => {
   return (
     <div className="bg-gray-1 relative flex h-svh w-full items-center justify-center">
       <div className="absolute inset-0 z-10 bg-black/70" />
-      <Image
-        alt="about-funnection-image"
-        src={AboutFunnectionImage}
-        fill
-        className="object-cover"
-        sizes="100vw"
-        unoptimized
-        loading="eager"
-      />
+      <picture className="absolute inset-0">
+        <source media="(min-width: 604px)" srcSet={AboutFunnectionImage.src} />
+        <img
+          alt="퍼넥션 가치관 대화 모임 현장"
+          src={AboutFunnectionMiniImage.src}
+          className="h-full w-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+        />
+      </picture>
       <div className="fade-up relative z-11 flex flex-col items-center justify-center gap-4">
         <div className="bg-gray-1/10 border-gray-1/40 flex items-center gap-1 rounded-full border px-3 py-2 text-xs font-medium tracking-wide text-white backdrop-blur">
           <MessageCircle size={16} /> Offline Gathering
