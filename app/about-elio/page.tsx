@@ -1,3 +1,5 @@
+import { AboutElioPageClient } from "./AboutElioPageClient";
+
 export default function AboutElio() {
-  return <div className="bg-lightNavy min-h-svh"></div>;
+  return <AboutElioPageClient />;
 }

@@ -4,6 +4,7 @@ import {
   Image as ImageIcon,
   type LucideIcon,
   MessagesSquare,
+  Scale,
   ToggleLeft,
 } from "lucide-react";
 
@@ -23,6 +24,11 @@ export const CONTENT_STEPS: ContentStep[] = [
     icon: ToggleLeft,
     name: "OX",
     summary: "단순한 선택 하나로 서로의 생각 차이를 재밌게 발견해요.",
+  },
+  {
+    icon: Scale,
+    name: "밸런스 게임",
+    summary: "둘 중 하나를 고르며 취향과 가치관을 자연스럽게 나눠요.",
   },
   {
     icon: MessagesSquare,

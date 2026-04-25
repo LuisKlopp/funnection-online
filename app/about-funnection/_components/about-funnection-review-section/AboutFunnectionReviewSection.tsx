@@ -88,9 +88,9 @@ export const AboutFunnectionReviewSection = ({
           </h2>
           <div className="text-gray-6 mt-6 space-y-6 break-keep">
             <p className="smd:text-[16px] smd:leading-7 text-[14px] leading-6">
-              거짓 후기는 안키워요
+              거짓 후기는 안키워요.
               <br />
-              500개 넘는 후기를 보여드릴게요
+              만족도 100%의 압도적인 후기를 보여드릴게요.
             </p>
           </div>
         </div>

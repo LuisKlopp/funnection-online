@@ -68,17 +68,17 @@ export const AboutFunnectionDetailSection = () => {
           {FEATURE_CARDS.map(({ title, description, index }) => (
             <article
               key={title}
-              className="smd:px-7 smd:py-7 box-shadow-2 rounded-[28px] bg-white px-5 py-6"
+              className="smd:px-7 smd:py-7 box-shadow-2 rounded-2xl bg-white p-4"
             >
               <div className="smd:gap-5 flex items-start gap-4">
                 <div className="text-primaryNavy flex shrink-0 items-start justify-center rounded-2xl text-xl leading-[1.2]">
                   {index}.
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-gray-9 smd:text-[18px] text-[18px] leading-[1.2] font-bold tracking-tight">
+                  <h3 className="text-gray-9 smd:text-[18px] text-[15px] leading-[1.2] font-bold tracking-tight">
                     {title}
                   </h3>
-                  <p className="text-gray-6 smd:mt-3 smd:text-[16px] smd:leading-6.5 mt-2.5 text-[15px] leading-6 break-keep">
+                  <p className="text-gray-6 smd:mt-3 smd:text-[16px] smd:leading-6.5 mt-2.5 text-[14px] leading-5.5 break-keep">
                     {description}
                   </p>
                 </div>
