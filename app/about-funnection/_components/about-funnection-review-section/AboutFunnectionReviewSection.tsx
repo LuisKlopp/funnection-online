@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import { useCallback, useRef, useState } from "react";
+
+import { ReviewPhotoModal } from "./ReviewPhotoModal";
 
 const REVIEW_PLACEHOLDERS = [
   {
@@ -32,7 +34,14 @@ export const AboutFunnectionReviewSection = ({
 }: AboutFunnectionReviewSectionProps) => {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const reviews = photoUrls.length > 0 ? photoUrls : REVIEW_PLACEHOLDERS;
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(
+    null
+  );
+  const reviewPhotoUrls = photoUrls.filter(
+    (photoUrl) => photoUrl.trim().length > 0
+  );
+  const reviews =
+    reviewPhotoUrls.length > 0 ? reviewPhotoUrls : REVIEW_PLACEHOLDERS;
 
   const scrollToReview = useCallback(
     (nextIndex: number) => {
@@ -92,6 +101,11 @@ export const AboutFunnectionReviewSection = ({
               <br />
               만족도 100%의 압도적인 후기를 보여드릴게요.
             </p>
+            {reviewPhotoUrls.length > 0 && (
+              <p className="smd:text-[15px] text-[13px] leading-6 font-bold text-primaryNavy">
+                리뷰 사진을 눌러서 크게 확인해보세요.
+              </p>
+            )}
           </div>
         </div>
 
@@ -111,12 +125,26 @@ export const AboutFunnectionReviewSection = ({
                 className="smd:min-w-[46%] mdl:min-w-[38%] ring-gray-2 min-w-[78%] snap-center overflow-hidden rounded-[28px] bg-white shadow-[0_22px_55px_rgba(17,24,39,0.12)] ring-1"
               >
                 {typeof review === "string" ? (
-                  <img
-                    src={review}
-                    alt={`퍼넥션 참여자 리뷰 ${index + 1}`}
-                    loading={index === 0 ? "eager" : "lazy"}
-                    className="aspect-3/4 w-full object-cover"
-                  />
+                  <div className="bg-gray-1 p-3">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedPhotoIndex(index)}
+                      className="group relative flex aspect-3/4 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-[22px] bg-white"
+                      aria-label={`퍼넥션 참여자 리뷰 ${index + 1} 크게 보기`}
+                    >
+                      <img
+                        src={review}
+                        alt={`퍼넥션 참여자 리뷰 ${index + 1}`}
+                        loading={index === 0 ? "eager" : "lazy"}
+                        className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-[1.02]"
+                      />
+                      <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/10">
+                        <span className="flex h-13 w-13 items-center justify-center rounded-full bg-white/92 text-primaryNavy shadow-[0_14px_34px_rgba(17,24,39,0.22)] backdrop-blur transition group-hover:scale-105">
+                          <ZoomIn className="h-5.5 w-5.5" strokeWidth={2.2} />
+                        </span>
+                      </span>
+                    </button>
+                  </div>
                 ) : (
                   <div className="bg-gray-1 aspect-3/4 p-5">
                     <div className="h-full rounded-[22px] bg-white px-5 py-6 shadow-sm">
@@ -186,6 +214,14 @@ export const AboutFunnectionReviewSection = ({
               />
             ))}
           </div>
+        )}
+
+        {selectedPhotoIndex !== null && reviewPhotoUrls.length > 0 && (
+          <ReviewPhotoModal
+            initialIndex={selectedPhotoIndex}
+            photos={reviewPhotoUrls}
+            onClose={() => setSelectedPhotoIndex(null)}
+          />
         )}
       </div>
     </section>

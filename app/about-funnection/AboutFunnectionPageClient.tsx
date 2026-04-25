@@ -4,6 +4,7 @@ import { useMemo } from "react";
 
 import { FUNNECTION_PHOTOS } from "@/constants/funnection-photos.constants";
 import { useFunnectionAlbumPhotosQuery } from "@/hooks/react-query/useFunnectionAlbumPhotosQuery";
+import { useFunnectionReviewPhotosQuery } from "@/hooks/react-query/useFunnectionReviewPhotosQuery";
 
 import { AboutFunnectionAlbumSection } from "./_components/about-funnection-album-section/AboutFunnectionAlbumSection";
 import { AboutFunnectionContentsSection } from "./_components/about-funnection-contents-section/AboutFunnectionContentsSection";
@@ -26,6 +27,7 @@ export const AboutFunnectionPageClient = ({
   reviewPhotoUrls = [],
 }: AboutFunnectionPageClientProps) => {
   const { data: albumPhotosData } = useFunnectionAlbumPhotosQuery();
+  const { data: reviewPhotosData } = useFunnectionReviewPhotosQuery();
 
   const resolvedAlbumPhotoUrls = useMemo(() => {
     const fetchedPhotoUrls =
@@ -35,6 +37,14 @@ export const AboutFunnectionPageClient = ({
     return fetchedPhotoUrls.length > 0 ? fetchedPhotoUrls : albumPhotoUrls;
   }, [albumPhotoUrls, albumPhotosData?.photoUrls]);
 
+  const resolvedReviewPhotoUrls = useMemo(() => {
+    const fetchedPhotoUrls =
+      reviewPhotosData?.photoUrls.filter((photoUrl) => photoUrl.trim().length > 0) ??
+      [];
+
+    return fetchedPhotoUrls.length > 0 ? fetchedPhotoUrls : reviewPhotoUrls;
+  }, [reviewPhotoUrls, reviewPhotosData?.photoUrls]);
+
   return (
     <div className="mx-auto min-h-svh w-full bg-white">
       <AboutFunnectionHeroSection />
@@ -42,7 +52,7 @@ export const AboutFunnectionPageClient = ({
       <AboutFunnectionDetailSection />
       <AboutFunnectionAlbumSection photoUrls={resolvedAlbumPhotoUrls} />
       <AboutFunnectionContentsSection />
-      <AboutFunnectionReviewSection photoUrls={reviewPhotoUrls} />
+      <AboutFunnectionReviewSection photoUrls={resolvedReviewPhotoUrls} />
       <AboutFunnectionScheduleSection />
       <BottomLinkBar />
     </div>
