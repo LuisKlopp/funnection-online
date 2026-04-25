@@ -86,7 +86,7 @@ export const ReviewPhotoModal = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="hover:bg-gray-1 flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-[0_12px_30px_rgba(0,0,0,0.24)] transition"
+                className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center text-white transition hover:text-white/72"
                 aria-label="리뷰 사진 닫기"
               >
                 <X className="h-5 w-5" strokeWidth={2.2} />
@@ -109,7 +109,7 @@ export const ReviewPhotoModal = ({
                 <button
                   type="button"
                   onClick={prev}
-                  className="hover:bg-gray-1 smd:h-11 smd:w-11 flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-[0_10px_24px_rgba(0,0,0,0.22)] transition"
+                  className="smd:h-11 smd:w-11 flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center text-white transition hover:text-white/72"
                   aria-label="이전 리뷰 사진 보기"
                 >
                   <ChevronLeft className="h-5 w-5" strokeWidth={2.3} />
@@ -133,7 +133,7 @@ export const ReviewPhotoModal = ({
                 <button
                   type="button"
                   onClick={next}
-                  className="hover:bg-gray-1 smd:h-11 smd:w-11 flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-[0_10px_24px_rgba(0,0,0,0.22)] transition"
+                  className="smd:h-11 smd:w-11 flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center text-white transition hover:text-white/72"
                   aria-label="다음 리뷰 사진 보기"
                 >
                   <ChevronRight className="h-5 w-5" strokeWidth={2.3} />

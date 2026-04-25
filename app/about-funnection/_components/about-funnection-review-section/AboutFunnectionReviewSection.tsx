@@ -86,26 +86,36 @@ export const AboutFunnectionReviewSection = ({
   return (
     <section className="smd:px-8 smd:py-18 bg-white px-4 py-12">
       <div className="mx-auto max-w-175">
-        <div className="mx-auto max-w-3xl">
-          <span className="text-primaryNavy text-[12px] font-bold tracking-widest uppercase">
-            Reviews
-          </span>
-          <h2 className="text-gray-9 smd:text-[36px] smd:leading-[1.15] mt-5 text-[24px] leading-[1.18] font-bold tracking-tight break-keep">
-            먼저 다녀간 사람들이
-            <br />
-            남긴 이야기예요
-          </h2>
-          <div className="text-gray-6 mt-6 space-y-6 break-keep">
-            <p className="smd:text-[16px] smd:leading-7 text-[14px] leading-6">
-              거짓 후기는 안키워요.
+        <div className="mx-auto max-w-3xl smd:flex smd:max-w-175 smd:items-start smd:justify-between smd:gap-10">
+          <div className="smd:max-w-110">
+            <span className="text-primaryNavy text-[12px] font-bold tracking-widest uppercase">
+              Reviews
+            </span>
+            <h2 className="text-gray-9 smd:text-[36px] smd:leading-[1.15] mt-5 text-[24px] leading-[1.18] font-bold tracking-tight break-keep">
+              먼저 다녀간 사람들이
               <br />
-              만족도 100%의 압도적인 후기를 보여드릴게요.
-            </p>
-            {reviewPhotoUrls.length > 0 && (
-              <p className="smd:text-[15px] text-[13px] leading-6 font-bold text-primaryNavy">
-                리뷰 사진을 눌러서 크게 확인해보세요.
+              남긴 이야기예요
+            </h2>
+            <div className="text-gray-6 mt-6 space-y-6 break-keep">
+              <p className="smd:text-[16px] smd:leading-7 text-[14px] leading-6">
+                거짓 후기는 안키워요.
+                <br />
+                만족도 100%의 압도적인 후기를 보여드릴게요.
               </p>
-            )}
+              {reviewPhotoUrls.length > 0 && (
+                <p className="smd:text-[15px] text-[13px] leading-6 font-bold text-primaryNavy">
+                  리뷰 사진을 눌러서 크게 확인해보세요.
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-[24px] bg-white shadow-[0_18px_48px_rgba(17,24,39,0.1)] ring-1 ring-gray-2 smd:mx-0 smd:mt-0 smd:w-56 smd:max-w-56 smd:shrink-0 smd:rounded-[20px]">
+            <img
+              src="/images/review-count.jpeg"
+              alt="퍼넥션에 쌓인 참여자 리뷰 수"
+              className="w-full object-cover"
+            />
           </div>
         </div>
 
