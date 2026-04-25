@@ -3,7 +3,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { Portal } from "@/components/layout/PortalWrapper";
 import { useLockBodyScroll } from "@/hooks/ui/useLockBodyScroll";
@@ -20,7 +20,6 @@ export const ReviewPhotoModal = ({
   photos,
 }: ReviewPhotoModalProps) => {
   const [activeIndex, setActiveIndex] = useState(initialIndex);
-  const touchStartX = useRef<number | null>(null);
 
   useLockBodyScroll();
 
@@ -39,26 +38,9 @@ export const ReviewPhotoModal = ({
     moveTo(activeIndex + 1);
   }, [activeIndex, moveTo]);
 
-  const handleTouchStart = (event: React.TouchEvent) => {
-    touchStartX.current = event.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (event: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-
-    const diff = touchStartX.current - event.changedTouches[0].clientX;
-
-    if (diff > 48) next();
-    if (diff < -48) prev();
-
-    touchStartX.current = null;
-  };
-
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
-      if (event.key === "ArrowLeft") prev();
-      if (event.key === "ArrowRight") next();
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -66,7 +48,7 @@ export const ReviewPhotoModal = ({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [next, onClose, prev]);
+  }, [onClose]);
 
   if (photos.length === 0) return null;
 
@@ -88,10 +70,10 @@ export const ReviewPhotoModal = ({
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: 18, opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="smd:max-w-86 smd:max-h-[calc(100dvh-80px)] relative flex max-h-[calc(100dvh-64px)] w-full max-w-73 flex-col justify-center"
+            className="smd:max-w-108 smd:max-h-[calc(100dvh-80px)] relative flex max-h-[calc(100dvh-64px)] w-full max-w-[360px] flex-col justify-center"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="smd:mb-3 mb-2 flex items-center justify-between gap-3 text-white">
+            <div className="smd:max-w-86 smd:mb-3 mx-auto mb-2 flex w-full max-w-73 items-center justify-between gap-3 text-white">
               <div>
                 <p className="text-xs font-semibold tracking-[0.18em] text-white/58 uppercase">
                   Funnection Reviews
@@ -112,9 +94,7 @@ export const ReviewPhotoModal = ({
             </div>
 
             <div
-              className="smd:min-h-0 smd:rounded-4xl smd:p-3 relative flex aspect-9/16 max-h-[calc(100dvh-240px)] min-h-78 items-center justify-center overflow-hidden rounded-3xl bg-white p-2 shadow-[0_28px_90px_rgba(0,0,0,0.4)]"
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
+              className="smd:max-w-86 smd:min-h-0 smd:rounded-4xl smd:p-3 relative mx-auto flex aspect-9/16 w-full max-w-73 max-h-[calc(100dvh-240px)] min-h-78 items-center justify-center overflow-hidden rounded-3xl bg-white p-2 shadow-[0_28px_90px_rgba(0,0,0,0.4)]"
             >
               <img
                 src={activePhoto}
@@ -125,7 +105,7 @@ export const ReviewPhotoModal = ({
             </div>
 
             {hasMultiplePhotos && (
-              <div className="smd:mt-4 mt-3 flex items-center justify-center gap-3">
+              <div className="smd:mt-4 mx-auto mt-3 flex w-full max-w-[360px] items-center justify-center gap-3">
                 <button
                   type="button"
                   onClick={prev}
@@ -134,7 +114,7 @@ export const ReviewPhotoModal = ({
                 >
                   <ChevronLeft className="h-5 w-5" strokeWidth={2.3} />
                 </button>
-                <div className="flex max-w-[58vw] justify-center gap-2 overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                <div className="flex min-w-0 flex-1 justify-center gap-2 overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                   {photos.map((photoUrl, index) => (
                     <button
                       key={`review-modal-dot-${photoUrl}-${index}`}
