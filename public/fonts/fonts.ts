@@ -50,10 +50,10 @@ export const maruBuri = localFont({
     {
       path: "./omu.woff2",
       weight: "600",
-      style: "light",
+      style: "normal",
     },
   ],
-  display: "swap",
+  display: "block",
 });
 
 export const bmDohyun = localFont({

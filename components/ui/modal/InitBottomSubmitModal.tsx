@@ -103,7 +103,7 @@ export const InitBottomSubmitModal = ({
               당신을 조금만 알려주세요!
             </h2>
             <p className="mt-2 text-sm text-gray-500">
-              나와 비슷한 사람들의 답변을 보여드릴게요 😊
+              나와 같은 연령대 사람들의 답변도 보여드릴게요 😊
               <br />
               <span className="text-primaryNavy font-medium">
                 최초 1회만 입력하시면 돼요!
@@ -181,7 +181,7 @@ export const InitBottomSubmitModal = ({
 
                   setNickname(filtered);
                 }}
-                className="box-shadow-1 focus:ring-primaryNavy/50 h-[53.714px] w-[114.286%] origin-top-left scale-[0.875] rounded-xl border border-gray-200 px-3 py-3 text-[16px] outline-none placeholder:text-[14.857px] placeholder:text-gray-400 focus:ring-2 smd:h-auto smd:w-full smd:scale-100 smd:text-sm smd:placeholder:text-[13px]"
+                className="box-shadow-1 focus:ring-primaryNavy/50 smd:h-auto smd:w-full smd:scale-100 smd:text-sm smd:placeholder:text-[13px] h-[53.714px] w-[114.286%] origin-top-left scale-[0.875] rounded-xl border border-gray-200 px-3 py-3 text-[16px] outline-none placeholder:text-[14.857px] placeholder:text-gray-400 focus:ring-2"
               />
             </div>
 
