@@ -41,6 +41,8 @@ export const ReviewPhotoModal = ({
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
+      if (event.key === "ArrowLeft") prev();
+      if (event.key === "ArrowRight") next();
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -48,7 +50,7 @@ export const ReviewPhotoModal = ({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [onClose]);
+  }, [next, onClose, prev]);
 
   if (photos.length === 0) return null;
 
@@ -70,10 +72,10 @@ export const ReviewPhotoModal = ({
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: 18, opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="smd:max-w-108 smd:max-h-[calc(100dvh-80px)] relative flex max-h-[calc(100dvh-64px)] w-full max-w-90 flex-col justify-center"
+            className="smd:max-h-[calc(100dvh-80px)] relative flex max-h-[calc(100dvh-64px)] w-full max-w-[400px] flex-col justify-center"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="smd:max-w-86 smd:mb-3 mx-auto mb-2 flex w-full max-w-73 items-center justify-between gap-3 text-white">
+            <div className="smd:mb-3 mx-auto mb-2 flex w-full items-center justify-between gap-3 text-white">
               <div>
                 <p className="text-xs font-semibold tracking-[0.18em] text-white/58 uppercase">
                   Funnection Reviews
@@ -93,49 +95,52 @@ export const ReviewPhotoModal = ({
               </button>
             </div>
 
-            <div className="smd:max-w-86 smd:min-h-0 smd:rounded-4xl smd:p-3 relative mx-auto flex aspect-9/16 max-h-[calc(100dvh-240px)] min-h-78 w-full max-w-73 items-center justify-center overflow-hidden rounded-3xl bg-white p-2 shadow-[0_28px_90px_rgba(0,0,0,0.4)]">
-              <img
-                src={activePhoto}
-                alt={`퍼넥션 참여자 리뷰 ${activeIndex + 1}`}
-                draggable={false}
-                className="smd:rounded-3xl max-h-full max-w-full rounded-[18px] object-contain select-none"
-              />
+            <div className="relative mx-auto w-full">
+              <div className="smd:rounded-4xl smd:p-5 relative mx-auto flex w-full items-center justify-center overflow-hidden rounded-3xl bg-white p-4 shadow-[0_28px_90px_rgba(0,0,0,0.4)]">
+                <img
+                  src={activePhoto}
+                  alt={`퍼넥션 참여자 리뷰 ${activeIndex + 1}`}
+                  draggable={false}
+                  className="smd:rounded-3xl max-h-[calc(100dvh-240px)] max-w-full rounded-[18px] object-contain select-none"
+                />
+              </div>
+
+              {hasMultiplePhotos && (
+                <>
+                  <button
+                    type="button"
+                    onClick={prev}
+                    className="smd:h-11 smd:w-11 smd:-left-3 absolute top-1/2 -left-1 z-10 flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-black/72 text-white shadow-[0_10px_24px_rgba(0,0,0,0.24)] backdrop-blur transition hover:bg-black"
+                    aria-label="이전 리뷰 사진 보기"
+                  >
+                    <ChevronLeft className="h-5 w-5" strokeWidth={2.3} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={next}
+                    className="smd:h-11 smd:w-11 smd:-right-3 absolute top-1/2 -right-1 z-10 flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-black/72 text-white shadow-[0_10px_24px_rgba(0,0,0,0.24)] backdrop-blur transition hover:bg-black"
+                    aria-label="다음 리뷰 사진 보기"
+                  >
+                    <ChevronRight className="h-5 w-5" strokeWidth={2.3} />
+                  </button>
+                </>
+              )}
             </div>
 
             {hasMultiplePhotos && (
-              <div className="smd:mt-4 mx-auto mt-3 flex w-full max-w-90 items-center justify-center gap-3">
-                <button
-                  type="button"
-                  onClick={prev}
-                  className="smd:h-11 smd:w-11 flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center text-white transition hover:text-white/72"
-                  aria-label="이전 리뷰 사진 보기"
-                >
-                  <ChevronLeft className="h-5 w-5" strokeWidth={2.3} />
-                </button>
-                <div className="flex min-w-0 flex-1 justify-center gap-2 overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                  {photos.map((photoUrl, index) => (
-                    <button
-                      key={`review-modal-dot-${photoUrl}-${index}`}
-                      type="button"
-                      onClick={() => moveTo(index)}
-                      className={`h-1.5 shrink-0 rounded-full transition-all duration-300 ${
-                        activeIndex === index
-                          ? "w-8 bg-white"
-                          : "w-2 bg-white/35"
-                      }`}
-                      aria-label={`${index + 1}번째 리뷰 사진 보기`}
-                      aria-current={activeIndex === index}
-                    />
-                  ))}
-                </div>
-                <button
-                  type="button"
-                  onClick={next}
-                  className="smd:h-11 smd:w-11 flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center text-white transition hover:text-white/72"
-                  aria-label="다음 리뷰 사진 보기"
-                >
-                  <ChevronRight className="h-5 w-5" strokeWidth={2.3} />
-                </button>
+              <div className="smd:mt-4 mx-auto mt-3 flex w-full justify-center gap-2 overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                {photos.map((photoUrl, index) => (
+                  <button
+                    key={`review-modal-dot-${photoUrl}-${index}`}
+                    type="button"
+                    onClick={() => moveTo(index)}
+                    className={`h-1.5 shrink-0 rounded-full transition-all duration-300 ${
+                      activeIndex === index ? "w-8 bg-white" : "w-2 bg-white/35"
+                    }`}
+                    aria-label={`${index + 1}번째 리뷰 사진 보기`}
+                    aria-current={activeIndex === index}
+                  />
+                ))}
               </div>
             )}
           </motion.div>

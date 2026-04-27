@@ -8,8 +8,8 @@ export const VideoIntro = () => {
         재밌게 연결되는 <br className="smd:block hidden" />
         순간을 담았어요
       </h2>
-      <div className="bg-lightNavy text-gray-6 border-primaryNavy/10 smd:text-[16px] smd:leading-7 mx-auto mt-4 rounded-2xl border px-3 py-2 text-center text-[14px] leading-6 break-keep">
-        영상으로 먼저 느껴볼까요?
+      <div className="bg-lightNavy smd:text-[16px] text-primaryNavy smd:px-6 mt-4 rounded-2xl px-3 py-2 text-center text-[15px] leading-6 break-keep">
+        영상으로 먼저 확인해볼까요?
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ export const HeroAnswerCard = ({
   }, [answerInfo.content]);
 
   return (
-    <div className="mx-auto flex w-full max-w-100 items-start gap-2">
+    <div className="smd:mt-6 mx-auto mt-2 flex w-full max-w-100 items-start gap-2">
       <div
         className={cn(
           "relative w-full rounded-2xl bg-white px-4 pt-7 pb-3 text-left"

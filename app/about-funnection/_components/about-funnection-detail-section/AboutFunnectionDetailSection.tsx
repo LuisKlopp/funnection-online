@@ -17,7 +17,7 @@ const FEATURE_CARDS: Array<{
     icon: MessageCircle,
     title: "질문 중심",
     description:
-      "모든 대화는 정성껏 설계된 질문에서 시작돼요. 어색한 자기소개 없이도, 질문 하나로 자연스럽게 연결돼요.",
+      "모든 대화는 정성껏 설계된 질문에서 시작돼요. 어릴 때부터 호기심 많았던 모임장이 직접 떠올리는 신박한 질문들에 답해보세요.",
     index: 1,
   },
   {
@@ -31,7 +31,7 @@ const FEATURE_CARDS: Array<{
     icon: Link2,
     title: "자연스러운 연결",
     description:
-      "억지로 친해지려 하지 않아도 괜찮아요. 같은 질문에 답하다 보면, 어느새 서로의 이야기를 나누게 돼요.",
+      "억지로 친해지려 하지 않아도 괜찮아요. 모든 게스트들이 부담없이 본인의 텐션에 맞게 대화할 수 있길 바랍니다.",
     index: 3,
   },
 ];
@@ -56,7 +56,7 @@ export const AboutFunnectionDetailSection = () => {
 
             <div className="text-gray-6 mt-6 space-y-6 break-keep">
               <p className="smd:text-[16px] smd:leading-7 text-[14px] leading-6">
-                3시간 동안 여러 프로그램을 통해
+                3시간 동안 여러 신박한 컨텐츠로
                 <br />
                 처음 만난 사람과도 깊은 이야기를 나눌 수 있어요.
               </p>

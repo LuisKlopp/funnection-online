@@ -107,7 +107,7 @@ export const MainFunnectionImageModal = ({
             </div>
 
             <div
-              className="relative flex h-[58vh] max-h-[560px] min-h-[320px] items-center justify-center overflow-hidden rounded-[24px] bg-white p-2 shadow-[0_28px_90px_rgba(0,0,0,0.4)] smd:h-[64vh] smd:max-h-[620px] smd:rounded-[32px] smd:p-3"
+              className="relative mx-auto flex w-fit max-w-[calc(100vw-32px)] items-center justify-center overflow-hidden rounded-[24px] bg-white p-4 shadow-[0_28px_90px_rgba(0,0,0,0.4)] smd:max-w-4xl smd:rounded-[32px] smd:p-5"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
@@ -115,7 +115,7 @@ export const MainFunnectionImageModal = ({
                 src={activePhoto.src}
                 alt={`퍼넥션 앨범 사진 ${index + 1}`}
                 draggable={false}
-                className="max-h-full max-w-full rounded-[18px] object-contain select-none smd:rounded-[24px]"
+                className="max-h-[58vh] max-w-[calc(100vw-64px)] rounded-[18px] object-contain select-none smd:max-h-[64vh] smd:max-w-[calc(56rem-40px)] smd:rounded-[24px]"
               />
 
               <button
