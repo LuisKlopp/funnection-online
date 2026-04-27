@@ -1,12 +1,14 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+
 import { useCheckAnsweredStore } from "@/store/checkAnswered.store";
 
-import { ResponseCard } from "../../main-response-section/ResponseCard";
+import { HeroAnswerCard } from "./HeroAnswerCard";
 
 interface AnsweredViewProps {
   questionId: number;
-  onOpenGatheringSection: () => void;
   onOpenAnswers: () => void;
   onOpenMyAnswer: () => void;
   onEditMyAnswer: () => void;
@@ -14,7 +16,6 @@ interface AnsweredViewProps {
 
 export const AnsweredView = ({
   questionId,
-  onOpenGatheringSection,
   onOpenAnswers,
   onOpenMyAnswer,
   onEditMyAnswer,
@@ -33,27 +34,22 @@ export const AnsweredView = ({
         >
           ✏️
         </button>
-        <ResponseCard
-          variant="bottom-sheet"
-          answerInfo={myAnswer}
-          isMine
-          onOpenDetail={onOpenMyAnswer}
-        />
+        <HeroAnswerCard answerInfo={myAnswer} onOpenDetail={onOpenMyAnswer} />
       </div>
       <div className="mx-auto flex max-w-100 flex-col gap-3">
         <button
-          onClick={onOpenGatheringSection}
-          className="bg-primaryNavy btn-press-in box-shadow-1 rounded-xl px-4 py-3 text-sm text-white"
-        >
-          이 질문, 사람들과 만나서 얘기해볼까요?
-        </button>
-
-        <button
           onClick={onOpenAnswers}
-          className="text-primaryNavy btn-press-in box-shadow-1 rounded-xl border bg-white px-4 py-3 text-sm"
+          className="btn-press-in box-shadow-1 bg-primaryNavy/75 rounded-xl border px-4 py-3 text-sm text-white"
         >
-          다른 사람들은 어떻게 답했을까?
+          다른 사람 답변 보기
         </button>
+        <Link
+          href="/about-funnection"
+          className="text-gray-8 hover:text-primaryNavy inline-flex items-center justify-end gap-1 text-[15px] transition-colors"
+        >
+          퍼넥션은 어떤 모임일까요?
+          <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
     </div>
   );

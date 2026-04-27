@@ -10,7 +10,7 @@ export const TitleBadge = ({ title, isBackground }: TitleBadgeProps) => {
     <div
       className={cn(
         "text-primaryNavy box-shadow-1 mx-auto mb-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2",
-        isBackground && "bg-deepNavy/80 text-white"
+        isBackground && "bg-primaryNavy/75 text-white"
       )}
     >
       <span

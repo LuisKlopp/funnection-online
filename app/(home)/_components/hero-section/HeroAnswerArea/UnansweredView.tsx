@@ -23,8 +23,8 @@ export const UnansweredView = ({
             maxLength={maxLength}
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            placeholder="익명이니 편하게, 솔직하게 적어보세요 ☺️"
-            className="text-gray-7 smd:h-14 smd:w-full smd:scale-100 smd:text-[15px] h-[59.75px] w-[106.667%] origin-top-left scale-[0.9375] resize-none bg-white text-[16px] leading-5.5 outline-none placeholder:text-gray-400"
+            placeholder={`익명이니 편하게, 솔직하게 적어보세요 ☺️\n답변 후 다른사람들의 생각도 확인할 수 있어요!`}
+            className="text-gray-7 smd:h-14 smd:w-full font-nanum smd:scale-100 smd:text-xl h-[59.75px] w-[106.667%] origin-top-left scale-[0.9375] resize-none bg-white text-xl leading-5.5 outline-none placeholder:text-lg placeholder:leading-6 placeholder:text-gray-400"
           />
           <span className="text-gray-5 flex justify-end text-xs">
             {value.length}/{maxLength}
@@ -45,19 +45,6 @@ export const UnansweredView = ({
         >
           내 생각 남기기
         </button>
-      </div>
-
-      <div className="text-gray-7 mt-8 w-full text-sm">
-        <div className="smd:hidden">
-          <div className="pl-4 text-left">내 생각을 남긴 후에</div>
-          <div className="pr-4 text-right">
-            다른 사람들의 답변을 확인할 수 있어요!
-          </div>
-        </div>
-
-        <div className="smd:flex hidden justify-center text-center">
-          내 생각을 남긴 후에 다른 사람들의 답변을 확인할 수 있어요!
-        </div>
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef } from "react";
+import { ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 import { useLikeAnswerMutation } from "@/hooks/react-query/useLikeAnswerMutation";
 import { useDoubleTap } from "@/hooks/ui/useDoubleTap";
@@ -9,18 +10,24 @@ import { AnswerType } from "@/types/answer.type";
 
 import { LikeButton, LikeButtonRef } from "./LikeButton";
 
-interface ResponseCardProps {
+interface ResponsePreviewCardProps {
   answerInfo: AnswerType;
 }
 
-export const ResponseCard = ({ answerInfo }: ResponseCardProps) => {
+export const ResponsePreviewCard = ({
+  answerInfo,
+}: ResponsePreviewCardProps) => {
   const likeRef = useRef<LikeButtonRef>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
   const { likeOne, isPending: isLikePending } = useLikeAnswerMutation(
     answerInfo.questionId
   );
 
   const likeDisabled = isLikePending;
   const isMale = answerInfo.gender === "male";
+
+  const [expanded, setExpanded] = useState(false);
+  const [isOverflow, setIsOverflow] = useState(false);
 
   const handleLike = async () => {
     const result = await likeOne(answerInfo.id);
@@ -36,6 +43,13 @@ export const ResponseCard = ({ answerInfo }: ResponseCardProps) => {
   };
 
   const detectDoubleTap = useDoubleTap(triggerLike);
+
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+
+    setIsOverflow(el.scrollHeight > el.clientHeight);
+  }, [answerInfo.content]);
 
   return (
     <div className="mx-auto flex w-full max-w-100 items-start gap-2">
@@ -71,9 +85,32 @@ export const ResponseCard = ({ answerInfo }: ResponseCardProps) => {
         />
 
         <div className="relative">
-          <p className="text-gray-7 overflow-hidden text-[13px] leading-5 wrap-break-word text-ellipsis">
+          <p
+            ref={textRef}
+            className={cn(
+              "text-gray-7 overflow-hidden text-[14px] wrap-break-word text-ellipsis",
+              !expanded && "line-clamp-2 leading-5.5",
+              expanded && "leading-5.5"
+            )}
+          >
             {answerInfo.content}
           </p>
+
+          {isOverflow && (
+            <button
+              type="button"
+              onClick={() => setExpanded((prev) => !prev)}
+              className="absolute right-0 bottom-0 flex items-center gap-1 bg-white pl-2 text-xs text-gray-400"
+            >
+              {expanded ? "접기" : "더보기"}
+              <ChevronDown
+                className={cn(
+                  "h-3 w-3 transition-transform",
+                  expanded && "rotate-180"
+                )}
+              />
+            </button>
+          )}
         </div>
         <div className="border-gray-2 mx-auto my-2 w-[90%] border-t" />
         <div className="flex w-full justify-between">

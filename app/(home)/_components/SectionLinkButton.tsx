@@ -20,8 +20,8 @@ export const SectionLinkButton = ({
     <Link
       href={href}
       className={cn(
-        `btn-press-in box-shadow-2 bg-deepNavy/80 smd:w-auto hover:bg-deepNavy inline-flex w-full items-center justify-center gap-2 rounded-2xl border px-5 py-3 text-sm font-semibold text-white`,
-        isElio && "bg-primaryNavy"
+        `btn-press-in box-shadow-2 bg-primaryNavy/85 smd:w-auto hover:bg-deepNavy inline-flex w-full items-center justify-center gap-2 rounded-2xl border px-5 py-3 text-sm font-semibold text-white`,
+        isElio && "bg-primaryNavy/85"
       )}
     >
       {children}

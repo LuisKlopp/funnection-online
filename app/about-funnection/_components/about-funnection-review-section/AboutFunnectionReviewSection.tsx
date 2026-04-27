@@ -102,15 +102,10 @@ export const AboutFunnectionReviewSection = ({
                 <br />
                 만족도 100%의 압도적인 후기를 보여드릴게요.
               </p>
-              {reviewPhotoUrls.length > 0 && (
-                <p className="smd:text-[15px] text-primaryNavy text-sm leading-6 font-bold">
-                  리뷰 사진을 눌러서 크게 확인해보세요.
-                </p>
-              )}
             </div>
           </div>
 
-          <div className="ring-gray-2 smd:mx-0 smd:mt-0 smd:w-64 smd:max-w-64 smd:shrink-0 smd:rounded-[20px] mx-auto mt-8 max-w-3xl overflow-hidden rounded-3xl bg-white shadow-[0_18px_48px_rgba(17,24,39,0.1)] ring-1">
+          <div className="smd:mx-0 smd:mt-0 smd:w-64 border-gray-5 smd:max-w-64 smd:shrink-0 smd:rounded-[20px] box-shadow-1 mx-auto mt-8 max-w-3xl overflow-hidden rounded-3xl border-2 bg-white">
             <img
               src="/images/review-count.jpeg"
               alt="퍼넥션에 쌓인 참여자 리뷰 수"
@@ -119,11 +114,16 @@ export const AboutFunnectionReviewSection = ({
           </div>
         </div>
 
-        <div className="relative mt-10">
+        <div className="relative mt-8">
+          {reviewPhotoUrls.length > 0 && (
+            <p className="smd:text-[15px] text-primaryNavy text-sm leading-6 font-medium">
+              리뷰 사진을 클릭하여 크게 확인해보세요.
+            </p>
+          )}
           <div
             ref={trackRef}
             onScroll={handleScroll}
-            className="scrollbar-none smd:-mx-8 smd:px-8 -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="scrollbar-none smd:-mx-8 smd:px-8 -mx-4 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {reviews.map((review, index) => (
               <article

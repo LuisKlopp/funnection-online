@@ -17,7 +17,7 @@ import {
 } from "../../hooks/useHeroSectionForm";
 import { HeroSectionFormContent } from "./HeroSectionFormContent";
 import { HeroSectionFormQuestion } from "./HeroSectionFormQuestion";
-import { UserInfoBadge } from "./UserInfoBadge";
+// import { UserInfoBadge } from "./UserInfoBadge";
 
 interface HeroSectionFormProps {
   visible: boolean;
@@ -25,7 +25,6 @@ interface HeroSectionFormProps {
   questionData: HomeQuestion;
   questionDone: boolean;
   setQuestionDone: Dispatch<SetStateAction<boolean>>;
-  onOpenGatheringSection: () => void;
 }
 
 export const HeroSectionForm = ({
@@ -34,13 +33,12 @@ export const HeroSectionForm = ({
   questionData,
   questionDone,
   setQuestionDone,
-  onOpenGatheringSection,
 }: HeroSectionFormProps) => {
   const {
     value,
     setValue,
     startTyping,
-    userInfo,
+    // userInfo,
     myAnswer,
     hasAnswered,
     isPending,
@@ -62,9 +60,9 @@ export const HeroSectionForm = ({
 
   return (
     <section className="fade-up mx-auto flex w-full max-w-125 flex-col justify-center px-6 py-24 text-center">
-      <div className="absolute top-8 right-2 my-2 flex">
+      {/* <div className="absolute top-8 right-2 my-2 flex">
         {userInfo && <UserInfoBadge questionDone={questionDone} />}
-      </div>
+      </div> */}
       <div className="mb-4 flex items-center gap-3">
         <div className="border-primaryNavy/30 flex-1 border-b" />
         <span className="text-primaryNavy font-nanum smd:text-xl text-2xl font-medium whitespace-nowrap">
@@ -88,7 +86,6 @@ export const HeroSectionForm = ({
         onOpenAnswers={handleOpenAnswers}
         onOpenMyAnswer={handleOpenMyAnswer}
         onEditMyAnswer={handleOpenEditMyAnswer}
-        onOpenGatheringSection={onOpenGatheringSection}
       />
       {modal.isModal === "submit" && (
         <InitBottomSubmitModal

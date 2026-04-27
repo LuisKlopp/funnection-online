@@ -149,8 +149,6 @@ export const BottomAnswerListModal = ({ onClose }: { onClose: () => void }) => {
                   <ResponseCard
                     key={answer.id}
                     answerInfo={answer}
-                    variant="bottom-sheet"
-                    isMine={false}
                   />
                 ))}
               </div>
