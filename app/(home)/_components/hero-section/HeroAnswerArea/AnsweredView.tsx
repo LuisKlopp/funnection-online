@@ -45,9 +45,9 @@ export const AnsweredView = ({
         </button>
         <Link
           href="/about-funnection"
-          className="text-gray-8 hover:text-primaryNavy inline-flex items-center justify-end gap-1 text-[15px] transition-colors"
+          className="text-gray-8 hover:text-primaryNavy mt-2 inline-flex items-center justify-end gap-1 text-[15px] transition-colors"
         >
-          퍼넥션은 어떤 모임일까요?
+          이런 질문들을 만나서 나눠볼까요?
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
