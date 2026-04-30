@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { EVENT_TYPE_LABEL } from "@/constants/event-type.constants";
 import { useEventsQuery } from "@/hooks/react-query/useEventsQuery";
 
 import { ApplyFirstStep } from "./_components/apply-first-step/ApplyFirstStep";
@@ -30,9 +31,9 @@ export const ApplyPageClient = () => {
   const step2Ref = useRef<HTMLDivElement>(null);
   const eventIdParam = searchParams.get("eventId");
   const selectedStepOneText = selectedEvent
-    ? selectedEvent.eventType === "BOARDGAME"
-      ? "보드게임 신청서 작성하기 →"
-      : `${selectedEvent.round}회차 신청서 작성하기 →`
+    ? selectedEvent.eventType === "FUNNECTION"
+      ? `${selectedEvent.round}회차 신청서 작성하기 →`
+      : `${EVENT_TYPE_LABEL[selectedEvent.eventType]} 신청서 작성하기 →`
     : "신청할 모임을 선택해주세요!";
 
   useEffect(() => {

@@ -56,60 +56,71 @@ export const BottomEventListModal = ({
         </div>
 
         <div className="flex w-full flex-col gap-3 overflow-y-auto px-6 pb-6">
-          {filteredEvents.map((event) => (
-            <div
-              key={event.id}
-              className={`box-shadow-2 rounded-xl border-2 bg-white p-4 ${
-                event.eventType === "BOARDGAME"
-                  ? "border-green-600/60"
-                  : "border-primaryNavy/70"
-              }`}
-            >
-              <div className="flex w-full items-center justify-center gap-1">
-                <div
-                  className={`font-semibold ${
-                    event.eventType === "BOARDGAME"
-                      ? "text-green-700"
-                      : "text-primaryNavy"
-                  }`}
-                >
-                  {EVENT_TYPE_LABEL[event.eventType]}
-                </div>
-                <div className="text-gray-7 rounded-full text-[13px] font-semibold">
-                  {event.round}회차
-                </div>
-              </div>
+          {filteredEvents.map((event) => {
+            const isBoardgame = event.eventType === "BOARDGAME";
+            const isHoldem = event.eventType === "HOLDEM";
 
-              <div className="text-gray-5 mt-2 flex flex-col gap-1 text-xs">
-                <div className="flex items-center gap-2">
-                  <Clock size={14} />
-                  {formatKoreanTime(event.startTime)}
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <MapPin size={14} />
-                  {event.location}
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <Users size={14} />
-                  최대 {event.maxParticipants}명
-                </div>
-              </div>
-
-              <Link
-                href={`/apply?eventId=${event.id}`}
-                onClick={onClose}
-                className={`mt-3 block w-full rounded-lg py-2 text-center text-sm font-semibold text-white ${
-                  event.eventType === "BOARDGAME"
-                    ? "bg-green-600"
-                    : "bg-[#3471eb]"
+            return (
+              <div
+                key={event.id}
+                className={`box-shadow-2 rounded-xl border-2 bg-white p-4 ${
+                  isBoardgame
+                    ? "border-green-600/60"
+                    : isHoldem
+                      ? "border-rose-600/60"
+                      : "border-primaryNavy/70"
                 }`}
               >
-                신청하기
-              </Link>
-            </div>
-          ))}
+                <div className="flex w-full items-center justify-center gap-1">
+                  <div
+                    className={`font-semibold ${
+                      isBoardgame
+                        ? "text-green-700"
+                        : isHoldem
+                          ? "text-rose-700"
+                          : "text-primaryNavy"
+                    }`}
+                  >
+                    {EVENT_TYPE_LABEL[event.eventType]}
+                  </div>
+                  <div className="text-gray-7 rounded-full text-[13px] font-semibold">
+                    {event.round}회차
+                  </div>
+                </div>
+
+                <div className="text-gray-5 mt-2 flex flex-col gap-1 text-xs">
+                  <div className="flex items-center gap-2">
+                    <Clock size={14} />
+                    {formatKoreanTime(event.startTime)}
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <MapPin size={14} />
+                    {event.location}
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <Users size={14} />
+                    최대 {event.maxParticipants}명
+                  </div>
+                </div>
+
+                <Link
+                  href={`/apply?eventId=${event.id}`}
+                  onClick={onClose}
+                  className={`mt-3 block w-full rounded-lg py-2 text-center text-sm font-semibold text-white ${
+                    isBoardgame
+                      ? "bg-green-600"
+                      : isHoldem
+                        ? "bg-rose-600"
+                        : "bg-[#3471eb]"
+                  }`}
+                >
+                  신청하기
+                </Link>
+              </div>
+            );
+          })}
         </div>
       </BottomSheet>
     </Portal>

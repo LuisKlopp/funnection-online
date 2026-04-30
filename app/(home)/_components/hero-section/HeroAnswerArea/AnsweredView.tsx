@@ -1,8 +1,5 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-
 import { useCheckAnsweredStore } from "@/store/checkAnswered.store";
 
 import { HeroAnswerCard } from "./HeroAnswerCard";
@@ -39,17 +36,10 @@ export const AnsweredView = ({
       <div className="mx-auto flex max-w-100 flex-col gap-3">
         <button
           onClick={onOpenAnswers}
-          className="btn-press-in box-shadow-1 bg-primaryNavy/75 rounded-xl border px-4 py-3 text-sm text-white"
+          className="btn-press-in box-shadow-2 bg-primaryNavy/85 rounded-xl px-4 py-3 text-sm text-white"
         >
-          다른 사람 답변 보기
+          다른 사람들의 답변 보기
         </button>
-        <Link
-          href="/about-funnection"
-          className="text-gray-8 hover:text-primaryNavy box-shadow-1 ml-auto flex w-fit items-center justify-end gap-1 rounded-xl bg-white px-3 py-2 text-[15px] transition-colors"
-        >
-          이런 질문들을 만나서 나눠볼까요?
-          <ArrowRight className="h-4 w-4" />
-        </Link>
       </div>
     </div>
   );

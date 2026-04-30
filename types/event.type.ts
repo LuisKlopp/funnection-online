@@ -1,3 +1,5 @@
+import type { EventType } from "@/constants/event-type.constants";
+
 export interface EventData {
   id: number;
   round: number;
@@ -6,6 +8,6 @@ export interface EventData {
   location: string;
   maxParticipants: number;
   seatsLeft: number;
-  eventType: "FUNNECTION" | "BOARDGAME";
+  eventType: EventType;
   status: "OPEN" | "CLOSED";
 }

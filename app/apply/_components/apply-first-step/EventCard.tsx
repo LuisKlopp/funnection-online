@@ -1,4 +1,4 @@
-import { Calendar, Dices, MessageCircleMore } from "lucide-react";
+import { Calendar, CircleDollarSign, Dices, MessageCircleMore } from "lucide-react";
 import { forwardRef } from "react";
 
 import { EVENT_TYPE_LABEL } from "@/constants/event-type.constants";
@@ -14,6 +14,8 @@ interface EventCardProps {
 export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(
   ({ event, selected, onClick }, ref) => {
     const isBoardgame = event.eventType === "BOARDGAME";
+    const isHoldem = event.eventType === "HOLDEM";
+    const isFunnection = event.eventType === "FUNNECTION";
 
     return (
       <div
@@ -22,11 +24,13 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(
         className={cn(
           "relative cursor-pointer rounded-2xl border p-4 transition-all duration-300 ease-out",
           selected
-            ? isBoardgame
+            ? isBoardgame || isHoldem
               ? "border-primaryAmber bg-primaryAmber/7"
               : "border-primaryAmber bg-primaryAmber/7"
             : isBoardgame
               ? "border-green-500/20 hover:border-green-500/35"
+              : isHoldem
+                ? "border-rose-500/25 hover:border-rose-500/45"
               : "border-primaryNavy/20 hover:border-primaryNavy/35"
         )}
       >
@@ -39,6 +43,10 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(
                   ? selected
                     ? "bg-green-500/18 text-green-300"
                     : "bg-green-500/12 text-green-200"
+                  : isHoldem
+                    ? selected
+                      ? "bg-rose-500/22 text-rose-200"
+                      : "bg-rose-500/14 text-rose-200"
                   : selected
                     ? "bg-primaryNavy/40 text-blue-100"
                     : "bg-primaryNavy/40 text-blue-100"
@@ -46,12 +54,14 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(
             >
               {isBoardgame ? (
                 <Dices className="h-3.5 w-3.5" />
+              ) : isHoldem ? (
+                <CircleDollarSign className="h-3.5 w-3.5" />
               ) : (
                 <MessageCircleMore className="h-3.5 w-3.5" />
               )}
               {EVENT_TYPE_LABEL[event.eventType]}
             </span>
-            {!isBoardgame && (
+            {isFunnection && (
               <span
                 className={cn(
                   "rounded-full py-1 text-xs font-semibold transition-all duration-300",
@@ -66,7 +76,11 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(
           <span
             className={cn(
               "text-sm font-medium",
-              isBoardgame ? "text-green-200/70" : "text-[#9fc0ff]"
+              isBoardgame
+                ? "text-green-200/70"
+                : isHoldem
+                  ? "text-rose-200/75"
+                  : "text-[#9fc0ff]"
             )}
           >
             {event.seatsLeft}자리 남음
@@ -91,11 +105,15 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(
             "mt-3 inline-block rounded-md px-3 py-1 text-xs",
             isBoardgame
               ? "bg-green-500/10 text-green-200/90"
+              : isHoldem
+                ? "bg-rose-500/12 text-rose-100"
               : "bg-primaryNavy/12 text-blue-200/90"
           )}
         >
           {isBoardgame
             ? "함께 즐기는 보드게임 모임"
+            : isHoldem
+              ? "함께 즐기는 홀덤 모임"
             : "나를 움직이게 하는 것들"}
         </div>
 

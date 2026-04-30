@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function AdminApplications() {
   return (
-    <div className="mx-auto min-h-svh w-full bg-linear-to-b from-slate-50 via-white to-emerald-50/30">
+    <div className="mx-auto min-h-svh w-full bg-slate-100">
       <AdminApplicationsPageClient />
     </div>
   );

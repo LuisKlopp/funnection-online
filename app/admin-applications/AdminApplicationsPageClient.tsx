@@ -119,14 +119,14 @@ export const AdminApplicationsPageClient = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-3xl px-3 py-4 sm:px-5 sm:py-6">
+      <div className="mx-auto max-w-5xl px-3 py-4 sm:px-5 sm:py-6">
         <AdminApplicationsHeader
           totalEvents={adminEventData?.length ?? 0}
           onLogout={isAuthenticated ? handleLogout : undefined}
         />
 
         {isAuthenticated ? (
-          <div className="mt-4 space-y-3">
+          <div className="mt-4 space-y-4">
             {isLoading ? (
               <div className="mx-auto flex min-h-[32vh] max-w-3xl items-center justify-center px-4 py-6">
                 <div className="rounded-2xl border border-blue-100 bg-white px-4 py-3 text-sm text-gray-500 shadow-sm">

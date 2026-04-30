@@ -1,3 +1,5 @@
+import type { EventType } from "@/constants/event-type.constants";
+
 export interface AdminApplication {
   id: number;
   nickname: string;
@@ -12,7 +14,7 @@ export interface AdminApplication {
 export interface AdminEventGroup {
   eventId: number;
   round: number;
-  eventType: string;
+  eventType: EventType;
   eventDate: string;
   startTime: string;
 

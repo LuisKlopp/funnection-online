@@ -4,13 +4,14 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import type { EventType } from "@/constants/event-type.constants";
 import { useApplyMutation } from "@/hooks/react-query/useApplyMutation";
 
 import { FormState } from "./useApplyStep";
 
 interface UseApplyFormProps {
   selectedEventId: number | null;
-  selectedEventType: "FUNNECTION" | "BOARDGAME" | null;
+  selectedEventType: EventType | null;
 }
 
 const APPLY_COMPLETE_EVENT_TYPE_KEY = "applyCompleteEventType";

@@ -11,11 +11,13 @@ interface CalendarDayProps {
 const EVENT_TYPE_DOT_CLASS = {
   FUNNECTION: "bg-primaryNavy",
   BOARDGAME: "bg-green-600/85",
+  HOLDEM: "bg-rose-600/85",
 } as const;
 
 const SELECTED_EVENT_TYPE_DOT_CLASS = {
   FUNNECTION: "bg-white",
   BOARDGAME: "bg-green-400",
+  HOLDEM: "bg-rose-300",
 } as const;
 
 export const CalendarDay = ({

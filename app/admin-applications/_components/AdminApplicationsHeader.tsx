@@ -8,18 +8,23 @@ export const AdminApplicationsHeader = ({
   totalEvents,
 }: AdminApplicationsHeaderProps) => {
   return (
-    <section className="box-shadow-1 overflow-hidden rounded-[22px] border border-blue-200 bg-linear-to-br from-white via-blue-50/70 to-emerald-50/60 px-4 py-3 sm:px-5 sm:py-3.5">
+    <section className="overflow-hidden rounded-2xl border border-slate-300 bg-white px-4 py-4 shadow-sm sm:px-5">
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-primaryNavy inline-flex rounded-full border border-blue-200/80 bg-white/80 px-2.5 py-1 text-[9px] font-semibold tracking-[0.18em] uppercase backdrop-blur-sm">
+          <div className="inline-flex rounded-md bg-slate-900 px-2.5 py-1 text-[10px] font-bold tracking-[0.18em] text-white uppercase">
             Admin
           </div>
+          <h1 className="mt-2 text-lg font-bold text-slate-950">
+            신청자 관리
+          </h1>
         </div>
 
-        <div className="flex flex-col items-center rounded-2xl py-2">
+        <div className="flex flex-col items-center rounded-xl border border-slate-300 bg-slate-50 px-4 py-2">
           <div className="flex items-center gap-2">
-            <span className="text-gray-5 text-sm">현재 모임</span>
-            <span className="text-gray-8 text-xl font-semibold sm:text-2xl">
+            <span className="text-sm font-semibold text-slate-700">
+              현재 모임
+            </span>
+            <span className="text-xl font-black text-slate-950 sm:text-2xl">
               {totalEvents}
             </span>
           </div>
@@ -30,7 +35,7 @@ export const AdminApplicationsHeader = ({
             <button
               type="button"
               onClick={onLogout}
-              className="rounded-2xl border border-gray-200 bg-white/85 px-3 py-2 text-xs font-semibold text-gray-600 shadow-sm transition hover:bg-gray-50"
+              className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-800 shadow-sm transition hover:bg-slate-50"
             >
               로그아웃
             </button>

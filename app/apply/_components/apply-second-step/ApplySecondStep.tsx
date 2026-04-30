@@ -25,6 +25,7 @@ export const ApplySecondStep = ({
   event,
 }: ApplySecondStepProps) => {
   const isBoardgame = event?.eventType === "BOARDGAME";
+  const isHoldem = event?.eventType === "HOLDEM";
 
   const updateField = <K extends keyof FormState>(
     key: K,
@@ -47,6 +48,8 @@ export const ApplySecondStep = ({
           className={`rounded-2xl border p-4 ${
             isBoardgame
               ? "border-green-500/30 bg-green-500/10"
+              : isHoldem
+                ? "border-rose-500/35 bg-rose-500/10"
               : "border-primaryNavy/30 bg-primaryNavy/10"
           }`}
         >
@@ -54,7 +57,11 @@ export const ApplySecondStep = ({
             <div>
               <p
                 className={`text-sm ${
-                  isBoardgame ? "text-green-400" : "text-[#9fc0ff]"
+                  isBoardgame
+                    ? "text-green-400"
+                    : isHoldem
+                      ? "text-rose-300"
+                      : "text-[#9fc0ff]"
                 }`}
               >
                 신청 중인 모임
@@ -72,6 +79,8 @@ export const ApplySecondStep = ({
               className={`rounded-full px-3 py-1 text-sm ${
                 isBoardgame
                   ? "bg-green-500/20 text-green-400"
+                  : isHoldem
+                    ? "bg-rose-500/20 text-rose-300"
                   : "bg-primaryNavy/18 text-[#9fc0ff]"
               }`}
             >
