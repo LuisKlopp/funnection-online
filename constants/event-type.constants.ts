@@ -6,6 +6,11 @@ export const EVENT_TYPE = {
 
 export type EventType = (typeof EVENT_TYPE)[keyof typeof EVENT_TYPE];
 
+export const PUBLIC_VISIBLE_EVENT_TYPES: readonly EventType[] = [
+  EVENT_TYPE.FUNNECTION,
+  EVENT_TYPE.BOARDGAME,
+];
+
 export const EVENT_TYPE_LABEL: Record<EventType, string> = {
   FUNNECTION: "퍼넥션",
   BOARDGAME: "보드게임",

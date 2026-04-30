@@ -18,6 +18,7 @@ export const LayoutShell = ({ children }: { children: React.ReactNode }) => {
 
   const hideLayout = [
     "/apply",
+    "/apply-elio",
     "/apply-complete",
     "/admin-applications",
   ].includes(pathname);

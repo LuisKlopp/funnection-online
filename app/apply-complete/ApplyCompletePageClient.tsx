@@ -9,23 +9,53 @@ import { GoHomeButton } from "./_components/GoHomeButton";
 import { NoticeBox } from "./_components/NoticeBox";
 
 const APPLY_COMPLETE_EVENT_TYPE_KEY = "applyCompleteEventType";
-const DEFAULT_DEPOSIT_AMOUNT = "25,000원";
+
+interface PaymentInfo {
+  amount: string;
+  isSameDayPayment: boolean;
+}
+
+const EVENT_PAYMENT_INFO: Record<string, PaymentInfo> = {
+  FUNNECTION: {
+    amount: "35,000원",
+    isSameDayPayment: false,
+  },
+  BOARDGAME: {
+    amount: "25,000원",
+    isSameDayPayment: false,
+  },
+  HOLDEM: {
+    amount: "당일결제",
+    isSameDayPayment: true,
+  },
+};
+
+const DEFAULT_PAYMENT_INFO = EVENT_PAYMENT_INFO.BOARDGAME;
 
 export const ApplyCompletePageClient = () => {
-  const [depositAmount, setDepositAmount] = useState(DEFAULT_DEPOSIT_AMOUNT);
+  const [paymentInfo, setPaymentInfo] = useState(DEFAULT_PAYMENT_INFO);
 
   useEffect(() => {
     const eventType = sessionStorage.getItem(APPLY_COMPLETE_EVENT_TYPE_KEY);
+    const nextPaymentInfo =
+      eventType === "FUNNECTION" ||
+      eventType === "BOARDGAME" ||
+      eventType === "HOLDEM"
+        ? EVENT_PAYMENT_INFO[eventType]
+        : DEFAULT_PAYMENT_INFO;
 
-    setDepositAmount(eventType === "FUNNECTION" ? "35,000원" : "25,000원");
+    setPaymentInfo(nextPaymentInfo);
   }, []);
 
   return (
     <div className="bg-applyBackgroundColor smd:mx-auto flex h-svh max-w-175 flex-col overflow-hidden text-white">
       <ApplyCompleteHeader />
       <div className="relative flex min-h-0 flex-1 flex-col items-center gap-4 overflow-y-auto px-4 py-8">
-        <CheckBox />
-        <DepositBox amount={depositAmount} />
+        <CheckBox isSameDayPayment={paymentInfo.isSameDayPayment} />
+        <DepositBox
+          amount={paymentInfo.amount}
+          isSameDayPayment={paymentInfo.isSameDayPayment}
+        />
         <NoticeBox />
         <GoHomeButton />
       </div>

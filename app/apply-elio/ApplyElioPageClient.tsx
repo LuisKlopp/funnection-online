@@ -1,12 +1,9 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import {
-  EVENT_TYPE_LABEL,
-  PUBLIC_VISIBLE_EVENT_TYPES,
-} from "@/constants/event-type.constants";
+import { EVENT_TYPE_LABEL } from "@/constants/event-type.constants";
 import { useEventsQuery } from "@/hooks/react-query/useEventsQuery";
 
 import { ApplyFirstStep } from "./_components/apply-first-step/ApplyFirstStep";
@@ -18,21 +15,13 @@ import { StepTab } from "./_components/StepTab";
 import { useApplyForm } from "./hooks/useApplyForm";
 import { useApplyStep } from "./hooks/useApplyStep";
 
-export const ApplyPageClient = () => {
+export const ApplyElioPageClient = () => {
   const searchParams = useSearchParams();
   const { step, goNext, goBack } = useApplyStep();
   const [selectedEventId, setSelectedEventId] = useState<number | null>(null);
   const initializedFromSearchRef = useRef(false);
   const { data: events = [], isFetched } = useEventsQuery();
-  const visibleEvents = useMemo(
-    () =>
-      events.filter((event) =>
-        PUBLIC_VISIBLE_EVENT_TYPES.includes(event.eventType)
-      ),
-    [events]
-  );
-  const selectedEvent =
-    visibleEvents.find((e) => e.id === selectedEventId) ?? null;
+  const selectedEvent = events.find((e) => e.id === selectedEventId) ?? null;
   const { form, setForm, isFormValid, handleSubmit } = useApplyForm({
     selectedEventId,
     selectedEventType: selectedEvent?.eventType ?? null,
@@ -80,16 +69,14 @@ export const ApplyPageClient = () => {
       return;
     }
 
-    const matchedEvent = visibleEvents.find(
-      (event) => event.id === nextEventId
-    );
+    const matchedEvent = events.find((event) => event.id === nextEventId);
 
     if (matchedEvent) {
       setSelectedEventId(matchedEvent.id);
     }
 
     initializedFromSearchRef.current = true;
-  }, [eventIdParam, isFetched, visibleEvents]);
+  }, [eventIdParam, events, isFetched]);
 
   return (
     <div className="bg-applyBackgroundColor smd:mx-auto flex h-svh max-w-175 flex-col text-white">
@@ -107,7 +94,7 @@ export const ApplyPageClient = () => {
       <div className="relative flex-1 overflow-hidden">
         <SlidePage ref={step1Ref} active={step === 1} direction="left">
           <ApplyFirstStep
-            events={visibleEvents}
+            events={events}
             selectedId={selectedEventId}
             setSelectedId={setSelectedEventId}
           />

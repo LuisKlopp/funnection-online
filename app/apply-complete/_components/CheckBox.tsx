@@ -1,6 +1,10 @@
 import { SuccessCheckAnimation } from "@/components/ui/icons/SuccessCheckAnimation";
 
-export const CheckBox = () => {
+export const CheckBox = ({
+  isSameDayPayment = false,
+}: {
+  isSameDayPayment?: boolean;
+}) => {
   return (
     <div>
       <SuccessCheckAnimation />
@@ -9,7 +13,9 @@ export const CheckBox = () => {
           신청이 완료됐어요!
         </h1>
         <span className="text-gray-4 text-base">
-          입금 확인 후 최종 참여가 확정돼요
+          {isSameDayPayment
+            ? "당일 현장에서 결제해 주세요"
+            : "입금 확인 후 최종 참여가 확정돼요"}
         </span>
       </div>
     </div>

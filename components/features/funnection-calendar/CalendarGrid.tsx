@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 
 import { BottomEventListModal } from "@/components/ui/modal/BottomEventListModal";
+import { PUBLIC_VISIBLE_EVENT_TYPES } from "@/constants/event-type.constants";
 import { useEventsQuery } from "@/hooks/react-query/useEventsQuery";
 import { useModal } from "@/hooks/ui/useModal";
 import { EventData } from "@/types/event.type";
@@ -39,6 +40,9 @@ export const CalendarGrid = ({
 }: CalendarGridProps) => {
   const { data: events = [] } = useEventsQuery();
   const modal = useModal();
+  const visibleEvents = events.filter((event) =>
+    PUBLIC_VISIBLE_EVENT_TYPES.includes(event.eventType)
+  );
 
   const [month, setMonth] = useState(new Date());
   const monthStart = startOfMonth(month);
@@ -50,14 +54,17 @@ export const CalendarGrid = ({
   const startDay = getDay(monthStart);
   const blanks = Array.from({ length: startDay });
 
-  const eventMap = events.reduce<Map<string, EventData[]>>((map, event) => {
-    const date = event.eventDate.slice(0, 10);
-    if (!map.has(date)) {
-      map.set(date, []);
-    }
-    map.get(date)!.push(event);
-    return map;
-  }, new Map());
+  const eventMap = visibleEvents.reduce<Map<string, EventData[]>>(
+    (map, event) => {
+      const date = event.eventDate.slice(0, 10);
+      if (!map.has(date)) {
+        map.set(date, []);
+      }
+      map.get(date)!.push(event);
+      return map;
+    },
+    new Map()
+  );
 
   return (
     <div>
@@ -103,7 +110,7 @@ export const CalendarGrid = ({
         })}
         {modal.isModal && (
           <BottomEventListModal
-            events={events}
+            events={visibleEvents}
             date={selectedDate}
             onClose={modal.closeModal}
           />

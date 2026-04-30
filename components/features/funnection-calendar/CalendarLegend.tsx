@@ -10,11 +10,6 @@ export const CalendarLegend = () => {
         <span className="h-3 w-3 rounded-full bg-green-600/80" />
         보드게임
       </div>
-
-      <div className="flex items-center gap-1.5">
-        <span className="h-3 w-3 rounded-full bg-rose-600/80" />
-        홀덤
-      </div>
     </div>
   );
 };
