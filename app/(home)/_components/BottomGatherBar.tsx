@@ -59,7 +59,7 @@ export const BottomGatherBar = () => {
               <span
                 className={cn("text-gray-5 text-sm", scrolled && "text-white")}
               >
-                다름이 닿는 대화공간 퍼넥션
+                다름이 닿는 대화공간
               </span>
             </div>
           </div>

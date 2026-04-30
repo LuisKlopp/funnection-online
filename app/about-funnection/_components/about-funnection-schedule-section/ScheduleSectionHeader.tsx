@@ -8,7 +8,7 @@ export const ScheduleSectionHeader = () => {
       </div>
 
       <h2 className="text-gray-9 smd:text-[36px] smd:leading-[1.15] mt-5 text-[24px] leading-[1.18] font-bold tracking-tight break-keep">
-        퍼넥션 모임 일정
+        다가오는 퍼넥션 모임 일정
       </h2>
     </div>
   );

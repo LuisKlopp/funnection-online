@@ -69,8 +69,8 @@ export const HeroAnswerCard = ({
             </button>
           )}
         </div>
-        <div className="border-gray-2 mx-auto my-2 w-[90%] border-t" />
-        <div className="flex w-full justify-between">
+        <div className="border-gray-2 mx-auto my-4 w-[90%] border-t" />
+        <div className="flex w-full justify-end">
           <div className="flex items-center gap-1">
             <div
               className={cn(

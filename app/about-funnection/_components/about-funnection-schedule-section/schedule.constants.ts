@@ -1,4 +1,4 @@
-export const DEFAULT_VISIBLE_COUNT = 3;
+export const DEFAULT_VISIBLE_COUNT = 2;
 
 export const SCHEDULE_DAY_NAMES = [
   "일요일",

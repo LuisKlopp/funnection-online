@@ -1,6 +1,7 @@
 "use client";
 
-import { X } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
 import { ResponseCard } from "@/app/(home)/_components/main-response-section/ResponseCard";
@@ -31,7 +32,7 @@ const sortAnswersByLike = (
 
 export const BottomAnswerListModal = ({ onClose }: { onClose: () => void }) => {
   useLockBodyScroll();
-  const [isSheetExpanded, setIsSheetExpanded] = useState(false);
+  const [currentSnapIndex, setCurrentSnapIndex] = useState(2);
   const [showSameAgeOnly, setShowSameAgeOnly] = useState(false);
   const [answerOrder, setAnswerOrder] = useState<number[]>([]);
 
@@ -91,6 +92,13 @@ export const BottomAnswerListModal = ({ onClose }: { onClose: () => void }) => {
   const answerCountLabel = showSameAgeOnly
     ? `같은 연령대 답변 ${visibleAnswers.length}개`
     : `총 ${answers.length}개`;
+  const showFunnectionCta = visibleAnswers.length >= 6;
+  const answerListBottomPadding =
+    currentSnapIndex <= 1
+      ? "pb-40"
+      : currentSnapIndex === FULLY_EXPANDED_SNAP_INDEX
+        ? "pb-8"
+        : "pb-24";
 
   if (!data) return null;
 
@@ -102,9 +110,7 @@ export const BottomAnswerListModal = ({ onClose }: { onClose: () => void }) => {
         snapPoints={ANSWER_LIST_SNAP_POINTS}
         initialSnap={2}
         dragVelocityThreshold={1200}
-        onSnap={(index) =>
-          setIsSheetExpanded(index === FULLY_EXPANDED_SNAP_INDEX)
-        }
+        onSnap={(index) => setCurrentSnapIndex(index)}
         contentClassName="h-full pb-0"
       >
         <div className="flex h-full min-h-0 flex-col">
@@ -137,20 +143,37 @@ export const BottomAnswerListModal = ({ onClose }: { onClose: () => void }) => {
               <X size={18} className="text-white" />
             </button>
           </div>
-          <div className="bg-primaryNavy/30 mx-auto my-2 h-px w-[40%] shrink-0" />
+          <div className="mx-auto my-2 h-px w-[40%] shrink-0" />
           <div
-            className={`flex-1 overflow-y-auto px-6 ${
-              isSheetExpanded ? "pb-4" : "pb-20"
-            }`}
+            className={cn(
+              "flex-1 overflow-y-auto px-6",
+              answerListBottomPadding
+            )}
           >
             {visibleAnswers.length > 0 ? (
               <div className="space-y-4">
                 {visibleAnswers.map((answer) => (
-                  <ResponseCard
-                    key={answer.id}
-                    answerInfo={answer}
-                  />
+                  <ResponseCard key={answer.id} answerInfo={answer} />
                 ))}
+                {showFunnectionCta && (
+                  <div className="bg-gray-8 mx-auto w-full max-w-100 rounded-2xl px-5 py-5 text-white shadow-[0_18px_45px_rgba(17,24,39,0.18)]">
+                    <h3 className="mt-2 text-lg leading-6 font-semibold break-keep">
+                      이런 질문들을 만나서 나눠보고 싶다면
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 break-keep text-white/72">
+                      퍼넥션에서 서로의 답을 듣고, 내 생각도 천천히 꺼내볼 수
+                      있어요.
+                    </p>
+                    <Link
+                      href="/about-funnection"
+                      onClick={onClose}
+                      className="bg-primaryAmber mt-4 inline-flex w-full items-center justify-center gap-1 rounded-xl px-4 py-3 text-sm font-bold text-white transition hover:brightness-105 active:translate-y-px"
+                    >
+                      퍼넥션 자세히 알아보기
+                      <ArrowRight className="h-4 w-4" strokeWidth={2.3} />
+                    </Link>
+                  </div>
+                )}
               </div>
             ) : (
               <div className="flex h-full items-center justify-center pb-12 text-center">

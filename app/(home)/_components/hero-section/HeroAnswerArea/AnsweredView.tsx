@@ -45,7 +45,7 @@ export const AnsweredView = ({
         </button>
         <Link
           href="/about-funnection"
-          className="text-gray-8 hover:text-primaryNavy mt-2 inline-flex items-center justify-end gap-1 text-[15px] transition-colors"
+          className="text-gray-8 hover:text-primaryNavy box-shadow-1 ml-auto flex w-fit items-center justify-end gap-1 rounded-xl bg-white px-3 py-2 text-[15px] transition-colors"
         >
           이런 질문들을 만나서 나눠볼까요?
           <ArrowRight className="h-4 w-4" />

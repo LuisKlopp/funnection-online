@@ -5,6 +5,7 @@ import { AnswerType } from "@/types/answer.type";
 interface CheckAnsweredState {
   answeredMap: Record<number, boolean>;
   myAnswers: Record<number, AnswerType>;
+  isInitialized: boolean;
 
   setAnswered: (questionId: number) => void;
   setMyAnswer: (questionId: number, answer: AnswerType) => void;
@@ -15,9 +16,11 @@ interface CheckAnsweredState {
 export const useCheckAnsweredStore = create<CheckAnsweredState>((set) => ({
   answeredMap: {},
   myAnswers: {},
+  isInitialized: false,
 
   setAnswered: (questionId) =>
     set((state) => ({
+      isInitialized: true,
       answeredMap: {
         ...state.answeredMap,
         [questionId]: true,
@@ -36,5 +39,6 @@ export const useCheckAnsweredStore = create<CheckAnsweredState>((set) => ({
     set((state) => ({
       ...state,
       answeredMap: map,
+      isInitialized: true,
     })),
 }));

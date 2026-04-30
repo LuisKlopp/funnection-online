@@ -12,7 +12,8 @@ export const AlbumIntro = () => {
       </h2>
 
       <p className="text-gray-6 smd:text-[16px] smd:leading-7 mt-6 text-[14px] leading-6 break-keep">
-        질문과 답변이 오가던 실제 모임의 장면을 사진으로 담았어요.
+        질문과 답변이 오가던 실제 모임의 장면을 <br className="smd:hidden" />{" "}
+        사진으로 담았어요.
       </p>
     </div>
   );

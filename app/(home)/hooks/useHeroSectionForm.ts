@@ -46,7 +46,7 @@ export const useHeroSectionForm = ({
     Boolean(state.myAnswers[questionId])
   );
 
-  useSyncMyAnswer(questionId);
+  const { isSyncComplete } = useSyncMyAnswer(questionId);
 
   const handleSubmit = useCallback(() => {
     if (!value) return;
@@ -102,6 +102,8 @@ export const useHeroSectionForm = ({
     if (!visible) return;
 
     if (skipTyping) {
+      if (!isSyncComplete) return;
+
       setStartTyping(true);
       setQuestionDone(true);
       return;
@@ -112,7 +114,7 @@ export const useHeroSectionForm = ({
     }, 600);
 
     return () => clearTimeout(timer);
-  }, [setQuestionDone, skipTyping, visible]);
+  }, [isSyncComplete, setQuestionDone, skipTyping, visible]);
 
   useEffect(() => {
     initUserInfo();

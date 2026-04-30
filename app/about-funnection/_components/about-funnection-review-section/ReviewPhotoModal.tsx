@@ -72,7 +72,7 @@ export const ReviewPhotoModal = ({
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: 18, opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="smd:max-h-[calc(100dvh-80px)] relative flex max-h-[calc(100dvh-64px)] w-full max-w-[400px] flex-col justify-center"
+            className="smd:max-h-[calc(100dvh-80px)] relative flex max-h-[calc(100dvh-64px)] w-full max-w-100 flex-col justify-center"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="smd:mb-3 mx-auto mb-2 flex w-full items-center justify-between gap-3 text-white">

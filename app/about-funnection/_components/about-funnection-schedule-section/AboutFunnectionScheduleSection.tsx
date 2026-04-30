@@ -1,37 +1,55 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import { useEventsQuery } from "@/hooks/react-query/useEventsQuery";
 import { parseLocalDate } from "@/lib/utils";
+import { EventData } from "@/types/event.type";
 
 import { DEFAULT_VISIBLE_COUNT } from "./schedule.constants";
 import { ScheduleCard } from "./ScheduleCard";
 import { ScheduleEmptyState } from "./ScheduleEmptyState";
 import { ScheduleSectionHeader } from "./ScheduleSectionHeader";
 import { ScheduleSkeletonList } from "./ScheduleSkeletonList";
-import { ScheduleToggleButton } from "./ScheduleToggleButton";
+
+const getEventDateTime = (event: EventData) => {
+  const date = parseLocalDate(event.eventDate);
+  const [hours = 0, minutes = 0, seconds = 0] = event.startTime
+    .split(":")
+    .map(Number);
+
+  date.setHours(hours, minutes, seconds, 0);
+
+  return date.getTime();
+};
+
+const getNearestScheduleEvents = (events: EventData[]) => {
+  const now = Date.now();
+  const funnectionEvents = events.filter(
+    (event) => event.eventType === "FUNNECTION"
+  );
+
+  const futureEvents = funnectionEvents
+    .filter((event) => getEventDateTime(event) >= now)
+    .sort((a, b) => getEventDateTime(a) - getEventDateTime(b));
+
+  if (futureEvents.length > 0) {
+    return futureEvents.slice(0, DEFAULT_VISIBLE_COUNT);
+  }
+
+  return funnectionEvents
+    .filter((event) => getEventDateTime(event) < now)
+    .sort((a, b) => getEventDateTime(b) - getEventDateTime(a))
+    .slice(0, DEFAULT_VISIBLE_COUNT);
+};
 
 export const AboutFunnectionScheduleSection = () => {
   const { data: events = [], isLoading } = useEventsQuery();
-  const [isExpanded, setIsExpanded] = useState(false);
 
-  const funnectionEvents = useMemo(
-    () =>
-      events
-        .filter((event) => event.eventType === "FUNNECTION")
-        .sort(
-          (a, b) =>
-            parseLocalDate(a.eventDate).getTime() -
-            parseLocalDate(b.eventDate).getTime()
-        ),
+  const visibleEvents = useMemo(
+    () => getNearestScheduleEvents(events),
     [events]
   );
-
-  const visibleEvents = isExpanded
-    ? funnectionEvents
-    : funnectionEvents.slice(0, DEFAULT_VISIBLE_COUNT);
-  const canToggle = funnectionEvents.length > DEFAULT_VISIBLE_COUNT;
 
   return (
     <section className="bg-lightNavy smd:px-8 smd:py-20 px-4 py-12">
@@ -46,17 +64,10 @@ export const AboutFunnectionScheduleSection = () => {
               <ScheduleCard key={event.id} event={event} />
             ))}
 
-          {!isLoading && funnectionEvents.length === 0 && (
+          {!isLoading && visibleEvents.length === 0 && (
             <ScheduleEmptyState />
           )}
         </div>
-
-        {canToggle && (
-          <ScheduleToggleButton
-            isExpanded={isExpanded}
-            onClick={() => setIsExpanded((prev) => !prev)}
-          />
-        )}
       </div>
     </section>
   );
