@@ -1,5 +1,13 @@
 import type { EventType } from "@/constants/event-type.constants";
 
+export interface GenderSeatsLeft {
+  total: number;
+  female: number;
+  male: number;
+}
+
+export type SeatsLeft = number | GenderSeatsLeft;
+
 export interface EventData {
   id: number;
   round: number;
@@ -7,7 +15,7 @@ export interface EventData {
   startTime: string;
   location: string;
   maxParticipants: number;
-  seatsLeft: number;
+  seatsLeft: SeatsLeft;
   eventType: EventType;
   status: "OPEN" | "CLOSED";
 }

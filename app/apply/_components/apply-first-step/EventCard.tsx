@@ -8,6 +8,11 @@ import {
 import { forwardRef } from "react";
 
 import { EVENT_TYPE_LABEL } from "@/constants/event-type.constants";
+import {
+  formatParticipationText,
+  getCurrentParticipants,
+  getTotalSeatsLeft,
+} from "@/lib/event-seats";
 import { cn, formatKoreanDate, formatKoreanTime } from "@/lib/utils";
 import { EventData } from "@/types/event.type";
 
@@ -23,14 +28,15 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(
     const isHoldem = event.eventType === "HOLDEM";
     const isFunnection = event.eventType === "FUNNECTION";
     const maxParticipants = Math.max(event.maxParticipants, 0);
-    const occupiedParticipants = Math.min(
+    const totalSeatsLeft = getTotalSeatsLeft(event.seatsLeft);
+    const occupiedParticipants = getCurrentParticipants(
       maxParticipants,
-      Math.max(maxParticipants - event.seatsLeft, 0)
+      event.seatsLeft
     );
     const occupiedPercent =
       maxParticipants > 0 ? (occupiedParticipants / maxParticipants) * 100 : 0;
-    const isClosed = event.seatsLeft <= 0 || event.status === "CLOSED";
-    const isAlmostFull = event.seatsLeft <= 3;
+    const isClosed = totalSeatsLeft <= 0 || event.status === "CLOSED";
+    const isAlmostFull = totalSeatsLeft <= 3;
     const occupancyColorClass = isAlmostFull
       ? "bg-rose-500"
       : "bg-primaryAmber";
@@ -42,8 +48,11 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(
       : isBoardgame
         ? "25,000원"
         : "당일결제";
-    const seatsLeftText =
-      event.seatsLeft <= 0 ? "정원 마감" : `${event.seatsLeft}자리 남음`;
+    const participationText = formatParticipationText(
+      event.eventType,
+      event.seatsLeft,
+      maxParticipants
+    );
 
     return (
       <div
@@ -151,15 +160,15 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(
               : "나를 움직이게 하는 것들"}
         </div> */}
 
-        <div className="relative z-10 mt-4 flex items-center justify-between text-xs">
-          <span className="text-gray-400">참여 현황</span>
+        <div className="relative z-10 mt-4 flex justify-end text-xs">
           <span
             className={cn(
-              "font-semibold transition-colors duration-300",
+              "text-right leading-5 font-semibold transition-colors duration-300",
               seatsLeftTextClass
             )}
           >
-            {seatsLeftText}
+            <span className="text-gray-3">참여 현황: </span>
+            {participationText}
           </span>
         </div>
 

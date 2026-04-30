@@ -1,6 +1,7 @@
 "use client";
 
 import { EVENT_TYPE_LABEL } from "@/constants/event-type.constants";
+import { formatParticipationText } from "@/lib/event-seats";
 import { formatKoreanDate, formatKoreanTime } from "@/lib/utils";
 import { EventData } from "@/types/event.type";
 
@@ -53,7 +54,7 @@ export const ApplySecondStep = ({
               : "border-primaryNavy/30 bg-primaryNavy/10"
           }`}
         >
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <p
                 className={`text-sm ${
@@ -76,7 +77,7 @@ export const ApplySecondStep = ({
             </div>
 
             <div
-              className={`rounded-full px-3 py-1 text-sm ${
+              className={`rounded-full px-3 py-1 text-sm leading-5 ${
                 isBoardgame
                   ? "bg-green-500/20 text-green-400"
                   : isHoldem
@@ -84,7 +85,11 @@ export const ApplySecondStep = ({
                   : "bg-primaryNavy/18 text-[#9fc0ff]"
               }`}
             >
-              잔여 {event.seatsLeft}
+              {formatParticipationText(
+                event.eventType,
+                event.seatsLeft,
+                event.maxParticipants
+              )}
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import { getCurrentParticipants } from "@/lib/event-seats";
 import { formatKoreanTime, parseLocalDate } from "@/lib/utils";
 import { EventData } from "@/types/event.type";
 
@@ -20,7 +21,10 @@ export const formatScheduleDayTime = (event: EventData) => {
 export const getParticipationProgress = (event: EventData) => {
   if (event.maxParticipants <= 0) return 0;
 
-  const currentParticipants = event.maxParticipants - event.seatsLeft;
+  const currentParticipants = getCurrentParticipants(
+    event.maxParticipants,
+    event.seatsLeft
+  );
   return Math.max(
     0,
     Math.min(100, (currentParticipants / event.maxParticipants) * 100)

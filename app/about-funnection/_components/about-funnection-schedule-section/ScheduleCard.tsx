@@ -1,6 +1,7 @@
 import { MapPin, Users } from "lucide-react";
 import Link from "next/link";
 
+import { formatParticipationText } from "@/lib/event-seats";
 import { cn } from "@/lib/utils";
 import { EventData } from "@/types/event.type";
 
@@ -15,11 +16,12 @@ interface ScheduleCardProps {
 }
 
 export const ScheduleCard = ({ event }: ScheduleCardProps) => {
-  const currentParticipants = Math.max(
-    event.maxParticipants - event.seatsLeft,
-    0
-  );
   const progress = getParticipationProgress(event);
+  const participationText = formatParticipationText(
+    event.eventType,
+    event.seatsLeft,
+    event.maxParticipants
+  );
 
   return (
     <article className="box-shadow-2 smd:flex smd:items-center smd:gap-7 smd:px-7 smd:py-6 rounded-[28px] bg-white px-5 py-5">
@@ -62,8 +64,8 @@ export const ScheduleCard = ({ event }: ScheduleCardProps) => {
         <div className="flex items-center gap-3">
           <Users className="text-gray-4 h-4 w-4 shrink-0" />
           <div className="flex min-w-0 flex-1 items-center gap-3">
-            <span className="smd:text-sm shrink-0">
-              {currentParticipants}/{event.maxParticipants}명 신청 중
+            <span className="smd:text-sm shrink-0 font-semibold">
+              {participationText}
             </span>
             <div className="bg-primaryNavy/12 h-1.5 min-w-0 flex-1 overflow-hidden rounded-full">
               <div

@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { EVENT_TYPE_LABEL } from "@/constants/event-type.constants";
 import { useEventsQuery } from "@/hooks/react-query/useEventsQuery";
+import { getTotalSeatsLeft } from "@/lib/event-seats";
 
 import { ApplyFirstStep } from "./_components/apply-first-step/ApplyFirstStep";
 import { ApplySecondStep } from "./_components/apply-second-step/ApplySecondStep";
@@ -31,7 +32,8 @@ export const ApplyElioPageClient = () => {
   const step2Ref = useRef<HTMLDivElement>(null);
   const eventIdParam = searchParams.get("eventId");
   const isSelectedEventClosed = selectedEvent
-    ? selectedEvent.seatsLeft <= 0 || selectedEvent.status === "CLOSED"
+    ? getTotalSeatsLeft(selectedEvent.seatsLeft) <= 0 ||
+      selectedEvent.status === "CLOSED"
     : false;
   const selectedStepOneText = selectedEvent
     ? isSelectedEventClosed

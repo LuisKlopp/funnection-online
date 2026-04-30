@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Portal } from "@/components/layout/PortalWrapper";
 import { EVENT_TYPE_LABEL } from "@/constants/event-type.constants";
 import { useLockBodyScroll } from "@/hooks/ui/useLockBodyScroll";
+import { formatParticipationText } from "@/lib/event-seats";
 import { formatKoreanTime, parseLocalDate } from "@/lib/utils";
 import { EventData } from "@/types/event.type";
 
@@ -101,7 +102,11 @@ export const BottomEventListModal = ({
 
                   <div className="flex items-center gap-2">
                     <Users size={14} />
-                    최대 {event.maxParticipants}명
+                    {formatParticipationText(
+                      event.eventType,
+                      event.seatsLeft,
+                      event.maxParticipants
+                    )}
                   </div>
                 </div>
 
