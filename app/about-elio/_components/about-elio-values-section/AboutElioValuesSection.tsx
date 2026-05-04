@@ -29,7 +29,7 @@ export const AboutElioValuesSection = () => {
         <SectionHeading
           eyebrow="What I Value"
           title="제가 중요하게 생각하는 것들"
-          description="보이는 형식보다 먼저 신경 쓰는 기준들입니다. 퍼넥션의 질문과 분위기, 운영 방식은 모두 이 세 가지에서 출발합니다."
+          description="보여주기식 모습보다 먼저 신경 쓰는 기준들입니다. 퍼넥션의 질문과 분위기, 운영 방식은 모두 이 세 가지에서 출발합니다."
         />
 
         <div className="border-primaryNavy/10 bg-lightNavy/55 smd:mt-12 mt-10 overflow-hidden rounded-4xl border">

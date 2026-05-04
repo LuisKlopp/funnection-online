@@ -1,14 +1,10 @@
 interface StoryParagraphBlockProps {
   paragraphs: readonly string[];
-  withDivider?: boolean;
 }
 
-export const StoryParagraphBlock = ({
-  paragraphs,
-  withDivider = false,
-}: StoryParagraphBlockProps) => {
+export const StoryParagraphBlock = ({ paragraphs }: StoryParagraphBlockProps) => {
   return (
-    <div className={withDivider ? "border-primaryNavy/10 border-t pt-8" : ""}>
+    <div>
       <div className="space-y-3">
         {paragraphs.map((paragraph) => (
           <p
